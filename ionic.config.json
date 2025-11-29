@@ -1,0 +1,7 @@
+{
+  "name": "online-order",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
