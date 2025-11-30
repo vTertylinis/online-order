@@ -1,0 +1,30 @@
+.container {
+  padding: 16px;
+}
+
+.ingredients-scroll {
+  max-height: 220px; /* adjust as needed */
+  overflow: auto;
+  display: block;
+  padding-right: 6px; /* small padding to avoid items hidden under scrollbar */
+}
+
+/* Image wrapper for fixed-size, centered image */
+.image-wrap {
+  width: 280px; /* fixed width */
+  height: 200px; /* fixed height */
+  margin: 0 auto 12px; /* center horizontally and spacing below */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 6px;
+  background-color: rgba(0,0,0,0.03);
+}
+
+.image-wrap .item-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* crop to fill container */
+  display: block;
+}

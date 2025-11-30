@@ -1,0 +1,135 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Item Detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>{{ translate(item?.name || '') || ('Item ID: ' + id) }}</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf="item; else missing">
+        <div *ngIf="item.image" class="image-wrap">
+          <img class="item-image" [src]="item.image" alt="{{ item.name }}" />
+        </div>
+          <p><strong>Όνομα:</strong> {{ translate(item.name) }}</p>
+        <p *ngIf="item.price !== undefined"><strong>Τιμή:</strong> {{ item.price | currency:'EUR' }}</p>
+        <p *ngIf="item.description || item.desc"><strong>Περιγραφή:</strong> {{ translate(item.desc || item.description || '') }}</p>
+        <hr />
+        <div *ngIf="item.category === 'COFFEES'">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Επιλέξτε γλυκύτητα:</ion-label>
+            </ion-list-header>
+            <ion-radio-group [(ngModel)]="sweetness" name="sweetness" required (ionChange)="onSweetnessChange($event)">
+              <ion-item (click)="selectSweetness('Σκέτο')">
+                <ion-label>Σκέτο</ion-label>
+                <ion-radio slot="start" value="Σκέτο"></ion-radio>
+              </ion-item>
+              <ion-item (click)="selectSweetness('Ολίγη')">
+                <ion-label>Ολίγη</ion-label>
+                <ion-radio slot="start" value="Ολίγη"></ion-radio>
+              </ion-item>
+              <ion-item (click)="selectSweetness('Μέτριο')">
+                <ion-label>Μέτριο</ion-label>
+                <ion-radio slot="start" value="Μέτριο"></ion-radio>
+              </ion-item>
+              <ion-item (click)="selectSweetness('Πρός Γλυκό')">
+                <ion-label>Πρός Γλυκό</ion-label>
+                <ion-radio slot="start" value="Πρός Γλυκό"></ion-radio>
+              </ion-item>
+              <ion-item (click)="selectSweetness('Γλυκό')">
+                <ion-label>Γλυκό</ion-label>
+                <ion-radio slot="start" value="Γλυκό"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </div>
+        <div *ngIf="showSizeOptions" style="margin-top:12px;">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Επιλογή Μεγέθους</ion-label>
+            </ion-list-header>
+            <ion-radio-group [(ngModel)]="size" name="size" (ionChange)="onSizeChange($event)">
+              <ion-item (click)="selectSize('Μονό')">
+                <ion-label>Μονό</ion-label>
+                <ion-radio slot="start" value="Μονό"></ion-radio>
+              </ion-item>
+              <ion-item (click)="selectSize('Διπλό')">
+                <ion-label>
+                  Διπλό
+                  <span style="margin-left:8px; font-size:0.9em; color:var(--ion-color-medium);">
+                    (+ {{ 0.5 | currency:'EUR' }})
+                  </span>
+                </ion-label>
+                <ion-radio slot="start" value="Διπλό"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </div>
+        <div *ngIf="showSavoryExtras" style="margin-top:12px;">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Πρόσθετα / Επιλογή Συστατικών</ion-label>
+            </ion-list-header>
+
+            <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterIngredients()" placeholder="Αναζήτηση συστατικού"></ion-searchbar>
+
+            <!-- Scrollable container for long ingredient lists -->
+            <div class="ingredients-scroll">
+              <ion-item *ngFor="let ing of filteredIngredients" (click)="ing.selected = !ing.selected; onSelectionChange(ing)">
+                <ion-label>
+                  <div>{{ ing.name }}</div>
+                </ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="ing.selected" (ionChange)="onSelectionChange(ing)" (click)="$event.stopPropagation()"></ion-checkbox>
+              </ion-item>
+            </div>
+          </ion-list>
+        </div>
+
+        <!-- Sweet ingredients section -->
+        <div *ngIf="showSweetExtras" style="margin-top:12px;">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Γλυκά / Επιλογή Συστατικών</ion-label>
+            </ion-list-header>
+
+            <ion-searchbar [(ngModel)]="sweetSearchTerm" (ionInput)="filterSweetIngredients()" placeholder="Αναζήτηση γλυκού συστατικού"></ion-searchbar>
+
+            <div class="ingredients-scroll">
+              <ion-item *ngFor="let ing of filteredSweetIngredients" (click)="ing.selected = !ing.selected; onSweetSelectionChange(ing)">
+                <ion-label>
+                  <div>{{ ing.name }}</div>
+                </ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="ing.selected" (ionChange)="onSweetSelectionChange(ing)" (click)="$event.stopPropagation()"></ion-checkbox>
+              </ion-item>
+            </div>
+          </ion-list>
+        </div>
+
+        <div style="margin-top:12px;">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>Σχόλια / Παρατηρήσεις</ion-label>
+            </ion-list-header>
+            <ion-item>
+              <ion-textarea [(ngModel)]="comments" placeholder="Προσθέστε σχόλια για την παραγγελία..." rows="3"></ion-textarea>
+            </ion-item>
+          </ion-list>
+        </div>
+        <div style="margin-top:16px; display:flex; gap:8px; align-items:center; justify-content:space-between;">
+          <div style="font-weight:700;">Σύνολο: {{ totalPrice | currency:'EUR' }}</div>
+          <ion-button color="primary" (click)="addToCart()">Add to Cart</ion-button>
+        </div>
+      </div>
+      <ng-template #missing>
+        <p>Details for item with id <strong>{{ id }}</strong> are not available.</p>
+      </ng-template>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

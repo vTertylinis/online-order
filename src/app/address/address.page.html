@@ -1,0 +1,43 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/cart"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Διεύθυνση</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label position="floating">Διεύθυνση</ion-label>
+      <ion-input formControlName="address" inputmode="text"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="form.controls.address.invalid && form.controls.address.touched">
+      Υποχρεωτικό πεδίο.
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="floating">Όροφος</ion-label>
+      <ion-input formControlName="floor" inputmode="numeric"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label position="floating">Όνομα</ion-label>
+      <ion-input formControlName="name" inputmode="text"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="form.controls.name.invalid && form.controls.name.touched">
+      Υποχρεωτικό πεδίο.
+    </ion-note>
+
+    <ion-item>
+      <ion-label position="floating">Κινητό</ion-label>
+      <ion-input formControlName="phone" type="tel" inputmode="tel"></ion-input>
+    </ion-item>
+    <ion-note color="danger" *ngIf="form.controls.phone.invalid && form.controls.phone.touched">
+      Εισάγετε έγκυρο αριθμό κινητού.
+    </ion-note>
+
+    <ion-button expand="block" type="submit" [disabled]="form.invalid" class="submit-btn">Ολοκλήρωση</ion-button>
+  </form>
+</ion-content>

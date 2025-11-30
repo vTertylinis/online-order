@@ -1,20 +1,45 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="chip-bar-wrapper">
+    <div class="chip-bar">
+      <ng-container *ngFor="let cat of categories; let i = index">
+        <ion-chip (click)="scrollToCategory(i)" [class.selected]="selectedCategoryIndex === i">
+          <ion-label>{{ cat.name }}</ion-label>
+        </ion-chip>
+      </ng-container>
+    </div>
+  </div>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div class="menu-list">
+    <ion-list>
+      <ng-container *ngFor="let cat of categories; let i = index">
+        <ion-card id="cat-{{i}}">
+          <ion-card-header>
+            <ion-card-title>{{ cat.name }}</ion-card-title>
+          </ion-card-header>
+
+          <ion-card-content>
+            <ion-list>
+              <ion-item *ngFor="let item of cat.items" (click)="openItem(item)">
+                <ion-thumbnail slot="start" *ngIf="item.image">
+                  <img [src]="item.image" [alt]="item.name" loading="lazy" />
+                </ion-thumbnail>
+                <ion-label>
+                  <h2>{{ item.name }}</h2>
+                  <p *ngIf="item.desc">{{ item.desc }}</p>
+                  <small *ngIf="item.price">{{ item.price | currency }}</small>
+                </ion-label>
+              </ion-item>
+            </ion-list>
+          </ion-card-content>
+        </ion-card>
+      </ng-container>
+    </ion-list>
   </div>
 </ion-content>
+
+<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+  <ion-fab-button routerLink="/cart" aria-label="Open cart">
+    <ion-icon name="cart"></ion-icon>
+    <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
+  </ion-fab-button>
+ </ion-fab>

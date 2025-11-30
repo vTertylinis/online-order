@@ -1,0 +1,583 @@
+{
+  "HELLO": {
+    "en": "Hello",
+    "gr": "Γειά σου"
+  },
+  "WELCOME": {
+    "en": "Welcome to our project!",
+    "gr": "Καλώς ήρθατε στο έργο μας!"
+  },
+  "CHOCOLATE": {
+    "en": "Chocolate",
+    "gr": "Σοκολάτα"
+  },
+  "COFFEES": {
+    "en": "Coffees",
+    "gr": "Καφέδες"
+  },
+  "HELLENIKOS": {
+    "en": "Greek Coffee",
+    "gr": "Ελληνικός"
+  },
+  "NESCAFE_FRAPE": {
+    "en": "Nescafe Frappe",
+    "gr": "Nescafe φραπέ"
+  },
+  "FILTER_COFFEE": {
+    "en": "Filter Coffee",
+    "gr": "Καφές φίλτρου"
+  },
+  "COCOA": {
+    "en": "Cocoa",
+    "gr": "Κακάο"
+  },
+  "VIENNESE_CHOCOLATE": {
+    "en": "Viennese Chocolate",
+    "gr": "Σοκολάτα βιενουά"
+  },
+  "SOFT_DRINKS": { "en": "Soft Drinks", "gr": "Αναψυκτικά" },
+  "FANTA_ORANGE": { "en": "Fanta Orange", "gr": "Fanta Πορτοκαλάδα" },
+  "SPRITE": { "en": "Sprite", "gr": "Sprite" },
+  "FANTA_LEMON": { "en": "Fanta Lemon", "gr": "Fanta Λεμονάδα" },
+  "COCA_COLA": { "en": "Coca Cola", "gr": "Coca Cola" },
+  "COCA_COLA_ZERO": { "en": "Coca Cola Zero", "gr": "Coca Cola Zero" },
+  "PEACH_TEA": { "en": "Peach Tea", "gr": "Τσάι Ροδάκινο" },
+  "LEMON_TEA": { "en": "Lemon Tea", "gr": "Τσάι Λεμόνι" },
+  "GREEN_TEA": { "en": "Green Tea", "gr": "Τσάι Πράσινο" },
+  "RED_BULL": { "en": "Red Bull", "gr": "Red Bull" },
+  "SODA": { "en": "Soda", "gr": "Σόδα" },
+  "WATER_SMALL": { "en": "Water Small", "gr": "Νερό Μικρό" },
+  "WATER_LARGE": { "en": "Water Large", "gr": "Νερό Μεγάλο" },
+  "PERRIER": { "en": "Perrier", "gr": "Perrier" },
+  "SCHWEPPES_ORANGE": { "en": "Schweppes Orange", "gr": "Schweppes Πορτοκάλι" },
+  "SCHWEPPES_LEMON": { "en": "Schweppes Lemon", "gr": "Schweppes Λεμόνι" },
+  "SCHWEPPES_PINK": { "en": "Schweppes Pink", "gr": "Schweppes Pink" },
+  "TONIC": { "en": "Tonic", "gr": "Tonic" },
+  "THREE_CENTS_PINK": { "en": "3 Cents Pink", "gr": "3 cents Pink" },
+  "THREE_CENTS_GINGER": { "en": "3 Cents Ginger", "gr": "3 cents Ginger" },
+  "HOMEMADE_LEMONADE": { "en": "Homemade Lemonade", "gr": "Σπιτική Λεμονάδα" },
+  "HOMEMADE_NINE_FRUITS": {
+    "en": "Homemade 9 Fruits",
+    "gr": "Σπιτική 9 Φρούτα"
+  },
+  "HOMEMADE_CHERRY": { "en": "Homemade Cherry", "gr": "Σπιτική Κερασάδα" },
+  "HOMEMADE_PEACH": { "en": "Homemade Peach", "gr": "Σπιτική Ροδακινάδα" },
+  "HOMEMADE_PINK_LEMONADE": {
+    "en": "Homemade Pink Lemonade",
+    "gr": "Σπιτική Ροζ Λεμονάδα"
+  },
+  "HOMEMADE_GREEN_APPLE_POMEGRANATE": {
+    "en": "Homemade Green Apple - Pomegranate",
+    "gr": "Σπιτική Πράσινο Μήλο - Ρόδι"
+  },
+  "JUICES": { "en": "Juices", "gr": "Χυμοί" },
+  "FRESH_JUICE": { "en": "Fresh Juice", "gr": "Φυσικός Χυμός" },
+  "ORANGE_JUICE": { "en": "Orange Juice", "gr": "Χυμός Πορτοκάλι" },
+  "MIXED_JUICE": { "en": "Mixed Juice", "gr": "Χυμός Ανάμεικτος" },
+  "SOUR_CHERRY_JUICE": { "en": "Sour Cherry Juice", "gr": "Χυμός Βύσσινο" },
+  "BANANA_JUICE": { "en": "Banana Juice", "gr": "Χυμός Μπανάνα" },
+  "APPLE_JUICE": { "en": "Apple Juice", "gr": "Χυμός Μήλο" },
+  "PINEAPPLE_JUICE": { "en": "Pineapple Juice", "gr": "Χυμός Ανάνα" },
+  "APRICOT_JUICE": { "en": "Apricot Juice", "gr": "Χυμός Βερίκοκο" },
+  "PEACH_JUICE": { "en": "Peach Juice", "gr": "Χυμός Ροδάκινο" },
+  "MANDARIN_JUICE": { "en": "Mandarin Juice", "gr": "Χυμός Μανταρίνι" },
+  "STRAWBERRY_JUICE": { "en": "Strawberry Juice", "gr": "Χυμός Φράουλα" },
+  "TOASTS_CREPS": { "en": "Toasts & Crepes", "gr": "Τοστ - Κρέπες" },
+  "BEERS": { "en": "Beers", "gr": "Μπύρες" },
+
+  "TOAST": { "en": "Toast", "gr": "Τοστ" },
+  "SAVORY_CREPE": { "en": "Savory Crepe", "gr": "Κρέπα αλμυρή" },
+  "SWEET_CREPE": { "en": "Sweet Crepe", "gr": "Κρέπα γλυκιά" },
+
+  "BARREL_SMALL": { "en": "Barrel Small", "gr": "Βαρέλι Μικρό" },
+  "BARREL_LARGE": { "en": "Barrel Large", "gr": "Βαρέλι Μεγάλο" },
+  "KAISER": { "en": "Kaiser", "gr": "Kaiser" },
+  "RADLER": { "en": "Radler", "gr": "Radler" },
+  "ALFA": { "en": "Alfa", "gr": "Άλφα" },
+  "MYTHOS": { "en": "Mythos", "gr": "Μύθος" },
+  "HEINEKEN": { "en": "Heineken", "gr": "Heineken" },
+  "AMSTEL": { "en": "Amstel", "gr": "Amstel" },
+  "CORONA": { "en": "Corona", "gr": "Corona" },
+  "VERGINA": { "en": "Vergina", "gr": "Βεργίνα" },
+  "VERGINA_WEISS": { "en": "Vergina Weiss", "gr": "Βεργίνα Weiss" },
+  "VERGINA_RED": { "en": "Vergina Red", "gr": "Βεργίνα Red" },
+  "VERGINA_ZERO": { "en": "Vergina 0%", "gr": "Βεργίνα 0%" },
+  "FIX_DARK": { "en": "Fix Dark", "gr": "Fix dark" },
+  "HEINEKEN_ZERO": { "en": "Heineken 0%", "gr": "Heineken 0%" },
+  "SEVEN_SEALS": { "en": "Seven Seals", "gr": "Seven Seals" },
+  "DRINKS_WINES": { "en": "Drinks & Wines", "gr": "Ποτά - Κρασιά" },
+  "DRINK_SIMPLE": { "en": "Simple Drink", "gr": "Ποτό Απλό" },
+  "DRINK_SPECIAL": { "en": "Special Drink", "gr": "Ποτό Σπέσιαλ" },
+  "DRINK_PREMIUM": { "en": "Premium Drink", "gr": "Ποτό Πρίμιουμ" },
+  "WINE_GLASS": { "en": "Wine Glass", "gr": "Κρασί ποτήρι" },
+  "SHOT": { "en": "Shot", "gr": "Σφηνάκι" },
+  "RETSINA_VASILIKI": { "en": "Retsina Vasiliki", "gr": "Ρετσίνα Βασιλική" },
+  "BIANCO_NERO_WHITE": { "en": "Bianco Nero White", "gr": "Bianco Νero λευκό" },
+  "BIANCO_NERO_SPARKLING": {
+    "en": "Bianco Nero Sparkling",
+    "gr": "Bianco Nero αφρώδες"
+  },
+  "BIANCO_NERO_SPARKLING_ROSE": {
+    "en": "Bianco Nero Sparkling Rosé",
+    "gr": "Bianco Nero αφρώδες Ροζέ"
+  },
+  "LEIVADIOTI_BOTTLE": {
+    "en": "Leivadioti Bottle",
+    "gr": "Λειβαδιώτη μπουκαλάκι"
+  },
+  "GORDONS_SPACE": { "en": "Gordons Space", "gr": "Gordons Space" },
+  "PARANGA_BOTTLE": { "en": "Paranga Bottle", "gr": "Παράγκα Μπουκάλι" },
+  "SAMAROPETRA_BOTTLE": {
+    "en": "Samaropetra Bottle",
+    "gr": "Σαμαρόπετρα Μπουκάλι"
+  },
+
+  "BREAKFAST": { "en": "Breakfast", "gr": "Πρωινό" },
+  "CLUB_SANDWICH": { "en": "Club Sandwich", "gr": "Club sandwich" },
+  "JUNIOR_MENU": { "en": "Junior Menu", "gr": "Junior menu" },
+
+  "OMELETTE": { "en": "Omelette", "gr": "Ομελέτα" },
+  "SCRAMBLED_EGGS": { "en": "Scrambled Eggs", "gr": "Αυγά σκραμπλ" },
+  "SCRAMBLED_EGGS_SALMON": {
+    "en": "Scrambled Eggs with Salmon",
+    "gr": "Αυγά σκραμπλ Με Σολομό"
+  },
+  "FRENCH_TOAST_SIMPLE": {
+    "en": "French Toast Simple",
+    "gr": "French toast Απλό"
+  },
+  "FRENCH_TOAST_HONEY_CINNAMON": {
+    "en": "French Toast with Honey & Cinnamon",
+    "gr": "French toast με μελί και κανέλα"
+  },
+  "PANCAKE_PRALINE": { "en": "Pan Cake Praline", "gr": "Pan cake Πραλίνα" },
+  "PANCAKE_HONEY_CINNAMON": {
+    "en": "Pan Cake Honey & Cinnamon",
+    "gr": "Pan cake Μέλι Κανέλα"
+  },
+  "PANCAKE_PRALINE_BANANA_HAZELNUT": {
+    "en": "Pan Cake Praline Banana Hazelnut",
+    "gr": "Pan cake Πραλίνα Μπανάνα Φουντούκια"
+  },
+  "FRIED_EGGS_BACON": {
+    "en": "2 Fried Eggs with Bacon & Toast",
+    "gr": "2 αυγά τηγανητά με μπέικον και φρυγανιασμένο ψωμί"
+  },
+  "YOGURT_HONEY_WALNUTS": {
+    "en": "Yogurt with Honey & Walnuts",
+    "gr": "Γιαούρτι με μέλι και καρύδια"
+  },
+  "YOGURT_HONEY_WALNUTS_FRUITS": {
+    "en": "Yogurt with Honey, Walnuts & Fruits",
+    "gr": "Γιαούρτι με μέλι και καρύδια + Φρούτα"
+  },
+
+  "CLUB_SANDWICH_CAESAR_CHICKEN": {
+    "en": "Club Sandwich Caesar Chicken",
+    "gr": "Club Sandwich Caesar Κοτόπουλο"
+  },
+  "CLUB_SANDWICH_GYRO": {
+    "en": "Club Sandwich with Gyro",
+    "gr": "Club Sandwich με Γύρο"
+  },
+  "CLUB_SANDWICH_PANSETSA": {
+    "en": "Club Sandwich Pancetta",
+    "gr": "Club πανσέτας"
+  },
+
+  "JUNIOR_1": { "en": "Junior 1", "gr": "Junior 1" },
+  "JUNIOR_2": { "en": "Junior 2", "gr": "Junior 2" },
+
+  "OUZO_MEZE": { "en": "Ouzo & Meze", "gr": "Ούζο-Μεζέδες" },
+  "PINSA": { "en": "Pinsa", "gr": "Pinsa" },
+  "PASTA": { "en": "Pasta", "gr": "Ζυμαρικά" },
+  "HOTDOG_BURGERS": { "en": "Hot Dogs & Burgers", "gr": "Hot dogs - Burgers" },
+  "BAO_BUNS": { "en": "Bao Buns", "gr": "Bao buns" },
+
+  "OUZO_GLASS": { "en": "Ouzo Glass", "gr": "Ούζο ποτήρι" },
+  "MEZE": { "en": "Meze", "gr": "Μεζέδες" },
+  "OUZO_BOTTLE": { "en": "Ouzo Bottle", "gr": "Μπουκάλι Ούζο" },
+  "APOSTOLAKI": { "en": "Apostolaki", "gr": "Αποστολάκι" },
+
+  "PINSA_SIMPLE": { "en": "Pinsa Simple", "gr": "Pinsa Απλή" },
+  "PINSA_MARGARITA": { "en": "Pinsa Margherita", "gr": "Pinsa Μαργαρίτα" },
+  "PINSA_SPECIAL": { "en": "Pinsa Special", "gr": "Pinsa Special" },
+  "PINSA_21": { "en": "Pinsa 21", "gr": "Pinsa 21" },
+
+  "NAPOLITANA": { "en": "Napolitana", "gr": "Napolitana" },
+  "BOLOGNESE": { "en": "Bolognese", "gr": "Bolognesa" },
+  "CARBONARA": { "en": "Carbonara", "gr": "Carbonara" },
+  "PASTA_21": { "en": "Pasta 21", "gr": "Pasta 21" },
+  "SHRIMP_PASTA": { "en": "Shrimp Pasta", "gr": "Γαριδομακαρονάδα" },
+  "PAPPARDELLE_OX_TAIL": {
+    "en": "Pappardelle Ragu with Oxtail",
+    "gr": "Παπαρδέλα ραγού με μοσχαρίσια ουρά"
+  },
+  "RISOTI": {
+    "en": "Mushroom risotto",
+    "gr": "Ριζότο μανιταριών"
+  },
+  "LINGUINI_OCTOPUS": {
+    "en": "Linguini with Octopus",
+    "gr": "Λιγκουίνι χταπόδι"
+  },
+
+  "HOT_DOG": { "en": "Hot Dog", "gr": "Hot dog" },
+  "BURGER_BBQ": { "en": "Burger BBQ", "gr": "Burger BBQ" },
+  "BURGER_CAESAR": { "en": "Burger Caesar", "gr": "Burger Caesar" },
+  "BURGER_21": { "en": "Burger 21", "gr": "Burger 21" },
+  "DOUBLE_CHEESE_BURGER": {
+    "en": "Double Cheese Burger",
+    "gr": "Double cheese burger"
+  },
+  "CHICKEN_CRISPY_BURGER": {
+    "en": "Chicken Crispy Burger",
+    "gr": "Chicken crispy burger"
+  },
+  "burgerChilicrispychicken": {
+    "en": "Burger Chili Crispy Chicken",
+    "gr": "Burger Chili Crispy Chicken"
+  },
+  "burgerChilicrispychickenDesc": {
+    "en": "With Sweet Chilli Sauce",
+    "gr": "Με γλυκιά σάλτσα τσίλι"
+  },
+  "doubleSmash":{
+    "en": "Double Smash Burger",
+    "gr": "Double Smash Burger"
+  },
+  "doubleSmashdesc":{
+    "en": "With Sauce 21, cheddar, caramelized bacon, tomato, iceberg lettuce.",
+    "gr": "Με Sauce 21, cheddar, καραμελωμένο bacon, ντομάτα, iceberg."
+  },
+  "miniBurgers":{
+    "en": "Various mini burgers",
+    "gr": "Διάφορα μίνι Burgers"
+  },
+  "miniBurgersDesc":{
+    "en": "Burger 21, Burger BBQ, BurgerDouble Cheese",
+    "gr": "Burger 21, Burger BBQ, BurgerDouble Cheese"
+  },
+  "penesMeKotopoulo":{
+    "en": "Penne Pasta with Chicken",
+    "gr": "Πέννες με Κοτόπουλο"
+  },
+  "penesMeKotopouloDesc":{
+    "en": "Mushrooms and Basil Sauce",
+    "gr": "Μανιτάρια και Σάλτσα Βασιλικού"
+  },
+  "rigatoniCheeses":{
+    "en": "Rigatoni with 4 cheese sauce",
+    "gr": "Ριγκατόνι με σάλτσα 4 τυριών"
+  },
+  "rigatoniCheesesDesc":{
+    "en": "Parmigiano, Gouda, Mozzarella, and Gorgonzola",
+    "gr": "Παρμεζάνα, Γκούντα, Μοτσαρέλα και Γκοργκοτζόλα"
+  },
+  "potatosCheeseBacon":{
+    "en": "French Fries",
+    "gr": "Πατάτες Τηγανητές"
+  },
+  "potatosCheeseBaconDesc":{
+    "en": "With Cheddar Sauce and Bacon Chips",
+    "gr": "Με Sauce Cheddar και Chips Bacon"
+  },
+  "SHRIMP_CHILI_BAO": { "en": "Shrimp Chili Bao", "gr": "Shrimp chili bao" },
+  "NUGGETS_BAO": { "en": "Nuggets Bao", "gr": "Nuggets bao" },
+  "PULLED_PORK_BAO": { "en": "Pulled Pork Bao", "gr": "Pulled pork bao" },
+
+  "SALADS": { "en": "Salads", "gr": "Σαλάτες" },
+  "MAIN_COURSES": { "en": "Main Courses", "gr": "Κυρίως πιάτα" },
+
+  "SALAD_CAESAR": { "en": "Caesar Salad", "gr": "Σαλάτα Caesar" },
+  "SALAD_21": { "en": "Salad 21", "gr": "Σαλάτα 21" },
+  "SALAD_CAPRESE": { "en": "Caprese Salad", "gr": "Σαλάτα Caprese" },
+  "SALAD_KOUKOUVAGIA": {
+    "en": "Koukouvagia Salad",
+    "gr": "Σαλάτα Κουκουβάγια"
+  },
+  "SALAD_GREEK": { "en": "Greek Salad", "gr": "Σαλάτα χωριάτικη" },
+  "CHEESE_PLATTER": { "en": "Cheese Platter", "gr": "Ποικιλία τυριών" },
+
+  "RISOTTO_MUSHROOM": { "en": "Mushroom Risotto", "gr": "Ριζότο μανιταριών" },
+  "PORK_PANSETTO": {
+    "en": "Pork Panseto Steak",
+    "gr": "Χοιρινή Πανσετομπριζόλα"
+  },
+  "TORTILLA_PORK_GYRO": {
+    "en": "Tortilla with Pork Gyro",
+    "gr": "Τορτιγια με Γύρο Χοίρινο"
+  },
+  "CHICKEN_NUGGETS": { "en": "Chicken Nuggets", "gr": "Κοτοπουλάκια Nuggets" },
+  "CHICKEN_NUGGETS_A_LA_CREME": {
+    "en": "Chicken Nuggets a la Crème",
+    "gr": "Chicken nuggets a la crème"
+  },
+  "FRIED_CALAMARI": { "en": "Fried Calamari", "gr": "Καλαμαράκια τηγανητά" },
+  "SALMON_TERIYAKI": {
+    "en": "Salmon Teriyaki with Vegetables",
+    "gr": "Σολομός Tεριγιάκι με Λαχανικά"
+  },
+  "CHICKEN_THIGH": { "en": "Chicken Thigh", "gr": "Μπούτι κοτόπουλο" },
+  "BEEF_PATTY": { "en": "Beef Patty", "gr": "Μπιφτέκι" },
+  "PORK_GYRO": { "en": "Pork Gyro", "gr": "Γύρος χοιρινός" },
+  "MIX_GRILL": { "en": "Mix Grill", "gr": "Mix grill" },
+  "FRIES_PORTION": { "en": "Portion of Fries", "gr": "Μερίδα Πατάτες" },
+  "HOME": { "en": "Home", "gr": "Αρχική" },
+  "ABOUT_US": { "en": "About Us", "gr": "Σχετικά" },
+  "MENU": { "en": "Menu", "gr": "Μενού" },
+  "CONTACT": { "en": "Contact", "gr": "Επικ." },
+
+  "OPENING_HOURS_LABEL": { "en": "Opening Hours", "gr": "Ώρες Λειτουργίας" },
+  "ADDRESS_LABEL": { "en": "Address", "gr": "Διεύθυνση" },
+
+  "OPENING_HOURS": {
+    "en": "Monday - Sunday: 9:00 a.m. - 1:00 a.m.",
+    "gr": "Δευτέρα - Κυριακή: 9:00 π.μ. - 1:00 π.μ."
+  },
+  "ADDRESS": {
+    "en": "Iroon 21, Ierissos, Chalkidiki",
+    "gr": "Ηρώων 21, Ιερισσός, Χαλκιδική"
+  },
+    "ABOUT_US_TITLE": { "en": "About Us", "gr": "Σχετικά με εμάς" },
+  "ABOUT_US_PARAGRAPH_1": {
+    "en": "Welcome to 21 Kitchen Cocktail Bar, your favorite corner in the heart of Ierissos! Here we combine a friendly atmosphere with high-end gastronomy and original cocktails to offer you a complete experience.",
+    "gr": "Καλώς ήρθατε στο 21 Kitchen Cocktail Bar, την αγαπημένη σας γωνιά στην καρδιά της Ιερισσού! Εδώ συνδυάζουμε τη φιλική ατμόσφαιρα με την υψηλή γαστρονομία και πρωτότυπα κοκτέιλ για να σας προσφέρουμε μια ολοκληρωμένη εμπειρία."
+  },
+  "ABOUT_US_PARAGRAPH_2": {
+    "en": "Our kitchen combines traditional Greek flavors with modern touches, while our menu includes everything from handmade dishes to unique cocktails crafted with care and creativity.",
+    "gr": "Η κουζίνα μας συνδυάζει παραδοσιακές ελληνικές γεύσεις με μοντέρνες πινελιές, ενώ το μενού μας περιλαμβάνει από χειροποίητα πιάτα μέχρι μοναδικά κοκτέιλ που δημιουργούνται με μεράκι και φαντασία."
+  },
+  "ABOUT_US_PARAGRAPH_3": {
+    "en": "Whether you want to enjoy a relaxed drink after a day at the beach, or celebrate a special moment with friends and family, at 21 Kitchen Cocktail Bar you will always find warm hospitality and exquisite flavors.",
+    "gr": "Είτε επιθυμείτε να απολαύσετε ένα χαλαρό ποτό μετά από μια μέρα στην παραλία, είτε να γιορτάσετε μια ιδιαίτερη στιγμή με φίλους και οικογένεια, στο 21 Kitchen Cocktail Bar θα βρείτε πάντα ζεστή φιλοξενία και εκλεκτές γεύσεις."
+  },
+  "ABOUT_US_PARAGRAPH_4": {
+    "en": "We look forward to welcoming you to join our community and share unforgettable moments with us!",
+    "gr": "Σας περιμένουμε να γίνετε μέρος της παρέας μας και να ζήσετε μαζί μας αξέχαστες στιγμές!"
+  },
+    "CONTACT_TITLE": { "en": "Contact Us", "gr": "Επικοινωνήστε μαζί μας" },
+  "CONTACT_INTRO": { 
+    "en": "We would love to hear from you! Contact us for reservations, questions, or any other information.", 
+    "gr": "Θα χαρούμε πολύ να ακούσουμε από εσάς! Επικοινωνήστε μαζί μας για κρατήσεις, ερωτήσεις ή οποιαδήποτε άλλη πληροφορία." 
+  },
+
+  "PHONE_LABEL": { "en": "Phone", "gr": "Τηλέφωνο" },
+  "EMAIL_LABEL": { "en": "Email", "gr": "Email" },
+
+  "FORM_NAME_LABEL": { "en": "Name", "gr": "Όνομα" },
+  "FORM_NAME_PLACEHOLDER": { "en": "Your name", "gr": "Το όνομά σας" },
+
+  "FORM_EMAIL_LABEL": { "en": "Email", "gr": "Email" },
+  "FORM_EMAIL_PLACEHOLDER": { "en": "Your email", "gr": "Το email σας" },
+
+  "FORM_MESSAGE_LABEL": { "en": "Message", "gr": "Μήνυμα" },
+  "FORM_MESSAGE_PLACEHOLDER": { "en": "Your message", "gr": "Το μήνυμά σας" },
+
+  "FORM_SUBMIT": { "en": "Send", "gr": "Αποστολή" },
+
+  "PORK_PANSETTO_DESC": { 
+    "en": "With French fries, fresh salad, yogurt sauce, grilled pita bread, and dips of ketchup and mustard", 
+    "gr": "Με τηγανητές πατάτες, δροσερή σαλάτα, sauce γιαουρτιού, ψημένα πιτάκια και ντιπάκι κέτσαπ, μουστάρδα" 
+  },
+
+  "TORTILLA_PORK_GYRO_DESC": { 
+    "en": "Grilled tortilla, tzatziki, tomato, fresh salad. Served with fries", 
+    "gr": "Τορίγια ψημένη, τζατζίκι, ντομάτα, δροσερή σαλάτα. Συνοδεύεται με πατάτες" 
+  },
+
+  "CHICKEN_NUGGETS_DESC": { 
+    "en": "Chicken breast fillet bites breaded with panko, fresh salad, mustard-mayo sauce, and fries", 
+    "gr": "Μπουκιές φιλέτο στήθος κοτόπουλο παναρισμένα με πάνκο, δροσερή σαλάτα, sauce μουσταρδομαγιονέζας και πατάτες" 
+  },
+
+  "CHICKEN_NUGGETS_A_LA_CREME_DESC": { 
+    "en": "Chicken breast fillet bites breaded with panko in cream sauce, served with fresh salad, mustard-mayo sauce, and French fries", 
+    "gr": "Μπουκιές φιλέτο στήθος κοτόπουλο παναρισμένα με πάνκο σε κρέμα γάλακτος, δροσερή σαλάτα, sauce μουσταρδομαγιονέζας και τηγανητές πατάτες" 
+  },
+
+  "FRIED_CALAMARI_DESC": { 
+    "en": "Served with fresh salad and cheese dip", 
+    "gr": "Συνοδεύεται με δροσερή σαλάτα και τυροσαλάτα" 
+  },
+
+  "SALMON_TERIYAKI_DESC": { 
+    "en": "Grilled salmon with teriyaki sauce and smoked vegetables", 
+    "gr": "Σολομός ψητός με τεριγιάκι sauce και καπνιστά λαχανικά" 
+  },
+
+  "CHICKEN_THIGH_DESC": { 
+    "en": "Chicken thigh fillet served with fresh salad and French fries", 
+    "gr": "Φιλέτο μπούτι κοτόπουλο συνοδεύεται από δροσερή σαλάτα και τηγανητές πατάτες" 
+  },
+
+  "BEEF_PATTY_DESC": { 
+    "en": "Handmade beef patty from fresh ground beef, served with fresh salad and French fries", 
+    "gr": "Χειροποίητο μπιφτέκι από φρέσκο μοσχαρίσιο κιμά, συνοδεύεται από δροσερή σαλάτα και τηγανητές πατάτες" 
+  },
+
+  "PORK_GYRO_DESC": { 
+    "en": "Pork gyro portion with tzatziki, tomato, onion, served with salad and French fries", 
+    "gr": "Μερίδα γύρος χοιρινός, τζατζίκι, ντομάτα, κρεμμύδι, συνοδεύεται με σαλάτα και τηγανητές πατάτες" 
+  },
+
+  "MIX_GRILL_DESC": { 
+    "en": "Mixed grill with pork gyro, sausage, beef patty, chicken fillet, served with fresh salad, French fries, and pita bread", 
+    "gr": "Mix grill κρεατικών γύρος, λουκάνικο, μπιφτέκι, φιλέτο κοτόπουλο, συνοδεύεται από δροσερή σαλάτα, τηγανητές πατάτες και πιτάκια" 
+  },
+  "SHRIMP_CHILI_BAO_DESC": {
+    "gr": "Γαρίδες σοτέ, chili mayo, φρέσκο κρεμμυδάκι.",
+    "en": "Sautéed shrimp, chili mayo, fresh spring onion."
+  },
+  "NUGGETS_BAO_DESC": {
+    "gr": "Στήθος κοτόπουλο παναρισμένο, coleslaw σαλάτα, φρέσκο κρεμμυδάκι.",
+    "en": "Breaded chicken breast, coleslaw salad, fresh spring onion."
+  },
+  "PULLED_PORK_BAO_DESC": {
+    "gr": "Τραβηγμένο χοιρινό, bbq sauce, φρέσκο κρεμμυδάκι.",
+    "en": "Pulled pork, BBQ sauce, fresh spring onion."
+  },
+
+  "SALAD_CAESAR_DESC": {
+    "gr": "Με iceberg, ψητό φιλέτο μπούτι κοτόπουλο, chips από μπέικον, caesar sauce και αρωματικά κρουτόνς",
+    "en": "With iceberg lettuce, grilled chicken thigh fillet, bacon chips, Caesar sauce, and aromatic croutons."
+  },
+  "SALAD_21_DESC": {
+    "gr": "Πράσινη σαλάτα με chips από μπέικον, φλέικς παρμεζάνας, λιαστή ντομάτα, ξηροί καρποί, βινεγκρέτ εσπεριδοειδών με μέλι, μουστάρδα και κριςπ τορτίγια",
+    "en": "Green salad with bacon chips, parmesan flakes, sun-dried tomato, nuts, citrus vinaigrette with honey and mustard, and crispy tortilla."
+  },
+  "SALAD_CAPRESE_DESC": {
+    "gr": "Ντομάτα, μοτσαρέλα, ντάκο, pesto βασιλικού και φύλλα βασιλικού",
+    "en": "Tomato, mozzarella, dakos barley rusk, basil pesto, and basil leaves."
+  },
+  "SALAD_KOUKOUVAGIA_DESC": {
+    "gr": "Ντοματίνια, αγγούρι, πιπεριές, φρέσκο κρεμμύδι, ντάκος, κάπαρη, τριμμένη φέτα (Σταθώρη)",
+    "en": "Cherry tomatoes, cucumber, peppers, fresh onion, dakos barley rusk, capers, grated feta (Stathoris)."
+  },
+  "SALAD_GREEK_DESC": {
+    "gr": "Ντομάτα, αγγούρι, πιπεριές, κρεμμύδι, ελιές, κάπαρη, φέτα (Σταθώρη)",
+    "en": "Tomato, cucumber, peppers, onion, olives, capers, feta cheese (Stathoris)."
+  },
+  "CHEESE_PLATTER_DESC": {
+    "gr": "Τοπικά τυριά Σταθώρη και Καραγιάννη (τιμή κατ΄άτομο)",
+    "en": "Local cheeses Stathoris and Karagiannis (price per person)."
+  },
+  "PINSA_SIMPLE_DESC": {
+    "gr": "Σάλτσα ντομάτας, τυρί gouda, ζαμπόν, μανιτάρια, πιπεριά, φρέσκια ρίγανη",
+    "en": "Tomato sauce, gouda cheese, ham, mushrooms, peppers, fresh oregano."
+  },
+  "PINSA_MARGARITA_DESC": {
+    "gr": "Κλασική πίτσα με σάλτσα ντομάτας, μοτσαρέλα και φρέσκο βασιλικό",
+    "en": "Classic pizza with tomato sauce, mozzarella, and fresh basil."
+  },
+  "PINSA_SPECIAL_DESC": {
+    "gr": "Σάλτσα ντομάτας, τυρί gouda, ζαμπόν, μπέικον, αέρος, πεπερόνι, μανιτάρια, πιπεριά, μοτσαρέλα, φρέσκια ρίγανη",
+    "en": "Tomato sauce, gouda cheese, ham, bacon, salami, pepperoni, mushrooms, peppers, mozzarella, fresh oregano."
+  },
+  "PINSA_21_DESC": {
+    "gr": "Κρέμα γάλακτος, τυρί φιλαδέλφεια, μανιτάρια, μπέικον, φιλέτο μου",
+    "en": "Cream, Philadelphia cheese, mushrooms, bacon, chicken thigh fillet, mozzarella."
+  },
+
+  "NAPOLITANA_DESC": {
+    "gr": "Ζυμαρικά ματσάτα με απαλή ροζ σάλτσα από φρέσκα ντοματίνια, φρέσκο βασιλικό, δυόσμο, παρμεζάνα και φρέσκο βούτυρο",
+    "en": "Matsata pasta with light pink sauce from fresh cherry tomatoes, fresh basil, mint, parmesan, and fresh butter."
+  },
+  "BOLOGNESE_DESC": {
+    "gr": "Ζυμαρικά λιγκουίνι με φρέσκο μοσχαρίσιο κιμά, σάλτσα ντομάτας, παρμεζάνα και φρέσκο βούτυρο",
+    "en": "Linguine pasta with fresh ground beef, tomato sauce, parmesan, and fresh butter."
+  },
+  "CARBONARA_DESC": {
+    "gr": "Ζυμαρικά λιγκουίνι, τραγανό μπέικον, κρέμα γάλακτος, κρόκο αυγού, παρμεζάνα και φρέσκο βούτυρο",
+    "en": "Linguine pasta, crispy bacon, cream, egg yolk, parmesan, and fresh butter."
+  },
+  "PASTA_21_DESC": {
+    "gr": "Ζυμαρικά casarecce με φρέσκα λαχανικά, κρέμα γάλακτος, τυρί φιλαδέλφεια, παρμεζάνα και φρέσκο βούτυρο",
+    "en": "Casarecce pasta with fresh vegetables, cream, Philadelphia cheese, parmesan, and fresh butter."
+  },
+  "SHRIMP_PASTA_DESC": {
+    "gr": "Ζυμαρικά λιγκουίνι, γαρίδες σοτέ, mirepoix λαχανικών, φρέσκια σάλτσα τομάτας και φύλλα βασιλικού.",
+    "en": "Linguine pasta, sautéed shrimp, vegetable mirepoix, fresh tomato sauce, and basil leaves."
+  },
+  "PAPPARDELLE_OX_TAIL_DESC": {
+    "gr": "Παπαρδέλες με ραγού ουράς μοσχαριού",
+    "en": "Pappardelle with oxtail ragout."
+  },
+  "RISOTI_DESC": {
+    "gr": "Ποικιλία μανιταριών, παρμεζάνα, φρέσκο βούτυρο",
+    "en": "Variety of mushrooms, parmesan, fresh butter."
+  },
+  "LINGUINI_OCTOPUS_DESC": {
+    "gr": "Λιγκουίνι ολικής, με χταπόδι, γαρίδα, κάπαρη, ελιά",
+    "en": "Wholegrain linguine with octopus, shrimp, capers, and olives."
+  },
+
+  "HOT_DOG_DESC": {
+    "gr": "Με λουκάνικο φρανκφούρτης, φρέσκια ρίγανη, μουστάρδα, κέτσαπ και πατάτες τηγανητές",
+    "en": "With frankfurter sausage, fresh oregano, mustard, ketchup, and French fries."
+  },
+  "BURGER_BBQ_DESC": {
+    "gr": "Ψωμάκι μπριός, μοσχαρίσιος κιμάς, sauce bbq, τυρί τσένταρ, ντομάτα, ψητό μπέικον, κρεμμύδι, iceberg. Συνοδεύεται με τηγανητές πατάτες, bbq sauce και δροσερή σαλάτα",
+    "en": "Brioche bun, beef patty, BBQ sauce, cheddar cheese, tomato, grilled bacon, onion, iceberg lettuce. Served with French fries, BBQ sauce, and fresh salad."
+  },
+  "BURGER_CAESAR_DESC": {
+    "gr": "Ψωμάκι μπριός, φιλέτο μπούτι κοτόπουλο, ντομάτα, iceberg, sauce μουσταρδομαγιονέζα, παρμεζάνα. Συνοδεύεται με πατάτες και δροσερή σαλάτα",
+    "en": "Brioche bun, chicken thigh fillet, tomato, iceberg lettuce, mustard-mayo sauce, parmesan. Served with fries and fresh salad."
+  },
+  "BURGER_21_DESC": {
+    "gr": "Ψωμάκι μπριός, μοσχαρίσιος κιμάς, κατσικίσιο τυρί (Σταθώρη), σως μαγιονέζας με λάδι τρούφας, καραμελωμένα κρεμμύδια και μανιτάρια με sauce τεριγιάκι. Συνοδεύεται με τηγανητές πατάτες, sauce μαγιονέζας με λάδι τρούφας και δροσερή σαλάτα",
+    "en": "Brioche bun, beef patty, goat cheese (Stathoris), truffle oil mayo, caramelized onions, and mushrooms with teriyaki sauce. Served with French fries, truffle mayo sauce, and fresh salad."
+  },
+  "DOUBLE_CHEESE_BURGER_DESC": {
+    "gr": "Ψωμάκι μπριός, μπιφτέκι burger με διπλό τσένταρ, μαγιονέζα με ψιλοκομμένη πίκλα, φέτα κρεμμύδι, αγγουρομαγιονέζα, πράσινη σαλάτα, ντομάτα, πατάτες τηγανητές και δροσερή σαλάτα",
+    "en": "Brioche bun, burger patty with double cheddar, mayo with chopped pickle, onion slices, cucumber-mayo, green salad, tomato, French fries, and fresh salad."
+  },
+  "CHICKEN_CRISPY_BURGER_DESC": {
+    "gr": "Ψωμάκι μπριός, μουσταρδομαγιονέζα, crispy chicken, ντομάτα, πράσινη σαλάτα, πατάτες τηγανητές και δροσερή σαλάτα",
+    "en": "Brioche bun, mustard-mayo, crispy chicken, tomato, green salad, French fries, and fresh salad."
+  },
+   "CLUB_SANDWICH_DESC": {
+    "gr": "με τυρί gouda, γαλοπούλα, ντομάτα, iceberg, ομελέτα, μαγιονέζα. Συνοδεύεται με πατάτες τηγανητές.",
+    "en": "with gouda cheese, turkey, tomato, iceberg lettuce, omelette, mayonnaise. Served with French fries."
+  },
+  "CLUB_SANDWICH_CAESAR_CHICKEN_DESC": {
+    "gr": "με φιλέτο μπούτι, τυρί gouda, μπέικον, ντομάτα, iceberg, caesar sauce. Συνοδεύεται με πατάτες τηγανητές.",
+    "en": "with chicken thigh fillet, gouda cheese, bacon, tomato, iceberg, Caesar sauce. Served with French fries."
+  },
+  "CLUB_SANDWICH_GYRO_DESC": {
+    "gr": "τυρί gouda, ντομάτα, iceberg, sauce μουστάρδομαγιονέζα, γύρος χοίρινος, φρέσκια ρίγανη. Συνοδεύεται με πατάτες τηγανητές.",
+    "en": "gouda cheese, tomato, iceberg, mustard-mayo sauce, pork gyro, fresh oregano. Served with French fries."
+  },
+  "CLUB_SANDWICH_PANSETSA_DESC": {
+    "gr": "Με τυρί gouda, ντομάτα, iceberg, sauce μουσταρδομαγιονέζας, χοιρινή πανσέτα. Συνοδεύεται από τηγανητές πατάτες.",
+    "en": "with gouda cheese, tomato, iceberg, mustard-mayo sauce, pork pancetta. Served with French fries."
+  },
+  "JUNIOR_1_DESC": {
+    "gr": "ψωμάκι burger bun, μπιφτέκι με ανάμεικτο κιμά, κέτσαπ, μουστάρδα, τηγανητές πατάτες, χυμός και δωράκι.",
+    "en": "burger bun, mixed meat patty, ketchup, mustard, French fries, juice and a small gift."
+  },
+  "JUNIOR_2_DESC": {
+    "gr": "nuggets, τηγανητές πατάτες, χυμός και δωράκι.",
+    "en": "nuggets, French fries, juice and a small gift."
+  },
+  "OMELETTE_DESC": {
+    "gr": "Με υλικά της επιλογής σας",
+    "en": "With ingredients of your choice."
+  },
+  "SCRAMBLED_EGGS_DESC": {
+    "gr": "Σε φρυγανισμένη μπαγκέτα και παρμεζάνα",
+    "en": "On toasted baguette with parmesan."
+  },
+  "SCRAMBLED_EGGS_SALMON_DESC": {
+    "gr": "Σε φρυγανισμένη μπαγκέτα και σολομό καπνιστό",
+    "en": "On toasted baguette with smoked salmon."
+  },
+  "PRICE": {
+    "gr": "Τιμή",
+    "en": "Price"
+  },
+  "CLOSE": {
+    "gr": "Κλείσιμο",
+    "en": "Close"
+  }
+}

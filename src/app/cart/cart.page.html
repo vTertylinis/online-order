@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Cart</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-list *ngIf="items.length; else empty">
+    <ion-item *ngFor="let it of items; let i = index">
+      <ion-label>
+        <h3>{{ it.name }}</h3>
+        <p *ngIf="it.size">Μέγεθος: {{ it.size }}</p>
+        <p *ngIf="it.sweetness">Γλυκύτητα: {{ it.sweetness }}</p>
+        <p *ngIf="it.ingredients && it.ingredients.length">Extras: {{ ingredientsList(it) }}</p>
+        <p *ngIf="it.comments">Σχόλια: {{ it.comments }}</p>
+        <p>Ποσότητα: {{ it.quantity || 1 }}</p>
+      </ion-label>
+      <div slot="end" class="item-right">
+        <div>{{ itemPrice(it) | currency:'EUR' }}</div>
+        <ion-button color="danger" fill="clear" (click)="remove(i)">Αφαίρεση</ion-button>
+      </div>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #empty>
+    <p>Το καλάθι σας είναι άδειο.</p>
+  </ng-template>
+
+  <div class="cart-footer" *ngIf="items.length">
+    <div class="total">Σύνολο: {{ total | currency:'EUR' }}</div>
+    <ion-button expand="block" routerLink="/address">Ολοκλήρωση αγοράς</ion-button>
+  </div>
+</ion-content>
