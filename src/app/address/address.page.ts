@@ -1,13 +1,40 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule, ToastController } from '@ionic/angular';
+import { 
+  IonHeader, 
+  IonToolbar, 
+  IonButtons, 
+  IonBackButton, 
+  IonTitle, 
+  IonContent, 
+  IonItem, 
+  IonLabel, 
+  IonInput, 
+  IonNote, 
+  IonButton,
+  ToastController 
+} from '@ionic/angular/standalone';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-address',
   standalone: true,
-  imports: [CommonModule, IonicModule, ReactiveFormsModule],
+  imports: [
+    CommonModule, 
+    ReactiveFormsModule,
+    IonHeader,
+    IonToolbar,
+    IonButtons,
+    IonBackButton,
+    IonTitle,
+    IonContent,
+    IonItem,
+    IonLabel,
+    IonInput,
+    IonNote,
+    IonButton
+  ],
   templateUrl: './address.page.html',
   styleUrls: ['./address.page.scss']
 })
