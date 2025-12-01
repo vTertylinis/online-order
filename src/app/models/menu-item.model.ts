@@ -85,13 +85,10 @@ export const menuItems: MenuItem[] = [
 
   { id: 70, name: 'DRINK_SIMPLE', price: 7, category: 'DRINKS_WINES' },
   { id: 71, name: 'DRINK_SPECIAL', price: 8, category: 'DRINKS_WINES' },
-  { id: 72, name: 'DRINK_PREMIUM', price: 10, category: 'DRINKS_WINES' },
+  { id: 72, name: 'DRINK_PREMIUM', price: 12, category: 'DRINKS_WINES' },
   { id: 73, name: 'WINE_GLASS', price: 6, category: 'DRINKS_WINES' },
   { id: 74, name: 'SHOT', price: 3, category: 'DRINKS_WINES' },
   { id: 75, name: 'RETSINA_VASILIKI', price: 6, category: 'DRINKS_WINES' },
-  { id: 76, name: 'BIANCO_NERO_WHITE', price: 6, category: 'DRINKS_WINES' },
-  { id: 77, name: 'BIANCO_NERO_SPARKLING', price: 6, category: 'DRINKS_WINES' },
-  { id: 78, name: 'BIANCO_NERO_SPARKLING_ROSE', price: 6, category: 'DRINKS_WINES' },
   { id: 79, name: 'LEIVADIOTI_BOTTLE', price: 6, category: 'DRINKS_WINES' },
   { id: 80, name: 'GORDONS_SPACE', price: 5, category: 'DRINKS_WINES' },
   { id: 81, name: 'PARANGA_BOTTLE', price: 30, category: 'DRINKS_WINES' },
@@ -136,10 +133,6 @@ export const menuItems: MenuItem[] = [
   { id: 116, name: 'JUNIOR_1', price: 7.5, category: 'JUNIOR_MENU', description: 'JUNIOR_1_DESC' },
   { id: 117, name: 'JUNIOR_2', price: 7.5, category: 'JUNIOR_MENU', description: 'JUNIOR_2_DESC' },
 
-  { id: 118, name: 'OUZO_GLASS', price: 3, category: 'OUZO_MEZE' },
-  { id: 119, name: 'MEZE', price: 3, category: 'OUZO_MEZE' },
-  { id: 120, name: 'OUZO_BOTTLE', price: 6, category: 'OUZO_MEZE' },
-  { id: 121, name: 'APOSTOLAKI', price: 10, category: 'OUZO_MEZE' },
 
   { id: 122, name: 'PINSA_SIMPLE', price: 11, category: 'PINSA', image: 'https://21images.s3.eu-north-1.amazonaws.com/pinsaapli.png', description: 'PINSA_SIMPLE_DESC' },
   { id: 123, name: 'PINSA_MARGARITA', price: 11, category: 'PINSA', description: 'PINSA_MARGARITA_DESC' },

@@ -1,4 +1,4 @@
-<ion-content [fullscreen]="true">
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onContentScroll($event)">
   <div class="store-header">
     <div class="logo-container">
       <img src="https://21images.s3.eu-north-1.amazonaws.com/21_192x192.jpg" alt="Store Logo" class="store-logo" />
