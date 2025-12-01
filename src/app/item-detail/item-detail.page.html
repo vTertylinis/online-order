@@ -124,11 +124,11 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:8px; align-items:center; justify-content:space-between;">
           <div style="font-weight:700;">Σύνολο: {{ totalPrice | currency:'EUR' }}</div>
-          <ion-button color="primary" (click)="addToCart()">Add to Cart</ion-button>
+          <ion-button color="primary" (click)="addToCart()">Προσθήκη Στο Καλάθι</ion-button>
         </div>
       </div>
       <ng-template #missing>
-        <p>Details for item with id <strong>{{ id }}</strong> are not available.</p>
+        <p>Λεπτομέρειες για το αντικείμενο με αναγνωριστικό <strong>{{ id }}</strong> δεν είναι διαθέσιμες.</p>
       </ng-template>
     </ion-card-content>
   </ion-card>
