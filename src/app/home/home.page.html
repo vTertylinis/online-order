@@ -1,4 +1,11 @@
 <ion-content [fullscreen]="true">
+  <div class="store-header">
+    <div class="logo-container">
+      <img src="https://21images.s3.eu-north-1.amazonaws.com/21_192x192.jpg" alt="Store Logo" class="store-logo" />
+      <h1 class="store-name">Online Order</h1>
+    </div>
+  </div>
+
   <div class="chip-bar-wrapper">
     <div class="chip-bar">
       <ng-container *ngFor="let cat of categories; let i = index">
@@ -26,7 +33,7 @@
                 <ion-label>
                   <h2>{{ item.name }}</h2>
                   <p *ngIf="item.desc">{{ item.desc }}</p>
-                  <small *ngIf="item.price">{{ item.price | currency }}</small>
+                  <small *ngIf="item.price">{{ item.price | currency:'EUR' }}</small>
                 </ion-label>
               </ion-item>
             </ion-list>

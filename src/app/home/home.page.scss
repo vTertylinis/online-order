@@ -25,6 +25,40 @@ ion-fab-button {
   display: block;
 }
 
+.store-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--ion-safe-area-top, 0px);
+  z-index: 70;
+  background: var(--ion-background-color);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 12px 16px;
+}
+
+.store-logo {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.store-name {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--ion-color-primary);
+  letter-spacing: -0.5px;
+}
+
 .menu-list {
   padding: 16px;
 }
@@ -49,8 +83,8 @@ ion-item small {
   position: fixed;
   left: 0;
   right: 0;
-  /* place at the top safe area since there is no header in this component */
-  top: var(--ion-safe-area-top, 0px);
+  /* positioned below the store header */
+  top: calc(72px + var(--ion-safe-area-top, 0px));
   z-index: 60;
   background: var(--ion-background-color);
   box-shadow: 0 1px 4px rgba(0,0,0,0.08);
@@ -73,7 +107,7 @@ ion-item small {
   color: var(--ion-color-light);
 }
 
-/* push menu content down so the fixed chip bar doesn't cover it */
+/* push menu content down so the fixed store header and chip bar don't cover it */
 .menu-list {
-  padding-top: calc(56px + var(--ion-safe-area-top, 0px));
+  padding-top: calc(128px + var(--ion-safe-area-top, 0px));
 }
