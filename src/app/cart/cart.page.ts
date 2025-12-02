@@ -1,17 +1,18 @@
 import { Component } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton, IonText, IonIcon } from '@ionic/angular/standalone';
 import { CartService, CartItem } from '../services/cart.service';
 
 @Component({
   selector: 'app-cart',
   templateUrl: 'cart.page.html',
   styleUrls: ['cart.page.scss'],
-  imports: [IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton, CommonModule, CurrencyPipe, RouterLink],
+  imports: [IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton, IonText, IonIcon, CommonModule, CurrencyPipe, RouterLink],
 })
 export class CartPage {
   items: CartItem[] = [];
+  readonly MINIMUM_ORDER = 6;
 
   constructor(private cart: CartService, private router: Router) {
     this.refresh();
@@ -33,6 +34,14 @@ export class CartPage {
 
   get total(): number {
     return this.cart.getTotal();
+  }
+
+  get isMinimumMet(): boolean {
+    return this.total >= this.MINIMUM_ORDER;
+  }
+
+  get remainingForMinimum(): number {
+    return Math.max(0, this.MINIMUM_ORDER - this.total);
   }
 
   checkout() {

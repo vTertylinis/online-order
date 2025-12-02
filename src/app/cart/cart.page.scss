@@ -9,3 +9,22 @@
   font-weight: 700;
   margin-bottom: 8px;
 }
+
+.minimum-warning {
+  background-color: #fff3cd;
+  border: 1px solid #ffc107;
+  border-radius: 4px;
+  padding: 12px;
+  margin-bottom: 12px;
+
+  p {
+    margin: 4px 0;
+    font-size: 0.9em;
+    color: #856404;
+  }
+
+  ion-icon {
+    vertical-align: middle;
+    margin-right: 4px;
+  }
+}
