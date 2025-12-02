@@ -72,7 +72,7 @@ export class HomePage implements OnInit, AfterViewInit {
     const target = Math.max(0, y - (this.headerOffset || 0));
     this.selectedCategoryIndex = index; // lock visual selection immediately
     this.ensureChipVisible(index);
-    // lock scroll-driven updates during programmatic smooth scroll
+    // lock scroll-driven updates during programmatic smooth scrolll
     this.scrollLockUntil = Date.now() + 700; // duration + buffer
     try {
       await this.content.scrollToPoint(0, target, 500);
