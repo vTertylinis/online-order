@@ -33,6 +33,16 @@
                 "glob": "**/*",
                 "input": "public",
                 "output": "/"
+              },
+              {
+                "glob": "CNAME",
+                "input": "public",
+                "output": "browser"
+              },
+              {
+                "glob": "404.html",
+                "input": "public",
+                "output": "browser"
               }
             ],
             "styles": ["src/global.scss", "src/theme/variables.scss"],
@@ -40,7 +50,7 @@
           },
           "configurations": {
             "production": {
-              "baseHref": "/online-order/",
+              "baseHref": "/",
               "budgets": [
                 {
                   "type": "initial",
