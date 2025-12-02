@@ -13,7 +13,8 @@ import {
   IonInput, 
   IonNote, 
   IonButton,
-  ToastController 
+  ToastController,
+  AlertController 
 } from '@ionic/angular/standalone';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -44,6 +45,7 @@ export class AddressPage {
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private toastCtrl = inject(ToastController);
+  private alertCtrl = inject(AlertController);
   private http = inject(HttpClient);
   private cartService = inject(CartService);
 
@@ -92,12 +94,13 @@ export class AddressPage {
       
       console.log('Order sent successfully:', response);
       
-      const toast = await this.toastCtrl.create({
-        message: 'Η παραγγελία στάλθηκε επιτυχώς!',
-        duration: 2000,
-        color: 'success'
+      const alert = await this.alertCtrl.create({
+        header: 'Επιτυχία',
+        message: 'Λάβαμε με επιτυχία την παραγγελία σας και θα επικοινωνήσουμε μαζί σας για επιβεβαίωση.',
+        buttons: ['OK']
       });
-      await toast.present();
+      await alert.present();
+      await alert.onDidDismiss();
     } catch (error) {
       console.error('Error sending order:', error);
       
@@ -107,6 +110,9 @@ export class AddressPage {
         color: 'warning'
       });
       await toast.present();
+      
+      this.router.navigateByUrl('/');
+      return;
     }
 
     this.router.navigateByUrl('/');
