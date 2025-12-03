@@ -87,7 +87,6 @@ export const menuItems: MenuItem[] = [
   { id: 71, name: 'DRINK_SPECIAL', price: 8, category: 'DRINKS_WINES' },
   { id: 72, name: 'DRINK_PREMIUM', price: 12, category: 'DRINKS_WINES' },
   { id: 73, name: 'WINE_GLASS', price: 6, category: 'DRINKS_WINES' },
-  { id: 74, name: 'SHOT', price: 3, category: 'DRINKS_WINES' },
   { id: 75, name: 'RETSINA_VASILIKI', price: 6, category: 'DRINKS_WINES' },
   { id: 79, name: 'LEIVADIOTI_BOTTLE', price: 6, category: 'DRINKS_WINES' },
   { id: 80, name: 'GORDONS_SPACE', price: 5, category: 'DRINKS_WINES' },
