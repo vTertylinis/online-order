@@ -579,5 +579,105 @@
   "CLOSE": {
     "gr": "Κλείσιμο",
     "en": "Close"
+  },
+  "LENT_MENU": {
+    "gr": "Μενού Σαρακοστής",
+    "en": "Lent Menu"
+  },
+  "Burger Λαχανικών": {
+    "gr": "Burger Λαχανικών",
+    "en": "Vegetable Burger"
+  },
+  "Row No Meat Burger": {
+    "gr": "Row No Meat Burger",
+    "en": "Row No Meat Burger"
+  },
+  "Λιγκουίνι με Θαλασσινά": {
+    "gr": "Λιγκουίνι με Θαλασσινά",
+    "en": "Linguini with Seafood"
+  },
+  "Κουκουβάγια Salad": {
+    "gr": "Κουκουβάγια Salad",
+    "en": "Koukouvagia Salad"
+  },
+  "21 Salad με Γαρίδες": {
+    "gr": "21 Salad με Γαρίδες",
+    "en": "21 Salad with Shrimp"
+  },
+  "Πέννες Salad": {
+    "gr": "Πέννες Salad",
+    "en": "Penne Salad"
+  },
+  "Pinsa Χωριάτικη": {
+    "gr": "Pinsa Χωριάτικη",
+    "en": "Pinsa Greek Style"
+  },
+  "Pinsa Νηστίσιμη": {
+    "gr": "Pinsa Νηστίσιμη",
+    "en": "Pinsa Lenten"
+  },
+  "Bao Buns Γαρίδας": {
+    "gr": "Bao Buns Γαρίδας",
+    "en": "Shrimp Bao Buns"
+  },
+  "Club Καλαμάρι": {
+    "gr": "Club Καλαμάρι",
+    "en": "Calamari Club"
+  },
+  "Mix Grill": {
+    "gr": "Mix Grill",
+    "en": "Mix Grill"
+  },
+  "Πατάτες Country": {
+    "gr": "Πατάτες Country",
+    "en": "Country Potatoes"
+  },
+  "BURGER_VEGETABLES_DESC": {
+    "gr": "Μπιφτέκι λαχανικών, iceberg, ντομάτα, νηστίσιμη sauce ταρτάρ. Συνοδεύεται από πατάτες τηγανητές",
+    "en": "Vegetable patty, iceberg, tomato, lenten tartar sauce. Served with French fries"
+  },
+  "ROW_NO_MEAT_BURGER_DESC": {
+    "gr": "Μπιφτέκι από φυτικά υλικά, iceberg, ντομάτα, νηστίσιμη sauce ταρτάρ, μουστάρδα. Συνοδεύεται από πατάτες τηγανητές",
+    "en": "Plant-based patty, iceberg, tomato, lenten tartar sauce, mustard. Served with French fries"
+  },
+  "NAPOLITANA_LENT_DESC": {
+    "gr": "Ζυμαρικά ματσάτα με απαλή ροζ σάλτσα από φρέσκα ντοματίνια, φρέσκος βασιλικός, δυόσμος",
+    "en": "Matsata pasta with light pink sauce from fresh cherry tomatoes, fresh basil, mint"
+  },
+  "KOUKOUVAGIA_SALAD_LENT_DESC": {
+    "gr": "Ντοματίνια, αγγούρι, πιπεριές, φρέσκο κρεμμύδι, ντάκος, κάπαρη, νηστίσιμο λευκό τυρί",
+    "en": "Cherry tomatoes, cucumber, peppers, fresh onion, dakos barley rusk, capers, lenten white cheese"
+  },
+  "SALAD_21_SHRIMP_DESC": {
+    "gr": "Πράσινη σαλάτα, γαρίδες τεμπούρα, sauce mayo chilly",
+    "en": "Green salad, tempura shrimp, chili mayo sauce"
+  },
+  "PENNE_SALAD_DESC": {
+    "gr": "Με λάδι τρούφας, μανιτάρια, sauce ταρτάρ",
+    "en": "With truffle oil, mushrooms, tartar sauce"
+  },
+  "PINSA_GREEK_LENT_DESC": {
+    "gr": "Σάλτσα ντομάτας, πιπεριές, μανιτάρια, κρεμμύδι, ελιές, νηστίσιμο λευκό τυρί",
+    "en": "Tomato sauce, peppers, mushrooms, onion, olives, lenten white cheese"
+  },
+  "PINSA_LENTEN_DESC": {
+    "gr": "Σάλτσα ντομάτας, πιπεριές, μανιτάρια, τριμμένο νηστίσιμο κίτρινο τυρί",
+    "en": "Tomato sauce, peppers, mushrooms, grated lenten yellow cheese"
+  },
+  "BAO_BUNS_SHRIMP_LENT_DESC": {
+    "gr": "Γαρίδα σωτέ, sauce ταρτάρ, φρέσκο κρεμμυδάκι",
+    "en": "Sautéed shrimp, tartar sauce, fresh spring onion"
+  },
+  "CLUB_CALAMARI_DESC": {
+    "gr": "Καλαμάρι τηγανητό, iceberg, ντομάτα, νηστίσιμη sauce ταρτάρ. Συνοδεύεται από πατάτες τηγανητές",
+    "en": "Fried calamari, iceberg, tomato, lenten tartar sauce. Served with French fries"
+  },
+  "MIX_GRILL_LENT_DESC": {
+    "gr": "1 Raw NoMeat μπιφτέκι, 1 Meat free λουκάνικο, 3 Meat free Nuggets, 3 Φαλάφελ. Συνοδεύονται από πατάτες country, πιτάκια και ντιπ κέτσαπ, μουστάρδα, vegan mayo sauce",
+    "en": "1 Raw NoMeat patty, 1 Meat free sausage, 3 Meat free Nuggets, 3 Falafel. Served with country potatoes, pita bread and dips: ketchup, mustard, vegan mayo sauce"
+  },
+  "COUNTRY_POTATOES_DESC": {
+    "gr": "Συνοδεύονται από ντιπ κέτσαπ",
+    "en": "Served with ketchup dip"
   }
 }
