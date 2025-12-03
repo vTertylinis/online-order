@@ -180,7 +180,22 @@ export const menuItems: MenuItem[] = [
   { id: 161, name: 'BEEF_PATTY', price: 11, category: 'MAIN_COURSES', description: 'BEEF_PATTY_DESC' },
   { id: 162, name: 'PORK_GYRO', price: 11, category: 'MAIN_COURSES', description: 'PORK_GYRO_DESC' },
   { id: 163, name: 'MIX_GRILL', price: 17, category: 'MAIN_COURSES', description: 'MIX_GRILL_DESC' },
-  { id: 164, name: 'potatosCheeseBacon', price: 6, category: 'MAIN_COURSES', description: 'potatosCheeseBaconDesc' }
+  { id: 164, name: 'potatosCheeseBacon', price: 6, category: 'MAIN_COURSES', description: 'potatosCheeseBaconDesc' },
+
+  { id: 165, name: 'Burger Λαχανικών', price: 9, category: 'LENT_MENU', description: 'BURGER_VEGETABLES_DESC' },
+  { id: 166, name: 'Row No Meat Burger', price: 11, category: 'LENT_MENU', description: 'ROW_NO_MEAT_BURGER_DESC' },
+  { id: 167, name: 'Napolitana', price: 8, category: 'LENT_MENU', description: 'NAPOLITANA_LENT_DESC' },
+  { id: 168, name: 'Λιγκουίνι με Θαλασσινά', price: 18, category: 'LENT_MENU', description: '' },
+  { id: 169, name: 'Γαριδομακαρονάδα', price: 18, category: 'LENT_MENU', description: '' },
+  { id: 170, name: 'Κουκουβάγια Salad', price: 8, category: 'LENT_MENU', description: 'KOUKOUVAGIA_SALAD_LENT_DESC' },
+  { id: 171, name: '21 Salad με Γαρίδες', price: 10, category: 'LENT_MENU', description: 'SALAD_21_SHRIMP_DESC' },
+  { id: 172, name: 'Πέννες Salad', price: 10, category: 'LENT_MENU', description: 'PENNE_SALAD_DESC' },
+  { id: 173, name: 'Pinsa Χωριάτικη', price: 12, category: 'LENT_MENU', description: 'PINSA_GREEK_LENT_DESC' },
+  { id: 174, name: 'Pinsa Νηστίσιμη', price: 11, category: 'LENT_MENU', description: 'PINSA_LENTEN_DESC' },
+  { id: 175, name: 'Bao Buns Γαρίδας', price: 8, category: 'LENT_MENU', description: 'BAO_BUNS_SHRIMP_LENT_DESC' },
+  { id: 176, name: 'Club Καλαμάρι', price: 12, category: 'LENT_MENU', description: 'CLUB_CALAMARI_DESC' },
+  { id: 177, name: 'Mix Grill', price: 18, category: 'LENT_MENU', description: 'MIX_GRILL_LENT_DESC' },
+  { id: 178, name: 'Πατάτες Country', price: 6, category: 'LENT_MENU', description: 'COUNTRY_POTATOES_DESC' }
 ];
 
 export const ingredients: Array<{ name: string; price: number; selected?: boolean }> = [
