@@ -19,6 +19,7 @@ import {
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
+import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
 
 @Component({
   selector: 'app-address',
@@ -68,18 +69,7 @@ export class AddressPage {
     }
 
     // Check delivery hours before submitting
-    const greekTime = new Date().toLocaleString('en-US', { 
-      timeZone: 'Europe/Athens',
-      hour12: false 
-    });
-    const greekDate = new Date(greekTime);
-    const hour = greekDate.getHours();
-
-    // Delivery hours: 9 AM (09:00) to 12 AM (00:00, midnight - end of day)
-    // Valid hours: 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
-    const isWithinDeliveryHours = hour >= 9 && hour <= 23;
-
-    if (!isWithinDeliveryHours) {
+    if (!isWithinDeliveryHours()) {
       const alert = await this.alertCtrl.create({
         header: 'Εκτός Ωραρίου Παράδοσης',
         message: 'Οι παραδόσεις γίνονται από τις 09:00 το πρωί έως τα μεσάνυχτα (00:00). Παρακαλούμε επισκεφθείτε μας ξανά κατά τις ώρες λειτουργίας μας.',
