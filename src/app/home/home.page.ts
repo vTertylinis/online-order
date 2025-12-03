@@ -14,6 +14,7 @@ import {
   IonFab,
   IonFabButton,
   IonIcon,
+  AlertController,
 } from '@ionic/angular/standalone';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
@@ -84,13 +85,43 @@ export class HomePage implements OnInit, AfterViewInit {
     }
   }
 
-  constructor(private router: Router, private cartService: CartService) {
+  constructor(
+    private router: Router, 
+    private cartService: CartService,
+    private alertController: AlertController
+  ) {
     // Ensure the cart icon is registered for IonIcon usage
     addIcons({ cart });
   }
 
   ngOnInit(): void {
     this.buildCategories();
+    this.checkDeliveryHours();
+  }
+
+  private async checkDeliveryHours() {
+    // Get current time in Greek timezone (Europe/Athens)
+    const greekTime = new Date().toLocaleString('en-US', { 
+      timeZone: 'Europe/Athens',
+      hour12: false 
+    });
+    const greekDate = new Date(greekTime);
+    const hour = greekDate.getHours();
+
+    // Delivery hours: 9 AM (09:00) to 12 AM (00:00, midnight - end of day)
+    // Valid hours: 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
+    // Invalid hours: 0, 1, 2, 3, 4, 5, 6, 7, 8
+    const isWithinDeliveryHours = hour >= 9 && hour <= 23;
+
+    if (!isWithinDeliveryHours) {
+      const alert = await this.alertController.create({
+        header: 'Εκτός Ωραρίου Παράδοσης',
+        message: 'Οι παραδόσεις γίνονται από τις 09:00 το πρωί έως τα μεσάνυχτα (00:00). Παρακαλούμε επισκεφθείτε μας ξανά κατά τις ώρες λειτουργίας μας.',
+        buttons: ['OK']
+      });
+
+      await alert.present();
+    }
   }
 
   async ngAfterViewInit() {
