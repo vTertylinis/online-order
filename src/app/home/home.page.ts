@@ -24,6 +24,7 @@ import { CartService } from '../services/cart.service';
 import translations from '../../assets/i18n/translations.json';
 import { MenuItem, menuItems } from '../models/menu-item.model';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
+import { LazyImageDirective } from '../utils/lazy-image.directive';
 
 interface Category {
   name: string;
@@ -51,6 +52,7 @@ interface Category {
     CommonModule,
     CurrencyPipe,
     RouterLink,
+    LazyImageDirective,
   ],
 })
 export class HomePage implements OnInit, AfterViewInit {
