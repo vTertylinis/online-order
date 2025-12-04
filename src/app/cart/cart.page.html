@@ -12,7 +12,7 @@
     <ion-item *ngFor="let it of items; let i = index">
       <ion-label>
         <h3>{{ it.name }}</h3>
-        <p *ngIf="it.size">Μέγεθος: {{ it.size }}</p>
+        <p *ngIf="it.size && (it.id === 3 || it.id === 4 || it.id === 5 || it.id === 6 || it.id === 13)">Μέγεθος: {{ it.size }}</p>
         <p *ngIf="it.sweetness">Γλυκύτητα: {{ it.sweetness }}</p>
         <p *ngIf="it.ingredients && it.ingredients.length">Extras: {{ ingredientsList(it) }}</p>
         <p *ngIf="it.comments">Σχόλια: {{ it.comments }}</p>
