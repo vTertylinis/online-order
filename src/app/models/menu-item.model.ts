@@ -189,8 +189,19 @@ export const menuItems: MenuItem[] = [
   { id: 175, name: 'Bao Buns Γαρίδας', price: 8, category: 'LENT_MENU', description: 'BAO_BUNS_SHRIMP_LENT_DESC' },
   { id: 176, name: 'Club Καλαμάρι', price: 12, category: 'LENT_MENU', description: 'CLUB_CALAMARI_DESC' },
   { id: 177, name: 'Mix Grill', price: 18, category: 'LENT_MENU', description: 'MIX_GRILL_LENT_DESC' },
-  { id: 178, name: 'Πατάτες Country', price: 6, category: 'LENT_MENU', description: 'COUNTRY_POTATOES_DESC' }
+  { id: 178, name: 'Πατάτες Country', price: 6, category: 'LENT_MENU', description: 'COUNTRY_POTATOES_DESC' },
+
+  { id: 200, name: 'BURGER_BBQ_DOUBLE_CHEESE_SOFT_DRINKS', price: 19.90, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_1_DESC' },
+  { id: 201, name: 'HOT_DOG_X2_SWEET_CREPE', price: 12, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_2_DESC' },
+  { id: 202, name: 'DOUBLE_SMASH_SOFT_DRINK_SWEET_CREPE', price: 15, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_3_DESC' }
 ];
+
+export const SOFT_DRINKS = menuItems.filter(item => item.category === 'SOFT_DRINKS');
+
+export const COMBO_SOFT_DRINKS = menuItems.filter(item => 
+  item.category === 'SOFT_DRINKS' && 
+  [15, 16, 17, 18, 19, 20, 21, 22, 24, 31].includes(item.id!)
+);
 
 export const ingredients: Array<{ name: string; price: number; selected?: boolean }> = [
   { name: 'κασέρι', price: 0.5 },

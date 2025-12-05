@@ -112,6 +112,29 @@
           </ion-list>
         </div>
 
+        <!-- Soft drinks selection for ID 200 -->
+        <div *ngIf="showSoftDrinks" style="margin-top:12px;">
+          <ion-list>
+            <ion-list-header>
+              <ion-label>
+                Επιλέξτε {{ REQUIRED_SOFT_DRINKS_COUNT }} Αναψυκτικά
+                <span style="margin-left:8px; font-size:0.9em; color:var(--ion-color-medium);">
+                  ({{ selectedSoftDrinksCount }} / {{ REQUIRED_SOFT_DRINKS_COUNT }} επιλεγμένα)
+                </span>
+              </ion-label>
+            </ion-list-header>
+
+            <div class="ingredients-scroll">
+              <ion-item *ngFor="let drink of softDrinks" (click)="drink.selected = !drink.selected; onSoftDrinkSelectionChange(drink)">
+                <ion-label>
+                  <div>{{ translate(drink.name) }}</div>
+                </ion-label>
+                <ion-checkbox slot="end" [(ngModel)]="drink.selected" (ionChange)="onSoftDrinkSelectionChange(drink)" (click)="$event.stopPropagation()"></ion-checkbox>
+              </ion-item>
+            </div>
+          </ion-list>
+        </div>
+
         <div style="margin-top:12px;">
           <ion-list>
             <ion-list-header>
@@ -124,7 +147,7 @@
         </div>
         <div style="margin-top:16px; display:flex; gap:8px; align-items:center; justify-content:space-between;">
           <div style="font-weight:700;">Σύνολο: {{ totalPrice | currency:'EUR' }}</div>
-          <ion-button color="primary" (click)="addToCart()">Προσθήκη Στο Καλάθι</ion-button>
+          <ion-button color="primary" (click)="addToCart()" [disabled]="!canAddToCart">Προσθήκη Στο Καλάθι</ion-button>
         </div>
       </div>
       <ng-template #missing>

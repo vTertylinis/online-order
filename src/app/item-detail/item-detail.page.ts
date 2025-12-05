@@ -92,6 +92,11 @@ export class ItemDetailPage {
   }> = this.sweetIngredients.slice();
   lang: string = 'gr';
 
+  // Soft drinks selection for ID 200
+  showSoftDrinks: boolean = false;
+  softDrinks: Array<{ id: number; name: string; selected?: boolean }> = [];
+  readonly REQUIRED_SOFT_DRINKS_COUNT = 2;
+
   constructor(
     private route: ActivatedRoute,
     private cart: CartService,
@@ -131,6 +136,22 @@ export class ItemDetailPage {
     const sweetIds = [53, 106];
     this.showSavoryExtras = savoryIds.includes(idCandidate);
     this.showSweetExtras = sweetIds.includes(idCandidate);
+    this.showSoftDrinks = idCandidate === 200;
+
+    // Initialize soft drinks list for ID 200
+    if (this.showSoftDrinks) {
+      const softDrinkIds = [15, 16, 17, 18, 19, 20, 21, 22, 24, 31];
+      this.softDrinks = softDrinkIds
+        .map((id) => {
+          const item = menuItems.find((m) => m.id === id);
+          return item ? { id: item.id!, name: item.name, selected: false } : null;
+        })
+        .filter((item) => item !== null) as Array<{
+        id: number;
+        name: string;
+        selected?: boolean;
+      }>;
+    }
 
     // initialize filtered lists
     this.filterIngredients();
@@ -142,6 +163,7 @@ export class ItemDetailPage {
     // reset ingredient lists
     this.resetIngredients();
     this.resetSweetIngredients();
+    this.resetSoftDrinks();
     // reset sweetness/size/comments so previous selections do not persist
     this.sweetness = 'Σκέτο';
     this.size = 'Μονό';
@@ -169,6 +191,12 @@ export class ItemDetailPage {
       selected: false,
     }));
     this.filteredSweetIngredients = this.sweetIngredients.slice();
+  }
+
+  private resetSoftDrinks() {
+    if (this.softDrinks.length > 0) {
+      this.softDrinks.forEach((drink) => (drink.selected = false));
+    }
   }
 
   translate(key: string): string {
@@ -208,13 +236,28 @@ export class ItemDetailPage {
 
   addToCart() {
     if (!this.item) return;
+
+    // Validation for ID 200: require exactly 2 soft drinks
+    if (this.showSoftDrinks) {
+      const selectedCount = this.selectedSoftDrinksCount;
+      if (selectedCount !== this.REQUIRED_SOFT_DRINKS_COUNT) {
+        alert(
+          `Παρακαλώ επιλέξτε ακριβώς ${this.REQUIRED_SOFT_DRINKS_COUNT} αναψυκτικά. Έχετε επιλέξει: ${selectedCount}`
+        );
+        return;
+      }
+    }
+
     const selectedSavory = this.ingredients
       .filter((i) => i.selected)
       .map((i) => ({ name: i.name, price: i.price }));
     const selectedSweet = this.sweetIngredients
       .filter((i) => i.selected)
       .map((i) => ({ name: i.name, price: i.price }));
-    const allExtras = [...selectedSavory, ...selectedSweet];
+    const selectedSoftDrinks = this.softDrinks
+      .filter((d) => d.selected)
+      .map((d) => ({ name: this.translate(d.name), price: 0 }));
+    const allExtras = [...selectedSavory, ...selectedSweet, ...selectedSoftDrinks];
     // Compute basePrice including size surcharge for double
     const basePrice = (this.item.price || 0) + (this.size === 'Διπλό' ? 0.5 : 0);
     const cartItem = {
@@ -311,5 +354,31 @@ export class ItemDetailPage {
     return this.ingredients
       .filter((i) => i.selected)
       .reduce((s, i) => s + (i.price || 0), 0);
+  }
+
+  get selectedSoftDrinksCount(): number {
+    return this.softDrinks.filter((d) => d.selected).length;
+  }
+
+  get canAddToCart(): boolean {
+    if (this.showSoftDrinks) {
+      return this.selectedSoftDrinksCount === this.REQUIRED_SOFT_DRINKS_COUNT;
+    }
+    return true;
+  }
+
+  onSoftDrinkSelectionChange(drink: {
+    id: number;
+    name: string;
+    selected?: boolean;
+  }) {
+    drink.selected = !!drink.selected;
+    console.log(
+      'soft drink selection changed ->',
+      drink.name,
+      drink.selected,
+      'total selected:',
+      this.selectedSoftDrinksCount
+    );
   }
 }
