@@ -233,6 +233,16 @@ export class HomePage implements OnInit, AfterViewInit {
     }
 
     const result: Category[] = [];
+    
+    // Add COMBO_OFFERS first if it exists
+    if (map.has('COMBO_OFFERS')) {
+      const translatedCategory = lookup('COMBO_OFFERS');
+      const pretty = translatedCategory || 'Combo Offers';
+      result.push({ name: pretty as any, items: map.get('COMBO_OFFERS')! });
+      map.delete('COMBO_OFFERS');
+    }
+    
+    // Add remaining categories
     for (const [key, items] of map) {
       const translatedCategory = lookup(key);
       const pretty = translatedCategory

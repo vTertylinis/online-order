@@ -92,10 +92,10 @@ export class ItemDetailPage {
   }> = this.sweetIngredients.slice();
   lang: string = 'gr';
 
-  // Soft drinks selection for ID 200
+  // Soft drinks selection for ID 200 and 202
   showSoftDrinks: boolean = false;
   softDrinks: Array<{ id: number; name: string; selected?: boolean }> = [];
-  readonly REQUIRED_SOFT_DRINKS_COUNT = 2;
+  REQUIRED_SOFT_DRINKS_COUNT = 2;
 
   constructor(
     private route: ActivatedRoute,
@@ -136,10 +136,13 @@ export class ItemDetailPage {
     const sweetIds = [53, 106];
     this.showSavoryExtras = savoryIds.includes(idCandidate);
     this.showSweetExtras = sweetIds.includes(idCandidate);
-    this.showSoftDrinks = idCandidate === 200;
+    this.showSoftDrinks = idCandidate === 200 || idCandidate === 202;
 
-    // Initialize soft drinks list for ID 200
+    // Initialize soft drinks list for ID 200 and 202
     if (this.showSoftDrinks) {
+      // Set required count based on item ID
+      this.REQUIRED_SOFT_DRINKS_COUNT = idCandidate === 200 ? 2 : 1;
+      
       const softDrinkIds = [15, 16, 17, 18, 19, 20, 21, 22, 24, 31];
       this.softDrinks = softDrinkIds
         .map((id) => {

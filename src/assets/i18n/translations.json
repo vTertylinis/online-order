@@ -679,5 +679,29 @@
   "COUNTRY_POTATOES_DESC": {
     "gr": "Συνοδεύονται από ντιπ κέτσαπ",
     "en": "Served with ketchup dip"
+  },
+  "COMBO_OFFER_1_DESC": {
+    "gr": "1x Burger BBQ και 1x Double Cheese Burger, συνοδευόμενα από 2 αναψυκτικά της επιλογής σας.",
+    "en": "1x BBQ Burger and 1x Double Cheese Burger, accompanied by 2 soft drinks of your choice."
+  },
+  "BURGER_BBQ_DOUBLE_CHEESE_SOFT_DRINKS": {
+    "gr": "Burger Duo Deal – Με 2 Αναψυκτικά Δώρο",
+    "en": "Burger Duo Deal – With 2 Free Soft Drinks"
+  },
+  "COMBO_OFFER_2_DESC": {
+    "gr": "2x Hot Dog, με μια γλυκιά κρέπα δώρο.",
+    "en": "2x Hot Dogs, with a free sweet crepe."
+  },
+  "HOT_DOG_X2_SWEET_CREPE": {
+    "gr": "Hot Dog Combo + Γλυκιά Κρέπα Δώρο",
+    "en": "Hot Dog Combo + Free Sweet Crepe"
+  },
+  "COMBO_OFFER_3_DESC": {
+    "gr": "1x Double Smash Burger, 1 αναψυκτικό της επιλογής σας και 1 γλυκιά κρέπα για ολοκληρωμένη απόλαυση.",
+    "en": "1x Double Smash Burger, 1 soft drink of your choice and 1 sweet crepe for a complete enjoyment."
+  },
+  "DOUBLE_SMASH_SOFT_DRINK_SWEET_CREPE": {
+    "gr": "Double Smash Burger Combo",
+    "en": "Double Smash Burger Combo"
   }
 }
