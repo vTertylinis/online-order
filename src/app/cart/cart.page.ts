@@ -3,6 +3,7 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton, IonText, IonIcon } from '@ionic/angular/standalone';
 import { CartService, CartItem } from '../services/cart.service';
+import { translate } from '../models/translate.util';
 
 @Component({
   selector: 'app-cart',
@@ -47,6 +48,11 @@ export class CartPage {
   checkout() {
     // placeholder: navigate to home or show a message in future
     alert('Checkout not implemented in this demo.');
+  }
+
+  // Translate item name using the translation utility
+  getItemName(name: string): string {
+    return translate(name) || translate(name.toUpperCase()) || name;
   }
 
   // Return comma-separated ingredient names (safe for template bindings)

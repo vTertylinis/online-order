@@ -11,7 +11,7 @@
   <ion-list *ngIf="items.length; else empty">
     <ion-item *ngFor="let it of items; let i = index">
       <ion-label>
-        <h3>{{ it.name }}</h3>
+        <h3>{{ getItemName(it.name) }}</h3>
         <p *ngIf="it.size && (it.id === 3 || it.id === 4 || it.id === 5 || it.id === 6 || it.id === 13)">Μέγεθος: {{ it.size }}</p>
         <p *ngIf="it.sweetness">Γλυκύτητα: {{ it.sweetness }}</p>
         <p *ngIf="it.ingredients && it.ingredients.length">Extras: {{ ingredientsList(it) }}</p>
@@ -37,6 +37,6 @@
         <p>Προσθέστε ακόμα {{ remainingForMinimum | currency:'EUR' }} για να ολοκληρώσετε την παραγγελία.</p>
       </ion-text>
     </div>
-    <ion-button expand="block" routerLink="/address" [disabled]="!isMinimumMet">Ολοκλήρωση αγοράς</ion-button>
+    <ion-button expand="block" routerLink="/address" [disabled]="!isMinimumMet">Προσθήκη Διεύθυνσης</ion-button>
   </div>
 </ion-content>
