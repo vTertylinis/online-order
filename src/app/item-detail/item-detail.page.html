@@ -112,7 +112,7 @@
           </ion-list>
         </div>
 
-        <!-- Soft drinks selection for ID 200 -->
+        <!-- Soft drinks selection for ID 200/202 -->
         <div *ngIf="showSoftDrinks" style="margin-top:12px;">
           <ion-list>
             <ion-list-header>
@@ -125,11 +125,19 @@
             </ion-list-header>
 
             <div class="ingredients-scroll">
-              <ion-item *ngFor="let drink of softDrinks" (click)="drink.selected = !drink.selected; onSoftDrinkSelectionChange(drink)">
+              <ion-item *ngFor="let drink of softDrinks">
                 <ion-label>
                   <div>{{ translate(drink.name) }}</div>
                 </ion-label>
-                <ion-checkbox slot="end" [(ngModel)]="drink.selected" (ionChange)="onSoftDrinkSelectionChange(drink)" (click)="$event.stopPropagation()"></ion-checkbox>
+                <div style="display:flex; align-items:center; gap:4px;">
+                  <ion-button size="small" fill="clear" (click)="changeSoftDrink(drink, -1)" [disabled]="(drink.quantity || 0) === 0">
+                    -
+                  </ion-button>
+                  <span style="min-width:24px; text-align:center; display:inline-block;">{{ drink.quantity || 0 }}</span>
+                  <ion-button size="small" fill="clear" (click)="changeSoftDrink(drink, 1)" [disabled]="selectedSoftDrinksCount >= REQUIRED_SOFT_DRINKS_COUNT">
+                    +
+                  </ion-button>
+                </div>
               </ion-item>
             </div>
           </ion-list>

@@ -94,7 +94,7 @@ export class ItemDetailPage {
 
   // Soft drinks selection for ID 200 and 202
   showSoftDrinks: boolean = false;
-  softDrinks: Array<{ id: number; name: string; selected?: boolean }> = [];
+  softDrinks: Array<{ id: number; name: string; quantity?: number }> = [];
   REQUIRED_SOFT_DRINKS_COUNT = 2;
 
   constructor(
@@ -147,12 +147,12 @@ export class ItemDetailPage {
       this.softDrinks = softDrinkIds
         .map((id) => {
           const item = menuItems.find((m) => m.id === id);
-          return item ? { id: item.id!, name: item.name, selected: false } : null;
+          return item ? { id: item.id!, name: item.name, quantity: 0 } : null;
         })
         .filter((item) => item !== null) as Array<{
         id: number;
         name: string;
-        selected?: boolean;
+        quantity?: number;
       }>;
     }
 
@@ -198,7 +198,7 @@ export class ItemDetailPage {
 
   private resetSoftDrinks() {
     if (this.softDrinks.length > 0) {
-      this.softDrinks.forEach((drink) => (drink.selected = false));
+      this.softDrinks.forEach((drink) => (drink.quantity = 0));
     }
   }
 
@@ -257,9 +257,13 @@ export class ItemDetailPage {
     const selectedSweet = this.sweetIngredients
       .filter((i) => i.selected)
       .map((i) => ({ name: i.name, price: i.price }));
-    const selectedSoftDrinks = this.softDrinks
-      .filter((d) => d.selected)
-      .map((d) => ({ name: this.translate(d.name), price: 0 }));
+    const selectedSoftDrinks: Array<{ name: string; price: number }> = [];
+    this.softDrinks.forEach((d) => {
+      const qty = d.quantity || 0;
+      for (let i = 0; i < qty; i++) {
+        selectedSoftDrinks.push({ name: this.translate(d.name), price: 0 });
+      }
+    });
     const allExtras = [...selectedSavory, ...selectedSweet, ...selectedSoftDrinks];
     // Compute basePrice including size surcharge for double
     const basePrice = (this.item.price || 0) + (this.size === 'Διπλό' ? 0.5 : 0);
@@ -360,7 +364,7 @@ export class ItemDetailPage {
   }
 
   get selectedSoftDrinksCount(): number {
-    return this.softDrinks.filter((d) => d.selected).length;
+    return this.softDrinks.reduce((sum, d) => sum + (d.quantity || 0), 0);
   }
 
   get canAddToCart(): boolean {
@@ -373,15 +377,20 @@ export class ItemDetailPage {
   onSoftDrinkSelectionChange(drink: {
     id: number;
     name: string;
-    selected?: boolean;
+    quantity?: number;
   }) {
-    drink.selected = !!drink.selected;
-    console.log(
-      'soft drink selection changed ->',
-      drink.name,
-      drink.selected,
-      'total selected:',
-      this.selectedSoftDrinksCount
-    );
+    // no-op placeholder for checkbox legacy; kept for compatibility
+  }
+
+  changeSoftDrink(drink: { id: number; name: string; quantity?: number }, delta: number) {
+    const currentQty = drink.quantity || 0;
+    const newQty = currentQty + delta;
+    if (newQty < 0) return;
+
+    const totalWithoutCurrent = this.selectedSoftDrinksCount - currentQty;
+    if (totalWithoutCurrent + newQty > this.REQUIRED_SOFT_DRINKS_COUNT) return;
+
+    drink.quantity = newQty;
+    console.log('soft drink quantity changed ->', drink.name, drink.quantity);
   }
 }

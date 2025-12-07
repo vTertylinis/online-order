@@ -174,7 +174,7 @@ export const menuItems: MenuItem[] = [
   { id: 161, name: 'BEEF_PATTY', price: 11, category: 'MAIN_COURSES', description: 'BEEF_PATTY_DESC' },
   { id: 162, name: 'PORK_GYRO', price: 11, category: 'MAIN_COURSES', description: 'PORK_GYRO_DESC' },
   { id: 163, name: 'MIX_GRILL', price: 17, category: 'MAIN_COURSES', description: 'MIX_GRILL_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/grill.jpg' },
-  { id: 164, name: 'potatosCheeseBacon', price: 6, category: 'MAIN_COURSES', description: 'potatosCheeseBaconDesc' },
+  { id: 164, name: 'potatosCheeseBacon', price: 6, category: 'MAIN_COURSES' },
 
   { id: 165, name: 'Burger Λαχανικών', price: 9, category: 'LENT_MENU', description: 'BURGER_VEGETABLES_DESC' },
   { id: 166, name: 'Row No Meat Burger', price: 11, category: 'LENT_MENU', description: 'ROW_NO_MEAT_BURGER_DESC' },
