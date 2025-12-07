@@ -275,12 +275,8 @@
     "gr": "Παρμεζάνα, Γκούντα, Μοτσαρέλα και Γκοργκοτζόλα"
   },
   "potatosCheeseBacon":{
-    "en": "French Fries",
-    "gr": "Πατάτες Τηγανητές"
-  },
-  "potatosCheeseBaconDesc":{
-    "en": "With Cheddar Sauce and Bacon Chips",
-    "gr": "Με Sauce Cheddar και Chips Bacon"
+    "en": "French Fries With Cheddar Sauce and Bacon Chips",
+    "gr": "Πατάτες Τηγανητές Με Sauce Cheddar και Chips Bacon"
   },
   "SHRIMP_CHILI_BAO": { "en": "Shrimp Chili Bao", "gr": "Shrimp chili bao" },
   "NUGGETS_BAO": { "en": "Nuggets Bao", "gr": "Nuggets bao" },
