@@ -15,7 +15,10 @@
     <ion-card-content>
       <div *ngIf="item; else missing">
         <div *ngIf="item.image" class="image-wrap">
-          <img class="item-image" [src]="item.image" alt="{{ item.name }}" />
+          <div *ngIf="imageLoading" class="spinner-container">
+            <ion-spinner name="crescent"></ion-spinner>
+          </div>
+          <img class="item-image" [src]="item.image" alt="{{ item.name }}" (load)="imageLoading = false" (error)="imageLoading = false" [style.display]="imageLoading ? 'none' : 'block'" />
         </div>
           <p><strong>Όνομα:</strong> {{ translate(item.name) }}</p>
         <p *ngIf="item.price !== undefined"><strong>Τιμή:</strong> {{ item.price | currency:'EUR' }}</p>

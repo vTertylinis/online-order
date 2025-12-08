@@ -27,8 +27,8 @@
           <ion-card-content>
             <ion-list>
               <ion-item *ngFor="let item of cat.items" (click)="openItem(item)">
-                <ion-thumbnail slot="start" *ngIf="item.image">
-                  <img [lazyLoad]="item.image" [thumbnail]="true" [alt]="item.name" />
+                <ion-thumbnail slot="start" *ngIf="item.thumbnailImage">
+                  <img [lazyLoad]="item.thumbnailImage" [thumbnail]="true" [alt]="item.name" />
                 </ion-thumbnail>
                 <ion-label>
                   <h2>{{ item.name }}</h2>

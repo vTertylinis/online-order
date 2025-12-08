@@ -22,6 +22,7 @@ import {
   IonCheckbox,
   IonTextarea,
   IonButton,
+  IonSpinner,
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
 import {
@@ -62,11 +63,13 @@ import { Router } from '@angular/router';
     IonListHeader,
     IonTextarea,
     IonButton,
+    IonSpinner,
   ],
 })
 export class ItemDetailPage {
   id: string | null = null;
   item: MenuItem | null = null;
+  imageLoading: boolean = true;
   sweetness: string = 'Σκέτο';
   size: string = 'Μονό';
   showSizeOptions: boolean = false;
