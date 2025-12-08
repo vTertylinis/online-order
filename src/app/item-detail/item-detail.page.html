@@ -8,12 +8,17 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-card>
+  <div *ngIf="!item" class="loading-container">
+    <ion-spinner name="crescent"></ion-spinner>
+    <p>Φόρτωση...</p>
+  </div>
+  
+  <ion-card *ngIf="item">
     <ion-card-header>
-      <ion-card-title>{{ translate(item?.name || '') || ('Item ID: ' + id) }}</ion-card-title>
+      <ion-card-title>{{ translate(item.name || '') || ('Item ID: ' + id) }}</ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      <div *ngIf="item; else missing">
+      <div>
         <div *ngIf="item.image" class="image-wrap">
           <div *ngIf="imageLoading" class="spinner-container">
             <ion-spinner name="crescent"></ion-spinner>
@@ -161,9 +166,12 @@
           <ion-button color="primary" (click)="addToCart()" [disabled]="!canAddToCart">Προσθήκη Στο Καλάθι</ion-button>
         </div>
       </div>
-      <ng-template #missing>
-        <p>Λεπτομέρειες για το αντικείμενο με αναγνωριστικό <strong>{{ id }}</strong> δεν είναι διαθέσιμες.</p>
-      </ng-template>
+    </ion-card-content>
+  </ion-card>
+  
+  <ion-card *ngIf="!item && id">
+    <ion-card-content>
+      <p>Λεπτομέρειες για το αντικείμενο με αναγνωριστικό <strong>{{ id }}</strong> δεν είναι διαθέσιμες.</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

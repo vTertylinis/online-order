@@ -127,6 +127,20 @@ ion-item small {
   padding-top: calc(128px + var(--ion-safe-area-top, 0px));
 }
 
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  gap: 12px;
+  
+  p {
+    color: var(--ion-color-medium);
+    margin: 0;
+  }
+}
+
 ion-thumbnail img {
   object-fit: cover;
   width: 100%;

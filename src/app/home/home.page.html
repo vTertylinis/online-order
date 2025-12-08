@@ -17,7 +17,12 @@
   </div>
 
   <div class="menu-list">
-    <ion-list>
+    <div *ngIf="categories.length === 0" class="loading-container">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Φόρτωση μενού...</p>
+    </div>
+    
+    <ion-list *ngIf="categories.length > 0">
       <ng-container *ngFor="let cat of categories; let i = index">
         <ion-card id="cat-{{i}}">
           <ion-card-header>
