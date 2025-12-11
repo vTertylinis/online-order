@@ -25,8 +25,6 @@
           </div>
           <img class="item-image" [src]="item.image" alt="{{ item.name }}" (load)="imageLoading = false" (error)="imageLoading = false" [style.display]="imageLoading ? 'none' : 'block'" />
         </div>
-          <p><strong>Όνομα:</strong> {{ translate(item.name) }}</p>
-        <p *ngIf="item.price !== undefined"><strong>Τιμή:</strong> {{ item.price | currency:'EUR' }}</p>
         <p *ngIf="item.description || item.desc"><strong>Περιγραφή:</strong> {{ translate(item.desc || item.description || '') }}</p>
         <hr />
         <div *ngIf="item.category === 'COFFEES'">

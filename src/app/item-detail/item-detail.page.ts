@@ -139,12 +139,12 @@ export class ItemDetailPage {
     const sweetIds = [53, 106];
     this.showSavoryExtras = savoryIds.includes(idCandidate);
     this.showSweetExtras = sweetIds.includes(idCandidate);
-    this.showSoftDrinks = idCandidate === 200 || idCandidate === 202;
+    this.showSoftDrinks = idCandidate === 199 || idCandidate === 200 || idCandidate === 202;
 
-    // Initialize soft drinks list for ID 200 and 202
+    // Initialize soft drinks list for ID 199, 200 and 202
     if (this.showSoftDrinks) {
       // Set required count based on item ID
-      this.REQUIRED_SOFT_DRINKS_COUNT = idCandidate === 200 ? 2 : 1;
+      this.REQUIRED_SOFT_DRINKS_COUNT = idCandidate === 199 || idCandidate === 200 ? 2 : 1;
       
       const softDrinkIds = [15, 16, 17, 18, 19, 20, 21, 22, 24, 31];
       this.softDrinks = softDrinkIds
@@ -221,23 +221,19 @@ export class ItemDetailPage {
   onSweetnessChange(event: any) {
     const newVal = event?.detail?.value ?? event;
     this.sweetness = newVal;
-    console.log('sweetness changed ->', this.sweetness);
   }
 
   onSizeChange(event: any) {
     const newVal = event?.detail?.value ?? event;
     this.size = newVal;
-    console.log('size changed ->', this.size);
   }
 
   selectSize(value: string) {
     this.size = value;
-    console.log('selectSize ->', value);
   }
 
   selectSweetness(value: string) {
     this.sweetness = value;
-    console.log('selectSweetness ->', value);
   }
 
   addToCart() {
@@ -322,11 +318,6 @@ export class ItemDetailPage {
     selected?: boolean;
   }) {
     ingredient.selected = !!ingredient.selected;
-    console.log(
-      'ingredient selection changed ->',
-      ingredient.name,
-      ingredient.selected
-    );
   }
 
   onSweetSelectionChange(ingredient: {
@@ -335,11 +326,6 @@ export class ItemDetailPage {
     selected?: boolean;
   }) {
     ingredient.selected = !!ingredient.selected;
-    console.log(
-      'sweet ingredient selection changed ->',
-      ingredient.name,
-      ingredient.selected
-    );
   }
 
   filterSweetIngredients() {
@@ -394,6 +380,5 @@ export class ItemDetailPage {
     if (totalWithoutCurrent + newQty > this.REQUIRED_SOFT_DRINKS_COUNT) return;
 
     drink.quantity = newQty;
-    console.log('soft drink quantity changed ->', drink.name, drink.quantity);
   }
 }

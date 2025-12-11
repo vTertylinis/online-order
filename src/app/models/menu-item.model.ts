@@ -192,6 +192,7 @@ export const menuItems: MenuItem[] = [
   { id: 177, name: 'Mix Grill', price: 18, category: 'LENT_MENU', description: 'MIX_GRILL_LENT_DESC' },
   { id: 178, name: 'Πατάτες Country', price: 6, category: 'LENT_MENU', description: 'COUNTRY_POTATOES_DESC' },
 
+  { id: 199, name: 'Family Box', price: 23.9, category: 'COMBO_OFFERS', description: 'Family_1_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/family.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/family150.webp' },
   { id: 200, name: 'BURGER_BBQ_DOUBLE_CHEESE_SOFT_DRINKS', price: 19, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_1_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/2burger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/2burger.webp' },
   { id: 201, name: 'HOT_DOG_X2_SWEET_CREPE', price: 12, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_2_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/2hotdog.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/2hotdog.webp' },
   { id: 202, name: 'DOUBLE_SMASH_SOFT_DRINK_SWEET_CREPE', price: 15, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_3_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/1burger+(1).webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/1burger+(1).webp' },

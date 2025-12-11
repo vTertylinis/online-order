@@ -88,6 +88,19 @@ ion-item small {
   color: var(--ion-color-medium);
 }
 
+/* Clamp long item descriptions to 2 lines and show ellipsis */
+.item-desc {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: normal;
+  margin: 0; /* ensure spacing matches headings */
+  color: var(--ion-color-medium);
+  font-size: 14px;
+}
+
 .chip-bar-wrapper {
   position: fixed;
   left: 0;

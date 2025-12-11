@@ -37,7 +37,7 @@
                 </ion-thumbnail>
                 <ion-label>
                   <h2>{{ item.name }}</h2>
-                  <p *ngIf="item.desc">{{ item.desc }}</p>
+                  <p *ngIf="item.desc" class="item-desc">{{ item.desc }}</p>
                   <small *ngIf="item.price">{{ item.price | currency:'EUR' }}</small>
                 </ion-label>
               </ion-item>
