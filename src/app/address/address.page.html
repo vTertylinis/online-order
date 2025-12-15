@@ -8,14 +8,36 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <ion-item>
-      <ion-label position="floating">Διεύθυνση</ion-label>
-      <ion-input formControlName="address" inputmode="text"></ion-input>
+  <ion-segment [(ngModel)]="addressMode" (ionChange)="onAddressModeChange()">
+    <ion-segment-button value="manual">
+      <ion-label>Γράψε Διεύθυνση</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="map">
+      <ion-label>Χάρτης</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+  <div *ngIf="addressMode === 'map'" class="map-container">
+    <div #mapElement class="map"></div>
+    <ion-note class="map-instruction">Πάτησε στο χάρτη για να επιλέξεις την τοποθεσία σου</ion-note>
+    <ion-item *ngIf="selectedLocation">
+      <ion-label class="ion-text-wrap">
+        <p><strong>Επιλεγμένη Τοποθεσία:</strong></p>
+        <p>{{selectedAddress || 'Lat: ' + selectedLocation.lat + ', Lng: ' + selectedLocation.lng}}</p>
+      </ion-label>
     </ion-item>
-    <ion-note color="danger" *ngIf="form.controls.address.invalid && form.controls.address.touched">
-      Υποχρεωτικό πεδίο.
-    </ion-note>
+  </div>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <div *ngIf="addressMode === 'manual'">
+      <ion-item>
+        <ion-label position="floating">Διεύθυνση</ion-label>
+        <ion-input formControlName="address" inputmode="text"></ion-input>
+      </ion-item>
+      <ion-note color="danger" *ngIf="form.controls.address.invalid && form.controls.address.touched">
+        Υποχρεωτικό πεδίο.
+      </ion-note>
+    </div>
 
     <ion-item>
       <ion-label position="floating">Όροφος</ion-label>
@@ -38,6 +60,6 @@
       Εισάγετε έγκυρο αριθμό κινητού.
     </ion-note>
 
-    <ion-button expand="block" type="submit" [disabled]="form.invalid" class="submit-btn">Αποστολή παραγγελίας</ion-button>
+    <ion-button expand="block" type="submit" [disabled]="form.invalid || (addressMode === 'map' && !selectedLocation)" class="submit-btn">Αποστολή παραγγελίας</ion-button>
   </form>
 </ion-content>
