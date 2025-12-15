@@ -25,6 +25,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
+import { GoogleMapsLoaderService } from '../services/google-maps-loader.service';
 
 declare var google: any;
 
@@ -61,6 +62,7 @@ export class AddressPage implements AfterViewInit {
   private alertCtrl = inject(AlertController);
   private http = inject(HttpClient);
   private cartService = inject(CartService);
+  private mapsLoader = inject(GoogleMapsLoaderService);
 
   addressMode: 'manual' | 'map' = 'manual';
   map?: google.maps.Map;
@@ -75,18 +77,18 @@ export class AddressPage implements AfterViewInit {
     phone: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{9,14}$/)]]
   });
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
     // Initialize map when map mode is selected
     if (this.addressMode === 'map') {
-      this.initMap();
+      await this.initMap();
     }
   }
 
-  onAddressModeChange() {
+  async onAddressModeChange() {
     if (this.addressMode === 'map') {
       // Initialize map after a short delay to ensure the element is rendered
-      setTimeout(() => {
-        this.initMap();
+      setTimeout(async () => {
+        await this.initMap();
       }, 100);
       
       // Make address field optional when using map
@@ -99,13 +101,16 @@ export class AddressPage implements AfterViewInit {
     }
   }
 
-  initMap() {
+  async initMap() {
     if (!this.mapElement || !this.mapElement.nativeElement) {
       return;
     }
 
-    if (typeof google === 'undefined' || !google.maps) {
-      console.error('Google Maps JavaScript API not loaded');
+    // Ensure Google Maps JS API is loaded with the configured key
+    try {
+      await this.mapsLoader.load();
+    } catch (e) {
+      console.error('Google Maps JavaScript API not loaded', e);
       return;
     }
 
