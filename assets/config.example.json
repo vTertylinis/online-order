@@ -1,0 +1,4 @@
+{
+  "googleApiKey": "your-publicly-restricted-client-key-here",
+  "googleMapsLibraries": "places"
+}
