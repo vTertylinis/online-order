@@ -1,26 +1,21 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { firstValueFrom } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 export interface AppConfig {
-  googleApiKey?: string;
+  googleMapsApiKey?: string;
   googleMapsLibraries?: string; // e.g., "places"
 }
 
 @Injectable({ providedIn: 'root' })
 export class ConfigService {
-  private config: AppConfig = {};
+  private config: AppConfig = {
+    googleMapsApiKey: environment.googleMapsApiKey,
+    googleMapsLibraries: 'places',
+  };
 
-  constructor(private http: HttpClient) {}
-
+  // Kept for APP_INITIALIZER compatibility; now a no-op
   async load(): Promise<void> {
-    try {
-      // Load runtime config if present; ignore if missing
-      const cfg = await firstValueFrom(this.http.get<AppConfig>('assets/config.json', { withCredentials: false }));
-      this.config = cfg || {};
-    } catch {
-      this.config = {};
-    }
+    return Promise.resolve();
   }
 
   get(key: keyof AppConfig): string | undefined {
