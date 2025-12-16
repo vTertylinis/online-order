@@ -25,6 +25,7 @@ import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
+import { GoogleMapsLoaderService } from '../services/google-maps-loader.service';
 
 declare var google: any;
 
@@ -61,6 +62,7 @@ export class AddressPage implements AfterViewInit {
   private alertCtrl = inject(AlertController);
   private http = inject(HttpClient);
   private cartService = inject(CartService);
+  private mapsLoader = inject(GoogleMapsLoaderService);
 
   addressMode: 'manual' | 'map' = 'manual';
   map?: google.maps.Map;
@@ -99,13 +101,15 @@ export class AddressPage implements AfterViewInit {
     }
   }
 
-  initMap() {
+  async initMap() {
     if (!this.mapElement || !this.mapElement.nativeElement) {
       return;
     }
 
-    if (typeof google === 'undefined' || !google.maps) {
-      console.error('Google Maps JavaScript API not loaded');
+    try {
+      await this.mapsLoader.load();
+    } catch (e) {
+      console.error('Google Maps JavaScript API failed to load', e);
       return;
     }
 

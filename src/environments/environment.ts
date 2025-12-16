@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Public, restricted browser key for development (HTTP referrer restricted)
+  googleMapsApiKey: 'AIzaSyDhKTaP09AGWGYGDGbDvgWD_EBoL-X7-w0'
 };
 
 /*
