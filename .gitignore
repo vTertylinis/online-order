@@ -1,8 +1,0 @@
-# Dependencies
-node_modules/
-
-# Sensitive configuration files
-assets/config.json
-
-# Keep the example config as a template
-!assets/config.example.json
