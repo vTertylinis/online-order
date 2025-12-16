@@ -68,3 +68,12 @@ testem.log
 # System files
 .DS_Store
 Thumbs.db
+
+# Environment files (never commit real secrets)
+.env
+.env.*
+.env.local
+.env*.local
+.envrc
+.direnv/
+/src/assets/config.json

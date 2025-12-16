@@ -77,18 +77,18 @@ export class AddressPage implements AfterViewInit {
     phone: ['', [Validators.required, Validators.pattern(/^\+?[0-9]{9,14}$/)]]
   });
 
-  ngAfterViewInit() {
+  async ngAfterViewInit() {
     // Initialize map when map mode is selected
     if (this.addressMode === 'map') {
-      this.initMap();
+      await this.initMap();
     }
   }
 
-  onAddressModeChange() {
+  async onAddressModeChange() {
     if (this.addressMode === 'map') {
       // Initialize map after a short delay to ensure the element is rendered
-      setTimeout(() => {
-        this.initMap();
+      setTimeout(async () => {
+        await this.initMap();
       }, 100);
       
       // Make address field optional when using map
