@@ -272,7 +272,7 @@ export class AddressPage implements AfterViewInit {
       
       const alert = await this.alertCtrl.create({
         header: 'Επιτυχία',
-        message: 'Λάβαμε με επιτυχία την παραγγελία σας και θα επικοινωνήσουμε μαζί σας για επιβεβαίωση.',
+        message: 'Η παραγγελία σας καταχωρήθηκε με επιτυχία. Αν χρειαστεί κάποια διευκρίνιση, θα επικοινωνήσουμε μαζί σας.',
         buttons: ['OK']
       });
       await alert.present();
