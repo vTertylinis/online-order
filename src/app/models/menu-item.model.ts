@@ -250,7 +250,6 @@ export const sweetIngredients: Array<{ name: string; price: number; selected?: b
   { name: 'Φράουλα Πραλίνα', price: 0.5 },
   { name: 'Παγωτό', price: 2.5 },
   { name: 'Μπισκότο Oreo', price: 0.5 },
-  { name: 'Φράουλα Κομματάκια', price: 1 },
   { name: 'Bueno Κομματάκια', price: 1 },
   { name: 'Καρύδι', price: 0.5 },
   { name: 'Φουντούκι', price: 0.5 },
