@@ -237,6 +237,7 @@ export const ingredients: Array<{ name: string; price: number; selected?: boolea
   { name: 'πάπρικα', price: 0.5 },
   { name: 'μανούρι', price: 0.5 },
   { name: 'λουκάνικο', price: 1 },
+  { name: 'μελιτζανοσαλάτα', price: 0.5 },
   { name: 'σαλάμι αέρος', price: 0.5 }
 ];
 
