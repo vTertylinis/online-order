@@ -239,6 +239,16 @@ export class ItemDetailPage {
   addToCart() {
     if (!this.item) return;
 
+    // Validation for items 51, 52, 53: require at least one ingredient
+    const idNum = this.id ? Number(this.id) : null;
+    if ([51, 52, 53].includes(idNum as number)) {
+      const hasSelectedIngredient = this.ingredients.some((i) => i.selected) || this.sweetIngredients.some((i) => i.selected);
+      if (!hasSelectedIngredient) {
+        alert('Παρακαλώ επιλέξτε τουλάχιστον ένα συστατικό από τα επιλογές πρόσθετων');
+        return;
+      }
+    }
+
     // Validation for ID 200: require exactly 2 soft drinks
     if (this.showSoftDrinks) {
       const selectedCount = this.selectedSoftDrinksCount;
@@ -359,6 +369,12 @@ export class ItemDetailPage {
   get canAddToCart(): boolean {
     if (this.showSoftDrinks) {
       return this.selectedSoftDrinksCount === this.REQUIRED_SOFT_DRINKS_COUNT;
+    }
+    // For items 51, 52, 53: require at least one ingredient
+    const idNum = this.id ? Number(this.id) : null;
+    if ([51, 52, 53].includes(idNum as number)) {
+      const hasSelectedIngredient = this.ingredients.some((i) => i.selected) || this.sweetIngredients.some((i) => i.selected);
+      return hasSelectedIngredient;
     }
     return true;
   }

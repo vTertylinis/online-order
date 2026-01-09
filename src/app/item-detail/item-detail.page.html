@@ -27,6 +27,7 @@
         </div>
         <p *ngIf="item.description || item.desc"><strong>Περιγραφή:</strong> {{ translate(item.desc || item.description || '') }}</p>
         <hr />
+
         <div *ngIf="item.category === 'COFFEES'">
           <ion-list>
             <ion-list-header>
@@ -56,6 +57,7 @@
             </ion-radio-group>
           </ion-list>
         </div>
+
         <div *ngIf="showSizeOptions" style="margin-top:12px;">
           <ion-list>
             <ion-list-header>
@@ -78,6 +80,7 @@
             </ion-radio-group>
           </ion-list>
         </div>
+
         <div *ngIf="showSavoryExtras" style="margin-top:12px;">
           <ion-list>
             <ion-list-header>
