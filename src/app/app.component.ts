@@ -9,3 +9,4 @@ import { IonApp, IonRouterOutlet } from '@ionic/angular/standalone';
 export class AppComponent {
   constructor() {}
 }
+// ng deploy --cname=21ierissos.gr
