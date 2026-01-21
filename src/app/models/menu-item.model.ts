@@ -145,7 +145,7 @@ export const menuItems: MenuItem[] = [
   { id: 135, name: 'LINGUINI_OCTOPUS', price: 18, category: 'PASTA', description: 'LINGUINI_OCTOPUS_DESC' },
 
   { id: 136, name: 'HOT_DOG', price: 6, category: 'HOTDOG_BURGERS', description: 'HOT_DOG_DESC' },
-  { id: 137, name: 'BURGER_BBQ', price: 9, category: 'HOTDOG_BURGERS', description: 'BURGER_BBQ_DESC' },
+  { id: 137, name: 'BURGER_BBQ', price: 10, category: 'HOTDOG_BURGERS', description: 'BURGER_BBQ_DESC' },
   { id: 138, name: 'BURGER_CAESAR', price: 9, category: 'HOTDOG_BURGERS', description: 'BURGER_CAESAR_DESC' },
   { id: 139, name: 'BURGER_21', price: 10, category: 'HOTDOG_BURGERS', image: 'https://21images.s3.eu-north-1.amazonaws.com/burger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burger.webp', description: 'BURGER_21_DESC' },
   { id: 140, name: 'DOUBLE_CHEESE_BURGER', price: 10, category: 'HOTDOG_BURGERS', description: 'DOUBLE_CHEESE_BURGER_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/burgerCheese.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burgerCheese.webp' },
@@ -165,7 +165,7 @@ export const menuItems: MenuItem[] = [
   { id: 152, name: 'SALAD_GREEK', price: 8, category: 'SALADS', description: 'SALAD_GREEK_DESC' },
   { id: 153, name: 'CHEESE_PLATTER', price: 12, category: 'SALADS', description: 'CHEESE_PLATTER_DESC' },
 
-  { id: 154, name: 'PORK_PANSETTO', price: 15, category: 'MAIN_COURSES', description: 'PORK_PANSETTO_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/pansetomprizolaa.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pansetomprizolaa.webp' },
+  { id: 154, name: 'PORK_PANSETTO', price: 17, category: 'MAIN_COURSES', description: 'PORK_PANSETTO_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/pansetomprizolaa.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pansetomprizolaa.webp' },
   { id: 155, name: 'TORTILLA_PORK_GYRO', price: 6, category: 'MAIN_COURSES', description: 'TORTILLA_PORK_GYRO_DESC' },
   { id: 156, name: 'CHICKEN_NUGGETS', price: 11, category: 'MAIN_COURSES', image: 'https://21images.s3.eu-north-1.amazonaws.com/nuggets.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/nuggets.webp', description: 'CHICKEN_NUGGETS_DESC' },
   { id: 157, name: 'CHICKEN_NUGGETS_A_LA_CREME', price: 12, category: 'MAIN_COURSES', image: 'https://21images.s3.eu-north-1.amazonaws.com/alacreme.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/alacreme.webp', description: 'CHICKEN_NUGGETS_A_LA_CREME_DESC' },
