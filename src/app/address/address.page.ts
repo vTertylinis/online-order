@@ -277,6 +277,8 @@ export class AddressPage implements AfterViewInit {
       });
       await alert.present();
       await alert.onDidDismiss();
+      
+      this.router.navigateByUrl('/');
     } catch (error) {
       console.error('Error sending order:', error);
       
@@ -290,7 +292,5 @@ export class AddressPage implements AfterViewInit {
       this.router.navigateByUrl('/');
       return;
     }
-
-    this.router.navigateByUrl('/');
   }
 }
