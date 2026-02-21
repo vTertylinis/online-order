@@ -2,9 +2,9 @@
 
 ## Screenshots
 
-![Homepage](screenshots/photo3.png)
-![Cart](screenshots/photo1.png)
-![Item Info](screenshots/photo2.png)
+![Homepage](screenshots/photo3.PNG)
+![Cart](screenshots/photo1.PNG)
+![Item Info](screenshots/photo2.PNG)
 ![Address Screen](screenshots/photo4.png)
 
 This is a full-stack ordering platform built with Angular, Ionic and Node.js.
