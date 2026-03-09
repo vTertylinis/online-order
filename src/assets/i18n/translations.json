@@ -185,8 +185,8 @@
     "gr": "Club πανσέτας"
   },
 
-  "JUNIOR_1": { "en": "Junior 1", "gr": "Junior 1" },
-  "JUNIOR_2": { "en": "Junior 2", "gr": "Junior 2" },
+  "JUNIOR_1": { "en": "Junior 1", "gr": "Junior 1 (Burger)" },
+  "JUNIOR_2": { "en": "Junior 2", "gr": "Junior 2 (Nuggets)" },
 
   "OUZO_MEZE": { "en": "Ouzo & Meze", "gr": "Ούζο-Μεζέδες" },
   "PINSA": { "en": "Pinsa", "gr": "Pinsa" },
