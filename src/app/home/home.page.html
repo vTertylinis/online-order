@@ -1,4 +1,6 @@
 <ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onContentScroll($event)">
+
+  <!-- Fixed store header -->
   <div class="store-header">
     <div class="logo-container">
       <img src="https://21images.s3.eu-north-1.amazonaws.com/21_192x192.webp" alt="Store Logo" class="store-logo" />
@@ -6,52 +8,75 @@
     </div>
   </div>
 
+  <!-- Sticky category filter chips -->
   <div class="chip-bar-wrapper">
     <div class="chip-bar">
-      <ng-container *ngFor="let cat of categories; let i = index">
-        <ion-chip (click)="scrollToCategory(i)" [class.selected]="selectedCategoryIndex === i">
-          <ion-label>{{ cat.name }}</ion-label>
-        </ion-chip>
-      </ng-container>
+      <ion-chip
+        *ngFor="let cat of categories; let i = index"
+        (click)="scrollToCategory(i)"
+        [class.selected]="selectedCategoryIndex === i">
+        {{ cat.name }}
+      </ion-chip>
     </div>
   </div>
 
   <div class="menu-list">
-    <div *ngIf="categories.length === 0" class="loading-container">
-      <ion-spinner name="crescent"></ion-spinner>
-      <p>Φόρτωση μενού...</p>
-    </div>
-    
-    <ion-list *ngIf="categories.length > 0">
-      <ng-container *ngFor="let cat of categories; let i = index">
-        <ion-card id="cat-{{i}}">
-          <ion-card-header>
-            <ion-card-title>{{ cat.name }}</ion-card-title>
-          </ion-card-header>
 
-          <ion-card-content>
-            <ion-list>
-              <ion-item *ngFor="let item of cat.items" (click)="openItem(item)">
-                <ion-thumbnail slot="start" *ngIf="item.thumbnailImage">
-                  <img [lazyLoad]="item.thumbnailImage" [thumbnail]="true" [alt]="item.name" />
-                </ion-thumbnail>
-                <ion-label>
-                  <h2>{{ item.name }}</h2>
-                  <p *ngIf="item.desc" class="item-desc">{{ item.desc }}</p>
-                  <small *ngIf="item.price">{{ item.price | currency:'EUR' }}</small>
-                </ion-label>
-              </ion-item>
-            </ion-list>
-          </ion-card-content>
-        </ion-card>
-      </ng-container>
-    </ion-list>
+    <!-- Skeleton loader while categories load -->
+    <div *ngIf="categories.length === 0" class="skeleton-wrap">
+      <div class="skeleton-card" *ngFor="let s of [0, 1, 2]">
+        <div class="skeleton-title pulse"></div>
+        <div class="skeleton-row pulse" *ngFor="let r of [0, 1, 2, 3]"></div>
+      </div>
+    </div>
+
+    <!-- Category sections -->
+    <div
+      class="category-section"
+      *ngFor="let cat of categories; let i = index"
+      id="cat-{{i}}">
+
+      <div class="category-header">
+        <span class="category-name">{{ cat.name }}</span>
+        <span class="category-badge">{{ cat.items.length }}</span>
+      </div>
+
+      <div class="menu-item" *ngFor="let item of cat.items" (click)="openItem(item)">
+        <!-- Thumbnail -->
+        <div class="item-thumb" *ngIf="item.thumbnailImage">
+          <img [lazyLoad]="item.thumbnailImage" [thumbnail]="true" [alt]="item.name" />
+        </div>
+        <!-- Placeholder icon for items without an image -->
+        <div class="item-thumb item-thumb--placeholder" *ngIf="!item.thumbnailImage">
+          <ion-icon [name]="cat.icon"></ion-icon>
+        </div>
+
+        <!-- Name & description -->
+        <div class="item-info">
+          <p class="item-name">{{ item.name }}</p>
+          <p *ngIf="item.desc" class="item-desc">{{ item.desc }}</p>
+        </div>
+
+        <!-- Price + quick-add button -->
+        <div class="item-right">
+          <span class="item-price" *ngIf="item.price">{{ item.price | currency:'EUR' }}</span>
+          <button
+            class="add-btn"
+            (click)="$event.stopPropagation(); openItem(item)"
+            [attr.aria-label]="'Add ' + item.name">
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+    </div>
   </div>
+
 </ion-content>
 
 <ion-fab slot="fixed" vertical="bottom" horizontal="end">
-  <ion-fab-button routerLink="/cart" aria-label="Open cart">
+  <ion-fab-button routerLink="/cart" aria-label="Open cart" [class.has-items]="cartCount > 0">
     <ion-icon name="cart"></ion-icon>
     <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
   </ion-fab-button>
- </ion-fab>
+</ion-fab>

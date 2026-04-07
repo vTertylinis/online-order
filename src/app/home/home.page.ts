@@ -2,24 +2,15 @@ import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angu
 import { Router, RouterLink } from '@angular/router';
 import {
   IonContent,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  IonList,
-  IonItem,
-  IonLabel,
-  IonThumbnail,
   IonChip,
   IonFab,
   IonFabButton,
   IonIcon,
-  IonSpinner,
   AlertController,
 } from '@ionic/angular/standalone';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { cart } from 'ionicons/icons';
+import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline } from 'ionicons/icons';
 import { CartService } from '../services/cart.service';
 // @ts-ignore - allow importing JSON translation file (project may enable resolveJsonModule)
 import translations from '../../assets/i18n/translations.json';
@@ -27,8 +18,30 @@ import { MenuItem, menuItems } from '../models/menu-item.model';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
 import { LazyImageDirective } from '../utils/lazy-image.directive';
 
+const CATEGORY_ICONS: Record<string, string> = {
+  TOASTS_CREPS:   'restaurant-outline',
+  HOTDOG_BURGERS: 'fast-food-outline',
+  BAO_BUNS:       'restaurant-outline',
+  MAIN_COURSES:   'restaurant-outline',
+  CLUB_SANDWICH:  'restaurant-outline',
+  JUNIOR_MENU:    'happy-outline',
+  PINSA:          'pizza-outline',
+  PASTA:          'restaurant-outline',
+  SALADS:         'leaf-outline',
+  BREAKFAST:      'sunny-outline',
+  LENT_MENU:      'leaf-outline',
+  COFFEES:        'cafe-outline',
+  SOFT_DRINKS:    'water-outline',
+  JUICES:         'nutrition-outline',
+  BEERS:          'beer-outline',
+  DRINKS_WINES:   'wine-outline',
+  Cocktails:      'wine-outline',
+  COMBO_OFFERS:   'gift-outline',
+};
+
 interface Category {
   name: string;
+  icon: string;
   items: MenuItem[];
 }
 
@@ -38,19 +51,10 @@ interface Category {
   styleUrls: ['home.page.scss'],
   imports: [
     IonContent,
-    IonCard,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
-    IonList,
-    IonItem,
-    IonLabel,
-    IonThumbnail,
     IonChip,
     IonFab,
     IonFabButton,
     IonIcon,
-    IonSpinner,
     CommonModule,
     CurrencyPipe,
     RouterLink,
@@ -96,7 +100,7 @@ export class HomePage implements OnInit, AfterViewInit {
     private alertController: AlertController
   ) {
     // Ensure the cart icon is registered for IonIcon usage
-    addIcons({ cart });
+    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline });
   }
 
   ngOnInit(): void {
@@ -240,7 +244,7 @@ export class HomePage implements OnInit, AfterViewInit {
     if (map.has('COMBO_OFFERS')) {
       const translatedCategory = lookup('COMBO_OFFERS');
       const pretty = translatedCategory || 'Combo Offers';
-      result.push({ name: pretty as any, items: map.get('COMBO_OFFERS')! });
+      result.push({ name: pretty as any, icon: CATEGORY_ICONS['COMBO_OFFERS'] ?? 'restaurant-outline', items: map.get('COMBO_OFFERS')! });
       map.delete('COMBO_OFFERS');
     }
     
@@ -250,7 +254,7 @@ export class HomePage implements OnInit, AfterViewInit {
       const pretty = translatedCategory
         ? (translatedCategory as any)
         : key.toLowerCase().replace(/_/g, ' ').replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1));
-      result.push({ name: pretty as any, items });
+      result.push({ name: pretty as any, icon: CATEGORY_ICONS[key] ?? 'restaurant-outline', items });
     }
     this.categories = result;
   }
