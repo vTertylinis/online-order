@@ -1,65 +1,103 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/cart"></ion-back-button>
+      <ion-back-button defaultHref="/cart" text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>Διεύθυνση</ion-title>
+    <ion-title>Στοιχεία Παράδοσης</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-segment [(ngModel)]="addressMode" (ionChange)="onAddressModeChange()">
-    <ion-segment-button value="manual">
-      <ion-label>Γράψε Διεύθυνση</ion-label>
-    </ion-segment-button>
-    <ion-segment-button value="map">
-      <ion-label>Χάρτης</ion-label>
-    </ion-segment-button>
-  </ion-segment>
+<ion-content>
 
-  <div *ngIf="addressMode === 'map'" class="map-container">
-    <div #mapElement class="map"></div>
-    <ion-note class="map-instruction">Πάτησε στο χάρτη για να επιλέξεις την τοποθεσία σου</ion-note>
-    <ion-item *ngIf="selectedLocation">
-      <ion-label class="ion-text-wrap">
-        <p><strong>Επιλεγμένη Τοποθεσία:</strong></p>
-        <p>{{selectedAddress || 'Lat: ' + selectedLocation.lat + ', Lng: ' + selectedLocation.lng}}</p>
-      </ion-label>
-    </ion-item>
+  <!-- Mode toggle -->
+  <div class="mode-toggle">
+    <button
+      class="mode-btn"
+      [class.active]="addressMode === 'manual'"
+      (click)="addressMode = 'manual'; onAddressModeChange()">
+      <ion-icon name="create-outline"></ion-icon>
+      Γράψε Διεύθυνση
+    </button>
+    <button
+      class="mode-btn"
+      [class.active]="addressMode === 'map'"
+      (click)="addressMode = 'map'; onAddressModeChange()">
+      <ion-icon name="map-outline"></ion-icon>
+      Χάρτης
+    </button>
   </div>
 
-  <form [formGroup]="form" (ngSubmit)="submit()">
-    <div *ngIf="addressMode === 'manual'">
-      <ion-item>
-        <ion-label position="floating">Διεύθυνση</ion-label>
-        <ion-input formControlName="address" inputmode="text"></ion-input>
-      </ion-item>
-      <ion-note color="danger" *ngIf="form.controls.address.invalid && form.controls.address.touched">
-        Υποχρεωτικό πεδίο.
-      </ion-note>
+  <!-- Map section -->
+  <div *ngIf="addressMode === 'map'" class="map-section">
+    <div #mapElement class="map"></div>
+    <div class="map-hint">
+      <ion-icon name="location-outline"></ion-icon>
+      Πάτησε στο χάρτη για να επιλέξεις τη διεύθυνσή σου
+    </div>
+    <div *ngIf="selectedLocation" class="selected-location">
+      <ion-icon name="checkmark-circle" color="success"></ion-icon>
+      <span>{{ selectedAddress || ('Lat: ' + selectedLocation.lat.toFixed(5) + ', Lng: ' + selectedLocation.lng.toFixed(5)) }}</span>
+    </div>
+  </div>
+
+  <!-- Contact & delivery details form -->
+  <form [formGroup]="form" (ngSubmit)="submit()" class="details-form">
+
+    <p class="section-label">Στοιχεία επικοινωνίας</p>
+
+    <!-- Name -->
+    <div class="field-wrap" [class.error]="form.controls.name.invalid && form.controls.name.touched">
+      <ion-icon name="person-outline" class="field-icon"></ion-icon>
+      <div class="field-inner">
+        <label class="field-label">Όνομα *</label>
+        <ion-input formControlName="name" inputmode="text" placeholder="π.χ. Γιάννης Ευθυμιάδης"></ion-input>
+      </div>
+    </div>
+    <p class="field-error" *ngIf="form.controls.name.invalid && form.controls.name.touched">Συμπλήρωσε το όνομά σου.</p>
+
+    <!-- Phone -->
+    <div class="field-wrap" [class.error]="form.controls.phone.invalid && form.controls.phone.touched">
+      <ion-icon name="call-outline" class="field-icon"></ion-icon>
+      <div class="field-inner">
+        <label class="field-label">Κινητό *</label>
+        <ion-input formControlName="phone" type="tel" inputmode="tel" placeholder="69XXXXXXXX"></ion-input>
+      </div>
+    </div>
+    <p class="field-error" *ngIf="form.controls.phone.invalid && form.controls.phone.touched">Εισάγετε έγκυρο αριθμό.</p>
+
+    <p class="section-label">Στοιχεία διεύθυνσης</p>
+
+    <!-- Address (manual mode only) -->
+    <div
+      *ngIf="addressMode === 'manual'"
+      class="field-wrap"
+      [class.error]="form.controls.address.invalid && form.controls.address.touched">
+      <ion-icon name="home-outline" class="field-icon"></ion-icon>
+      <div class="field-inner">
+        <label class="field-label">Διεύθυνση *</label>
+        <ion-input formControlName="address" inputmode="text" placeholder="π.χ. Αγίου Δημητρίου 5"></ion-input>
+      </div>
+    </div>
+    <p class="field-error" *ngIf="addressMode === 'manual' && form.controls.address.invalid && form.controls.address.touched">Συμπλήρωσε τη διεύθυνση.</p>
+
+    <!-- Floor -->
+    <div class="field-wrap">
+      <ion-icon name="layers-outline" class="field-icon"></ion-icon>
+      <div class="field-inner">
+        <label class="field-label">Όροφος</label>
+        <ion-input formControlName="floor" inputmode="numeric" placeholder="π.χ. 2 (προαιρετικό)"></ion-input>
+      </div>
     </div>
 
-    <ion-item>
-      <ion-label position="floating">Όροφος</ion-label>
-      <ion-input formControlName="floor" inputmode="numeric"></ion-input>
-    </ion-item>
+    <!-- Submit -->
+    <button
+      class="submit-btn"
+      type="submit"
+      [disabled]="form.invalid || (addressMode === 'map' && !selectedLocation)">
+      <ion-icon name="send-outline"></ion-icon>
+      Αποστολή Παραγγελίας
+    </button>
 
-    <ion-item>
-      <ion-label position="floating">Όνομα</ion-label>
-      <ion-input formControlName="name" inputmode="text"></ion-input>
-    </ion-item>
-    <ion-note color="danger" *ngIf="form.controls.name.invalid && form.controls.name.touched">
-      Υποχρεωτικό πεδίο.
-    </ion-note>
-
-    <ion-item>
-      <ion-label position="floating">Κινητό</ion-label>
-      <ion-input formControlName="phone" type="tel" inputmode="tel"></ion-input>
-    </ion-item>
-    <ion-note color="danger" *ngIf="form.controls.phone.invalid && form.controls.phone.touched">
-      Εισάγετε έγκυρο αριθμό κινητού.
-    </ion-note>
-
-    <ion-button expand="block" type="submit" [disabled]="form.invalid || (addressMode === 'map' && !selectedLocation)" class="submit-btn">Αποστολή παραγγελίας</ion-button>
   </form>
+
 </ion-content>

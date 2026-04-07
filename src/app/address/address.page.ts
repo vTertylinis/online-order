@@ -1,6 +1,6 @@
 /// <reference types="google.maps" />
 
-import { Component, inject, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, inject, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -11,16 +11,16 @@ import {
   IonBackButton, 
   IonTitle, 
   IonContent, 
-  IonItem, 
-  IonLabel, 
-  IonInput, 
-  IonNote, 
-  IonButton,
-  IonSegment,
-  IonSegmentButton,
+  IonInput,
+  IonIcon,
   ToastController,
   AlertController 
 } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import {
+  createOutline, mapOutline, locationOutline, checkmarkCircle,
+  personOutline, callOutline, homeOutline, layersOutline, sendOutline
+} from 'ionicons/icons';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
@@ -42,13 +42,8 @@ declare var google: any;
     IonBackButton,
     IonTitle,
     IonContent,
-    IonItem,
-    IonLabel,
     IonInput,
-    IonNote,
-    IonButton,
-    IonSegment,
-    IonSegmentButton
+    IonIcon,
   ],
   templateUrl: './address.page.html',
   styleUrls: ['./address.page.scss']
@@ -63,6 +58,13 @@ export class AddressPage implements AfterViewInit {
   private http = inject(HttpClient);
   private cartService = inject(CartService);
   private mapsLoader = inject(GoogleMapsLoaderService);
+
+  constructor() {
+    addIcons({
+      createOutline, mapOutline, locationOutline, checkmarkCircle,
+      personOutline, callOutline, homeOutline, layersOutline, sendOutline
+    });
+  }
 
   addressMode: 'manual' | 'map' = 'manual';
   map?: google.maps.Map;
