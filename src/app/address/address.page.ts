@@ -27,6 +27,8 @@ import { CartService } from '../services/cart.service';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
 import { GoogleMapsLoaderService } from '../services/google-maps-loader.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import elMenu from '../../assets/i18n/el/menu.json';
+import elItemDetail from '../../assets/i18n/el/item-detail.json';
 
 declare var google: any;
 
@@ -301,12 +303,17 @@ export class AddressPage implements AfterViewInit {
 
   /** Resolve a namespaced key (e.g. 'menu.HELLENIKOS') from the Greek ('el') translations. */
   private elTranslation(namespacedKey: string): string {
-    const elTrans = (this.translateService as any).translations?.['el'];
-    if (!elTrans) return namespacedKey;
-    const parts = namespacedKey.split('.');
-    let val: any = elTrans;
+    const dotIdx = namespacedKey.indexOf('.');
+    if (dotIdx === -1) return namespacedKey;
+    const ns = namespacedKey.slice(0, dotIdx);
+    const rest = namespacedKey.slice(dotIdx + 1);
+    const source: Record<string, unknown> =
+      ns === 'menu' ? elMenu as Record<string, unknown> :
+      ns === 'item-detail' ? elItemDetail as Record<string, unknown> : {};
+    const parts = rest.split('.');
+    let val: unknown = source;
     for (const part of parts) {
-      if (val && typeof val === 'object') val = val[part];
+      if (val && typeof val === 'object') val = (val as Record<string, unknown>)[part];
       else return namespacedKey;
     }
     return typeof val === 'string' ? val : namespacedKey;
