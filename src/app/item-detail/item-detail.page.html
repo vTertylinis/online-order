@@ -3,14 +3,14 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Λεπτομέρειες προϊόντος</ion-title>
+    <ion-title>{{ 'item-detail.TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="ion-padding">
   <div *ngIf="!item" class="loading-container">
     <ion-spinner name="crescent"></ion-spinner>
-    <p>Φόρτωση...</p>
+    <p>{{ 'item-detail.LOADING' | translate }}</p>
   </div>
   
   <ion-card *ngIf="item">
@@ -25,34 +25,34 @@
           </div>
           <img class="item-image" [src]="item.image" alt="{{ item.name }}" (load)="imageLoading = false" (error)="imageLoading = false" [style.display]="imageLoading ? 'none' : 'block'" />
         </div>
-        <p *ngIf="item.description || item.desc"><strong>Περιγραφή:</strong> {{ translate(item.desc || item.description || '') }}</p>
+        <p *ngIf="item.description || item.desc"><strong>{{ 'item-detail.DESCRIPTION' | translate }}:</strong> {{ translate(item.desc || item.description || '') }}</p>
         <hr />
 
         <div *ngIf="item.category === 'COFFEES'">
           <ion-list>
             <ion-list-header>
-              <ion-label>Επιλέξτε γλυκύτητα:</ion-label>
+              <ion-label>{{ 'item-detail.SWEETNESS.LABEL' | translate }}</ion-label>
             </ion-list-header>
             <ion-radio-group [(ngModel)]="sweetness" name="sweetness" required (ionChange)="onSweetnessChange($event)">
-              <ion-item (click)="selectSweetness('Σκέτο')">
-                <ion-label>Σκέτο</ion-label>
-                <ion-radio slot="start" value="Σκέτο"></ion-radio>
+              <ion-item (click)="selectSweetness('PLAIN')">
+                <ion-label>{{ 'item-detail.SWEETNESS.PLAIN' | translate }}</ion-label>
+                <ion-radio slot="start" value="PLAIN"></ion-radio>
               </ion-item>
-              <ion-item (click)="selectSweetness('Ολίγη')">
-                <ion-label>Ολίγη</ion-label>
-                <ion-radio slot="start" value="Ολίγη"></ion-radio>
+              <ion-item (click)="selectSweetness('SLIGHT')">
+                <ion-label>{{ 'item-detail.SWEETNESS.SLIGHT' | translate }}</ion-label>
+                <ion-radio slot="start" value="SLIGHT"></ion-radio>
               </ion-item>
-              <ion-item (click)="selectSweetness('Μέτριο')">
-                <ion-label>Μέτριο</ion-label>
-                <ion-radio slot="start" value="Μέτριο"></ion-radio>
+              <ion-item (click)="selectSweetness('MEDIUM')">
+                <ion-label>{{ 'item-detail.SWEETNESS.MEDIUM' | translate }}</ion-label>
+                <ion-radio slot="start" value="MEDIUM"></ion-radio>
               </ion-item>
-              <ion-item (click)="selectSweetness('Πρός Γλυκό')">
-                <ion-label>Πρός Γλυκό</ion-label>
-                <ion-radio slot="start" value="Πρός Γλυκό"></ion-radio>
+              <ion-item (click)="selectSweetness('TOWARDS_SWEET')">
+                <ion-label>{{ 'item-detail.SWEETNESS.TOWARDS_SWEET' | translate }}</ion-label>
+                <ion-radio slot="start" value="TOWARDS_SWEET"></ion-radio>
               </ion-item>
-              <ion-item (click)="selectSweetness('Γλυκό')">
-                <ion-label>Γλυκό</ion-label>
-                <ion-radio slot="start" value="Γλυκό"></ion-radio>
+              <ion-item (click)="selectSweetness('SWEET')">
+                <ion-label>{{ 'item-detail.SWEETNESS.SWEET' | translate }}</ion-label>
+                <ion-radio slot="start" value="SWEET"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
@@ -61,21 +61,21 @@
         <div *ngIf="showSizeOptions" style="margin-top:12px;">
           <ion-list>
             <ion-list-header>
-              <ion-label>Επιλογή Μεγέθους</ion-label>
+              <ion-label>{{ 'item-detail.SIZE.LABEL' | translate }}</ion-label>
             </ion-list-header>
             <ion-radio-group [(ngModel)]="size" name="size" (ionChange)="onSizeChange($event)">
-              <ion-item (click)="selectSize('Μονό')">
-                <ion-label>Μονό</ion-label>
-                <ion-radio slot="start" value="Μονό"></ion-radio>
+              <ion-item (click)="selectSize('SINGLE')">
+                <ion-label>{{ 'item-detail.SIZE.SINGLE' | translate }}</ion-label>
+                <ion-radio slot="start" value="SINGLE"></ion-radio>
               </ion-item>
-              <ion-item (click)="selectSize('Διπλό')">
+              <ion-item (click)="selectSize('DOUBLE')">
                 <ion-label>
-                  Διπλό
+                  {{ 'item-detail.SIZE.DOUBLE' | translate }}
                   <span style="margin-left:8px; font-size:0.9em; color:var(--ion-color-medium);">
                     (+ {{ 0.5 | currency:'EUR' }})
                   </span>
                 </ion-label>
-                <ion-radio slot="start" value="Διπλό"></ion-radio>
+                <ion-radio slot="start" value="DOUBLE"></ion-radio>
               </ion-item>
             </ion-radio-group>
           </ion-list>
@@ -84,16 +84,15 @@
         <div *ngIf="showSavoryExtras" style="margin-top:12px;">
           <ion-list>
             <ion-list-header>
-              <ion-label>Πρόσθετα / Επιλογή Συστατικών</ion-label>
+              <ion-label>{{ 'item-detail.EXTRAS.SAVORY_LABEL' | translate }}</ion-label>
             </ion-list-header>
 
-            <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterIngredients()" placeholder="Αναζήτηση συστατικού"></ion-searchbar>
+            <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="filterIngredients()" [placeholder]="'item-detail.EXTRAS.SEARCH_SAVORY' | translate"></ion-searchbar>
 
-            <!-- Scrollable container for long ingredient lists -->
             <div class="ingredients-scroll">
               <ion-item *ngFor="let ing of filteredIngredients" (click)="ing.selected = !ing.selected; onSelectionChange(ing)">
                 <ion-label>
-                  <div>{{ ing.name }}</div>
+                  <div>{{ translate(ing.name) }}</div>
                 </ion-label>
                 <ion-checkbox slot="end" [(ngModel)]="ing.selected" (ionChange)="onSelectionChange(ing)" (click)="$event.stopPropagation()"></ion-checkbox>
               </ion-item>
@@ -101,19 +100,18 @@
           </ion-list>
         </div>
 
-        <!-- Sweet ingredients section -->
         <div *ngIf="showSweetExtras" style="margin-top:12px;">
           <ion-list>
             <ion-list-header>
-              <ion-label>Γλυκά / Επιλογή Συστατικών</ion-label>
+              <ion-label>{{ 'item-detail.EXTRAS.SWEET_LABEL' | translate }}</ion-label>
             </ion-list-header>
 
-            <ion-searchbar [(ngModel)]="sweetSearchTerm" (ionInput)="filterSweetIngredients()" placeholder="Αναζήτηση γλυκού συστατικού"></ion-searchbar>
+            <ion-searchbar [(ngModel)]="sweetSearchTerm" (ionInput)="filterSweetIngredients()" [placeholder]="'item-detail.EXTRAS.SEARCH_SWEET' | translate"></ion-searchbar>
 
             <div class="ingredients-scroll">
               <ion-item *ngFor="let ing of filteredSweetIngredients" (click)="ing.selected = !ing.selected; onSweetSelectionChange(ing)">
                 <ion-label>
-                  <div>{{ ing.name }}</div>
+                  <div>{{ translate(ing.name) }}</div>
                 </ion-label>
                 <ion-checkbox slot="end" [(ngModel)]="ing.selected" (ionChange)="onSweetSelectionChange(ing)" (click)="$event.stopPropagation()"></ion-checkbox>
               </ion-item>
@@ -121,14 +119,13 @@
           </ion-list>
         </div>
 
-        <!-- Soft drinks selection for ID 200/202 -->
         <div *ngIf="showSoftDrinks" style="margin-top:12px;">
           <ion-list>
             <ion-list-header>
               <ion-label>
-                Επιλέξτε {{ REQUIRED_SOFT_DRINKS_COUNT }} Αναψυκτικά
+                {{ 'item-detail.SOFT_DRINKS.LABEL' | translate:{ count: REQUIRED_SOFT_DRINKS_COUNT } }}
                 <span style="margin-left:8px; font-size:0.9em; color:var(--ion-color-medium);">
-                  ({{ selectedSoftDrinksCount }} / {{ REQUIRED_SOFT_DRINKS_COUNT }} επιλεγμένα)
+                  ({{ 'item-detail.SOFT_DRINKS.SELECTED' | translate:{ current: selectedSoftDrinksCount, total: REQUIRED_SOFT_DRINKS_COUNT } }})
                 </span>
               </ion-label>
             </ion-list-header>
@@ -155,16 +152,16 @@
         <div style="margin-top:12px;">
           <ion-list>
             <ion-list-header>
-              <ion-label>Σχόλια / Παρατηρήσεις</ion-label>
+              <ion-label>{{ 'item-detail.COMMENTS.LABEL' | translate }}</ion-label>
             </ion-list-header>
             <ion-item>
-              <ion-textarea [(ngModel)]="comments" placeholder="Προσθέστε σχόλια για την παραγγελία..." rows="3"></ion-textarea>
+              <ion-textarea [(ngModel)]="comments" [placeholder]="'item-detail.COMMENTS.PLACEHOLDER' | translate" rows="3"></ion-textarea>
             </ion-item>
           </ion-list>
         </div>
         <div style="margin-top:16px; display:flex; gap:8px; align-items:center; justify-content:space-between;">
-          <div style="font-weight:700;">Σύνολο: {{ totalPrice | currency:'EUR' }}</div>
-          <ion-button color="primary" (click)="addToCart()" [disabled]="!canAddToCart">Προσθήκη Στο Καλάθι</ion-button>
+          <div style="font-weight:700;">{{ 'item-detail.TOTAL' | translate }}: {{ totalPrice | currency:'EUR' }}</div>
+          <ion-button color="primary" (click)="addToCart()" [disabled]="!canAddToCart">{{ 'item-detail.ADD_TO_CART' | translate }}</ion-button>
         </div>
       </div>
     </ion-card-content>
@@ -172,7 +169,7 @@
   
   <ion-card *ngIf="!item && id">
     <ion-card-content>
-      <p>Λεπτομέρειες για το αντικείμενο με αναγνωριστικό <strong>{{ id }}</strong> δεν είναι διαθέσιμες.</p>
+      <p>{{ 'item-detail.NOT_AVAILABLE' | translate:{ id: id } }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

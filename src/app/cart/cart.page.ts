@@ -3,19 +3,19 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton, IonText, IonIcon } from '@ionic/angular/standalone';
 import { CartService, CartItem } from '../services/cart.service';
-import { translate } from '../models/translate.util';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-cart',
   templateUrl: 'cart.page.html',
   styleUrls: ['cart.page.scss'],
-  imports: [IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton, IonText, IonIcon, CommonModule, CurrencyPipe, RouterLink],
+  imports: [IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton, IonText, IonIcon, CommonModule, CurrencyPipe, RouterLink, TranslateModule],
 })
 export class CartPage {
   items: CartItem[] = [];
   readonly MINIMUM_ORDER = 6;
 
-  constructor(private cart: CartService, private router: Router) {
+  constructor(private cart: CartService, private router: Router, private translateService: TranslateService) {
     this.refresh();
   }
 
@@ -50,15 +50,25 @@ export class CartPage {
     alert('Checkout not implemented in this demo.');
   }
 
-  // Translate item name using the translation utility
+  // Translate item name using ngx-translate
   getItemName(name: string): string {
-    return translate(name) || translate(name.toUpperCase()) || name;
+    const result = this.translateService.instant('menu.' + name);
+    if (result !== 'menu.' + name) return result;
+    const resultU = this.translateService.instant('menu.' + name.toUpperCase());
+    if (resultU !== 'menu.' + name.toUpperCase()) return resultU;
+    return name;
+  }
+
+  // Translate sweetness/size keys
+  translateKey(key: string, prefix: string): string {
+    const result = this.translateService.instant(prefix + '.' + key);
+    return result !== prefix + '.' + key ? result : key;
   }
 
   // Return comma-separated ingredient names (safe for template bindings)
   ingredientsList(item: CartItem): string {
     if (!item || !item.ingredients || !item.ingredients.length) return '';
-    return item.ingredients.map(i => i.name).join(', ');
+    return item.ingredients.map(i => this.getItemName(i.name)).join(', ');
   }
 
   // Compute item price including extras

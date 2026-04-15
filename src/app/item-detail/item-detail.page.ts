@@ -31,9 +31,9 @@ import {
   ingredients as DEFAULT_INGREDIENTS,
   sweetIngredients as DEFAULT_SWEET_INGREDIENTS,
 } from '../models/menu-item.model';
-import { translate as translateUtil } from '../models/translate.util';
 import { CartService } from '../services/cart.service';
 import { Router } from '@angular/router';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-item-detail',
@@ -64,14 +64,15 @@ import { Router } from '@angular/router';
     IonTextarea,
     IonButton,
     IonSpinner,
+    TranslateModule,
   ],
 })
 export class ItemDetailPage {
   id: string | null = null;
   item: MenuItem | null = null;
   imageLoading: boolean = true;
-  sweetness: string = 'Σκέτο';
-  size: string = 'Μονό';
+  sweetness: string = 'PLAIN';
+  size: string = 'SINGLE';
   showSizeOptions: boolean = false;
   comments: string = '';
   ingredients: Array<{ name: string; price: number; selected?: boolean }> =
@@ -93,7 +94,6 @@ export class ItemDetailPage {
     price: number;
     selected?: boolean;
   }> = this.sweetIngredients.slice();
-  lang: string = 'gr';
 
   // Soft drinks selection for ID 200 and 202
   showSoftDrinks: boolean = false;
@@ -103,7 +103,8 @@ export class ItemDetailPage {
   constructor(
     private route: ActivatedRoute,
     private cart: CartService,
-    private router: Router
+    private router: Router,
+    private translateService: TranslateService
   ) {
     this.id = this.route.snapshot.paramMap.get('id');
 
@@ -126,7 +127,7 @@ export class ItemDetailPage {
       const sizeApplicableIds = [3, 4, 5, 6, 13];
       if (sizeApplicableIds.includes(idNum)) {
         this.showSizeOptions = true;
-        this.size = 'Μονό';
+        this.size = 'SINGLE';
       }
     }
     // determine which extras lists should be visible based on item id
@@ -171,8 +172,8 @@ export class ItemDetailPage {
     this.resetSweetIngredients();
     this.resetSoftDrinks();
     // reset sweetness/size/comments so previous selections do not persist
-    this.sweetness = 'Σκέτο';
-    this.size = 'Μονό';
+    this.sweetness = 'PLAIN';
+    this.size = 'SINGLE';
     this.comments = '';
     // refresh filtered lists after resets
     this.filterIngredients();
@@ -206,13 +207,18 @@ export class ItemDetailPage {
   }
 
   translate(key: string): string {
-    return translateUtil(key, this.lang);
+    if (!key) return '';
+    const result = this.translateService.instant('menu.' + key);
+    if (result !== 'menu.' + key) return result;
+    const resultU = this.translateService.instant('menu.' + key.toUpperCase());
+    if (resultU !== 'menu.' + key.toUpperCase()) return resultU;
+    return key;
   }
 
   get totalPrice(): number {
     let base = this.item?.price || 0;
     // If the user selected the double size, add 0.5 to the base price
-    if (this.size === 'Διπλό') {
+    if (this.size === 'DOUBLE') {
       base += 0.5;
     }
     return base + this.extrasTotal + this.sweetExtrasTotal;
@@ -244,7 +250,7 @@ export class ItemDetailPage {
     if ([51, 52, 53].includes(idNum as number)) {
       const hasSelectedIngredient = this.ingredients.some((i) => i.selected) || this.sweetIngredients.some((i) => i.selected);
       if (!hasSelectedIngredient) {
-        alert('Παρακαλώ επιλέξτε τουλάχιστον ένα συστατικό από τα επιλογές πρόσθετων');
+        alert(this.translateService.instant('item-detail.VALIDATION.SELECT_INGREDIENT'));
         return;
       }
     }
@@ -254,7 +260,10 @@ export class ItemDetailPage {
       const selectedCount = this.selectedSoftDrinksCount;
       if (selectedCount !== this.REQUIRED_SOFT_DRINKS_COUNT) {
         alert(
-          `Παρακαλώ επιλέξτε ακριβώς ${this.REQUIRED_SOFT_DRINKS_COUNT} αναψυκτικά. Έχετε επιλέξει: ${selectedCount}`
+          this.translateService.instant('item-detail.VALIDATION.SELECT_SOFT_DRINKS', {
+            count: this.REQUIRED_SOFT_DRINKS_COUNT,
+            selected: selectedCount
+          })
         );
         return;
       }
@@ -270,15 +279,15 @@ export class ItemDetailPage {
     this.softDrinks.forEach((d) => {
       const qty = d.quantity || 0;
       for (let i = 0; i < qty; i++) {
-        selectedSoftDrinks.push({ name: this.translate(d.name), price: 0 });
+        selectedSoftDrinks.push({ name: d.name, price: 0 });
       }
     });
     const allExtras = [...selectedSavory, ...selectedSweet, ...selectedSoftDrinks];
     // Compute basePrice including size surcharge for double
-    const basePrice = (this.item.price || 0) + (this.size === 'Διπλό' ? 0.5 : 0);
+    const basePrice = (this.item.price || 0) + (this.size === 'DOUBLE' ? 0.5 : 0);
     const cartItem = {
       id: this.item.id,
-      name: this.translate(this.item.name) || this.item.name,
+      name: this.item.name,
       basePrice: basePrice,
       sweetness: this.item.category === 'COFFEES' ? this.sweetness : undefined,
       size: this.item.category === 'COFFEES' ? this.size : undefined,

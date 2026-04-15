@@ -1,0 +1,39 @@
+{
+  "TITLE": "Product Details",
+  "LOADING": "Loading...",
+  "DESCRIPTION": "Description",
+  "SWEETNESS": {
+    "LABEL": "Choose sweetness:",
+    "PLAIN": "Plain",
+    "SLIGHT": "Slightly sweet",
+    "MEDIUM": "Medium",
+    "TOWARDS_SWEET": "Towards sweet",
+    "SWEET": "Sweet"
+  },
+  "SIZE": {
+    "LABEL": "Choose Size",
+    "SINGLE": "Single",
+    "DOUBLE": "Double"
+  },
+  "EXTRAS": {
+    "SAVORY_LABEL": "Extras / Choose Ingredients",
+    "SWEET_LABEL": "Sweet / Choose Ingredients",
+    "SEARCH_SAVORY": "Search ingredient",
+    "SEARCH_SWEET": "Search sweet ingredient"
+  },
+  "SOFT_DRINKS": {
+    "LABEL": "Choose {{count}} Soft Drinks",
+    "SELECTED": "{{current}} / {{total}} selected"
+  },
+  "COMMENTS": {
+    "LABEL": "Comments / Notes",
+    "PLACEHOLDER": "Add comments for your order..."
+  },
+  "TOTAL": "Total",
+  "ADD_TO_CART": "Add To Cart",
+  "NOT_AVAILABLE": "Details for item with ID {{id}} are not available.",
+  "VALIDATION": {
+    "SELECT_INGREDIENT": "Please select at least one ingredient from the extras options",
+    "SELECT_SOFT_DRINKS": "Please select exactly {{count}} soft drinks. You have selected: {{selected}}"
+  }
+}

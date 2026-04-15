@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/cart" text=""></ion-back-button>
     </ion-buttons>
-    <ion-title>Στοιχεία Παράδοσης</ion-title>
+    <ion-title>{{ 'address.TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -16,14 +16,14 @@
       [class.active]="addressMode === 'manual'"
       (click)="addressMode = 'manual'; onAddressModeChange()">
       <ion-icon name="create-outline"></ion-icon>
-      Γράψε Διεύθυνση
+      {{ 'address.MODE_MANUAL' | translate }}
     </button>
     <button
       class="mode-btn"
       [class.active]="addressMode === 'map'"
       (click)="addressMode = 'map'; onAddressModeChange()">
       <ion-icon name="map-outline"></ion-icon>
-      Χάρτης
+      {{ 'address.MODE_MAP' | translate }}
     </button>
   </div>
 
@@ -32,7 +32,7 @@
     <div #mapElement class="map"></div>
     <div class="map-hint">
       <ion-icon name="location-outline"></ion-icon>
-      Πάτησε στο χάρτη για να επιλέξεις τη διεύθυνσή σου
+      {{ 'address.MAP_HINT' | translate }}
     </div>
     <div *ngIf="selectedLocation" class="selected-location">
       <ion-icon name="checkmark-circle" color="success"></ion-icon>
@@ -43,29 +43,29 @@
   <!-- Contact & delivery details form -->
   <form [formGroup]="form" (ngSubmit)="submit()" class="details-form">
 
-    <p class="section-label">Στοιχεία επικοινωνίας</p>
+    <p class="section-label">{{ 'address.CONTACT_SECTION' | translate }}</p>
 
     <!-- Name -->
     <div class="field-wrap" [class.error]="form.controls.name.invalid && form.controls.name.touched">
       <ion-icon name="person-outline" class="field-icon"></ion-icon>
       <div class="field-inner">
-        <label class="field-label">Όνομα *</label>
-        <ion-input formControlName="name" inputmode="text" placeholder="π.χ. Γιάννης Ευθυμιάδης"></ion-input>
+        <label class="field-label">{{ 'address.NAME_LABEL' | translate }}</label>
+        <ion-input formControlName="name" inputmode="text" [placeholder]="'address.NAME_PLACEHOLDER' | translate"></ion-input>
       </div>
     </div>
-    <p class="field-error" *ngIf="form.controls.name.invalid && form.controls.name.touched">Συμπλήρωσε το όνομά σου.</p>
+    <p class="field-error" *ngIf="form.controls.name.invalid && form.controls.name.touched">{{ 'address.NAME_ERROR' | translate }}</p>
 
     <!-- Phone -->
     <div class="field-wrap" [class.error]="form.controls.phone.invalid && form.controls.phone.touched">
       <ion-icon name="call-outline" class="field-icon"></ion-icon>
       <div class="field-inner">
-        <label class="field-label">Κινητό *</label>
-        <ion-input formControlName="phone" type="tel" inputmode="tel" placeholder="69XXXXXXXX"></ion-input>
+        <label class="field-label">{{ 'address.PHONE_LABEL' | translate }}</label>
+        <ion-input formControlName="phone" type="tel" inputmode="tel" [placeholder]="'address.PHONE_PLACEHOLDER' | translate"></ion-input>
       </div>
     </div>
-    <p class="field-error" *ngIf="form.controls.phone.invalid && form.controls.phone.touched">Εισάγετε έγκυρο αριθμό.</p>
+    <p class="field-error" *ngIf="form.controls.phone.invalid && form.controls.phone.touched">{{ 'address.PHONE_ERROR' | translate }}</p>
 
-    <p class="section-label">Στοιχεία διεύθυνσης</p>
+    <p class="section-label">{{ 'address.ADDRESS_SECTION' | translate }}</p>
 
     <!-- Address (manual mode only) -->
     <div
@@ -74,18 +74,18 @@
       [class.error]="form.controls.address.invalid && form.controls.address.touched">
       <ion-icon name="home-outline" class="field-icon"></ion-icon>
       <div class="field-inner">
-        <label class="field-label">Διεύθυνση *</label>
-        <ion-input formControlName="address" inputmode="text" placeholder="π.χ. Αγίου Δημητρίου 5"></ion-input>
+        <label class="field-label">{{ 'address.ADDRESS_LABEL' | translate }}</label>
+        <ion-input formControlName="address" inputmode="text" [placeholder]="'address.ADDRESS_PLACEHOLDER' | translate"></ion-input>
       </div>
     </div>
-    <p class="field-error" *ngIf="addressMode === 'manual' && form.controls.address.invalid && form.controls.address.touched">Συμπλήρωσε τη διεύθυνση.</p>
+    <p class="field-error" *ngIf="addressMode === 'manual' && form.controls.address.invalid && form.controls.address.touched">{{ 'address.ADDRESS_ERROR' | translate }}</p>
 
     <!-- Floor -->
     <div class="field-wrap">
       <ion-icon name="layers-outline" class="field-icon"></ion-icon>
       <div class="field-inner">
-        <label class="field-label">Όροφος</label>
-        <ion-input formControlName="floor" inputmode="numeric" placeholder="π.χ. 2 (προαιρετικό)"></ion-input>
+        <label class="field-label">{{ 'address.FLOOR_LABEL' | translate }}</label>
+        <ion-input formControlName="floor" inputmode="numeric" [placeholder]="'address.FLOOR_PLACEHOLDER' | translate"></ion-input>
       </div>
     </div>
 
@@ -95,7 +95,7 @@
       type="submit"
       [disabled]="form.invalid || (addressMode === 'map' && !selectedLocation)">
       <ion-icon name="send-outline"></ion-icon>
-      Αποστολή Παραγγελίας
+      {{ 'address.SUBMIT_ORDER' | translate }}
     </button>
 
   </form>

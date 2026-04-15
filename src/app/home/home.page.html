@@ -4,7 +4,25 @@
   <div class="store-header">
     <div class="logo-container">
       <img src="https://21images.s3.eu-north-1.amazonaws.com/21_192x192.webp" alt="Store Logo" class="store-logo" />
-      <h1 class="store-name">Online Order</h1>
+      <h1 class="store-name">{{ 'home.TITLE' | translate }}</h1>
+    </div>
+    <!-- Language selector -->
+    <div class="lang-selector">
+      <button class="lang-btn" (click)="toggleLangMenu()" [attr.aria-label]="'home.LANG_SELECTOR.CHOOSE_LANGUAGE' | translate">
+        <img class="lang-flag" [src]="currentFlagSrc" alt="flag" />
+        <ion-icon name="chevron-down" class="lang-chevron" [class.open]="langMenuOpen"></ion-icon>
+      </button>
+      <div class="lang-backdrop" *ngIf="langMenuOpen" (click)="langMenuOpen = false"></div>
+      <div class="lang-dropdown" *ngIf="langMenuOpen">
+        <button
+          *ngFor="let lang of languages"
+          class="lang-option"
+          [class.active]="lang.code === currentLang"
+          (click)="switchLang(lang.code)">
+          <img class="lang-flag" [src]="lang.flag" [alt]="lang.label" />
+          <span class="lang-label">{{ lang.label }}</span>
+        </button>
+      </div>
     </div>
   </div>
 

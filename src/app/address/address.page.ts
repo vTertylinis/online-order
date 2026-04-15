@@ -26,6 +26,7 @@ import { Router } from '@angular/router';
 import { CartService } from '../services/cart.service';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
 import { GoogleMapsLoaderService } from '../services/google-maps-loader.service';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 declare var google: any;
 
@@ -44,6 +45,7 @@ declare var google: any;
     IonContent,
     IonInput,
     IonIcon,
+    TranslateModule,
   ],
   templateUrl: './address.page.html',
   styleUrls: ['./address.page.scss']
@@ -58,6 +60,7 @@ export class AddressPage implements AfterViewInit {
   private http = inject(HttpClient);
   private cartService = inject(CartService);
   private mapsLoader = inject(GoogleMapsLoaderService);
+  private translateService = inject(TranslateService);
 
   constructor() {
     addIcons({
@@ -215,7 +218,7 @@ export class AddressPage implements AfterViewInit {
   async submit() {
     if (this.form.invalid) {
       const toast = await this.toastCtrl.create({
-        message: 'Παρακαλώ συμπληρώστε όλα τα απαιτούμενα πεδία.',
+        message: this.translateService.instant('address.FORM_INVALID'),
         duration: 2000,
         color: 'danger'
       });
@@ -226,8 +229,8 @@ export class AddressPage implements AfterViewInit {
     // Check delivery hours before submitting
     if (!isWithinDeliveryHours()) {
       const alert = await this.alertCtrl.create({
-        header: 'Εκτός Ωραρίου Παράδοσης',
-        message: 'Οι παραδόσεις γίνονται από τις 09:00 το πρωί έως τα μεσάνυχτα (00:00). Παρακαλούμε επισκεφθείτε μας ξανά κατά τις ώρες λειτουργίας μας.',
+        header: this.translateService.instant('common.DELIVERY_HOURS.TITLE'),
+        message: this.translateService.instant('common.DELIVERY_HOURS.MESSAGE'),
         buttons: ['OK']
       });
       await alert.present();
@@ -254,10 +257,10 @@ export class AddressPage implements AfterViewInit {
       localStorage.setItem('checkout_address', JSON.stringify(finalAddressData));
     } catch {}
 
-    // Send to ngrok server
+    // Send to ngrok server — cart items are always translated to Greek
     const orderData = {
       address: finalAddressData,
-      cart: cartItems,
+      cart: this.toGreekCartItems(cartItems),
       total: total,
       timestamp: new Date().toISOString()
     };
@@ -273,8 +276,8 @@ export class AddressPage implements AfterViewInit {
       console.log('Order sent successfully:', response);
       
       const alert = await this.alertCtrl.create({
-        header: 'Επιτυχία',
-        message: 'Η παραγγελία σας καταχωρήθηκε με επιτυχία. Αν χρειαστεί κάποια διευκρίνιση, θα επικοινωνήσουμε μαζί σας.',
+        header: this.translateService.instant('address.SUCCESS_TITLE'),
+        message: this.translateService.instant('address.SUCCESS_MESSAGE'),
         buttons: ['OK']
       });
       await alert.present();
@@ -285,7 +288,7 @@ export class AddressPage implements AfterViewInit {
       console.error('Error sending order:', error);
       
       const toast = await this.toastCtrl.create({
-        message: 'Σφάλμα αποστολής παραγγελίας. Ελέγξτε τη σύνδεση.',
+        message: this.translateService.instant('address.ERROR_SEND'),
         duration: 3000,
         color: 'warning'
       });
@@ -294,5 +297,41 @@ export class AddressPage implements AfterViewInit {
       this.router.navigateByUrl('/');
       return;
     }
+  }
+
+  /** Resolve a namespaced key (e.g. 'menu.HELLENIKOS') from the Greek ('el') translations. */
+  private elTranslation(namespacedKey: string): string {
+    const elTrans = (this.translateService as any).translations?.['el'];
+    if (!elTrans) return namespacedKey;
+    const parts = namespacedKey.split('.');
+    let val: any = elTrans;
+    for (const part of parts) {
+      if (val && typeof val === 'object') val = val[part];
+      else return namespacedKey;
+    }
+    return typeof val === 'string' ? val : namespacedKey;
+  }
+
+  /** Return a copy of cart items with all displayable fields translated to Greek. */
+  private toGreekCartItems(items: ReturnType<CartService['getItems']>) {
+    return items.map(item => {
+      const menuKey = 'menu.' + item.name;
+      const greekName = this.elTranslation(menuKey);
+      return {
+        ...item,
+        name: greekName !== menuKey ? greekName : item.name,
+        sweetness: item.sweetness
+          ? this.elTranslation('item-detail.SWEETNESS.' + item.sweetness)
+          : item.sweetness,
+        size: item.size
+          ? this.elTranslation('item-detail.SIZE.' + item.size)
+          : item.size,
+        ingredients: (item.ingredients || []).map(ing => {
+          const ingKey = 'menu.' + ing.name;
+          const greekIng = this.elTranslation(ingKey);
+          return { ...ing, name: greekIng !== ingKey ? greekIng : ing.name };
+        }),
+      };
+    });
   }
 }

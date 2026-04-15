@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
     </ion-buttons>
-    <ion-title>Καλάθι</ion-title>
+    <ion-title>{{ 'cart.TITLE' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,31 +12,31 @@
     <ion-item *ngFor="let it of items; let i = index">
       <ion-label>
         <h3>{{ getItemName(it.name) }}</h3>
-        <p *ngIf="it.size && (it.id === 3 || it.id === 4 || it.id === 5 || it.id === 6 || it.id === 13)">Μέγεθος: {{ it.size }}</p>
-        <p *ngIf="it.sweetness">Γλυκύτητα: {{ it.sweetness }}</p>
-        <p *ngIf="it.ingredients && it.ingredients.length">Extras: {{ ingredientsList(it) }}</p>
-        <p *ngIf="it.comments">Σχόλια: {{ it.comments }}</p>
-        <p>Ποσότητα: {{ it.quantity || 1 }}</p>
+        <p *ngIf="it.size && (it.id === 3 || it.id === 4 || it.id === 5 || it.id === 6 || it.id === 13)">{{ 'cart.SIZE' | translate }}: {{ translateKey(it.size, 'item-detail.SIZE') }}</p>
+        <p *ngIf="it.sweetness">{{ 'cart.SWEETNESS' | translate }}: {{ translateKey(it.sweetness, 'item-detail.SWEETNESS') }}</p>
+        <p *ngIf="it.ingredients && it.ingredients.length">{{ 'cart.EXTRAS' | translate }}: {{ ingredientsList(it) }}</p>
+        <p *ngIf="it.comments">{{ 'cart.COMMENTS' | translate }}: {{ it.comments }}</p>
+        <p>{{ 'cart.QUANTITY' | translate }}: {{ it.quantity || 1 }}</p>
       </ion-label>
       <div slot="end" class="item-right">
         <div>{{ itemPrice(it) | currency:'EUR' }}</div>
-        <ion-button color="danger" fill="clear" (click)="remove(i)">Αφαίρεση</ion-button>
+        <ion-button color="danger" fill="clear" (click)="remove(i)">{{ 'cart.REMOVE' | translate }}</ion-button>
       </div>
     </ion-item>
   </ion-list>
 
   <ng-template #empty>
-    <p>Το καλάθι σας είναι άδειο.</p>
+    <p>{{ 'cart.EMPTY' | translate }}</p>
   </ng-template>
 
   <div class="cart-footer" *ngIf="items.length">
-    <div class="total">Σύνολο: {{ total | currency:'EUR' }}</div>
+    <div class="total">{{ 'cart.TOTAL' | translate }}: {{ total | currency:'EUR' }}</div>
     <div class="minimum-warning" *ngIf="!isMinimumMet">
       <ion-text color="warning">
-        <p><ion-icon name="alert-circle-outline"></ion-icon> Ελάχιστο ποσό παραγγελίας: {{ MINIMUM_ORDER | currency:'EUR' }}</p>
-        <p>Προσθέστε ακόμα {{ remainingForMinimum | currency:'EUR' }} για να ολοκληρώσετε την παραγγελία.</p>
+        <p><ion-icon name="alert-circle-outline"></ion-icon> {{ 'cart.MINIMUM_ORDER' | translate }}: {{ MINIMUM_ORDER | currency:'EUR' }}</p>
+        <p>{{ 'cart.ADD_MORE' | translate:{ amount: (remainingForMinimum | currency:'EUR') } }}</p>
       </ion-text>
     </div>
-    <ion-button expand="block" routerLink="/address" [disabled]="!isMinimumMet">Προσθήκη Διεύθυνσης</ion-button>
+    <ion-button expand="block" routerLink="/address" [disabled]="!isMinimumMet">{{ 'cart.ADD_ADDRESS' | translate }}</ion-button>
   </div>
 </ion-content>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import {
   IonContent,
@@ -10,13 +10,13 @@ import {
 } from '@ionic/angular/standalone';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline } from 'ionicons/icons';
+import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown } from 'ionicons/icons';
 import { CartService } from '../services/cart.service';
-// @ts-ignore - allow importing JSON translation file (project may enable resolveJsonModule)
-import translations from '../../assets/i18n/translations.json';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MenuItem, menuItems } from '../models/menu-item.model';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
 import { LazyImageDirective } from '../utils/lazy-image.directive';
+import { Subscription } from 'rxjs';
 
 const CATEGORY_ICONS: Record<string, string> = {
   TOASTS_CREPS:   'restaurant-outline',
@@ -59,14 +59,23 @@ interface Category {
     CurrencyPipe,
     RouterLink,
     LazyImageDirective,
+    TranslateModule,
   ],
 })
-export class HomePage implements OnInit, AfterViewInit {
-  // default language for translations; change to 'gr' for Greek
-  lang = 'gr';
+export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   menuItems: MenuItem[] = menuItems;
 
   categories: Category[] = [];
+
+  // Language selector
+  languages = [
+    { code: 'el', flag: 'assets/flags/gr.png', label: 'Ελληνικά' },
+    { code: 'en', flag: 'assets/flags/en.png', label: 'English' },
+    { code: 'sr', flag: 'assets/flags/sr.png', label: 'Српски' },
+    { code: 'bg', flag: 'assets/flags/bg.png', label: 'Български' },
+  ];
+  currentLang = 'el';
+  langMenuOpen = false;
 
   selectedCategoryIndex = 0;
   @ViewChild(IonContent) content!: IonContent;
@@ -94,25 +103,51 @@ export class HomePage implements OnInit, AfterViewInit {
     }
   }
 
+  private langSub!: Subscription;
+
   constructor(
     private router: Router, 
     private cartService: CartService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private translateService: TranslateService
   ) {
-    // Ensure the cart icon is registered for IonIcon usage
-    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline });
+    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown });
+    this.currentLang = this.translateService.currentLang || this.translateService.defaultLang || 'el';
   }
 
   ngOnInit(): void {
     this.buildCategories();
     this.checkDeliveryHours();
+    this.langSub = this.translateService.onLangChange.subscribe(() => {
+      this.currentLang = this.translateService.currentLang;
+      this.buildCategories();
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.langSub?.unsubscribe();
+  }
+
+  get currentFlagSrc(): string {
+    return this.languages.find(l => l.code === this.currentLang)?.flag || 'assets/flags/gr.png';
+  }
+
+  toggleLangMenu() {
+    this.langMenuOpen = !this.langMenuOpen;
+  }
+
+  switchLang(code: string) {
+    this.langMenuOpen = false;
+    if (code === this.currentLang) return;
+    localStorage.setItem('app-lang', code);
+    this.translateService.use(code);
   }
 
   private async checkDeliveryHours() {
     if (!isWithinDeliveryHours()) {
       const alert = await this.alertController.create({
-        header: 'Εκτός Ωραρίου Παράδοσης',
-        message: 'Οι παραδόσεις γίνονται από τις 09:00 το πρωί έως τα μεσάνυχτα (00:00). Παρακαλούμε επισκεφθείτε μας ξανά κατά τις ώρες λειτουργίας μας.',
+        header: this.translateService.instant('common.DELIVERY_HOURS.TITLE'),
+        message: this.translateService.instant('common.DELIVERY_HOURS.MESSAGE'),
         buttons: ['OK']
       });
 
@@ -206,9 +241,11 @@ export class HomePage implements OnInit, AfterViewInit {
     const map = new Map<string, MenuItem[]>();
     const lookup = (k?: string) => {
       if (!k) return null;
-      if ((translations as any)[k] && (translations as any)[k][this.lang]) return (translations as any)[k][this.lang];
+      const result = this.translateService.instant('menu.' + k);
+      if (result !== 'menu.' + k) return result;
       const ku = (k || '').toUpperCase();
-      if ((translations as any)[ku] && (translations as any)[ku][this.lang]) return (translations as any)[ku][this.lang];
+      const resultU = this.translateService.instant('menu.' + ku);
+      if (resultU !== 'menu.' + ku) return resultU;
       return null;
     };
 
