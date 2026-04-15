@@ -1,0 +1,14 @@
+{
+  "BUTTONS": {
+    "OK": "OK",
+    "CANCEL": "Cancel",
+    "REMOVE": "Remove",
+    "ADD": "Add",
+    "SUBMIT": "Submit"
+  },
+  "DELIVERY_HOURS": {
+    "TITLE": "Outside Delivery Hours",
+    "MESSAGE": "Deliveries are made from 09:00 AM to midnight (00:00). Please visit us again during our operating hours."
+  },
+  "CURRENCY": "EUR"
+}
