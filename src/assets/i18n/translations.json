@@ -171,6 +171,10 @@
     "en": "Yogurt with Honey, Walnuts & Fruits",
     "gr": "Γιαούρτι με μέλι και καρύδια + Φρούτα"
   },
+  "PANCAKE_SAVORY": { "en": "Savory Pancake", "gr": "Pancake αλμυρό" },
+  "TRADITIONAL_KAYANAS": { "en": "Traditional Kayanas", "gr": "Παραδοσιακός Καγιανάς" },
+  "YOGURT_MUESLI_HONEY": { "en": "Yogurt with Muesli and Honey", "gr": "Γιαούρτι με μούσλι και μέλι" },
+  "BREAKFAST_FOR_2": { "en": "Breakfast for 2 (Plato 21)", "gr": "Πρωινό για 2 (Πλατό 21)" },
 
   "CLUB_SANDWICH_CAESAR_CHICKEN": {
     "en": "Club Sandwich Caesar Chicken",
@@ -557,8 +561,12 @@
     "en": "nuggets, French fries, juice and a small gift."
   },
   "OMELETTE_DESC": {
-    "gr": "Με υλικά της επιλογής σας",
-    "en": "With ingredients of your choice."
+    "gr": "Περιλαμβάνει: 3 αυγά, δροσερή σαλάτα, φρέσκο ψωμί. Μπορείτε επίσης να προσθέσετε υλικά της επιλογής σας.",
+    "en": "Includes: 3 eggs, fresh salad, fresh bread. You can also add ingredients of your choice."
+  },
+  "PANCAKE_PRALINE_DESC": {
+    "gr": "Περιέχει πραλίνα σοκολάτα. Μπορείτε επίσης να προσθέσετε υλικά της επιλογής σας.",
+    "en": "Contains praline chocolate. You can also add ingredients of your choice."
   },
   "SCRAMBLED_EGGS_DESC": {
     "gr": "Σε φρυγανισμένη μπαγκέτα και παρμεζάνα",
