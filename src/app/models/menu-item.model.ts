@@ -42,9 +42,9 @@ export const menuItems: MenuItem[] = [
   { id: 124, name: 'PINSA_SPECIAL', price: 12, category: 'PINSA', description: 'PINSA_SPECIAL_DESC' },
   { id: 125, name: 'PINSA_21', price: 12, category: 'PINSA', image: 'https://21images.s3.eu-north-1.amazonaws.com/pinsa21.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pinsa21.webp', description: 'PINSA_21_DESC' },
 
-  { id: 126, name: 'NAPOLITANA', price: 8, category: 'PASTA', description: 'NAPOLITANA_DESC' },
+  { id: 126, name: 'NAPOLITANA', price: 8, category: 'PASTA', description: 'NAPOLITANA_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/napoli.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/napoli.webp' },
   { id: 127, name: 'BOLOGNESE', price: 9, category: 'PASTA', description: 'BOLOGNESE_DESC' },
-  { id: 128, name: 'CARBONARA', price: 9, category: 'PASTA', description: 'CARBONARA_DESC' },
+  { id: 128, name: 'CARBONARA', price: 9, category: 'PASTA', description: 'CARBONARA_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/carbonara.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/carbonara.webp' },
   { id: 129, name: 'penesMeKotopoulo', price: 11, category: 'PASTA', description: 'penesMeKotopouloDesc' },
   { id: 130, name: 'rigatoniCheeses', price: 9, category: 'PASTA', description: 'rigatoniCheesesDesc' },
   { id: 131, name: 'PASTA_21', price: 9, category: 'PASTA', description: 'PASTA_21_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/pastaa+21.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pastaa+21.webp' },
@@ -60,7 +60,7 @@ export const menuItems: MenuItem[] = [
   { id: 140, name: 'DOUBLE_CHEESE_BURGER', price: 10, category: 'HOTDOG_BURGERS', description: 'DOUBLE_CHEESE_BURGER_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/burgerCheese.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burgerCheese.webp' },
   { id: 141, name: 'CHICKEN_CRISPY_BURGER', price: 10, category: 'HOTDOG_BURGERS', description: 'CHICKEN_CRISPY_BURGER_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/crispyburger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/crispyburger.webp' },
   { id: 142, name: 'burgerChilicrispychicken', price: 10, category: 'HOTDOG_BURGERS', description: 'burgerChilicrispychickenDesc' },
-  { id: 143, name: 'doubleSmash', price: 11, category: 'HOTDOG_BURGERS', description: 'doubleSmashdesc' },
+  { id: 143, name: 'doubleSmash', price: 11, category: 'HOTDOG_BURGERS', description: 'doubleSmashdesc', image: 'https://21images.s3.eu-north-1.amazonaws.com/smash.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/smash.webp' },
   { id: 144, name: 'miniBurgers', price: 11, category: 'HOTDOG_BURGERS', description: 'miniBurgersDesc' },
 
   { id: 145, name: 'SHRIMP_CHILI_BAO', price: 8, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/garida.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/garida.webp', description: 'SHRIMP_CHILI_BAO_DESC' },
