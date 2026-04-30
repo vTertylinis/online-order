@@ -6,6 +6,7 @@ import {
   IonFab,
   IonFabButton,
   IonIcon,
+  IonLabel,
   AlertController,
 } from '@ionic/angular/standalone';
 import { CommonModule, CurrencyPipe } from '@angular/common';
@@ -56,6 +57,7 @@ interface Category {
     IonFab,
     IonFabButton,
     IonIcon,
+    IonLabel,
     CommonModule,
     CurrencyPipe,
     RouterLink,

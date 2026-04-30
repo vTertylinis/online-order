@@ -1,5 +1,8 @@
 {
   "TITLE": "Online Order",
+  "WELCOME": "Добре дошли в",
+  "ITEM_SINGULAR": "продукт",
+  "ITEM_PLURAL": "продукта",
   "LANG_SELECTOR": {
     "CHOOSE_LANGUAGE": "Изберете език"
   }

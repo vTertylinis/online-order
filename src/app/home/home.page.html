@@ -1,11 +1,17 @@
-<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onContentScroll($event)">
+<ion-content [fullscreen]="true" [scrollEvents]="true" (ionScroll)="onContentScroll($event)" class="home-content">
 
-  <!-- Fixed store header -->
+  <!-- Fixed store header (glassy app bar) -->
   <div class="store-header">
     <div class="logo-container">
-      <img src="https://21images.s3.eu-north-1.amazonaws.com/21_192x192.webp" alt="Store Logo" class="store-logo" />
-      <h1 class="store-name">{{ 'home.TITLE' | translate }}</h1>
+      <div class="logo-wrap">
+        <img src="https://21images.s3.eu-north-1.amazonaws.com/21_192x192.webp" alt="Store Logo" class="store-logo" />
+      </div>
+      <div class="store-text">
+        <span class="store-eyebrow">{{ 'home.WELCOME' | translate }}</span>
+        <h1 class="store-name">{{ 'home.TITLE' | translate }}</h1>
+      </div>
     </div>
+
     <!-- Language selector -->
     <div class="lang-selector">
       <button class="lang-btn" (click)="toggleLangMenu()" [attr.aria-label]="'home.LANG_SELECTOR.CHOOSE_LANGUAGE' | translate">
@@ -21,6 +27,7 @@
           (click)="switchLang(lang.code)">
           <img class="lang-flag" [src]="lang.flag" [alt]="lang.label" />
           <span class="lang-label">{{ lang.label }}</span>
+          <ion-icon *ngIf="lang.code === currentLang" name="chevron-down" class="check-icon"></ion-icon>
         </button>
       </div>
     </div>
@@ -33,7 +40,8 @@
         *ngFor="let cat of categories; let i = index"
         (click)="scrollToCategory(i)"
         [class.selected]="selectedCategoryIndex === i">
-        {{ cat.name }}
+        <ion-icon [name]="cat.icon" class="chip-icon"></ion-icon>
+        <ion-label>{{ cat.name }}</ion-label>
       </ion-chip>
     </div>
   </div>
@@ -49,50 +57,58 @@
     </div>
 
     <!-- Category sections -->
-    <div
+    <section
       class="category-section"
       *ngFor="let cat of categories; let i = index"
       id="cat-{{i}}">
 
-      <div class="category-header">
-        <span class="category-name">{{ cat.name }}</span>
-        <span class="category-badge">{{ cat.items.length }}</span>
-      </div>
-
-      <div class="menu-item" *ngFor="let item of cat.items" (click)="openItem(item)">
-        <!-- Thumbnail -->
-        <div class="item-thumb" *ngIf="item.thumbnailImage">
-          <img [lazyLoad]="item.thumbnailImage" [thumbnail]="true" [alt]="item.name" />
-        </div>
-        <!-- Placeholder icon for items without an image -->
-        <div class="item-thumb item-thumb--placeholder" *ngIf="!item.thumbnailImage">
+      <header class="category-header">
+        <div class="category-icon-wrap">
           <ion-icon [name]="cat.icon"></ion-icon>
         </div>
-
-        <!-- Name & description -->
-        <div class="item-info">
-          <p class="item-name">{{ item.name }}</p>
-          <p *ngIf="item.desc" class="item-desc">{{ item.desc }}</p>
+        <div class="category-title-wrap">
+          <h2 class="category-name">{{ cat.name }}</h2>
+          <span class="category-count">
+            {{ cat.items.length }} {{ cat.items.length === 1 ? ('home.ITEM_SINGULAR' | translate) : ('home.ITEM_PLURAL' | translate) }}
+          </span>
         </div>
+      </header>
 
-        <!-- Price + quick-add button -->
-        <div class="item-right">
-          <span class="item-price" *ngIf="item.price">{{ item.price | currency:'EUR' }}</span>
+      <div class="items-grid">
+        <article class="menu-item" *ngFor="let item of cat.items" (click)="openItem(item)">
+          <!-- Thumbnail -->
+          <div class="item-thumb" *ngIf="item.thumbnailImage">
+            <img [lazyLoad]="item.thumbnailImage" [thumbnail]="true" [alt]="item.name" />
+          </div>
+          <!-- Placeholder icon for items without an image -->
+          <div class="item-thumb item-thumb--placeholder" *ngIf="!item.thumbnailImage">
+            <ion-icon [name]="cat.icon"></ion-icon>
+          </div>
+
+          <!-- Name & description -->
+          <div class="item-info">
+            <p class="item-name">{{ item.name }}</p>
+            <p *ngIf="item.desc" class="item-desc">{{ item.desc }}</p>
+            <span class="item-price" *ngIf="item.price">{{ item.price | currency:'EUR' }}</span>
+          </div>
+
+          <!-- Quick-add button -->
           <button
             class="add-btn"
             (click)="$event.stopPropagation(); openItem(item)"
             [attr.aria-label]="'Add ' + item.name">
             <ion-icon name="add"></ion-icon>
           </button>
-        </div>
+        </article>
       </div>
+    </section>
 
-    </div>
+    <div class="list-end-spacer"></div>
   </div>
 
 </ion-content>
 
-<ion-fab slot="fixed" vertical="bottom" horizontal="end">
+<ion-fab slot="fixed" vertical="bottom" horizontal="end" class="cart-fab">
   <ion-fab-button routerLink="/cart" aria-label="Open cart" [class.has-items]="cartCount > 0">
     <ion-icon name="cart"></ion-icon>
     <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>

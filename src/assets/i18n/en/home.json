@@ -1,5 +1,8 @@
 {
   "TITLE": "Online Order",
+  "WELCOME": "Welcome to",
+  "ITEM_SINGULAR": "item",
+  "ITEM_PLURAL": "items",
   "LANG_SELECTOR": {
     "CHOOSE_LANGUAGE": "Choose language"
   }
