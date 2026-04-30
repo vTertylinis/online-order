@@ -10,15 +10,16 @@ import {
 } from '@ionic/angular/standalone';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown } from 'ionicons/icons';
+import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline } from 'ionicons/icons';
 import { CartService } from '../services/cart.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { MenuItem, menuItems } from '../models/menu-item.model';
+import { MenuItem, menuItems, POPULAR_ITEMS } from '../models/menu-item.model';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
 import { LazyImageDirective } from '../utils/lazy-image.directive';
 import { Subscription } from 'rxjs';
 
 const CATEGORY_ICONS: Record<string, string> = {
+  POPULAR:        'star-outline',
   TOASTS_CREPS:   'restaurant-outline',
   HOTDOG_BURGERS: 'fast-food-outline',
   BAO_BUNS:       'restaurant-outline',
@@ -111,7 +112,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     private alertController: AlertController,
     private translateService: TranslateService
   ) {
-    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown });
+    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline });
     this.currentLang = this.translateService.currentLang || this.translateService.defaultLang || 'el';
   }
 
@@ -277,7 +278,31 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
     const result: Category[] = [];
     
-    // Add COMBO_OFFERS first if it exists
+    // Add POPULAR first
+    const popularTranslated = lookup('POPULAR');
+    const popularName = popularTranslated || 'Popular';
+    result.push({ name: popularName as any, icon: CATEGORY_ICONS['POPULAR'], items: POPULAR_ITEMS.map(it => {
+      const copy: MenuItem = { ...it, desc: it.desc ?? it.description };
+      const nameTranslated = lookup(it.name as string) || lookup((it.name || '').toString().toUpperCase());
+      if (nameTranslated) copy.name = nameTranslated as any;
+      const descCandidates = [
+        it.description,
+        it.description && it.description.toString().toUpperCase(),
+        (it.name || '') + '_DESC',
+        (it.name || '').toUpperCase() + '_DESC',
+        (it.name || '') + 'Desc',
+        (it.name || '') + 'desc',
+      ];
+      let descTranslated: string | null = null;
+      for (const c of descCandidates) {
+        const v = lookup(c as string);
+        if (v) { descTranslated = v as any; break; }
+      }
+      if (descTranslated) copy.desc = descTranslated as any;
+      return copy;
+    }) });
+
+    // Add COMBO_OFFERS second if it exists
     if (map.has('COMBO_OFFERS')) {
       const translatedCategory = lookup('COMBO_OFFERS');
       const pretty = translatedCategory || 'Combo Offers';

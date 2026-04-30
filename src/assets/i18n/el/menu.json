@@ -49,8 +49,11 @@
   "TOASTS_CREPS": "Τοστ - Κρέπες",
   "BEERS": "Μπύρες",
   "TOAST": "Τοστ",
+  "TOAST_DESC": "Φτιάξτε το τοστ σας με υλικά της επιλογής σας.",
   "SAVORY_CREPE": "Κρέπα αλμυρή",
+  "SAVORY_CREPE_DESC": "Φτιάξτε την κρέπα σας με υλικά της επιλογής σας.",
   "SWEET_CREPE": "Κρέπα γλυκιά",
+  "SWEET_CREPE_DESC": "Φτιάξτε την κρέπα σας με υλικά της επιλογής σας.",
   "BARREL_SMALL": "Βαρέλι Μικρό",
   "BARREL_LARGE": "Βαρέλι Μεγάλο",
   "KAISER": "Kaiser",
@@ -322,5 +325,6 @@
   "SWE_LILA_PAUSE": "Lila pause",
   "SWE_MARMELADA_FRAOULA": "Μαρμελάδα φράουλα",
   "SWE_MARMELADA_RODAKINO": "Μαρμελάδα ροδάκινο",
-  "SWE_CAPRICE": "Caprice"
+  "SWE_CAPRICE": "Caprice",
+  "POPULAR": "Δημοφιλή"
 }

@@ -10,9 +10,9 @@ export interface MenuItem {
 }
 
 export const menuItems: MenuItem[] = [
-  { id: 51, name: 'TOAST', price: 2.5, category: 'TOASTS_CREPS', image: 'https://21images.s3.eu-north-1.amazonaws.com/toast.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/toast.webp' },
-  { id: 52, name: 'SAVORY_CREPE', price: 3, category: 'TOASTS_CREPS', image: 'https://21images.s3.eu-north-1.amazonaws.com/almiri.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/almiri.webp' },
-  { id: 53, name: 'SWEET_CREPE', price: 3.5, category: 'TOASTS_CREPS', image: 'https://21images.s3.eu-north-1.amazonaws.com/crepeglykiaa.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/crepeglykiaa.webp' },
+  { id: 51, name: 'TOAST', price: 2.5, category: 'TOASTS_CREPS', image: 'https://21images.s3.eu-north-1.amazonaws.com/toast.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/toast.webp', description: 'TOAST_DESC' },
+  { id: 52, name: 'SAVORY_CREPE', price: 3, category: 'TOASTS_CREPS', image: 'https://21images.s3.eu-north-1.amazonaws.com/almiri.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/almiri.webp', description: 'SAVORY_CREPE_DESC' },
+  { id: 53, name: 'SWEET_CREPE', price: 3.5, category: 'TOASTS_CREPS', image: 'https://21images.s3.eu-north-1.amazonaws.com/crepeglykiaa.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/crepeglykiaa.webp', description: 'SWEET_CREPE_DESC' },
 
   { id: 101, name: 'OMELETTE', price: 7, category: 'BREAKFAST', image: 'https://21images.s3.eu-north-1.amazonaws.com/omeletee.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/omeletee.webp', description: 'OMELETTE_DESC' },
   { id: 102, name: 'SCRAMBLED_EGGS', price: 6.5, category: 'BREAKFAST', description: 'SCRAMBLED_EGGS_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/scrabll.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/scrabll.webp' },
@@ -194,11 +194,13 @@ export const menuItems: MenuItem[] = [
   { id: 99, name: 'Green Apple Perfume', price: 10, category: 'Cocktails', description: 'White rum, green apple liquer, falernum, lemon juice' },
   { id: 100, name: "Bartender's choice", price: 9, category: 'Cocktails' },
 
-  { id: 199, name: 'Family Box', price: 23.9, category: 'COMBO_OFFERS', description: 'Family_1_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/family.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/family150.webp' },
-  { id: 200, name: 'BURGER_BBQ_DOUBLE_CHEESE_SOFT_DRINKS', price: 19, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_1_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/2burger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/2burger.webp' },
-  { id: 201, name: 'HOT_DOG_X2_SWEET_CREPE', price: 12, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_2_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/2hotdog.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/2hotdog.webp' },
-  { id: 202, name: 'DOUBLE_SMASH_SOFT_DRINK_SWEET_CREPE', price: 15, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_3_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/1burger+(1).webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/1burger+(1).webp' },
+  // { id: 199, name: 'Family Box', price: 23.9, category: 'COMBO_OFFERS', description: 'Family_1_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/family.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/family150.webp' },
+  // { id: 200, name: 'BURGER_BBQ_DOUBLE_CHEESE_SOFT_DRINKS', price: 19, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_1_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/2burger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/2burger.webp' },
+  // { id: 201, name: 'HOT_DOG_X2_SWEET_CREPE', price: 12, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_2_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/2hotdog.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/2hotdog.webp' },
+  // { id: 202, name: 'DOUBLE_SMASH_SOFT_DRINK_SWEET_CREPE', price: 15, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_3_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/1burger+(1).webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/1burger+(1).webp' },
 ];
+
+export const POPULAR_ITEMS = [53,140, 112, 145, 128, 122].map(id => menuItems.find(item => item.id === id)!).filter(item => item != null);
 
 export const SOFT_DRINKS = menuItems.filter(item => item.category === 'SOFT_DRINKS');
 

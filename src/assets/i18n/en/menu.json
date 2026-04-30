@@ -49,8 +49,11 @@
   "TOASTS_CREPS": "Toasts & Crepes",
   "BEERS": "Beers",
   "TOAST": "Toast",
+  "TOAST_DESC": "Build your toast with ingredients of your choice.",
   "SAVORY_CREPE": "Savory Crepe",
+  "SAVORY_CREPE_DESC": "Build your crepe with ingredients of your choice.",
   "SWEET_CREPE": "Sweet Crepe",
+  "SWEET_CREPE_DESC": "Build your crepe with ingredients of your choice.",
   "BARREL_SMALL": "Barrel Small",
   "BARREL_LARGE": "Barrel Large",
   "KAISER": "Kaiser",
@@ -322,5 +325,6 @@
   "SWE_LILA_PAUSE": "Lila pause",
   "SWE_MARMELADA_FRAOULA": "Strawberry jam",
   "SWE_MARMELADA_RODAKINO": "Peach jam",
-  "SWE_CAPRICE": "Caprice"
+  "SWE_CAPRICE": "Caprice",
+  "POPULAR": "Popular"
 }
