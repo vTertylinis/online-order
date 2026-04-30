@@ -1,5 +1,8 @@
 {
   "TITLE": "Online Order",
+  "WELCOME": "Καλώς ήρθατε στο",
+  "ITEM_SINGULAR": "προϊόν",
+  "ITEM_PLURAL": "προϊόντα",
   "LANG_SELECTOR": {
     "CHOOSE_LANGUAGE": "Επιλέξτε γλώσσα"
   }
