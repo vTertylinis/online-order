@@ -1,6 +1,6 @@
 /// <reference types="google.maps" />
 
-import { Component, inject, ViewChild, ElementRef, AfterViewInit, OnInit } from '@angular/core';
+import { Component, inject, ViewChild, ElementRef, AfterViewInit, OnInit, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
@@ -63,6 +63,7 @@ export class AddressPage implements AfterViewInit {
   private cartService = inject(CartService);
   private mapsLoader = inject(GoogleMapsLoaderService);
   private translateService = inject(TranslateService);
+  private ngZone = inject(NgZone);
 
   constructor() {
     addIcons({
@@ -160,7 +161,7 @@ export class AddressPage implements AfterViewInit {
     if (this.map) {
       this.map.addListener('click', (event: google.maps.MapMouseEvent) => {
         if (event.latLng) {
-          this.placeMarker(event.latLng);
+          this.ngZone.run(() => this.placeMarker(event.latLng!));
         }
       });
     }
@@ -189,11 +190,13 @@ export class AddressPage implements AfterViewInit {
     if (this.marker) {
       this.marker.addListener('dragend', (event: google.maps.MapMouseEvent) => {
         if (event.latLng) {
-          this.selectedLocation = {
-            lat: event.latLng.lat(),
-            lng: event.latLng.lng()
-          };
-          this.reverseGeocode(event.latLng);
+          this.ngZone.run(() => {
+            this.selectedLocation = {
+              lat: event.latLng!.lat(),
+              lng: event.latLng!.lng()
+            };
+            this.reverseGeocode(event.latLng!);
+          });
         }
       });
     }
@@ -204,16 +207,18 @@ export class AddressPage implements AfterViewInit {
 
   reverseGeocode(location: google.maps.LatLng) {
     const geocoder = new google.maps.Geocoder();
-    
+
     geocoder.geocode({ location: location }, (results: google.maps.GeocoderResult[], status: google.maps.GeocoderStatus) => {
-      if (status === 'OK' && results && results[0]) {
-        this.selectedAddress = results[0].formatted_address;
-        // Update the form address field with geocoded address
-        this.form.patchValue({ address: this.selectedAddress });
-      } else {
-        this.selectedAddress = undefined;
-        console.error('Geocoder failed:', status);
-      }
+      this.ngZone.run(() => {
+        if (status === 'OK' && results && results[0]) {
+          this.selectedAddress = results[0].formatted_address;
+          // Update the form address field with geocoded address
+          this.form.patchValue({ address: this.selectedAddress });
+        } else {
+          this.selectedAddress = undefined;
+          console.error('Geocoder failed:', status);
+        }
+      });
     });
   }
 
