@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button defaultHref="/home"></ion-back-button>
@@ -7,36 +7,88 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-list *ngIf="items.length; else empty">
-    <ion-item *ngFor="let it of items; let i = index">
-      <ion-label>
-        <h3>{{ getItemName(it.name) }}</h3>
-        <p *ngIf="it.size && (it.id === 3 || it.id === 4 || it.id === 5 || it.id === 6 || it.id === 13)">{{ 'cart.SIZE' | translate }}: {{ translateKey(it.size, 'item-detail.SIZE') }}</p>
-        <p *ngIf="it.sweetness">{{ 'cart.SWEETNESS' | translate }}: {{ translateKey(it.sweetness, 'item-detail.SWEETNESS') }}</p>
-        <p *ngIf="it.ingredients && it.ingredients.length">{{ 'cart.EXTRAS' | translate }}: {{ ingredientsList(it) }}</p>
-        <p *ngIf="it.comments">{{ 'cart.COMMENTS' | translate }}: {{ it.comments }}</p>
-        <p>{{ 'cart.QUANTITY' | translate }}: {{ it.quantity || 1 }}</p>
-      </ion-label>
-      <div slot="end" class="item-right">
-        <div>{{ itemPrice(it) | currency:'EUR' }}</div>
-        <ion-button color="danger" fill="clear" (click)="remove(i)">{{ 'cart.REMOVE' | translate }}</ion-button>
+<ion-content class="cart-content">
+  <ng-container *ngIf="items.length; else empty">
+    <div class="cart-summary-bar">
+      <ion-icon name="bag-handle-outline"></ion-icon>
+      <span>{{ items.length }} {{ items.length === 1 ? ('cart.ITEM_SINGULAR' | translate) : ('cart.ITEM_PLURAL' | translate) }}</span>
+    </div>
+
+    <div class="cart-list">
+      <article class="cart-card" *ngFor="let it of items; let i = index">
+        <div class="cart-card-main">
+          <div class="cart-card-head">
+            <h3 class="cart-name">{{ getItemName(it.name) }}</h3>
+            <div class="cart-price">{{ itemPrice(it) | currency:'EUR' }}</div>
+          </div>
+
+          <ul class="cart-meta">
+            <li *ngIf="it.size && (it.id === 3 || it.id === 4 || it.id === 5 || it.id === 6 || it.id === 13)">
+              <span class="meta-label">{{ 'cart.SIZE' | translate }}</span>
+              <span class="meta-value">{{ translateKey(it.size, 'item-detail.SIZE') }}</span>
+            </li>
+            <li *ngIf="it.sweetness">
+              <span class="meta-label">{{ 'cart.SWEETNESS' | translate }}</span>
+              <span class="meta-value">{{ translateKey(it.sweetness, 'item-detail.SWEETNESS') }}</span>
+            </li>
+            <li *ngIf="it.ingredients && it.ingredients.length" class="meta-extras">
+              <span class="meta-label">{{ 'cart.EXTRAS' | translate }}</span>
+              <span class="meta-value">{{ ingredientsList(it) }}</span>
+            </li>
+            <li *ngIf="it.comments" class="meta-comments">
+              <span class="meta-label">{{ 'cart.COMMENTS' | translate }}</span>
+              <span class="meta-value">{{ it.comments }}</span>
+            </li>
+          </ul>
+
+          <div class="cart-card-foot">
+            <span class="qty-pill">
+              <ion-icon name="cube-outline"></ion-icon>
+              {{ 'cart.QUANTITY' | translate }}: {{ it.quantity || 1 }}
+            </span>
+            <button type="button" class="remove-btn" (click)="remove(i)">
+              <ion-icon name="trash-outline"></ion-icon>
+              {{ 'cart.REMOVE' | translate }}
+            </button>
+          </div>
+        </div>
+      </article>
+    </div>
+
+    <div *ngIf="!isMinimumMet" class="minimum-warning">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      <div>
+        <p class="warning-title">{{ 'cart.MINIMUM_ORDER' | translate }}: {{ MINIMUM_ORDER | currency:'EUR' }}</p>
+        <p class="warning-sub">{{ 'cart.ADD_MORE' | translate:{ amount: (remainingForMinimum | currency:'EUR') } }}</p>
       </div>
-    </ion-item>
-  </ion-list>
+    </div>
+
+    <div class="footer-spacer"></div>
+  </ng-container>
 
   <ng-template #empty>
-    <p>{{ 'cart.EMPTY' | translate }}</p>
-  </ng-template>
-
-  <div class="cart-footer" *ngIf="items.length">
-    <div class="total">{{ 'cart.TOTAL' | translate }}: {{ total | currency:'EUR' }}</div>
-    <div class="minimum-warning" *ngIf="!isMinimumMet">
-      <ion-text color="warning">
-        <p><ion-icon name="alert-circle-outline"></ion-icon> {{ 'cart.MINIMUM_ORDER' | translate }}: {{ MINIMUM_ORDER | currency:'EUR' }}</p>
-        <p>{{ 'cart.ADD_MORE' | translate:{ amount: (remainingForMinimum | currency:'EUR') } }}</p>
-      </ion-text>
+    <div class="empty-state">
+      <ion-icon name="cart-outline"></ion-icon>
+      <h2>{{ 'cart.EMPTY' | translate }}</h2>
+      <ion-button fill="outline" shape="round" routerLink="/home">
+        {{ 'cart.TITLE' | translate }}
+      </ion-button>
     </div>
-    <ion-button expand="block" routerLink="/address" [disabled]="!isMinimumMet">{{ 'cart.ADD_ADDRESS' | translate }}</ion-button>
-  </div>
+  </ng-template>
 </ion-content>
+
+<ion-footer *ngIf="items.length" class="action-footer ion-no-border">
+  <div class="action-bar">
+    <div class="total-block">
+      <span class="total-label">{{ 'cart.TOTAL' | translate }}</span>
+      <span class="total-value">{{ total | currency:'EUR' }}</span>
+    </div>
+    <ion-button class="checkout-btn"
+                shape="round"
+                routerLink="/address"
+                [disabled]="!isMinimumMet">
+      {{ 'cart.ADD_ADDRESS' | translate }}
+      <ion-icon slot="end" name="chevron-forward"></ion-icon>
+    </ion-button>
+  </div>
+</ion-footer>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
   IonContent,
   IonHeader,
@@ -8,23 +8,32 @@ import {
   IonTitle,
   IonButtons,
   IonBackButton,
-  IonCard,
-  IonCardHeader,
-  IonCardTitle,
-  IonCardContent,
-  IonList,
-  IonItem,
   IonLabel,
-  IonRadioGroup,
-  IonRadio,
-  IonListHeader,
   IonSearchbar,
-  IonCheckbox,
   IonTextarea,
   IonButton,
   IonSpinner,
+  IonIcon,
+  IonSegment,
+  IonSegmentButton,
+  IonFooter,
 } from '@ionic/angular/standalone';
 import { FormsModule } from '@angular/forms';
+import { addIcons } from 'ionicons';
+import {
+  cafeOutline,
+  resizeOutline,
+  restaurantOutline,
+  iceCreamOutline,
+  beerOutline,
+  chatbubbleEllipsesOutline,
+  cartOutline,
+  alertCircleOutline,
+  checkmarkCircle,
+  addCircleOutline,
+  addOutline,
+  removeOutline,
+} from 'ionicons/icons';
 import {
   MenuItem,
   menuItems,
@@ -46,24 +55,19 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
     IonTitle,
     IonButtons,
     IonBackButton,
-    IonCard,
     CommonModule,
     CurrencyPipe,
-    IonCardHeader,
-    IonCardTitle,
-    IonCardContent,
-    IonList,
-    IonItem,
     IonLabel,
     IonSearchbar,
-    IonCheckbox,
-    IonRadioGroup,
-    IonRadio,
     FormsModule,
-    IonListHeader,
     IonTextarea,
     IonButton,
     IonSpinner,
+    IonIcon,
+    IonSegment,
+    IonSegmentButton,
+    IonFooter,
+    RouterLink,
     TranslateModule,
   ],
 })
@@ -100,12 +104,34 @@ export class ItemDetailPage {
   softDrinks: Array<{ id: number; name: string; quantity?: number }> = [];
   REQUIRED_SOFT_DRINKS_COUNT = 2;
 
+  readonly sweetnessOptions: string[] = [
+    'PLAIN',
+    'SLIGHT',
+    'MEDIUM',
+    'TOWARDS_SWEET',
+    'SWEET',
+  ];
+
   constructor(
     private route: ActivatedRoute,
     private cart: CartService,
     private router: Router,
     private translateService: TranslateService
   ) {
+    addIcons({
+      cafeOutline,
+      resizeOutline,
+      restaurantOutline,
+      iceCreamOutline,
+      beerOutline,
+      chatbubbleEllipsesOutline,
+      cartOutline,
+      alertCircleOutline,
+      checkmarkCircle,
+      addCircleOutline,
+      addOutline,
+      removeOutline,
+    });
     this.id = this.route.snapshot.paramMap.get('id');
 
     // Try to read the full item from navigation state (set by HomePage.openItem).
@@ -369,6 +395,14 @@ export class ItemDetailPage {
     return this.ingredients
       .filter((i) => i.selected)
       .reduce((s, i) => s + (i.price || 0), 0);
+  }
+
+  get savorySelectedCount(): number {
+    return this.ingredients.filter((i) => i.selected).length;
+  }
+
+  get sweetSelectedCount(): number {
+    return this.sweetIngredients.filter((i) => i.selected).length;
   }
 
   get selectedSoftDrinksCount(): number {

@@ -1,7 +1,16 @@
 import { Component } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
-import { IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton, IonText, IonIcon } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonButton, IonIcon, IonFooter } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import {
+  cartOutline,
+  trashOutline,
+  alertCircleOutline,
+  bagHandleOutline,
+  cubeOutline,
+  chevronForward,
+} from 'ionicons/icons';
 import { CartService, CartItem } from '../services/cart.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -9,13 +18,21 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   selector: 'app-cart',
   templateUrl: 'cart.page.html',
   styleUrls: ['cart.page.scss'],
-  imports: [IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonList, IonItem, IonLabel, IonButton, IonText, IonIcon, CommonModule, CurrencyPipe, RouterLink, TranslateModule],
+  imports: [IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonButton, IonIcon, IonFooter, CommonModule, CurrencyPipe, RouterLink, TranslateModule],
 })
 export class CartPage {
   items: CartItem[] = [];
   readonly MINIMUM_ORDER = 6;
 
   constructor(private cart: CartService, private router: Router, private translateService: TranslateService) {
+    addIcons({
+      cartOutline,
+      trashOutline,
+      alertCircleOutline,
+      bagHandleOutline,
+      cubeOutline,
+      chevronForward,
+    });
     this.refresh();
   }
 

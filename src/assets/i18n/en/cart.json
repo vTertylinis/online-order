@@ -10,5 +10,7 @@
   "TOTAL": "Total",
   "MINIMUM_ORDER": "Minimum order amount",
   "ADD_MORE": "Add {{amount}} more to complete your order.",
-  "ADD_ADDRESS": "Add Address"
+  "ADD_ADDRESS": "Add Address",
+  "ITEM_SINGULAR": "item",
+  "ITEM_PLURAL": "items"
 }
