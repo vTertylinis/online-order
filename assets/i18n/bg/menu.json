@@ -49,8 +49,11 @@
   "TOASTS_CREPS": "Тостове и крепове",
   "BEERS": "Бири",
   "TOAST": "Тост",
+  "TOAST_DESC": "Направете тоста си с продукти по ваш избор.",
   "SAVORY_CREPE": "Солен креп",
+  "SAVORY_CREPE_DESC": "Направете крепа си с продукти по ваш избор.",
   "SWEET_CREPE": "Сладък креп",
+  "SWEET_CREPE_DESC": "Направете крепа си с продукти по ваш избор.",
   "BARREL_SMALL": "Наливна малка",
   "BARREL_LARGE": "Наливна голяма",
   "KAISER": "Kaiser",
@@ -340,5 +343,6 @@
   "SWE_LILA_PAUSE": "Lila pause",
   "SWE_MARMELADA_FRAOULA": "Ягодово сладко",
   "SWE_MARMELADA_RODAKINO": "Прасковено сладко",
-  "SWE_CAPRICE": "Caprice"
+  "SWE_CAPRICE": "Caprice",
+  "POPULAR": "Популярни"
 }
