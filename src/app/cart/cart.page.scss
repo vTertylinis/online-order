@@ -203,6 +203,17 @@
   }
 }
 
+@media (prefers-color-scheme: dark) {
+  .minimum-warning {
+    background: linear-gradient(135deg, rgba(255, 193, 7, 0.18), rgba(255, 152, 0, 0.14));
+    border-color: rgba(255, 152, 0, 0.55);
+
+    p {
+      color: #fcd34d;
+    }
+  }
+}
+
 /* ---------- Empty state ---------- */
 .empty-state {
   display: flex;
