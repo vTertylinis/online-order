@@ -30,7 +30,7 @@ export const menuItems: MenuItem[] = [
   { id: 206, name: 'BREAKFAST_FOR_2', price: 25, category: 'BREAKFAST', description: 'BREAKFAST_FOR_2_DESC' },
 
   { id: 112, name: 'CLUB_SANDWICH', price: 9, category: 'CLUB_SANDWICH', description: 'CLUB_SANDWICH_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/club.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/club.webp' },
-  { id: 113, name: 'CLUB_SANDWICH_CAESAR_CHICKEN', price: 11, category: 'CLUB_SANDWICH', description: 'CLUB_SANDWICH_CAESAR_CHICKEN_DESC' },
+  { id: 113, name: 'CLUB_SANDWICH_CAESAR_CHICKEN', price: 11, category: 'CLUB_SANDWICH', description: 'CLUB_SANDWICH_CAESAR_CHICKEN_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/clubCeasars.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/clubCeasars.webp' },
   { id: 114, name: 'CLUB_SANDWICH_GYRO', price: 11, category: 'CLUB_SANDWICH', description: 'CLUB_SANDWICH_GYRO_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/gyrosclub.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/gyrosclub.webp' },
   { id: 115, name: 'CLUB_SANDWICH_PANSETSA', price: 12, category: 'CLUB_SANDWICH', image: 'https://21images.s3.eu-north-1.amazonaws.com/clubpanseta.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/clubpanseta.webp', description: 'CLUB_SANDWICH_PANSETSA_DESC' },
 
@@ -54,17 +54,17 @@ export const menuItems: MenuItem[] = [
   { id: 135, name: 'LINGUINI_OCTOPUS', price: 18, category: 'PASTA', description: 'LINGUINI_OCTOPUS_DESC' },
 
   { id: 136, name: 'HOT_DOG', price: 6, category: 'HOTDOG_BURGERS', description: 'HOT_DOG_DESC' },
-  { id: 137, name: 'BURGER_BBQ', price: 10, category: 'HOTDOG_BURGERS', description: 'BURGER_BBQ_DESC' },
-  { id: 138, name: 'BURGER_CAESAR', price: 9, category: 'HOTDOG_BURGERS', description: 'BURGER_CAESAR_DESC' },
+  { id: 137, name: 'BURGER_BBQ', price: 10, category: 'HOTDOG_BURGERS', description: 'BURGER_BBQ_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/bbqBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/bbqBurger.webp' },
+  { id: 138, name: 'BURGER_CAESAR', price: 9, category: 'HOTDOG_BURGERS', description: 'BURGER_CAESAR_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/ceasarsBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/ceasarsBurger.webp' },
   { id: 139, name: 'BURGER_21', price: 10, category: 'HOTDOG_BURGERS', image: 'https://21images.s3.eu-north-1.amazonaws.com/burger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burger.webp', description: 'BURGER_21_DESC' },
   { id: 140, name: 'DOUBLE_CHEESE_BURGER', price: 10, category: 'HOTDOG_BURGERS', description: 'DOUBLE_CHEESE_BURGER_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/burgerCheese.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burgerCheese.webp' },
   { id: 141, name: 'CHICKEN_CRISPY_BURGER', price: 10, category: 'HOTDOG_BURGERS', description: 'CHICKEN_CRISPY_BURGER_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/crispyburger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/crispyburger.webp' },
-  { id: 142, name: 'burgerChilicrispychicken', price: 10, category: 'HOTDOG_BURGERS', description: 'burgerChilicrispychickenDesc' },
+  { id: 142, name: 'burgerChilicrispychicken', price: 10, category: 'HOTDOG_BURGERS', description: 'burgerChilicrispychickenDesc', image: 'https://21images.s3.eu-north-1.amazonaws.com/crispyBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/crispyBurger.webp' },
   { id: 143, name: 'doubleSmash', price: 11, category: 'HOTDOG_BURGERS', description: 'doubleSmashdesc', image: 'https://21images.s3.eu-north-1.amazonaws.com/smash.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/smash.webp' },
-  { id: 144, name: 'miniBurgers', price: 11, category: 'HOTDOG_BURGERS', description: 'miniBurgersDesc' },
+  // { id: 144, name: 'miniBurgers', price: 11, category: 'HOTDOG_BURGERS', description: 'miniBurgersDesc' },
 
   { id: 145, name: 'SHRIMP_CHILI_BAO', price: 8, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/garida.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/garida.webp', description: 'SHRIMP_CHILI_BAO_DESC' },
-  { id: 146, name: 'NUGGETS_BAO', price: 7, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baogarida.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baogarida.webp', description: 'NUGGETS_BAO_DESC' },
+  { id: 146, name: 'NUGGETS_BAO', price: 7, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baokota.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baokota.webp', description: 'NUGGETS_BAO_DESC' },
   { id: 147, name: 'PULLED_PORK_BAO', price: 7, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/pull.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pull.webp', description: 'PULLED_PORK_BAO_DESC' },
 
   { id: 148, name: 'SALAD_CAESAR', price: 8.5, category: 'SALADS', description: 'SALAD_CAESAR_DESC' },
