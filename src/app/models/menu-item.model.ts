@@ -38,8 +38,8 @@ export const menuItems: MenuItem[] = [
   { id: 117, name: 'JUNIOR_2', price: 7.5, category: 'JUNIOR_MENU', description: 'JUNIOR_2_DESC' },
 
   { id: 122, name: 'PINSA_SIMPLE', price: 11, category: 'PINSA', image: 'https://21images.s3.eu-north-1.amazonaws.com/pinsa.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pinsa.webp', description: 'PINSA_SIMPLE_DESC' },
-  { id: 123, name: 'PINSA_MARGARITA', price: 11, category: 'PINSA', description: 'PINSA_MARGARITA_DESC' },
-  { id: 124, name: 'PINSA_SPECIAL', price: 12, category: 'PINSA', description: 'PINSA_SPECIAL_DESC' },
+  { id: 123, name: 'PINSA_MARGARITA', price: 11, category: 'PINSA', description: 'PINSA_MARGARITA_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/margarita.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/margarita.webp' },
+  { id: 124, name: 'PINSA_SPECIAL', price: 12, category: 'PINSA', description: 'PINSA_SPECIAL_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/special.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/special.webp' },
   { id: 125, name: 'PINSA_21', price: 12, category: 'PINSA', image: 'https://21images.s3.eu-north-1.amazonaws.com/pinsa21.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pinsa21.webp', description: 'PINSA_21_DESC' },
 
   { id: 126, name: 'NAPOLITANA', price: 8, category: 'PASTA', description: 'NAPOLITANA_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/napoli.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/napoli.webp' },
@@ -63,9 +63,9 @@ export const menuItems: MenuItem[] = [
   { id: 143, name: 'doubleSmash', price: 11, category: 'HOTDOG_BURGERS', description: 'doubleSmashdesc', image: 'https://21images.s3.eu-north-1.amazonaws.com/smash.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/smash.webp' },
   // { id: 144, name: 'miniBurgers', price: 11, category: 'HOTDOG_BURGERS', description: 'miniBurgersDesc' },
 
-  { id: 145, name: 'SHRIMP_CHILI_BAO', price: 8, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/garida.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/garida.webp', description: 'SHRIMP_CHILI_BAO_DESC' },
+  { id: 145, name: 'SHRIMP_CHILI_BAO', price: 8, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baogarida.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baogarida.webp', description: 'SHRIMP_CHILI_BAO_DESC' },
   { id: 146, name: 'NUGGETS_BAO', price: 7, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baokota.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baokota.webp', description: 'NUGGETS_BAO_DESC' },
-  { id: 147, name: 'PULLED_PORK_BAO', price: 7, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/pull.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pull.webp', description: 'PULLED_PORK_BAO_DESC' },
+  { id: 147, name: 'PULLED_PORK_BAO', price: 7, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baopull.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baopull.webp', description: 'PULLED_PORK_BAO_DESC' },
 
   { id: 148, name: 'SALAD_CAESAR', price: 8.5, category: 'SALADS', description: 'SALAD_CAESAR_DESC' },
   { id: 149, name: 'SALAD_21', price: 8, category: 'SALADS', image: 'https://21images.s3.eu-north-1.amazonaws.com/saladd+21.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/saladd+21.webp', description: 'SALAD_21_DESC' },
