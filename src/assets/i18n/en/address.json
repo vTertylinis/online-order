@@ -20,5 +20,9 @@
   "FORM_INVALID": "Please fill in all required fields.",
   "SUCCESS_TITLE": "Success",
   "SUCCESS_MESSAGE": "Your order has been placed successfully. If any clarification is needed, we will contact you.",
-  "ERROR_SEND": "Error sending order. Please check your connection."
+  "ERROR_SEND": "Error sending order. Please check your connection.",
+  "INTL_PHONE_TITLE": "International Phone Number",
+  "INTL_PHONE_MESSAGE": "For international phone numbers, order confirmation will be completed via WhatsApp or Viber. If we are unable to contact you, your order will remain pending or may be cancelled.",
+  "INTL_PHONE_CONFIRM": "Continue",
+  "INTL_PHONE_CANCEL": "Cancel"
 }

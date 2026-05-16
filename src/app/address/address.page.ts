@@ -233,6 +233,14 @@ export class AddressPage implements AfterViewInit {
       return;
     }
 
+    // Check if phone is a foreign (non-Greek) number
+    const phoneValue = (this.form.value.phone ?? '').replace(/\s/g, '');
+    const isGreekMobile = /^69/.test(phoneValue);
+    if (!isGreekMobile) {
+      const confirmed = await this.showIntlPhoneConfirmation();
+      if (!confirmed) return;
+    }
+
     // Check delivery hours before submitting
     if (!isWithinDeliveryHours()) {
       const alert = await this.alertCtrl.create({
@@ -304,6 +312,27 @@ export class AddressPage implements AfterViewInit {
       this.router.navigateByUrl('/');
       return;
     }
+  }
+
+  private async showIntlPhoneConfirmation(): Promise<boolean> {
+    return new Promise<boolean>(async (resolve) => {
+      const alert = await this.alertCtrl.create({
+        header: this.translateService.instant('address.INTL_PHONE_TITLE'),
+        message: this.translateService.instant('address.INTL_PHONE_MESSAGE'),
+        buttons: [
+          {
+            text: this.translateService.instant('address.INTL_PHONE_CANCEL'),
+            role: 'cancel',
+            handler: () => resolve(false)
+          },
+          {
+            text: this.translateService.instant('address.INTL_PHONE_CONFIRM'),
+            handler: () => resolve(true)
+          }
+        ]
+      });
+      await alert.present();
+    });
   }
 
   /** Resolve a namespaced key (e.g. 'menu.HELLENIKOS') from the Greek ('el') translations. */
