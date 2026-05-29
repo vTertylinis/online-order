@@ -18,7 +18,7 @@ export const menuItems: MenuItem[] = [
   { id: 204, name: 'TRADITIONAL_KAYANAS', price: 8, category: 'BREAKFAST', description: 'TRADITIONAL_KAYANAS_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/kayanas.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/kayanas.webp' },
   { id: 109, name: 'FRIED_EGGS_BACON', price: 7, category: 'BREAKFAST', image: 'https://21images.s3.eu-north-1.amazonaws.com/augaa.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/augaa.webp', description: 'FRIED_EGGS_BACON_DESC' },
   { id: 102, name: 'SCRAMBLED_EGGS', price: 7, category: 'BREAKFAST', description: 'SCRAMBLED_EGGS_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/scrabll.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/scrabll.webp' },
-  { id: 103, name: 'SCRAMBLED_EGGS_SALMON', price: 8, category: 'BREAKFAST', description: 'SCRAMBLED_EGGS_SALMON_DESC' },
+  { id: 103, name: 'SCRAMBLED_EGGS_SALMON', price: 8, category: 'BREAKFAST', description: 'SCRAMBLED_EGGS_SALMON_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/salmonbr.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/salmonbr.webp' },
   { id: 106, name: 'PANCAKE_PRALINE', price: 7.5, category: 'BREAKFAST', image: 'https://21images.s3.eu-north-1.amazonaws.com/pancakee.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pancakee.webp', description: 'PANCAKE_PRALINE_DESC' },
   { id: 107, name: 'PANCAKE_HONEY_CINNAMON', price: 7.5, category: 'BREAKFAST'},
   { id: 108, name: 'PANCAKE_PRALINE_BANANA_HAZELNUT', price: 9, category: 'BREAKFAST' },
@@ -27,7 +27,7 @@ export const menuItems: MenuItem[] = [
   { id: 105, name: 'FRENCH_TOAST_HONEY_CINNAMON', price: 7, category: 'BREAKFAST', image: 'https://21images.s3.eu-north-1.amazonaws.com/french+toast+meli.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/french+toast+meli.webp', description: 'FRENCH_TOAST_HONEY_CINNAMON_DESC' },
   { id: 111, name: 'YOGURT_HONEY_WALNUTS_FRUITS', price: 7, category: 'BREAKFAST', image: 'https://21images.s3.eu-north-1.amazonaws.com/giaourtii.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/giaourtii.webp', description: 'YOGURT_HONEY_WALNUTS_FRUITS_DESC' },
   { id: 205, name: 'YOGURT_MUESLI_HONEY', price: 7, category: 'BREAKFAST', description: 'YOGURT_MUESLI_HONEY_DESC' },
-  { id: 206, name: 'BREAKFAST_FOR_2', price: 25, category: 'BREAKFAST', description: 'BREAKFAST_FOR_2_DESC' },
+  { id: 206, name: 'BREAKFAST_FOR_2', price: 25, category: 'BREAKFAST', description: 'BREAKFAST_FOR_2_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/plato.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/plato.webp' },
 
   { id: 112, name: 'CLUB_SANDWICH', price: 10.5, category: 'CLUB_SANDWICH', description: 'CLUB_SANDWICH_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/club.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/club.webp' },
   { id: 113, name: 'CLUB_SANDWICH_CAESAR_CHICKEN', price: 12.5, category: 'CLUB_SANDWICH', description: 'CLUB_SANDWICH_CAESAR_CHICKEN_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/clubCeasars.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/clubCeasars.webp' },
@@ -40,37 +40,37 @@ export const menuItems: MenuItem[] = [
 
   { id: 125, name: 'PINSA_21', price: 14, category: 'PINSA', image: 'https://21images.s3.eu-north-1.amazonaws.com/pinsa21.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pinsa21.webp', description: 'PINSA_21_DESC' },
   { id: 124, name: 'PINSA_SPECIAL', price: 13, category: 'PINSA', description: 'PINSA_SPECIAL_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/special.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/special.webp' },
-  { id: 233, name: 'PINSA_PEPPERONI', price: 12.5, category: 'PINSA', description: 'PINSA_PEPPERONI_DESC' },
+  { id: 233, name: 'PINSA_PEPPERONI', price: 12.5, category: 'PINSA', description: 'PINSA_PEPPERONI_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/peperoni.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/peperoni.webp' },
   { id: 123, name: 'PINSA_MARGARITA', price: 12, category: 'PINSA', description: 'PINSA_MARGARITA_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/margarita.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/margarita.webp' },
 
-  { id: 127, name: 'BOLOGNESE', price: 11, category: 'PASTA', description: 'BOLOGNESE_DESC' },
+  { id: 127, name: 'BOLOGNESE', price: 11, category: 'PASTA', description: 'BOLOGNESE_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/bolognese.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/bolognese.webp' },
   { id: 128, name: 'CARBONARA', price: 11, category: 'PASTA', description: 'CARBONARA_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/carbonara.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/carbonara.webp' },
-  { id: 131, name: 'PASTA_21', price: 11, category: 'PASTA', description: 'PASTA_21_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/pastaa+21.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pastaa+21.webp' },
-  { id: 129, name: 'penesMeKotopoulo', price: 12, category: 'PASTA', description: 'penesMeKotopouloDesc' },
+  { id: 131, name: 'PASTA_21', price: 11, category: 'PASTA', description: 'PASTA_21_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/pasta21new.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pasta21new.webp' },
+  { id: 129, name: 'penesMeKotopoulo', price: 12, category: 'PASTA', description: 'penesMeKotopouloDesc', image: 'https://21images.s3.eu-north-1.amazonaws.com/peneskoto.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/peneskoto.webp' },
   { id: 130, name: 'rigatoniCheeses', price: 11, category: 'PASTA', description: 'rigatoniCheesesDesc' },
   { id: 132, name: 'SHRIMP_PASTA', price: 19, category: 'PASTA', image: 'https://21images.s3.eu-north-1.amazonaws.com/garidomakaronada.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/garidomakaronada.webp', description: 'SHRIMP_PASTA_DESC' },
   { id: 230, name: 'SEAFOOD_PASTA', price: 19, category: 'PASTA', description: 'SEAFOOD_PASTA_DESC' },
 
-  { id: 136, name: 'HOT_DOG', price: 6, category: 'HOTDOG_BURGERS', description: 'HOT_DOG_DESC' },
-  { id: 137, name: 'BURGER_BBQ', price: 10, category: 'HOTDOG_BURGERS', description: 'BURGER_BBQ_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/bbqBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/bbqBurger.webp' },
-  { id: 138, name: 'BURGER_CAESAR', price: 9, category: 'HOTDOG_BURGERS', description: 'BURGER_CAESAR_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/ceasarsBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/ceasarsBurger.webp' },
-  { id: 139, name: 'BURGER_21', price: 10, category: 'HOTDOG_BURGERS', image: 'https://21images.s3.eu-north-1.amazonaws.com/burger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burger.webp', description: 'BURGER_21_DESC' },
-  { id: 140, name: 'DOUBLE_CHEESE_BURGER', price: 10, category: 'HOTDOG_BURGERS', description: 'DOUBLE_CHEESE_BURGER_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/burgerCheese.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burgerCheese.webp' },
-  { id: 141, name: 'CHICKEN_CRISPY_BURGER', price: 10, category: 'HOTDOG_BURGERS', description: 'CHICKEN_CRISPY_BURGER_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/crispyburger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/crispyburger.webp' },
-  { id: 142, name: 'burgerChilicrispychicken', price: 10, category: 'HOTDOG_BURGERS', description: 'burgerChilicrispychickenDesc', image: 'https://21images.s3.eu-north-1.amazonaws.com/crispyBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/crispyBurger.webp' },
-  { id: 143, name: 'doubleSmash', price: 11, category: 'HOTDOG_BURGERS', description: 'doubleSmashdesc', image: 'https://21images.s3.eu-north-1.amazonaws.com/smash.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/smash.webp' },
+  { id: 136, name: 'HOT_DOG', price: 7, category: 'HOTDOG_BURGERS', description: 'HOT_DOG_DESC' },
+  { id: 137, name: 'BURGER_BBQ', price: 11.5, category: 'HOTDOG_BURGERS', description: 'BURGER_BBQ_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/bbqBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/bbqBurger.webp' },
+  { id: 138, name: 'BURGER_CAESAR', price: 11.5, category: 'HOTDOG_BURGERS', description: 'BURGER_CAESAR_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/ceasarsBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/ceasarsBurger.webp' },
+  { id: 139, name: 'BURGER_21', price: 12.5, category: 'HOTDOG_BURGERS', image: 'https://21images.s3.eu-north-1.amazonaws.com/burger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burger.webp', description: 'BURGER_21_DESC' },
+  { id: 140, name: 'DOUBLE_CHEESE_BURGER', price: 11.5, category: 'HOTDOG_BURGERS', description: 'DOUBLE_CHEESE_BURGER_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/burgerCheese.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burgerCheese.webp' },
+  { id: 141, name: 'CHICKEN_CRISPY_BURGER', price: 11.5, category: 'HOTDOG_BURGERS', description: 'CHICKEN_CRISPY_BURGER_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/crispyburger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/crispyburger.webp' },
+  { id: 142, name: 'burgerChilicrispychicken', price: 12.5, category: 'HOTDOG_BURGERS', description: 'burgerChilicrispychickenDesc', image: 'https://21images.s3.eu-north-1.amazonaws.com/crispyBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/crispyBurger.webp' },
+  { id: 143, name: 'doubleSmash', price: 12.5, category: 'HOTDOG_BURGERS', description: 'doubleSmashdesc', image: 'https://21images.s3.eu-north-1.amazonaws.com/smash.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/smash.webp' },
   // { id: 144, name: 'miniBurgers', price: 11, category: 'HOTDOG_BURGERS', description: 'miniBurgersDesc' },
 
-  { id: 145, name: 'SHRIMP_CHILI_BAO', price: 8, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baogarida.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baogarida.webp', description: 'SHRIMP_CHILI_BAO_DESC' },
-  { id: 146, name: 'NUGGETS_BAO', price: 7, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baokota.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baokota.webp', description: 'NUGGETS_BAO_DESC' },
-  { id: 147, name: 'PULLED_PORK_BAO', price: 7, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baopull.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baopull.webp', description: 'PULLED_PORK_BAO_DESC' },
+  { id: 145, name: 'SHRIMP_CHILI_BAO', price: 9, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baogarida.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baogarida.webp', description: 'SHRIMP_CHILI_BAO_DESC' },
+  { id: 146, name: 'NUGGETS_BAO', price: 8, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baokota.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baokota.webp', description: 'NUGGETS_BAO_DESC' },
+  { id: 147, name: 'PULLED_PORK_BAO', price: 8, category: 'BAO_BUNS', image: 'https://21images.s3.eu-north-1.amazonaws.com/baopull.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/baopull.webp', description: 'PULLED_PORK_BAO_DESC' },
 
   { id: 148, name: 'SALAD_CAESAR', price: 10.5, category: 'SALADS', description: 'SALAD_CAESAR_DESC' },
   { id: 149, name: 'SALAD_21', price: 11, category: 'SALADS', image: 'https://21images.s3.eu-north-1.amazonaws.com/saladd+21.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/saladd+21.webp', description: 'SALAD_21_DESC' },
   { id: 150, name: 'SALAD_CAPRESE', price: 9, category: 'SALADS', description: 'SALAD_CAPRESE_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/caprese.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/caprese.webp' },
   { id: 151, name: 'SALAD_KOUKOUVAGIA', price: 9, category: 'SALADS', description: 'SALAD_KOUKOUVAGIA_DESC' },
   { id: 152, name: 'SALAD_GREEK', price: 9, category: 'SALADS', description: 'SALAD_GREEK_DESC' },
-  { id: 231, name: 'SALAD_CHEF', price: 11, category: 'SALADS', description: 'SALAD_CHEF_DESC' },
+  { id: 231, name: 'SALAD_CHEF', price: 11, category: 'SALADS', description: 'SALAD_CHEF_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/chef.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/chef.webp' },
   { id: 232, name: 'SALAD_21_SHRIMP', price: 11, category: 'SALADS', description: 'SALAD_21_SHRIMP_DESC' },
 
   { id: 154, name: 'PORK_PANSETTO', price: 18, category: 'MAIN_COURSES', description: 'PORK_PANSETTO_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/pansetomprizolaa.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pansetomprizolaa.webp' },
@@ -80,7 +80,7 @@ export const menuItems: MenuItem[] = [
   { id: 159, name: 'SALMON_TERIYAKI', price: 18, category: 'MAIN_COURSES', image: 'https://21images.s3.eu-north-1.amazonaws.com/solomos.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/solomos.webp', description: 'SALMON_TERIYAKI_DESC' },
   { id: 160, name: 'CHICKEN_THIGH', price: 13, category: 'MAIN_COURSES', description: 'CHICKEN_THIGH_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/fileto+mpouti.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/fileto+mpouti.webp' },
   { id: 161, name: 'BEEF_PATTY', price: 12.5, category: 'MAIN_COURSES', description: 'BEEF_PATTY_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/mpiftekiaa.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/mpiftekiaa.webp' },
-  { id: 162, name: 'PORK_GYRO', price: 12, category: 'MAIN_COURSES', description: 'PORK_GYRO_DESC' },
+  { id: 162, name: 'PORK_GYRO', price: 12, category: 'MAIN_COURSES', description: 'PORK_GYRO_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/gyros.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/gyros.webp' },
   { id: 163, name: 'MIX_GRILL', price: 18, category: 'MAIN_COURSES', description: 'MIX_GRILL_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/grill.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/grill.webp' },
 
   // { id: 165, name: 'Burger Λαχανικών (Νηστίσιμο)', price: 9, category: 'LENT_MENU', description: 'BURGER_VEGETABLES_DESC' },
@@ -197,7 +197,7 @@ export const menuItems: MenuItem[] = [
   // { id: 202, name: 'DOUBLE_SMASH_SOFT_DRINK_SWEET_CREPE', price: 15, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_3_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/1burger+(1).webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/1burger+(1).webp' },
 ];
 
-export const POPULAR_ITEMS = [53,140, 112, 145, 128, 122].map(id => menuItems.find(item => item.id === id)!).filter(item => item != null);
+export const POPULAR_ITEMS = [53,140, 112, 145, 128, 101].map(id => menuItems.find(item => item.id === id)!).filter(item => item != null);
 
 export const SOFT_DRINKS = menuItems.filter(item => item.category === 'SOFT_DRINKS');
 
