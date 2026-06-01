@@ -1,0 +1,39 @@
+{
+  "TITLE": "Detalii produs",
+  "LOADING": "Se încarcă...",
+  "DESCRIPTION": "Descriere",
+  "SWEETNESS": {
+    "LABEL": "Alegeți dulceața:",
+    "PLAIN": "Simplu",
+    "SLIGHT": "Ușor dulce",
+    "MEDIUM": "Mediu",
+    "TOWARDS_SWEET": "Spre dulce",
+    "SWEET": "Dulce"
+  },
+  "SIZE": {
+    "LABEL": "Alegeți mărimea",
+    "SINGLE": "Single",
+    "DOUBLE": "Dublu"
+  },
+  "EXTRAS": {
+    "SAVORY_LABEL": "Suplimente / Alegeți ingrediente",
+    "SWEET_LABEL": "Dulce / Alegeți ingrediente",
+    "SEARCH_SAVORY": "Căutați ingredient",
+    "SEARCH_SWEET": "Căutați ingredient dulce"
+  },
+  "SOFT_DRINKS": {
+    "LABEL": "Alegeți {{count}} băuturi răcoritoare",
+    "SELECTED": "{{current}} / {{total}} selectate"
+  },
+  "COMMENTS": {
+    "LABEL": "Comentarii / Note",
+    "PLACEHOLDER": "Adăugați comentarii pentru comanda dvs...."
+  },
+  "TOTAL": "Total",
+  "ADD_TO_CART": "Adăugați în coș",
+  "NOT_AVAILABLE": "Detaliile pentru produsul cu ID {{id}} nu sunt disponibile.",
+  "VALIDATION": {
+    "SELECT_INGREDIENT": "Vă rugăm să selectați cel puțin un ingredient din opțiunile suplimentare",
+    "SELECT_SOFT_DRINKS": "Vă rugăm să selectați exact {{count}} băuturi răcoritoare. Ați selectat: {{selected}}"
+  }
+}

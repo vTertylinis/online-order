@@ -1,0 +1,16 @@
+{
+  "TITLE": "Coș",
+  "SIZE": "Mărime",
+  "SWEETNESS": "Dulceață",
+  "EXTRAS": "Suplimente",
+  "COMMENTS": "Comentarii",
+  "QUANTITY": "Cantitate",
+  "REMOVE": "Eliminați",
+  "EMPTY": "Coșul dvs. este gol.",
+  "TOTAL": "Total",
+  "MINIMUM_ORDER": "Suma minimă a comenzii",
+  "ADD_MORE": "Adăugați încă {{amount}} pentru a finaliza comanda.",
+  "ADD_ADDRESS": "Adăugați adresa",
+  "ITEM_SINGULAR": "produs",
+  "ITEM_PLURAL": "produse"
+}
