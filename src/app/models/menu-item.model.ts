@@ -26,7 +26,7 @@ export const menuItems: MenuItem[] = [
   { id: 104, name: 'FRENCH_TOAST_SIMPLE', price: 7, image: 'https://21images.s3.eu-north-1.amazonaws.com/frenchtoast.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/frenchtoast.webp', category: 'BREAKFAST', description: 'FRENCH_TOAST_SIMPLE_DESC' },
   { id: 105, name: 'FRENCH_TOAST_HONEY_CINNAMON', price: 7, category: 'BREAKFAST', image: 'https://21images.s3.eu-north-1.amazonaws.com/french+toast+meli.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/french+toast+meli.webp', description: 'FRENCH_TOAST_HONEY_CINNAMON_DESC' },
   { id: 111, name: 'YOGURT_HONEY_WALNUTS_FRUITS', price: 7, category: 'BREAKFAST', image: 'https://21images.s3.eu-north-1.amazonaws.com/giaourtii.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/giaourtii.webp', description: 'YOGURT_HONEY_WALNUTS_FRUITS_DESC' },
-  { id: 205, name: 'YOGURT_MUESLI_HONEY', price: 7, category: 'BREAKFAST', description: 'YOGURT_MUESLI_HONEY_DESC' },
+  { id: 205, name: 'YOGURT_MUESLI_HONEY', price: 7, category: 'BREAKFAST', description: 'YOGURT_MUESLI_HONEY_DESC' , image: 'https://21images.s3.eu-north-1.amazonaws.com/musli.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/musli.webp'},
   { id: 206, name: 'BREAKFAST_FOR_2', price: 25, category: 'BREAKFAST', description: 'BREAKFAST_FOR_2_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/plato.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/plato.webp' },
 
   { id: 112, name: 'CLUB_SANDWICH', price: 10.5, category: 'CLUB_SANDWICH', description: 'CLUB_SANDWICH_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/club.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/club.webp' },
@@ -35,8 +35,8 @@ export const menuItems: MenuItem[] = [
   { id: 115, name: 'CLUB_SANDWICH_PANSETSA', price: 13, category: 'CLUB_SANDWICH', image: 'https://21images.s3.eu-north-1.amazonaws.com/clubpanseta.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/clubpanseta.webp', description: 'CLUB_SANDWICH_PANSETSA_DESC' },
   { id: 118, name: 'CLUB_CALAMARI', price: 12, category: 'CLUB_SANDWICH', description: 'CLUB_CALAMARI_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/kalamariclub.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/kalamariclub.webp' },
 
-  { id: 116, name: 'JUNIOR_1', price: 7.5, category: 'JUNIOR_MENU', description: 'JUNIOR_1_DESC' },
-  { id: 117, name: 'JUNIOR_2', price: 7.5, category: 'JUNIOR_MENU', description: 'JUNIOR_2_DESC' },
+  { id: 116, name: 'JUNIOR_1', price: 7.5, category: 'JUNIOR_MENU', description: 'JUNIOR_1_DESC' , image: 'https://21images.s3.eu-north-1.amazonaws.com/juniorburger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/juniorburger.webp'},
+  { id: 117, name: 'JUNIOR_2', price: 7.5, category: 'JUNIOR_MENU', description: 'JUNIOR_2_DESC' , image: 'https://21images.s3.eu-north-1.amazonaws.com/juniornuggets.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/juniornuggets.webp'},
 
   { id: 125, name: 'PINSA_21', price: 14, category: 'PINSA', image: 'https://21images.s3.eu-north-1.amazonaws.com/pinsa21.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/pinsa21.webp', description: 'PINSA_21_DESC' },
   { id: 124, name: 'PINSA_SPECIAL', price: 13, category: 'PINSA', description: 'PINSA_SPECIAL_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/special.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/special.webp' },
@@ -51,7 +51,7 @@ export const menuItems: MenuItem[] = [
   { id: 132, name: 'SHRIMP_PASTA', price: 19, category: 'PASTA', image: 'https://21images.s3.eu-north-1.amazonaws.com/garidomakaronada.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/garidomakaronada.webp', description: 'SHRIMP_PASTA_DESC' },
   { id: 230, name: 'SEAFOOD_PASTA', price: 19, category: 'PASTA', description: 'SEAFOOD_PASTA_DESC' , image: 'https://21images.s3.eu-north-1.amazonaws.com/thalasinon.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/thalasinon.webp'},
 
-  { id: 136, name: 'HOT_DOG', price: 7, category: 'HOTDOG_BURGERS', description: 'HOT_DOG_DESC' },
+  { id: 136, name: 'HOT_DOG', price: 7, category: 'HOTDOG_BURGERS', description: 'HOT_DOG_DESC' , image: 'https://21images.s3.eu-north-1.amazonaws.com/hot-dog.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/hot-dog.webp'},
   { id: 137, name: 'BURGER_BBQ', price: 11.5, category: 'HOTDOG_BURGERS', description: 'BURGER_BBQ_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/bbqBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/bbqBurger.webp' },
   { id: 138, name: 'BURGER_CAESAR', price: 11.5, category: 'HOTDOG_BURGERS', description: 'BURGER_CAESAR_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/ceasarsBurger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/ceasarsBurger.webp' },
   { id: 139, name: 'BURGER_21', price: 12.5, category: 'HOTDOG_BURGERS', image: 'https://21images.s3.eu-north-1.amazonaws.com/burger.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/burger.webp', description: 'BURGER_21_DESC' },
@@ -69,7 +69,7 @@ export const menuItems: MenuItem[] = [
   { id: 149, name: 'SALAD_21', price: 11, category: 'SALADS', image: 'https://21images.s3.eu-north-1.amazonaws.com/saladd+21.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/saladd+21.webp', description: 'SALAD_21_DESC' },
   { id: 150, name: 'SALAD_CAPRESE', price: 9, category: 'SALADS', description: 'SALAD_CAPRESE_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/caprese.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/caprese.webp' },
   { id: 151, name: 'SALAD_KOUKOUVAGIA', price: 9, category: 'SALADS', description: 'SALAD_KOUKOUVAGIA_DESC' },
-  { id: 152, name: 'SALAD_GREEK', price: 9, category: 'SALADS', description: 'SALAD_GREEK_DESC' },
+  { id: 152, name: 'SALAD_GREEK', price: 9, category: 'SALADS', description: 'SALAD_GREEK_DESC' , image: 'https://21images.s3.eu-north-1.amazonaws.com/xwriatiki.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/xwriatiki.webp'},
   { id: 231, name: 'SALAD_CHEF', price: 11, category: 'SALADS', description: 'SALAD_CHEF_DESC', image: 'https://21images.s3.eu-north-1.amazonaws.com/chef.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/chef.webp' },
   { id: 232, name: 'SALAD_21_SHRIMP', price: 11, category: 'SALADS', description: 'SALAD_21_SHRIMP_DESC' , image: 'https://21images.s3.eu-north-1.amazonaws.com/salad21garides.webp', thumbnailImage: 'https://21thumbnails.s3.eu-north-1.amazonaws.com/salad21garides.webp'},
 
