@@ -1,0 +1,14 @@
+{
+  "BUTTONS": {
+    "OK": "OK",
+    "CANCEL": "Anulați",
+    "REMOVE": "Eliminați",
+    "ADD": "Adăugați",
+    "SUBMIT": "Trimiteți"
+  },
+  "DELIVERY_HOURS": {
+    "TITLE": "În afara orelor de livrare",
+    "MESSAGE": "Livrările se fac între orele 09:00 și miezul nopții (00:00). Vă rugăm să ne vizitați din nou în timpul orelor de funcționare."
+  },
+  "CURRENCY": "EUR"
+}

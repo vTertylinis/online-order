@@ -1,0 +1,9 @@
+{
+  "TITLE": "Comandă Online",
+  "WELCOME": "Bun venit la",
+  "ITEM_SINGULAR": "produs",
+  "ITEM_PLURAL": "produse",
+  "LANG_SELECTOR": {
+    "CHOOSE_LANGUAGE": "Alegeți limba"
+  }
+}
