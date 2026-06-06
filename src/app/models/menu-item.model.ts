@@ -125,7 +125,7 @@ export const menuItems: MenuItem[] = [
   { id: 24, name: 'SODA', price: 2.5, category: 'SOFT_DRINKS' },
   { id: 25, name: 'WATER_SMALL', price: 0.5, category: 'SOFT_DRINKS' },
   { id: 26, name: 'WATER_LARGE', price: 1, category: 'SOFT_DRINKS' },
-  { id: 27, name: 'PERRIER', price: 2.5, category: 'SOFT_DRINKS' },
+  { id: 27, name: 'PERRIER', price: 3, category: 'SOFT_DRINKS' },
   { id: 28, name: 'SCHWEPPES_ORANGE', price: 2.5, category: 'SOFT_DRINKS' },
   { id: 29, name: 'SCHWEPPES_LEMON', price: 2.5, category: 'SOFT_DRINKS' },
   { id: 30, name: 'SCHWEPPES_PINK', price: 2.5, category: 'SOFT_DRINKS' },
@@ -159,7 +159,6 @@ export const menuItems: MenuItem[] = [
   { id: 66, name: 'VERGINA_ZERO', price: 3, category: 'BEERS' },
   { id: 67, name: 'FIX_DARK', price: 3, category: 'BEERS' },
   { id: 68, name: 'HEINEKEN_ZERO', price: 3, category: 'BEERS' },
-  { id: 69, name: 'SEVEN_SEALS', price: 4, category: 'BEERS' },
 
   { id: 70, name: 'DRINK_SIMPLE', price: 6, category: 'DRINKS_WINES' },
   { id: 71, name: 'DRINK_SPECIAL', price: 7, category: 'DRINKS_WINES' },
