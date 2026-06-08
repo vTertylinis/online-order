@@ -248,7 +248,6 @@ export const sweetIngredients: Array<{ name: string; price: number; selected?: b
   { name: 'SWE_LEFKI_PRAGINA', price: 0.5 },
   { name: 'SWE_BUENO_PRAGINA', price: 0.5 },
   { name: 'SWE_FRAOULA_PRAGINA', price: 0.5 },
-  { name: 'SWE_PAGOTO', price: 2.5 },
   { name: 'SWE_MPISKOTO_OREO', price: 0.5 },
   { name: 'SWE_BUENO_KOMMATAKIA', price: 1 },
   { name: 'SWE_KARIDI', price: 0.5 },
