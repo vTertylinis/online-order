@@ -11,6 +11,8 @@
   "MINIMUM_ORDER": "Минимални износ поруџбине",
   "ADD_MORE": "Додајте још {{amount}} да бисте завршили поруџбину.",
   "ADD_ADDRESS": "Додај адресу",
+  "CONFIRM_TABLE": "Потврди поруџбину",
+  "TABLE_NUMBER": "Sto",
   "ITEM_SINGULAR": "артикал",
   "ITEM_PLURAL": "артикала"
 }

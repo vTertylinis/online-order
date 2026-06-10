@@ -1,0 +1,10 @@
+{
+  "TITLE": "Confirm Order",
+  "HEADING": "Select your table",
+  "SUB": "Choose your table number and tap Send Order.",
+  "TABLE_LABEL": "Table Number",
+  "TABLE_PLACEHOLDER": "Select...",
+  "TABLE_ERROR": "Please select a table.",
+  "CONFIRM": "Send Order",
+  "SENDING": "Sending..."
+}

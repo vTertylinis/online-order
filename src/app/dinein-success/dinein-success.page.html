@@ -1,0 +1,21 @@
+<ion-content class="success-content">
+  <div class="success-wrap">
+
+    <div class="checkmark-circle">
+      <ion-icon name="checkmark-circle-outline"></ion-icon>
+    </div>
+
+    <h1 class="success-title">{{ 'dinein-success.TITLE' | translate }}</h1>
+    <p class="success-sub">{{ 'dinein-success.MESSAGE' | translate }}</p>
+
+    <div class="table-badge" *ngIf="tableNumber">
+      <ion-icon name="restaurant-outline"></ion-icon>
+      {{ 'dinein-success.TABLE_LABEL' | translate }} {{ tableNumber }}
+    </div>
+
+    <button class="menu-btn" (click)="goToMenu()">
+      {{ 'dinein-success.BACK_TO_MENU' | translate }}
+    </button>
+
+  </div>
+</ion-content>

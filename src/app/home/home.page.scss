@@ -90,6 +90,25 @@
   text-overflow: ellipsis;
 }
 
+// Dine-in table indicator badge in the store header
+.table-badge {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: rgba(var(--ion-color-primary-rgb), 0.1);
+  color: var(--ion-color-primary);
+  border-radius: 20px;
+  padding: 4px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+
+  ion-icon {
+    font-size: 14px;
+  }
+}
+
 // ── Category chip bar ──────────────────────────────────────────
 
 .chip-bar-wrapper {

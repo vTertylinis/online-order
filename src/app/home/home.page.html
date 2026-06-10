@@ -7,8 +7,13 @@
         <img src="https://21images.s3.eu-north-1.amazonaws.com/21_192x192.webp" alt="Store Logo" class="store-logo" />
       </div>
       <div class="store-text">
-        <span class="store-eyebrow">{{ 'home.WELCOME' | translate }}</span>
-        <h1 class="store-name">{{ 'home.TITLE' | translate }}</h1>
+        <span class="store-eyebrow">{{ (isDineIn ? 'home.WELCOME_DINEIN' : 'home.WELCOME') | translate }}</span>
+        <h1 class="store-name">{{ (isDineIn ? 'home.TITLE_DINEIN' : 'home.TITLE') | translate }}</h1>
+      </div>
+      <!-- Table badge shown in dine-in mode when a table is confirmed -->
+      <div class="table-badge" *ngIf="isDineIn && tableNumber">
+        <ion-icon name="restaurant-outline"></ion-icon>
+        {{ 'home.TABLE_BADGE' | translate }} {{ tableNumber }}
       </div>
     </div>
 
@@ -89,7 +94,7 @@
           <div class="item-info">
             <p class="item-name">{{ item.name }}</p>
             <p *ngIf="item.desc" class="item-desc">{{ item.desc }}</p>
-            <span class="item-price" *ngIf="item.price">{{ item.price | currency:'EUR' }}</span>
+            <span class="item-price" *ngIf="item.price">{{ getDisplayPrice(item) | currency:'EUR' }}</span>
           </div>
 
           <!-- Quick-add button -->
@@ -109,7 +114,7 @@
 </ion-content>
 
 <ion-fab slot="fixed" vertical="bottom" horizontal="end" class="cart-fab">
-  <ion-fab-button routerLink="/cart" aria-label="Open cart" [class.has-items]="cartCount > 0">
+  <ion-fab-button [routerLink]="cartRoute" aria-label="Open cart" [class.has-items]="cartCount > 0">
     <ion-icon name="cart"></ion-icon>
     <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>
   </ion-fab-button>

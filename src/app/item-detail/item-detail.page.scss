@@ -11,31 +11,6 @@
   --section-gap: 14px;
 }
 
-/* Transparent header when there's a hero image */
-ion-header.transparent ion-toolbar {
-  --background: transparent;
-  --border-color: transparent;
-  --color: #fff;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-
-  ion-back-button {
-    --color: #fff;
-    --background: rgba(0, 0, 0, 0.35);
-    --border-radius: 50%;
-    --padding-start: 8px;
-    --padding-end: 8px;
-    margin-inline-start: 8px;
-  }
-
-  ion-title {
-    opacity: 0;
-  }
-}
-
 .detail-content {
   --background: var(--ion-color-light-tint, #f7f8fa);
 }

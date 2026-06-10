@@ -12,6 +12,8 @@ import {
   chevronForward,
 } from 'ionicons/icons';
 import { CartService, CartItem } from '../services/cart.service';
+import { ModeService } from '../services/mode.service';
+import { TableService } from '../services/table.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -24,7 +26,13 @@ export class CartPage {
   items: CartItem[] = [];
   readonly MINIMUM_ORDER = 6;
 
-  constructor(private cart: CartService, private router: Router, private translateService: TranslateService) {
+  constructor(
+    private cart: CartService,
+    private router: Router,
+    private translateService: TranslateService,
+    private modeService: ModeService,
+    private tableService: TableService,
+  ) {
     addIcons({
       cartOutline,
       trashOutline,
@@ -34,6 +42,24 @@ export class CartPage {
       chevronForward,
     });
     this.refresh();
+  }
+
+  ionViewWillEnter() {
+    // Re-read the cart every time the page becomes visible so both modes
+    // always reflect the latest items without needing a full reload.
+    this.refresh();
+  }
+
+  get isDineIn(): boolean {
+    return this.modeService.isDineIn;
+  }
+
+  get homeRoute(): string {
+    return this.modeService.isDineIn ? '/dinein/home' : '/home';
+  }
+
+  get tableNumber(): string | null {
+    return this.tableService.tableNumber;
   }
 
   refresh() {
@@ -55,6 +81,8 @@ export class CartPage {
   }
 
   get isMinimumMet(): boolean {
+    // Dine-in orders have no minimum — guests are already at the table.
+    if (this.modeService.isDineIn) return true;
     return this.total >= this.MINIMUM_ORDER;
   }
 

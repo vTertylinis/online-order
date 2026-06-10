@@ -1,6 +1,9 @@
 {
   "TITLE": "Online Order",
+  "TITLE_DINEIN": "Meni",
   "WELCOME": "Добродошли у",
+  "WELCOME_DINEIN": "Добродошли у",
+  "TABLE_BADGE": "Sto",
   "ITEM_SINGULAR": "артикал",
   "ITEM_PLURAL": "артикала",
   "LANG_SELECTOR": {

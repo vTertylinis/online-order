@@ -13,6 +13,8 @@ import { CommonModule, CurrencyPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
 import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline } from 'ionicons/icons';
 import { CartService } from '../services/cart.service';
+import { ModeService } from '../services/mode.service';
+import { TableService } from '../services/table.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MenuItem, menuItems, POPULAR_ITEMS } from '../models/menu-item.model';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
@@ -110,10 +112,12 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   private langSub!: Subscription;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private cartService: CartService,
     private alertController: AlertController,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private modeService: ModeService,
+    private tableService: TableService,
   ) {
     addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline });
     this.currentLang = this.translateService.currentLang || this.translateService.defaultLang || 'el';
@@ -147,7 +151,30 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     this.translateService.use(code);
   }
 
+  /** Returns the price to display for the given item, respecting dine-in overrides. */
+  getDisplayPrice(item: MenuItem): number {
+    if (this.modeService.isDineIn && item.dineInPrice != null) {
+      return item.dineInPrice;
+    }
+    return item.price ?? 0;
+  }
+
+  get isDineIn(): boolean {
+    return this.modeService.isDineIn;
+  }
+
+  get tableNumber(): string | null {
+    return this.tableService.tableNumber;
+  }
+
+  /** RouterLink target for the cart FAB — mode-aware. */
+  get cartRoute(): string {
+    return this.modeService.isDineIn ? '/dinein/cart' : '/cart';
+  }
+
   private async checkDeliveryHours() {
+    // Dine-in customers are at the restaurant, so no delivery-hours restriction applies.
+    if (this.modeService.isDineIn) return;
     if (!isWithinDeliveryHours()) {
       const alert = await this.alertController.create({
         header: this.translateService.instant('common.DELIVERY_HOURS.TITLE'),
@@ -342,8 +369,8 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   openItem(item: MenuItem) {
     const id = item?.id ?? null;
     if (id !== null && id !== undefined) {
-      // Pass the full item in navigation state while keeping the existing id route.
-      this.router.navigate(['/item', id], { state: { item } });
+      const prefix = this.modeService.isDineIn ? '/dinein' : '';
+      this.router.navigate([prefix + '/item', id], { state: { item } });
     } else {
       console.warn('Item has no id, cannot open detail view', item);
     }

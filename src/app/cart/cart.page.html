@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-back-button [defaultHref]="homeRoute"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'cart.TITLE' | translate }}</ion-title>
   </ion-toolbar>
@@ -12,6 +12,10 @@
     <div class="cart-summary-bar">
       <ion-icon name="bag-handle-outline"></ion-icon>
       <span>{{ items.length }} {{ items.length === 1 ? ('cart.ITEM_SINGULAR' | translate) : ('cart.ITEM_PLURAL' | translate) }}</span>
+      <span class="table-chip" *ngIf="isDineIn && tableNumber">
+        <ion-icon name="cube-outline"></ion-icon>
+        {{ 'cart.TABLE_NUMBER' | translate }} {{ tableNumber }}
+      </span>
     </div>
 
     <div class="cart-list">
@@ -55,7 +59,7 @@
       </article>
     </div>
 
-    <div *ngIf="!isMinimumMet" class="minimum-warning">
+    <div *ngIf="!isDineIn && !isMinimumMet" class="minimum-warning">
       <ion-icon name="alert-circle-outline"></ion-icon>
       <div>
         <p class="warning-title">{{ 'cart.MINIMUM_ORDER' | translate }}: {{ MINIMUM_ORDER | currency:'EUR' }}</p>
@@ -70,7 +74,7 @@
     <div class="empty-state">
       <ion-icon name="cart-outline"></ion-icon>
       <h2>{{ 'cart.EMPTY' | translate }}</h2>
-      <ion-button fill="outline" shape="round" routerLink="/home">
+      <ion-button fill="outline" shape="round" [routerLink]="homeRoute">
         {{ 'cart.TITLE' | translate }}
       </ion-button>
     </div>
@@ -83,11 +87,22 @@
       <span class="total-label">{{ 'cart.TOTAL' | translate }}</span>
       <span class="total-value">{{ total | currency:'EUR' }}</span>
     </div>
-    <ion-button class="checkout-btn"
+    <!-- Delivery: proceed to address page -->
+    <ion-button *ngIf="!isDineIn"
+                class="checkout-btn"
                 shape="round"
                 routerLink="/address"
                 [disabled]="!isMinimumMet">
       {{ 'cart.ADD_ADDRESS' | translate }}
+      <ion-icon slot="end" name="chevron-forward"></ion-icon>
+    </ion-button>
+
+    <!-- Dine-in: proceed to checkout (table selection + submit) -->
+    <ion-button *ngIf="isDineIn"
+                class="checkout-btn"
+                shape="round"
+                routerLink="/dinein/table">
+      {{ 'cart.CONFIRM_TABLE' | translate }}
       <ion-icon slot="end" name="chevron-forward"></ion-icon>
     </ion-button>
   </div>

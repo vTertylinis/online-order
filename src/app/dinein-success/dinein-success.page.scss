@@ -1,0 +1,97 @@
+.success-content {
+  --background: var(--ion-background-color, #f8f9fa);
+}
+
+.success-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  padding: 48px 32px;
+  text-align: center;
+}
+
+// ── Animated checkmark ─────────────────────────────────────────
+
+.checkmark-circle {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: rgba(var(--ion-color-success-rgb, 45, 211, 111), 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 28px;
+  animation: pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) both;
+
+  ion-icon {
+    font-size: 56px;
+    color: var(--ion-color-success, #2dd36f);
+  }
+}
+
+@keyframes pop {
+  from { transform: scale(0.5); opacity: 0; }
+  to   { transform: scale(1);   opacity: 1; }
+}
+
+// ── Text ───────────────────────────────────────────────────────
+
+.success-title {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--ion-text-color, #1a1a1a);
+  margin: 0 0 12px;
+}
+
+.success-sub {
+  font-size: 15px;
+  color: var(--ion-color-medium, #92949c);
+  margin: 0 0 28px;
+  max-width: 280px;
+  line-height: 1.5;
+}
+
+// ── Table badge ────────────────────────────────────────────────
+
+.table-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(var(--ion-color-primary-rgb), 0.1);
+  color: var(--ion-color-primary);
+  border-radius: 20px;
+  padding: 8px 18px;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 40px;
+
+  ion-icon {
+    font-size: 18px;
+  }
+}
+
+// ── Back to menu button ────────────────────────────────────────
+
+.menu-btn {
+  width: 100%;
+  max-width: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast, #fff);
+  border: none;
+  border-radius: 14px;
+  padding: 16px 24px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+
+  &:active {
+    opacity: 0.85;
+    transform: scale(0.98);
+  }
+}

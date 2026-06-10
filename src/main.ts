@@ -18,6 +18,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     { prefix: './assets/i18n/', namespace: 'address' },
     { prefix: './assets/i18n/', namespace: 'item-detail' },
     { prefix: './assets/i18n/', namespace: 'menu' },
+    { prefix: './assets/i18n/', namespace: 'table' },
+    { prefix: './assets/i18n/', namespace: 'dinein-success' },
   ]);
 }
 

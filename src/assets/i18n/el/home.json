@@ -1,6 +1,9 @@
 {
   "TITLE": "Online Order",
+  "TITLE_DINEIN": "Μενού",
   "WELCOME": "Καλώς ήρθατε στο",
+  "WELCOME_DINEIN": "Καλώς ήρθατε στο",
+  "TABLE_BADGE": "Τραπέζι",
   "ITEM_SINGULAR": "προϊόν",
   "ITEM_PLURAL": "προϊόντα",
   "LANG_SELECTOR": {

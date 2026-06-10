@@ -1,7 +1,7 @@
-<ion-header class="ion-no-border" [class.transparent]="!!item?.image">
+<ion-header class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button defaultHref="/home"></ion-back-button>
+      <ion-back-button [defaultHref]="homeRoute"></ion-back-button>
     </ion-buttons>
     <ion-title>{{ 'item-detail.TITLE' | translate }}</ion-title>
   </ion-toolbar>
@@ -18,7 +18,7 @@
   <div *ngIf="!item && id" class="empty-state">
     <ion-icon name="alert-circle-outline"></ion-icon>
     <p>{{ 'item-detail.NOT_AVAILABLE' | translate:{ id: id } }}</p>
-    <ion-button fill="outline" routerLink="/home">{{ 'item-detail.TITLE' | translate }}</ion-button>
+    <ion-button fill="outline" [routerLink]="homeRoute">{{ 'item-detail.TITLE' | translate }}</ion-button>
   </div>
 
   <ng-container *ngIf="item">

@@ -1,0 +1,10 @@
+{
+  "TITLE": "Potvrda",
+  "HEADING": "Izaberite sto",
+  "SUB": "Izaberite broj stola i pritisnite Pošalji porudžbinu.",
+  "TABLE_LABEL": "Broj stola",
+  "TABLE_PLACEHOLDER": "Izaberite...",
+  "TABLE_ERROR": "Molimo izaberite sto.",
+  "CONFIRM": "Pošalji porudžbinu",
+  "SENDING": "Slanje..."
+}

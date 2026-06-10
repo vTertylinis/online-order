@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   // Public, restricted browser key for development (HTTP referrer restricted)
-  googleMapsApiKey: 'AIzaSyDhKTaP09AGWGYGDGbDvgWD_EBoL-X7-w0'
+  googleMapsApiKey: 'AIzaSyDhKTaP09AGWGYGDGbDvgWD_EBoL-X7-w0',
+  backendUrl: 'https://unepigrammatic-harshly-dario.ngrok-free.dev',
 };
 
 /*

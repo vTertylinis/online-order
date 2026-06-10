@@ -1,6 +1,9 @@
 {
   "TITLE": "Online Order",
+  "TITLE_DINEIN": "Меню",
   "WELCOME": "Добре дошли в",
+  "WELCOME_DINEIN": "Добре дошли в",
+  "TABLE_BADGE": "Маса",
   "ITEM_SINGULAR": "продукт",
   "ITEM_PLURAL": "продукта",
   "LANG_SELECTOR": {

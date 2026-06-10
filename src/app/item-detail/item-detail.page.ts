@@ -41,6 +41,7 @@ import {
   sweetIngredients as DEFAULT_SWEET_INGREDIENTS,
 } from '../models/menu-item.model';
 import { CartService } from '../services/cart.service';
+import { ModeService } from '../services/mode.service';
 import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -116,7 +117,8 @@ export class ItemDetailPage {
     private route: ActivatedRoute,
     private cart: CartService,
     private router: Router,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private modeService: ModeService
   ) {
     addIcons({
       cafeOutline,
@@ -241,8 +243,16 @@ export class ItemDetailPage {
     return key;
   }
 
+  get homeRoute(): string {
+    return this.modeService.isDineIn ? '/dinein/home' : '/home';
+  }
+
   get totalPrice(): number {
-    let base = this.item?.price || 0;
+    // Use dine-in override price when present, otherwise fall back to the standard price.
+    const baseItemPrice = (this.modeService.isDineIn && this.item?.dineInPrice != null)
+      ? this.item.dineInPrice
+      : (this.item?.price || 0);
+    let base = baseItemPrice;
     // If the user selected the double size, add 0.5 to the base price
     if (this.size === 'DOUBLE') {
       base += 0.5;
@@ -309,8 +319,11 @@ export class ItemDetailPage {
       }
     });
     const allExtras = [...selectedSavory, ...selectedSweet, ...selectedSoftDrinks];
-    // Compute basePrice including size surcharge for double
-    const basePrice = (this.item.price || 0) + (this.size === 'DOUBLE' ? 0.5 : 0);
+    // Use dine-in price as the base when applicable.
+    const baseItemPrice = (this.modeService.isDineIn && this.item.dineInPrice != null)
+      ? this.item.dineInPrice
+      : (this.item.price || 0);
+    const basePrice = baseItemPrice + (this.size === 'DOUBLE' ? 0.5 : 0);
     const cartItem = {
       id: this.item.id,
       name: this.item.name,
@@ -322,8 +335,9 @@ export class ItemDetailPage {
       quantity: 1,
     };
     this.cart.add(cartItem);
-    // navigate to cart to show the added item
-    this.router.navigate(['/home']);
+    // Navigate back to the mode-appropriate home page.
+    const home = this.modeService.isDineIn ? '/dinein/home' : '/home';
+    this.router.navigate([home]);
   }
 
   filterIngredients() {

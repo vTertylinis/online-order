@@ -11,6 +11,8 @@
   "MINIMUM_ORDER": "Минимална сума за поръчка",
   "ADD_MORE": "Добавете още {{amount}}, за да завършите поръчката.",
   "ADD_ADDRESS": "Добави адрес",
+  "CONFIRM_TABLE": "Потвърди поръчката",
+  "TABLE_NUMBER": "Маса",
   "ITEM_SINGULAR": "продукт",
   "ITEM_PLURAL": "продукта"
 }

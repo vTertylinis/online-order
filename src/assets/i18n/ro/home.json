@@ -1,6 +1,9 @@
 {
   "TITLE": "Comandă Online",
+  "TITLE_DINEIN": "Meniu",
   "WELCOME": "Bun venit la",
+  "WELCOME_DINEIN": "Bun venit la",
+  "TABLE_BADGE": "Masă",
   "ITEM_SINGULAR": "produs",
   "ITEM_PLURAL": "produse",
   "LANG_SELECTOR": {

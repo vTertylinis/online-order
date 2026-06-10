@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ModeService } from './mode.service';
 
 export interface CartItem {
   id?: number;
@@ -11,42 +12,57 @@ export interface CartItem {
   quantity?: number;
 }
 
-const STORAGE_KEY = 'online-order-cart-v1';
+const DELIVERY_KEY = 'online-order-cart-v1';  // unchanged — existing customers keep their cart
+const DINEIN_KEY   = 'dinein-cart-v1';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private items: CartItem[] = [];
+  private deliveryItems: CartItem[] = [];
+  private dineinItems: CartItem[]   = [];
 
-  constructor() {
-    this.load();
+  constructor(private modeService: ModeService) {
+    this.deliveryItems = this.readStorage(DELIVERY_KEY);
+    this.dineinItems   = this.readStorage(DINEIN_KEY);
   }
 
-  private load() {
+  // ── Private helpers ──────────────────────────────────────────────────
+
+  private get activeItems(): CartItem[] {
+    return this.modeService.isDineIn ? this.dineinItems : this.deliveryItems;
+  }
+
+  private get activeKey(): string {
+    return this.modeService.isDineIn ? DINEIN_KEY : DELIVERY_KEY;
+  }
+
+  private readStorage(key: string): CartItem[] {
     try {
-      const raw = localStorage.getItem(STORAGE_KEY);
-      if (raw) this.items = JSON.parse(raw) || [];
-    } catch (e) {
-      this.items = [];
+      const raw = localStorage.getItem(key);
+      return raw ? JSON.parse(raw) || [] : [];
+    } catch {
+      return [];
     }
   }
 
   private save() {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(this.items || []));
-    } catch (e) {
-      // ignore
+      localStorage.setItem(this.activeKey, JSON.stringify(this.activeItems));
+    } catch {
+      // ignore storage errors (e.g. private browsing quota)
     }
   }
 
+  // ── Public API (identical signatures — no callers need to change) ────
+
   getItems(): CartItem[] {
-    return this.items.slice();
+    return this.activeItems.slice();
   }
 
   add(item: CartItem) {
-    // simple merge: if same item (id + same options) exists, increase quantity
-    const matchIndex = this.items.findIndex((it) =>
+    const list = this.activeItems;
+    const matchIndex = list.findIndex((it) =>
       it.id === item.id &&
       it.sweetness === item.sweetness &&
       it.size === item.size &&
@@ -55,29 +71,34 @@ export class CartService {
     );
 
     if (matchIndex >= 0) {
-      this.items[matchIndex].quantity = (this.items[matchIndex].quantity || 1) + (item.quantity || 1);
+      list[matchIndex].quantity = (list[matchIndex].quantity || 1) + (item.quantity || 1);
     } else {
-      this.items.push({ ...item, quantity: item.quantity || 1 });
+      list.push({ ...item, quantity: item.quantity || 1 });
     }
     this.save();
   }
 
   remove(index: number) {
-    if (index >= 0 && index < this.items.length) {
-      this.items.splice(index, 1);
+    const list = this.activeItems;
+    if (index >= 0 && index < list.length) {
+      list.splice(index, 1);
       this.save();
     }
   }
 
   clear() {
-    this.items = [];
+    if (this.modeService.isDineIn) {
+      this.dineinItems = [];
+    } else {
+      this.deliveryItems = [];
+    }
     this.save();
   }
 
   getTotal(): number {
-    return this.items.reduce((sum, it) => {
+    return this.activeItems.reduce((sum, it) => {
       const extras = (it.ingredients || []).reduce((s, e) => s + (e.price || 0), 0);
-      const price = (it.basePrice || 0) + extras;
+      const price  = (it.basePrice || 0) + extras;
       return sum + price * (it.quantity || 1);
     }, 0);
   }

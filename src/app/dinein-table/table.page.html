@@ -1,0 +1,66 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/dinein/cart"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'table.TITLE' | translate }}</ion-title>
+    <ion-buttons slot="end">
+      <div class="lang-selector">
+        <button class="lang-btn" (click)="toggleLangMenu()">
+          <img class="lang-flag" [src]="currentFlagSrc" alt="flag" />
+          <ion-icon name="chevron-down" class="lang-chevron" [class.open]="langMenuOpen"></ion-icon>
+        </button>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Language dropdown rendered outside header to escape stacking context -->
+<div class="lang-backdrop" *ngIf="langMenuOpen" (click)="langMenuOpen = false"></div>
+<div class="lang-dropdown" *ngIf="langMenuOpen">
+  <button
+    *ngFor="let lang of languages"
+    class="lang-option"
+    [class.active]="lang.code === currentLang"
+    (click)="switchLang(lang.code)">
+    <img class="lang-flag" [src]="lang.flag" [alt]="lang.label" />
+    <span class="lang-label">{{ lang.label }}</span>
+    <ion-icon *ngIf="lang.code === currentLang" name="chevron-down" class="check-icon"></ion-icon>
+  </button>
+</div>
+
+<ion-content class="table-content">
+  <div class="table-card">
+
+    <div class="logo-wrap">
+      <img src="https://21images.s3.eu-north-1.amazonaws.com/21_192x192.webp" alt="21" class="store-logo" />
+    </div>
+
+    <h2 class="welcome-heading">{{ 'table.HEADING' | translate }}</h2>
+    <p class="welcome-sub">{{ 'table.SUB' | translate }}</p>
+
+    <!-- Table dropdown -->
+    <div class="table-field">
+      <label class="table-label">{{ 'table.TABLE_LABEL' | translate }}</label>
+      <div class="select-wrap" [class.error]="submitted && !selectedTable">
+        <ion-icon name="restaurant-outline" class="field-icon"></ion-icon>
+        <select [(ngModel)]="selectedTable" class="table-select">
+          <option [ngValue]="0" disabled>{{ 'table.TABLE_PLACEHOLDER' | translate }}</option>
+          <option *ngFor="let t of tableOptions" [ngValue]="t">{{ t }}</option>
+        </select>
+        <ion-icon name="chevron-down" class="select-arrow"></ion-icon>
+      </div>
+      <p class="field-error" *ngIf="submitted && !selectedTable">
+        {{ 'table.TABLE_ERROR' | translate }}
+      </p>
+    </div>
+
+    <!-- Submit button -->
+    <button class="confirm-btn" (click)="confirm()" [disabled]="submitting">
+      <ion-icon name="send-outline"></ion-icon>
+      {{ (submitting ? 'table.SENDING' : 'table.CONFIRM') | translate }}
+    </button>
+
+  </div>
+</ion-content>
+
