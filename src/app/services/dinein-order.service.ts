@@ -115,7 +115,9 @@ export class DineInOrderService {
     };
   }
 
-  /** Resolves a namespaced key against the bundled Greek translation files. */
+  /** Resolves a namespaced key against the bundled Greek translation files.
+   *  If the key is not found in the translations (e.g. item name is already
+   *  a plain display name like "Cappuccino"), returns the name as-is. */
   private toGreekName(namespacedKey: string): string {
     const dotIdx = namespacedKey.indexOf('.');
     if (dotIdx === -1) return namespacedKey;
@@ -132,8 +134,8 @@ export class DineInOrderService {
     for (const part of parts) {
       if (val && typeof val === 'object')
         val = (val as Record<string, unknown>)[part];
-      else return namespacedKey;
+      else return rest; // key not found — return the bare name, not "menu.Name"
     }
-    return typeof val === 'string' ? val : namespacedKey;
+    return typeof val === 'string' ? val : rest;
   }
 }
