@@ -1,6 +1,9 @@
 {
   "TITLE": "Online Order",
+  "TITLE_DINEIN": "Dine In",
   "WELCOME": "Welcome to",
+  "WELCOME_DINEIN": "Welcome to",
+  "TABLE_BADGE": "Table",
   "ITEM_SINGULAR": "item",
   "ITEM_PLURAL": "items",
   "LANG_SELECTOR": {

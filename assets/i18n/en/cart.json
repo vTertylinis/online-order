@@ -11,6 +11,8 @@
   "MINIMUM_ORDER": "Minimum order amount",
   "ADD_MORE": "Add {{amount}} more to complete your order.",
   "ADD_ADDRESS": "Add Address",
+  "CONFIRM_TABLE": "Confirm Order",
+  "TABLE_NUMBER": "Table",
   "ITEM_SINGULAR": "item",
   "ITEM_PLURAL": "items"
 }

@@ -1,0 +1,10 @@
+{
+  "TITLE": "Confirmare",
+  "HEADING": "Selectați masa",
+  "SUB": "Alegeți numărul mesei şi apăsați Trimite comanda.",
+  "TABLE_LABEL": "Numărul mesei",
+  "TABLE_PLACEHOLDER": "Selectați...",
+  "TABLE_ERROR": "Vă rugăm să selectați o masă.",
+  "CONFIRM": "Trimite comanda",
+  "SENDING": "Se trimite..."
+}

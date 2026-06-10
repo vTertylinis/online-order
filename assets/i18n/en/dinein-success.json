@@ -1,0 +1,8 @@
+{
+  "TITLE": "Order placed!",
+  "MESSAGE": "Our staff will be with you shortly.",
+  "TABLE_LABEL": "Table",
+  "BACK_TO_MENU": "Back to Menu",
+  "SENDING": "Sending...",
+  "ERROR": "Failed to send order. Please try again."
+}

@@ -11,6 +11,8 @@
   "MINIMUM_ORDER": "Suma minimă a comenzii",
   "ADD_MORE": "Adăugați încă {{amount}} pentru a finaliza comanda.",
   "ADD_ADDRESS": "Adăugați adresa",
+  "CONFIRM_TABLE": "Confirmați comanda",
+  "TABLE_NUMBER": "Masă",
   "ITEM_SINGULAR": "produs",
   "ITEM_PLURAL": "produse"
 }
