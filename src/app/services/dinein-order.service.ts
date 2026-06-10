@@ -68,8 +68,9 @@ export class DineInOrderService {
     }
 
     // Trigger printing of all unprinted items
+    // source:'dinein' tells the backend to label the printout as "SELF-ORDER"
     await this.http
-      .post(`${this.base}/print-unprinted/${encodeURIComponent(tableId)}`, {})
+      .post(`${this.base}/print-unprinted/${encodeURIComponent(tableId)}`, { source: 'dinein' })
       .toPromise();
   }
 
