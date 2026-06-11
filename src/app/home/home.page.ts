@@ -11,7 +11,7 @@ import {
 } from '@ionic/angular/standalone';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline } from 'ionicons/icons';
+import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline, flowerOutline } from 'ionicons/icons';
 import { CartService } from '../services/cart.service';
 import { ModeService } from '../services/mode.service';
 import { TableService } from '../services/table.service';
@@ -40,6 +40,7 @@ const CATEGORY_ICONS: Record<string, string> = {
   BEERS:          'beer-outline',
   DRINKS_WINES:   'wine-outline',
   Cocktails:      'wine-outline',
+  Mocktails:      'flower-outline',
   COMBO_OFFERS:   'gift-outline',
 };
 
@@ -119,7 +120,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     private modeService: ModeService,
     private tableService: TableService,
   ) {
-    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline });
+    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline, flowerOutline });
     this.currentLang = this.translateService.currentLang || this.translateService.defaultLang || 'el';
   }
 
