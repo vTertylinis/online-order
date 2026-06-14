@@ -329,7 +329,7 @@ export class ItemDetailPage {
       name: this.item.name,
       basePrice: basePrice,
       sweetness: this.item.category === 'COFFEES' ? this.sweetness : undefined,
-      size: this.item.category === 'COFFEES' ? this.size : undefined,
+      size: this.showSizeOptions ? this.size : undefined,
       ingredients: allExtras,
       comments: this.comments,
       quantity: 1,
