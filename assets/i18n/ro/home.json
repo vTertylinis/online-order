@@ -6,6 +6,12 @@
   "TABLE_BADGE": "Masă",
   "ITEM_SINGULAR": "produs",
   "ITEM_PLURAL": "produse",
+  "BREAKFAST_UNTIL": "Până la 16:00",
+  "BREAKFAST_UNAVAILABLE": "Indisponibil după 16:00",
+  "BREAKFAST_UNAVAILABLE_BODY": "Micul dejun este disponibil doar până la 16:00.",
+  "CREPES_FROM": "De la 17:00",
+  "CREPES_UNAVAILABLE": "Disponibil de la 17:00",
+  "CREPES_UNAVAILABLE_BODY": "Clătitele sărate și dulci sunt disponibile doar de la 17:00.",
   "LANG_SELECTOR": {
     "CHOOSE_LANGUAGE": "Alegeți limba"
   }

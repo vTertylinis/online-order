@@ -6,6 +6,12 @@
   "TABLE_BADGE": "Table",
   "ITEM_SINGULAR": "item",
   "ITEM_PLURAL": "items",
+  "BREAKFAST_UNTIL": "Until 16:00",
+  "BREAKFAST_UNAVAILABLE": "Not available after 16:00",
+  "BREAKFAST_UNAVAILABLE_BODY": "Breakfast items are only available until 16:00.",
+  "CREPES_FROM": "From 17:00",
+  "CREPES_UNAVAILABLE": "Available from 17:00",
+  "CREPES_UNAVAILABLE_BODY": "Savory and sweet crepes are only available from 17:00.",
   "LANG_SELECTOR": {
     "CHOOSE_LANGUAGE": "Choose language"
   }

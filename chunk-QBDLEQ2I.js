@@ -1,0 +1,1 @@
+function r(){let e=new Date().toLocaleString("en-US",{timeZone:"Europe/Athens",hour12:!1});return new Date(e)}function t(){return r().getHours()}function n(){let e=t();return e>=9&&e<=23}function o(){return t()<16}function u(){return t()>=17}var i=new Set([52,53]);export{n as a,o as b,u as c,i as d};
