@@ -40,7 +40,7 @@ const CATEGORY_ICONS: Record<string, string> = {
   BEERS:          'beer-outline',
   DRINKS_WINES:   'wine-outline',
   Cocktails:      'wine-outline',
-  Mocktails:      'flower-outline',
+  Mocktails:      'wine-outline',
   COMBO_OFFERS:   'gift-outline',
 };
 
