@@ -18,3 +18,15 @@ export function isWithinDeliveryHours(): boolean {
   const hour = getGreekCurrentHour();
   return hour >= 9 && hour <= 23;
 }
+
+/** Breakfast is served until 16:00 Greek time (exclusive). */
+export function isBreakfastAvailable(): boolean {
+  return getGreekCurrentHour() < 16;
+}
+
+/** Crepes (ids 52, 53) are served from 17:00 Greek time onwards. */
+export function isCrepesAvailable(): boolean {
+  return getGreekCurrentHour() >= 17;
+}
+
+export const CREPES_EVENING_IDS = new Set([52, 53]);

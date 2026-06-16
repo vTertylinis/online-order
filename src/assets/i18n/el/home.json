@@ -6,6 +6,12 @@
   "TABLE_BADGE": "Τραπέζι",
   "ITEM_SINGULAR": "προϊόν",
   "ITEM_PLURAL": "προϊόντα",
+  "BREAKFAST_UNTIL": "Έως τις 16:00",
+  "BREAKFAST_UNAVAILABLE": "Δεν διατίθεται μετά τις 16:00",
+  "BREAKFAST_UNAVAILABLE_BODY": "Τα πρωινά διατίθενται μόνο έως τις 16:00.",
+  "CREPES_FROM": "Από τις 17:00",
+  "CREPES_UNAVAILABLE": "Διαθέσιμο από τις 17:00",
+  "CREPES_UNAVAILABLE_BODY": "Οι αλμυρές και γλυκές κρέπες διατίθενται μόνο από τις 17:00.",
   "LANG_SELECTOR": {
     "CHOOSE_LANGUAGE": "Επιλέξτε γλώσσα"
   }

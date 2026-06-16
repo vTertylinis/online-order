@@ -77,6 +77,10 @@
             {{ cat.items.length }} {{ cat.items.length === 1 ? ('home.ITEM_SINGULAR' | translate) : ('home.ITEM_PLURAL' | translate) }}
           </span>
         </div>
+        <span *ngIf="cat.key === 'BREAKFAST'" class="breakfast-notice" [class.unavailable]="!breakfastAvailable">
+          <ion-icon name="time-outline"></ion-icon>
+          {{ breakfastAvailable ? ('home.BREAKFAST_UNTIL' | translate) : ('home.BREAKFAST_UNAVAILABLE' | translate) }}
+        </span>
       </header>
 
       <div class="items-grid">
@@ -95,6 +99,10 @@
             <p class="item-name">{{ item.name }}</p>
             <p *ngIf="item.desc" class="item-desc">{{ item.desc }}</p>
             <span class="item-price" *ngIf="item.price">{{ getDisplayPrice(item) | currency:'EUR' }}</span>
+            <span *ngIf="item.id === 52 || item.id === 53" class="item-time-notice" [class.unavailable]="!crepesAvailable">
+              <ion-icon name="time-outline"></ion-icon>
+              {{ crepesAvailable ? ('home.CREPES_FROM' | translate) : ('home.CREPES_UNAVAILABLE' | translate) }}
+            </span>
           </div>
 
           <!-- Quick-add button -->

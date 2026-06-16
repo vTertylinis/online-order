@@ -6,6 +6,12 @@
   "TABLE_BADGE": "Маса",
   "ITEM_SINGULAR": "продукт",
   "ITEM_PLURAL": "продукта",
+  "BREAKFAST_UNTIL": "До 16:00",
+  "BREAKFAST_UNAVAILABLE": "Не се предлага след 16:00",
+  "BREAKFAST_UNAVAILABLE_BODY": "Закуските се предлагат само до 16:00.",
+  "CREPES_FROM": "От 17:00",
+  "CREPES_UNAVAILABLE": "Достъпно от 17:00",
+  "CREPES_UNAVAILABLE_BODY": "Солените и сладки палачинки се предлагат само от 17:00.",
   "LANG_SELECTOR": {
     "CHOOSE_LANGUAGE": "Изберете език"
   }

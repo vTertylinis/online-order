@@ -11,13 +11,13 @@ import {
 } from '@ionic/angular/standalone';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline, flowerOutline } from 'ionicons/icons';
+import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline, flowerOutline, timeOutline } from 'ionicons/icons';
 import { CartService } from '../services/cart.service';
 import { ModeService } from '../services/mode.service';
 import { TableService } from '../services/table.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MenuItem, menuItems, POPULAR_ITEMS } from '../models/menu-item.model';
-import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
+import { isBreakfastAvailable, isCrepesAvailable, CREPES_EVENING_IDS, isWithinDeliveryHours } from '../utils/delivery-hours.util';
 import { LazyImageDirective } from '../utils/lazy-image.directive';
 import { Subscription } from 'rxjs';
 
@@ -45,6 +45,7 @@ const CATEGORY_ICONS: Record<string, string> = {
 };
 
 interface Category {
+  key: string;
   name: string;
   icon: string;
   items: MenuItem[];
@@ -72,6 +73,8 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
   menuItems: MenuItem[] = menuItems;
 
   categories: Category[] = [];
+  breakfastAvailable = isBreakfastAvailable();
+  crepesAvailable = isCrepesAvailable();
 
   // Language selector
   languages = [
@@ -120,7 +123,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     private modeService: ModeService,
     private tableService: TableService,
   ) {
-    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline, flowerOutline });
+    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline, flowerOutline, timeOutline });
     this.currentLang = this.translateService.currentLang || this.translateService.defaultLang || 'el';
   }
 
@@ -312,7 +315,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     // Add POPULAR first
     const popularTranslated = lookup('POPULAR');
     const popularName = popularTranslated || 'Popular';
-    result.push({ name: popularName as any, icon: CATEGORY_ICONS['POPULAR'], items: POPULAR_ITEMS.map(it => {
+    result.push({ key: 'POPULAR', name: popularName as any, icon: CATEGORY_ICONS['POPULAR'], items: POPULAR_ITEMS.map(it => {
       const copy: MenuItem = { ...it, desc: it.desc ?? it.description };
       const nameTranslated = lookup(it.name as string) || lookup((it.name || '').toString().toUpperCase());
       if (nameTranslated) copy.name = nameTranslated as any;
@@ -337,7 +340,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     if (map.has('COMBO_OFFERS')) {
       const translatedCategory = lookup('COMBO_OFFERS');
       const pretty = translatedCategory || 'Combo Offers';
-      result.push({ name: pretty as any, icon: CATEGORY_ICONS['COMBO_OFFERS'] ?? 'restaurant-outline', items: map.get('COMBO_OFFERS')! });
+      result.push({ key: 'COMBO_OFFERS', name: pretty as any, icon: CATEGORY_ICONS['COMBO_OFFERS'] ?? 'restaurant-outline', items: map.get('COMBO_OFFERS')! });
       map.delete('COMBO_OFFERS');
     }
     
@@ -347,7 +350,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
       const pretty = translatedCategory
         ? (translatedCategory as any)
         : key.toLowerCase().replace(/_/g, ' ').replace(/\w\S*/g, (txt) => txt.charAt(0).toUpperCase() + txt.substr(1));
-      result.push({ name: pretty as any, icon: CATEGORY_ICONS[key] ?? 'restaurant-outline', items });
+      result.push({ key, name: pretty as any, icon: CATEGORY_ICONS[key] ?? 'restaurant-outline', items });
     }
     this.categories = result;
   }
@@ -367,7 +370,25 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     console.log('Add to order:', item);
   }
 
-  openItem(item: MenuItem) {
+  async openItem(item: MenuItem) {
+    if (item.category === 'BREAKFAST' && !this.breakfastAvailable) {
+      const alert = await this.alertController.create({
+        header: this.translateService.instant('home.BREAKFAST_UNAVAILABLE'),
+        message: this.translateService.instant('home.BREAKFAST_UNAVAILABLE_BODY'),
+        buttons: ['OK'],
+      });
+      await alert.present();
+      return;
+    }
+    if (item.id != null && CREPES_EVENING_IDS.has(item.id) && !this.crepesAvailable) {
+      const alert = await this.alertController.create({
+        header: this.translateService.instant('home.CREPES_UNAVAILABLE'),
+        message: this.translateService.instant('home.CREPES_UNAVAILABLE_BODY'),
+        buttons: ['OK'],
+      });
+      await alert.present();
+      return;
+    }
     const id = item?.id ?? null;
     if (id !== null && id !== undefined) {
       const prefix = this.modeService.isDineIn ? '/dinein' : '';

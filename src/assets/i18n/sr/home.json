@@ -6,6 +6,12 @@
   "TABLE_BADGE": "Sto",
   "ITEM_SINGULAR": "артикал",
   "ITEM_PLURAL": "артикала",
+  "BREAKFAST_UNTIL": "До 16:00",
+  "BREAKFAST_UNAVAILABLE": "Није доступно после 16:00",
+  "BREAKFAST_UNAVAILABLE_BODY": "Доручак је доступан само до 16:00.",
+  "CREPES_FROM": "Од 17:00",
+  "CREPES_UNAVAILABLE": "Доступно од 17:00",
+  "CREPES_UNAVAILABLE_BODY": "Слане и слатке палачинке доступне су само од 17:00.",
   "LANG_SELECTOR": {
     "CHOOSE_LANGUAGE": "Изаберите језик"
   }
