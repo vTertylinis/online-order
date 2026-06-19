@@ -1,0 +1,14 @@
+{
+  "BUTTONS": {
+    "OK": "OK",
+    "CANCEL": "Abbrechen",
+    "REMOVE": "Entfernen",
+    "ADD": "Hinzufügen",
+    "SUBMIT": "Senden"
+  },
+  "DELIVERY_HOURS": {
+    "TITLE": "Außerhalb der Lieferzeiten",
+    "MESSAGE": "Lieferungen erfolgen von 09:00 Uhr bis Mitternacht (00:00). Bitte besuchen Sie uns erneut während unserer Öffnungszeiten."
+  },
+  "CURRENCY": "EUR"
+}

@@ -83,6 +83,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     { code: 'sr', flag: 'assets/flags/sr.png', label: 'Српски' },
     { code: 'bg', flag: 'assets/flags/bg.png', label: 'Български' },
     { code: 'ro', flag: 'assets/flags/ro.png', label: 'Română' },
+    { code: 'de', flag: 'assets/flags/germany.png', label: 'Deutsch' },
   ];
   currentLang = 'el';
   langMenuOpen = false;

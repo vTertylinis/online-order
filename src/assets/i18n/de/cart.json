@@ -1,0 +1,18 @@
+{
+  "TITLE": "Warenkorb",
+  "SIZE": "Größe",
+  "SWEETNESS": "Süße",
+  "EXTRAS": "Extras",
+  "COMMENTS": "Anmerkungen",
+  "QUANTITY": "Menge",
+  "REMOVE": "Entfernen",
+  "EMPTY": "Ihr Warenkorb ist leer.",
+  "TOTAL": "Gesamt",
+  "MINIMUM_ORDER": "Mindestbestellwert",
+  "ADD_MORE": "Fügen Sie noch {{amount}} hinzu, um Ihre Bestellung abzuschließen.",
+  "ADD_ADDRESS": "Adresse hinzufügen",
+  "CONFIRM_TABLE": "Bestellung bestätigen",
+  "TABLE_NUMBER": "Tisch",
+  "ITEM_SINGULAR": "Artikel",
+  "ITEM_PLURAL": "Artikel"
+}
