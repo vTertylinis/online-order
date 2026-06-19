@@ -1,0 +1,10 @@
+{
+  "TITLE": "Bestellung bestätigen",
+  "HEADING": "Wählen Sie Ihren Tisch",
+  "SUB": "Wählen Sie Ihre Tischnummer und tippen Sie auf Bestellung senden.",
+  "TABLE_LABEL": "Tischnummer",
+  "TABLE_PLACEHOLDER": "Auswählen...",
+  "TABLE_ERROR": "Bitte wählen Sie einen Tisch.",
+  "CONFIRM": "Bestellung senden",
+  "SENDING": "Wird gesendet..."
+}

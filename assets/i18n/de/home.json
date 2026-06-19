@@ -1,0 +1,18 @@
+{
+  "TITLE": "Online-Bestellung",
+  "TITLE_DINEIN": "Vor Ort essen",
+  "WELCOME": "Willkommen bei",
+  "WELCOME_DINEIN": "Willkommen –",
+  "TABLE_BADGE": "Tisch",
+  "ITEM_SINGULAR": "Artikel",
+  "ITEM_PLURAL": "Artikel",
+  "BREAKFAST_UNTIL": "Bis 16:00",
+  "BREAKFAST_UNAVAILABLE": "Nach 16:00 nicht verfügbar",
+  "BREAKFAST_UNAVAILABLE_BODY": "Frühstücksartikel sind nur bis 16:00 Uhr verfügbar.",
+  "CREPES_FROM": "Ab 17:00",
+  "CREPES_UNAVAILABLE": "Ab 17:00 verfügbar",
+  "CREPES_UNAVAILABLE_BODY": "Herzhafte und süße Crêpes sind nur ab 17:00 Uhr verfügbar.",
+  "LANG_SELECTOR": {
+    "CHOOSE_LANGUAGE": "Sprache wählen"
+  }
+}

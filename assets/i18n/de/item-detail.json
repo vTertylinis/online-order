@@ -1,0 +1,39 @@
+{
+  "TITLE": "Produktdetails",
+  "LOADING": "Wird geladen...",
+  "DESCRIPTION": "Beschreibung",
+  "SWEETNESS": {
+    "LABEL": "Süße wählen:",
+    "PLAIN": "Ohne Zucker",
+    "SLIGHT": "Leicht süß",
+    "MEDIUM": "Mittel",
+    "TOWARDS_SWEET": "Eher süß",
+    "SWEET": "Süß"
+  },
+  "SIZE": {
+    "LABEL": "Größe wählen",
+    "SINGLE": "Einfach",
+    "DOUBLE": "Doppelt"
+  },
+  "EXTRAS": {
+    "SAVORY_LABEL": "Extras / Zutaten wählen",
+    "SWEET_LABEL": "Süß / Zutaten wählen",
+    "SEARCH_SAVORY": "Zutat suchen",
+    "SEARCH_SWEET": "Süße Zutat suchen"
+  },
+  "SOFT_DRINKS": {
+    "LABEL": "{{count}} Erfrischungsgetränke wählen",
+    "SELECTED": "{{current}} / {{total}} ausgewählt"
+  },
+  "COMMENTS": {
+    "LABEL": "Anmerkungen / Notizen",
+    "PLACEHOLDER": "Anmerkungen zu Ihrer Bestellung hinzufügen..."
+  },
+  "TOTAL": "Gesamt",
+  "ADD_TO_CART": "In den Warenkorb",
+  "NOT_AVAILABLE": "Details für den Artikel mit der ID {{id}} sind nicht verfügbar.",
+  "VALIDATION": {
+    "SELECT_INGREDIENT": "Bitte wählen Sie mindestens eine Zutat aus den Extras-Optionen",
+    "SELECT_SOFT_DRINKS": "Bitte wählen Sie genau {{count}} Erfrischungsgetränke. Sie haben ausgewählt: {{selected}}"
+  }
+}
