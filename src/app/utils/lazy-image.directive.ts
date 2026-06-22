@@ -53,15 +53,7 @@ export class LazyImageDirective implements OnInit, OnDestroy {
     if (this.hasLoaded) return;
     this.hasLoaded = true;
 
-    let imageUrl = this.lazyLoad;
-
-    // If it's from S3 and thumbnail is true, modify URL for smaller size
-    if (this.thumbnail && imageUrl.includes('21images.s3.eu-north-1.amazonaws.com')) {
-      // For S3, we can request smaller image versions if available
-      // Or we can use URL parameters if your S3 has Lambda@Edge or CloudFront Functions
-      // For now, we'll just load the original but you can set up S3 image resizing
-      imageUrl = this.lazyLoad;
-    }
+    const imageUrl = this.lazyLoad;
 
     const img = new Image();
     img.onload = () => {
