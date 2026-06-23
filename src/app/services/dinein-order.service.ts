@@ -100,9 +100,12 @@ export class DineInOrderService {
       coffeePreference: item.sweetness
         ? this.toGreekName('item-detail.SWEETNESS.' + item.sweetness)
         : undefined,
-      coffeeSize: item.size
-        ? this.toGreekName('item-detail.SIZE.' + item.size)
-        : undefined,
+      // The PDA app stores/edits coffee size as the canonical token 'single'/'double'
+      // (its edit modal binds radios to and runs price math against these literals,
+      // and the print server outputs the value verbatim). Sending the localized
+      // string ("Μονό"/"Διπλό") instead breaks the waiter's Edit flow, so normalize
+      // our internal 'SINGLE'/'DOUBLE' to the lowercase token the PDA app expects.
+      coffeeSize: item.size ? item.size.toLowerCase() : undefined,
       extras: (item.ingredients || []).map((ing) => ({
         name: this.toGreekName('menu.' + ing.name),
         price: ing.price,
