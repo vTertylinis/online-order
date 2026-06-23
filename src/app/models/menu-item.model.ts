@@ -111,6 +111,7 @@ export const menuItems: MenuItem[] = [
   { id: 161, name: 'BEEF_PATTY', price: 12.5, category: 'MAIN_COURSES', description: 'BEEF_PATTY_DESC', image: 'assets/images/mpiftekiaa.webp', thumbnailImage: 'assets/thumbnails/mpiftekiaa.webp' },
   { id: 162, name: 'PORK_GYRO', price: 12, category: 'MAIN_COURSES', description: 'PORK_GYRO_DESC', image: 'assets/images/gyros.webp', thumbnailImage: 'assets/thumbnails/gyros.webp' },
   { id: 163, name: 'MIX_GRILL', price: 18, category: 'MAIN_COURSES', description: 'MIX_GRILL_DESC', image: 'assets/images/grill.webp', thumbnailImage: 'assets/thumbnails/grill.webp' },
+  { id: 237, name: 'CHEDDAR_BACON_FRIES', price: 7, category: 'MAIN_COURSES', description: 'CHEDDAR_BACON_FRIES_DESC', image: 'assets/images/cheddarbacon.webp', thumbnailImage: 'assets/thumbnails/cheddarbacon.webp' },
 
   // { id: 165, name: 'Burger Λαχανικών (Νηστίσιμο)', price: 9, category: 'LENT_MENU', description: 'BURGER_VEGETABLES_DESC' },
   // { id: 166, name: 'Row No Meat Burger (Νηστίσιμο)', price: 11, category: 'LENT_MENU', description: 'ROW_NO_MEAT_BURGER_DESC' },
