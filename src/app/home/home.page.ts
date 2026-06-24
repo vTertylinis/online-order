@@ -32,6 +32,7 @@ const CATEGORY_ICONS: Record<string, string> = {
   PINSA:          'pizza-outline',
   PASTA:          'restaurant-outline',
   SALADS:         'leaf-outline',
+  SIDES:          'restaurant-outline',
   BREAKFAST:      'sunny-outline',
   LENT_MENU:      'leaf-outline',
   COFFEES:        'cafe-outline',
@@ -42,6 +43,13 @@ const CATEGORY_ICONS: Record<string, string> = {
   Cocktails:      'wine-outline',
   Mocktails:      'wine-outline',
   COMBO_OFFERS:   'gift-outline',
+};
+
+/** Per-item icon overrides (by item id), used instead of the category icon. */
+const ITEM_ICON_OVERRIDES: Record<number, string> = {
+  164: 'leaf-outline', // Burger Λαχανικών (veggie)
+  165: 'leaf-outline', // Raw NoMeat Burger (plant-based)
+  240: 'leaf-outline', 
 };
 
 interface Category {
@@ -162,6 +170,11 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
       return item.dineInPrice;
     }
     return item.price ?? 0;
+  }
+
+  /** Icon for an item's placeholder thumbnail: a per-item override if set, else the category icon. */
+  getItemIcon(item: MenuItem, categoryIcon: string): string {
+    return (item.id != null && ITEM_ICON_OVERRIDES[item.id]) || categoryIcon;
   }
 
   get isDineIn(): boolean {

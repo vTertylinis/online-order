@@ -38,6 +38,7 @@ const CATEGORY_GREEK_NAME: Record<string, string> = {
   HOTDOG_BURGERS:  'Hotdog - Burgers',
   BAO_BUNS:        'Bao Buns',
   SALADS:          'Σαλάτες',
+  SIDES:           'Κυρίως πιάτα',
   MAIN_COURSES:    'Κυρίως πιάτα',
 };
 

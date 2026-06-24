@@ -91,7 +91,7 @@
           </div>
           <!-- Placeholder icon for items without an image -->
           <div class="item-thumb item-thumb--placeholder" *ngIf="!item.thumbnailImage">
-            <ion-icon [name]="cat.icon"></ion-icon>
+            <ion-icon [name]="getItemIcon(item, cat.icon)"></ion-icon>
           </div>
 
           <!-- Name & description -->

@@ -23,6 +23,7 @@ const CATEGORY_PRINTER_MAP: Record<string, PrinterKey> = {
   HOTDOG_BURGERS: 'kitchen',
   BAO_BUNS:       'kitchen',
   SALADS:         'kitchen',
+  SIDES:          'kitchen',
   MAIN_COURSES:   'kitchen',
   COFFEES:        'bar',
   SOFT_DRINKS:    'bar',
@@ -88,6 +89,8 @@ export const menuItems: MenuItem[] = [
   { id: 141, name: 'CHICKEN_CRISPY_BURGER', price: 11.5, category: 'HOTDOG_BURGERS', description: 'CHICKEN_CRISPY_BURGER_DESC', image: 'assets/images/crispyburger.webp', thumbnailImage: 'assets/thumbnails/crispyburger.webp' },
   { id: 142, name: 'burgerChilicrispychicken', price: 12.5, category: 'HOTDOG_BURGERS', description: 'burgerChilicrispychickenDesc', image: 'assets/images/crispyBurger2.webp', thumbnailImage: 'assets/thumbnails/crispyBurger2.webp' },
   { id: 143, name: 'doubleSmash', price: 12.5, category: 'HOTDOG_BURGERS', description: 'doubleSmashdesc', image: 'assets/images/smash.webp', thumbnailImage: 'assets/thumbnails/smash.webp' },
+  { id: 164, name: 'BURGER_VEGETABLES', price: 10.5, category: 'HOTDOG_BURGERS', description: 'BURGER_VEGETABLES_DESC' },
+  { id: 165, name: 'RAW_NO_MEAT_BURGER', price: 12.5, category: 'HOTDOG_BURGERS', description: 'RAW_NO_MEAT_BURGER_DESC' },
   // { id: 144, name: 'miniBurgers', price: 11, category: 'HOTDOG_BURGERS', description: 'miniBurgersDesc' },
 
   { id: 145, name: 'SHRIMP_CHILI_BAO', price: 9, category: 'BAO_BUNS', image: 'assets/images/baogarida.webp', thumbnailImage: 'assets/thumbnails/baogarida.webp', description: 'SHRIMP_CHILI_BAO_DESC' },
@@ -102,6 +105,11 @@ export const menuItems: MenuItem[] = [
   { id: 231, name: 'SALAD_CHEF', price: 11, category: 'SALADS', description: 'SALAD_CHEF_DESC', image: 'assets/images/chef.webp', thumbnailImage: 'assets/thumbnails/chef.webp' },
   { id: 232, name: 'SALAD_21_SHRIMP', price: 11, category: 'SALADS', description: 'SALAD_21_SHRIMP_DESC' , image: 'assets/images/salad21garides.webp', thumbnailImage: 'assets/thumbnails/salad21garides.webp'},
 
+  { id: 238, name: 'FRENCH_FRIES', price: 5, category: 'SIDES' },
+  { id: 239, name: 'COUNTRY_POTATOES', price: 6, category: 'SIDES' },
+  { id: 237, name: 'CHEDDAR_BACON_FRIES', price: 7, category: 'SIDES', description: 'CHEDDAR_BACON_FRIES_DESC', image: 'assets/images/cheddarbacon.webp', thumbnailImage: 'assets/thumbnails/cheddarbacon.webp' },
+  { id: 240, name: 'GRILLED_VEGETABLES', price: 6, category: 'SIDES' },
+
   { id: 154, name: 'PORK_PANSETTO', price: 18, category: 'MAIN_COURSES', description: 'PORK_PANSETTO_DESC', image: 'assets/images/pansetomprizolaa.webp', thumbnailImage: 'assets/thumbnails/pansetomprizolaa.webp' },
   { id: 156, name: 'CHICKEN_NUGGETS', price: 12, category: 'MAIN_COURSES', image: 'assets/images/nuggets.webp', thumbnailImage: 'assets/thumbnails/nuggets.webp', description: 'CHICKEN_NUGGETS_DESC' },
   { id: 157, name: 'CHICKEN_NUGGETS_A_LA_CREME', price: 13, category: 'MAIN_COURSES', image: 'assets/images/alacreme.webp', thumbnailImage: 'assets/thumbnails/alacreme.webp', description: 'CHICKEN_NUGGETS_A_LA_CREME_DESC' },
@@ -111,7 +119,6 @@ export const menuItems: MenuItem[] = [
   { id: 161, name: 'BEEF_PATTY', price: 12.5, category: 'MAIN_COURSES', description: 'BEEF_PATTY_DESC', image: 'assets/images/mpiftekiaa.webp', thumbnailImage: 'assets/thumbnails/mpiftekiaa.webp' },
   { id: 162, name: 'PORK_GYRO', price: 12, category: 'MAIN_COURSES', description: 'PORK_GYRO_DESC', image: 'assets/images/gyros.webp', thumbnailImage: 'assets/thumbnails/gyros.webp' },
   { id: 163, name: 'MIX_GRILL', price: 18, category: 'MAIN_COURSES', description: 'MIX_GRILL_DESC', image: 'assets/images/grill.webp', thumbnailImage: 'assets/thumbnails/grill.webp' },
-  { id: 237, name: 'CHEDDAR_BACON_FRIES', price: 7, category: 'MAIN_COURSES', description: 'CHEDDAR_BACON_FRIES_DESC', image: 'assets/images/cheddarbacon.webp', thumbnailImage: 'assets/thumbnails/cheddarbacon.webp' },
 
   // { id: 165, name: 'Burger Λαχανικών (Νηστίσιμο)', price: 9, category: 'LENT_MENU', description: 'BURGER_VEGETABLES_DESC' },
   // { id: 166, name: 'Row No Meat Burger (Νηστίσιμο)', price: 11, category: 'LENT_MENU', description: 'ROW_NO_MEAT_BURGER_DESC' },
