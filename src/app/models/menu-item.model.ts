@@ -108,7 +108,7 @@ export const menuItems: MenuItem[] = [
   { id: 238, name: 'FRENCH_FRIES', price: 5, category: 'SIDES' },
   { id: 239, name: 'COUNTRY_POTATOES', price: 6, category: 'SIDES' },
   { id: 237, name: 'CHEDDAR_BACON_FRIES', price: 7, category: 'SIDES', description: 'CHEDDAR_BACON_FRIES_DESC', image: 'assets/images/cheddarbacon.webp', thumbnailImage: 'assets/thumbnails/cheddarbacon.webp' },
-  { id: 240, name: 'GRILLED_VEGETABLES', price: 6, category: 'SIDES' },
+  { id: 240, name: 'GRILLED_VEGETABLES', price: 6, category: 'SIDES', image: 'assets/images/veggies.webp', thumbnailImage: 'assets/thumbnails/veggies.webp' },
 
   { id: 154, name: 'PORK_PANSETTO', price: 18, category: 'MAIN_COURSES', description: 'PORK_PANSETTO_DESC', image: 'assets/images/pansetomprizolaa.webp', thumbnailImage: 'assets/thumbnails/pansetomprizolaa.webp' },
   { id: 156, name: 'CHICKEN_NUGGETS', price: 12, category: 'MAIN_COURSES', image: 'assets/images/nuggets.webp', thumbnailImage: 'assets/thumbnails/nuggets.webp', description: 'CHICKEN_NUGGETS_DESC' },
