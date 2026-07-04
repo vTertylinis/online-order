@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { onlineOrderingGuard } from './guards/online-ordering.guard';
 
 export const routes: Routes = [
   // ── Delivery (online ordering) routes ─────────────────────────────────
@@ -11,11 +12,15 @@ export const routes: Routes = [
     loadComponent: () => import('./item-detail/item-detail.page').then((m) => m.ItemDetailPage),
   },
   {
+    // Delivery checkout routes — disabled (redirect to /home) while online
+    // ordering is off. Guard is a no-op when it is re-enabled.
     path: 'address',
+    canActivate: [onlineOrderingGuard],
     loadComponent: () => import('./address/address.page').then((m) => m.AddressPage),
   },
   {
     path: 'cart',
+    canActivate: [onlineOrderingGuard],
     loadComponent: () => import('./cart/cart.page').then((m) => m.CartPage),
   },
 

@@ -121,7 +121,7 @@
 
 </ion-content>
 
-<ion-fab slot="fixed" vertical="bottom" horizontal="end" class="cart-fab">
+<ion-fab *ngIf="showCart" slot="fixed" vertical="bottom" horizontal="end" class="cart-fab">
   <ion-fab-button [routerLink]="cartRoute" aria-label="Open cart" [class.has-items]="cartCount > 0">
     <ion-icon name="cart"></ion-icon>
     <span class="cart-badge" *ngIf="cartCount > 0">{{ cartCount }}</span>

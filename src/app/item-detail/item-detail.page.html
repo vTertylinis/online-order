@@ -50,7 +50,7 @@
     </section>
 
     <!-- Sweetness (Coffees) -->
-    <section *ngIf="item.category === 'COFFEES'" class="option-card">
+    <section *ngIf="orderingAvailable && item.category === 'COFFEES'" class="option-card">
       <header class="option-header">
         <ion-icon name="cafe-outline"></ion-icon>
         <h2>{{ 'item-detail.SWEETNESS.LABEL' | translate }}</h2>
@@ -67,7 +67,7 @@
     </section>
 
     <!-- Size -->
-    <section *ngIf="showSizeOptions" class="option-card">
+    <section *ngIf="orderingAvailable && showSizeOptions" class="option-card">
       <header class="option-header">
         <ion-icon name="resize-outline"></ion-icon>
         <h2>{{ 'item-detail.SIZE.LABEL' | translate }}</h2>
@@ -86,7 +86,7 @@
     </section>
 
     <!-- Savory extras -->
-    <section *ngIf="showSavoryExtras" class="option-card">
+    <section *ngIf="orderingAvailable && showSavoryExtras" class="option-card">
       <header class="option-header">
         <ion-icon name="restaurant-outline"></ion-icon>
         <h2>{{ 'item-detail.EXTRAS.SAVORY_LABEL' | translate }}</h2>
@@ -110,7 +110,7 @@
     </section>
 
     <!-- Sweet extras -->
-    <section *ngIf="showSweetExtras" class="option-card">
+    <section *ngIf="orderingAvailable && showSweetExtras" class="option-card">
       <header class="option-header">
         <ion-icon name="ice-cream-outline"></ion-icon>
         <h2>{{ 'item-detail.EXTRAS.SWEET_LABEL' | translate }}</h2>
@@ -134,7 +134,7 @@
     </section>
 
     <!-- Soft drinks -->
-    <section *ngIf="showSoftDrinks" class="option-card">
+    <section *ngIf="orderingAvailable && showSoftDrinks" class="option-card">
       <header class="option-header">
         <ion-icon name="beer-outline"></ion-icon>
         <h2>{{ 'item-detail.SOFT_DRINKS.LABEL' | translate:{ count: REQUIRED_SOFT_DRINKS_COUNT } }}</h2>
@@ -168,7 +168,7 @@
     </section>
 
     <!-- Comments -->
-    <section class="option-card">
+    <section *ngIf="orderingAvailable" class="option-card">
       <header class="option-header">
         <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
         <h2>{{ 'item-detail.COMMENTS.LABEL' | translate }}</h2>
@@ -182,11 +182,11 @@
     </section>
 
     <!-- spacer for sticky footer -->
-    <div class="footer-spacer"></div>
+    <div *ngIf="orderingAvailable" class="footer-spacer"></div>
   </ng-container>
 </ion-content>
 
-<ion-footer *ngIf="item" class="action-footer ion-no-border">
+<ion-footer *ngIf="item && orderingAvailable" class="action-footer ion-no-border">
   <div class="action-bar">
     <div class="total-block">
       <span class="total-label">{{ 'item-detail.TOTAL' | translate }}</span>

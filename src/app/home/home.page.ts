@@ -15,6 +15,7 @@ import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutlin
 import { CartService } from '../services/cart.service';
 import { ModeService } from '../services/mode.service';
 import { TableService } from '../services/table.service';
+import { ConfigService } from '../services/config.service';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { MenuItem, menuItems, POPULAR_ITEMS } from '../models/menu-item.model';
 import { isBreakfastAvailable, isCrepesAvailable, CREPES_EVENING_IDS, isWithinDeliveryHours } from '../utils/delivery-hours.util';
@@ -131,6 +132,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     private translateService: TranslateService,
     private modeService: ModeService,
     private tableService: TableService,
+    private config: ConfigService,
   ) {
     addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline, flowerOutline, timeOutline });
     this.currentLang = this.translateService.currentLang || this.translateService.defaultLang || 'el';
@@ -190,9 +192,19 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     return this.modeService.isDineIn ? '/dinein/cart' : '/cart';
   }
 
+  /**
+   * Whether the cart FAB is shown. Dine-in always has it; delivery only when
+   * online ordering is enabled (otherwise the site is menu-only).
+   */
+  get showCart(): boolean {
+    return this.modeService.isDineIn || this.config.isOnlineOrderingEnabled;
+  }
+
   private async checkDeliveryHours() {
     // Dine-in customers are at the restaurant, so no delivery-hours restriction applies.
     if (this.modeService.isDineIn) return;
+    // Online ordering disabled → menu-only site, no delivery to warn about.
+    if (!this.config.isOnlineOrderingEnabled) return;
     if (!isWithinDeliveryHours()) {
       const alert = await this.alertController.create({
         header: this.translateService.instant('common.DELIVERY_HOURS.TITLE'),

@@ -22,6 +22,15 @@ export class ConfigService {
     return this.config[key];
   }
 
+  /**
+   * Master switch for the delivery / online-ordering flow. When false the app
+   * runs as a menu-only site; dine-in is never affected. Controlled by
+   * `environment.onlineOrderingEnabled` — flip it and redeploy to restore.
+   */
+  get isOnlineOrderingEnabled(): boolean {
+    return environment.onlineOrderingEnabled !== false;
+  }
+
   getAll(): AppConfig {
     return { ...this.config };
   }

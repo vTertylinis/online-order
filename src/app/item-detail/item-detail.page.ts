@@ -42,6 +42,7 @@ import {
 } from '../models/menu-item.model';
 import { CartService } from '../services/cart.service';
 import { ModeService } from '../services/mode.service';
+import { ConfigService } from '../services/config.service';
 import { Router } from '@angular/router';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
@@ -118,7 +119,8 @@ export class ItemDetailPage {
     private cart: CartService,
     private router: Router,
     private translateService: TranslateService,
-    private modeService: ModeService
+    private modeService: ModeService,
+    private config: ConfigService
   ) {
     addIcons({
       cafeOutline,
@@ -247,6 +249,15 @@ export class ItemDetailPage {
     return this.modeService.isDineIn ? '/dinein/home' : '/home';
   }
 
+  /**
+   * Whether ordering controls (extras, options, add-to-cart) are shown.
+   * Dine-in always allows ordering; delivery only when online ordering is
+   * enabled — otherwise item pages are a read-only menu view.
+   */
+  get orderingAvailable(): boolean {
+    return this.modeService.isDineIn || this.config.isOnlineOrderingEnabled;
+  }
+
   get totalPrice(): number {
     // Use dine-in override price when present, otherwise fall back to the standard price.
     const baseItemPrice = (this.modeService.isDineIn && this.item?.dineInPrice != null)
@@ -280,6 +291,12 @@ export class ItemDetailPage {
 
   addToCart() {
     if (!this.item) return;
+    // Safety net: never build an order in delivery mode while online ordering
+    // is off. The template hides the button, this guards direct/edge calls.
+    if (!this.orderingAvailable) {
+      this.router.navigate([this.homeRoute]);
+      return;
+    }
 
     // Validation for items 51, 52, 53: require at least one ingredient
     const idNum = this.id ? Number(this.id) : null;
