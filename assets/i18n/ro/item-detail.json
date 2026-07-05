@@ -29,6 +29,12 @@
     "LABEL": "Comentarii / Note",
     "PLACEHOLDER": "Adăugați comentarii pentru comanda dvs...."
   },
+  "INFO": {
+    "TITLE": "Bine de știut",
+    "AVAILABLE_SIZES": "Mărimi disponibile",
+    "SWEETNESS_CHOICES": "Opțiuni de dulceață",
+    "CUSTOMIZABLE": "Poate fi personalizat cu ingrediente suplimentare."
+  },
   "TOTAL": "Total",
   "ADD_TO_CART": "Adăugați în coș",
   "NOT_AVAILABLE": "Detaliile pentru produsul cu ID {{id}} nu sunt disponibile.",
