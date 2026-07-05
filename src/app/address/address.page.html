@@ -93,7 +93,7 @@
     <button
       class="submit-btn"
       type="submit"
-      [disabled]="form.invalid || (addressMode === 'map' && !selectedLocation)">
+      [disabled]="submitting || form.invalid || (addressMode === 'map' && !selectedLocation)">
       <ion-icon name="send-outline"></ion-icon>
       {{ 'address.SUBMIT_ORDER' | translate }}
     </button>

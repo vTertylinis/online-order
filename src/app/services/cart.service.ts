@@ -14,6 +14,22 @@ export interface CartItem {
 
 const DELIVERY_KEY = 'online-order-cart-v1';  // unchanged — existing customers keep their cart
 const DINEIN_KEY   = 'dinein-cart-v1';
+// Idempotency key for the current delivery cart. Stays stable across re-submits
+// of the same cart (so the server can dedupe), and is dropped on clear() so the
+// next order gets a fresh id.
+const DELIVERY_ORDER_ID_KEY = 'online-order-id-v1';
+
+function uuid(): string {
+  // Prefer the platform RNG; fall back to a simple generator for old webviews.
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    const r = (Math.random() * 16) | 0;
+    const v = c === 'x' ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
 
 @Injectable({
   providedIn: 'root',
@@ -91,8 +107,28 @@ export class CartService {
       this.dineinItems = [];
     } else {
       this.deliveryItems = [];
+      // Drop the idempotency key so the next delivery order gets a fresh id.
+      try { localStorage.removeItem(DELIVERY_ORDER_ID_KEY); } catch {}
     }
     this.save();
+  }
+
+  /**
+   * Stable idempotency key for the current delivery cart. Generated once and
+   * persisted, so every re-submit of the same cart carries the same orderId and
+   * the server can dedupe. Reset by clear() once the order goes through.
+   */
+  getDeliveryOrderId(): string {
+    try {
+      const existing = localStorage.getItem(DELIVERY_ORDER_ID_KEY);
+      if (existing) return existing;
+      const id = uuid();
+      localStorage.setItem(DELIVERY_ORDER_ID_KEY, id);
+      return id;
+    } catch {
+      // Storage unavailable (e.g. private browsing) — fall back to a fresh id.
+      return uuid();
+    }
   }
 
   getTotal(): number {

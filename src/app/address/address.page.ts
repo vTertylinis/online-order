@@ -73,6 +73,8 @@ export class AddressPage implements AfterViewInit {
   }
 
   addressMode: 'manual' | 'map' = 'manual';
+  // Guards against double-submit: true while a POST /order is in flight.
+  submitting = false;
   map?: google.maps.Map;
   marker?: google.maps.Marker;
   selectedLocation?: { lat: number; lng: number };
@@ -223,6 +225,10 @@ export class AddressPage implements AfterViewInit {
   }
 
   async submit() {
+    // Prevent duplicate orders from rapid taps / retries while a request is
+    // still in flight (e.g. on a slow or stalled connection).
+    if (this.submitting) return;
+
     if (this.form.invalid) {
       const toast = await this.toastCtrl.create({
         message: this.translateService.instant('address.FORM_INVALID'),
@@ -272,24 +278,33 @@ export class AddressPage implements AfterViewInit {
       localStorage.setItem('checkout_address', JSON.stringify(finalAddressData));
     } catch {}
 
-    // Send to ngrok server — cart items are always translated to Greek
+    // Send to ngrok server — cart items are always translated to Greek.
+    // orderId is a stable idempotency key for this cart so the server can dedupe
+    // if the same order is sent more than once (e.g. a stalled connection that
+    // later flushes several queued requests at once).
     const orderData = {
+      orderId: this.cartService.getDeliveryOrderId(),
       address: finalAddressData,
       cart: this.toGreekCartItems(cartItems),
       total: total,
       timestamp: new Date().toISOString()
     };
 
+    this.submitting = true;
     try {
       console.log('Sending order data:', orderData);
-      
+
       const response = await this.http.post(
         'https://unepigrammatic-harshly-dario.ngrok-free.dev/order',
         orderData
       ).toPromise();
-      
+
       console.log('Order sent successfully:', response);
-      
+
+      // Order went through — clear the cart (and its idempotency key) so it
+      // can't be accidentally re-submitted.
+      this.cartService.clear();
+
       const alert = await this.alertCtrl.create({
         header: this.translateService.instant('address.SUCCESS_TITLE'),
         message: this.translateService.instant('address.SUCCESS_MESSAGE'),
@@ -297,20 +312,22 @@ export class AddressPage implements AfterViewInit {
       });
       await alert.present();
       await alert.onDidDismiss();
-      
+
       this.router.navigateByUrl('/');
     } catch (error) {
       console.error('Error sending order:', error);
-      
+
       const toast = await this.toastCtrl.create({
         message: this.translateService.instant('address.ERROR_SEND'),
         duration: 3000,
         color: 'warning'
       });
       await toast.present();
-      
+
       this.router.navigateByUrl('/');
       return;
+    } finally {
+      this.submitting = false;
     }
   }
 
