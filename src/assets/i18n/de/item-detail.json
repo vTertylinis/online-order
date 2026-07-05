@@ -29,6 +29,12 @@
     "LABEL": "Anmerkungen / Notizen",
     "PLACEHOLDER": "Anmerkungen zu Ihrer Bestellung hinzufügen..."
   },
+  "INFO": {
+    "TITLE": "Gut zu wissen",
+    "AVAILABLE_SIZES": "Verfügbare Größen",
+    "SWEETNESS_CHOICES": "Süße-Optionen",
+    "CUSTOMIZABLE": "Kann mit zusätzlichen Zutaten angepasst werden."
+  },
   "TOTAL": "Gesamt",
   "ADD_TO_CART": "In den Warenkorb",
   "NOT_AVAILABLE": "Details für den Artikel mit der ID {{id}} sind nicht verfügbar.",

@@ -49,6 +49,37 @@
       </p>
     </section>
 
+    <!-- Read-only "Good to know" card (menu-only mode) -->
+    <section *ngIf="!orderingAvailable && hasInfoToShow" class="info-facts-card">
+      <header class="info-facts-header">
+        <ion-icon name="information-circle-outline"></ion-icon>
+        <h2>{{ 'item-detail.INFO.TITLE' | translate }}</h2>
+      </header>
+
+      <!-- Available sizes -->
+      <div *ngIf="showSizeOptions" class="info-fact-row">
+        <span class="info-fact-label">{{ 'item-detail.INFO.AVAILABLE_SIZES' | translate }}</span>
+        <div class="info-chips">
+          <span class="info-chip">{{ 'item-detail.SIZE.SINGLE' | translate }}</span>
+          <span class="info-chip">{{ 'item-detail.SIZE.DOUBLE' | translate }} +{{ 0.5 | currency:'EUR' }}</span>
+        </div>
+      </div>
+
+      <!-- Sweetness choices (coffees) -->
+      <div *ngIf="item.category === 'COFFEES'" class="info-fact-row">
+        <span class="info-fact-label">{{ 'item-detail.INFO.SWEETNESS_CHOICES' | translate }}</span>
+        <div class="info-chips">
+          <span class="info-chip" *ngFor="let s of sweetnessOptions">{{ 'item-detail.SWEETNESS.' + s | translate }}</span>
+        </div>
+      </div>
+
+      <!-- Customizable note -->
+      <div *ngIf="showSavoryExtras || showSweetExtras" class="info-fact-row info-fact-note">
+        <ion-icon name="restaurant-outline"></ion-icon>
+        <span>{{ 'item-detail.INFO.CUSTOMIZABLE' | translate }}</span>
+      </div>
+    </section>
+
     <!-- Sweetness (Coffees) -->
     <section *ngIf="orderingAvailable && item.category === 'COFFEES'" class="option-card">
       <header class="option-header">

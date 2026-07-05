@@ -8,7 +8,7 @@
       </div>
       <div class="store-text">
         <span class="store-eyebrow">{{ (isDineIn ? 'home.WELCOME_DINEIN' : 'home.WELCOME') | translate }}</span>
-        <h1 class="store-name">{{ (isDineIn ? 'home.TITLE_DINEIN' : 'home.TITLE') | translate }}</h1>
+        <h1 class="store-name">{{ headerTitleKey | translate }}</h1>
       </div>
       <!-- Table badge shown in dine-in mode when a table is confirmed -->
       <div class="table-badge" *ngIf="isDineIn && tableNumber">
@@ -105,12 +105,12 @@
             </span>
           </div>
 
-          <!-- Quick-add button -->
+          <!-- Quick-add (ordering) / view-details (menu-only) button -->
           <button
             class="add-btn"
             (click)="$event.stopPropagation(); openItem(item)"
-            [attr.aria-label]="'Add ' + item.name">
-            <ion-icon name="add"></ion-icon>
+            [attr.aria-label]="(canOrder ? 'Add ' : 'View ') + item.name">
+            <ion-icon [name]="canOrder ? 'add' : 'chevron-forward'"></ion-icon>
           </button>
         </article>
       </div>

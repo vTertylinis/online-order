@@ -11,7 +11,7 @@ import {
 } from '@ionic/angular/standalone';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { addIcons } from 'ionicons';
-import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline, flowerOutline, timeOutline } from 'ionicons/icons';
+import { cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, chevronForward, starOutline, flowerOutline, timeOutline } from 'ionicons/icons';
 import { CartService } from '../services/cart.service';
 import { ModeService } from '../services/mode.service';
 import { TableService } from '../services/table.service';
@@ -134,7 +134,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
     private tableService: TableService,
     private config: ConfigService,
   ) {
-    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, starOutline, flowerOutline, timeOutline });
+    addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, chevronForward, starOutline, flowerOutline, timeOutline });
     this.currentLang = this.translateService.currentLang || this.translateService.defaultLang || 'el';
   }
 
@@ -198,6 +198,26 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
    */
   get showCart(): boolean {
     return this.modeService.isDineIn || this.config.isOnlineOrderingEnabled;
+  }
+
+  /**
+   * Whether items can be ordered in the current context (drives the menu-card
+   * button icon). Dine-in always orders; delivery only when online ordering is
+   * enabled. Flip `onlineOrderingEnabled` to fully restore ordering.
+   */
+  get canOrder(): boolean {
+    return this.modeService.isDineIn || this.config.isOnlineOrderingEnabled;
+  }
+
+  /**
+   * Translation key for the header title. Dine-in keeps its own title; delivery
+   * shows the normal "Online Order" title when ordering is enabled, or a plain
+   * "Menu" title when it is disabled (menu-only site). Fully reversible via
+   * the `onlineOrderingEnabled` flag.
+   */
+  get headerTitleKey(): string {
+    if (this.modeService.isDineIn) return 'home.TITLE_DINEIN';
+    return this.config.isOnlineOrderingEnabled ? 'home.TITLE' : 'home.TITLE_MENU_ONLY';
   }
 
   private async checkDeliveryHours() {

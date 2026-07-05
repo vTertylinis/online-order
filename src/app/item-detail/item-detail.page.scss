@@ -236,6 +236,85 @@
   }
 }
 
+/* ---------- Read-only "Good to know" card (menu-only mode) ---------- */
+.info-facts-card {
+  margin: var(--section-gap) 16px 0;
+  padding: 16px;
+  background: var(--ion-background-color, #fff);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+}
+
+.info-facts-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+
+  ion-icon {
+    font-size: 22px;
+    color: var(--ion-color-primary);
+    flex-shrink: 0;
+  }
+
+  h2 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--ion-text-color);
+  }
+}
+
+.info-fact-row {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  & + .info-fact-row {
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid var(--chip-bg);
+  }
+}
+
+.info-fact-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--ion-color-medium-shade, #6b7280);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.info-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.info-chip {
+  background: var(--chip-bg);
+  color: var(--ion-text-color);
+  font-size: 0.85rem;
+  font-weight: 500;
+  padding: 7px 13px;
+  border-radius: 999px;
+}
+
+.info-fact-note {
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  color: var(--ion-color-medium-shade, #6b7280);
+  font-size: 0.9rem;
+  line-height: 1.4;
+
+  ion-icon {
+    font-size: 20px;
+    color: var(--ion-color-primary);
+    flex-shrink: 0;
+  }
+}
+
 /* ---------- Search ---------- */
 .slim-search {
   --background: var(--chip-bg);

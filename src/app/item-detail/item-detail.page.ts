@@ -33,6 +33,7 @@ import {
   addCircleOutline,
   addOutline,
   removeOutline,
+  informationCircleOutline,
 } from 'ionicons/icons';
 import {
   MenuItem,
@@ -135,6 +136,7 @@ export class ItemDetailPage {
       addCircleOutline,
       addOutline,
       removeOutline,
+      informationCircleOutline,
     });
     this.id = this.route.snapshot.paramMap.get('id');
 
@@ -256,6 +258,18 @@ export class ItemDetailPage {
    */
   get orderingAvailable(): boolean {
     return this.modeService.isDineIn || this.config.isOnlineOrderingEnabled;
+  }
+
+  /**
+   * Whether the read-only "Good to know" card has anything to show for this
+   * item (sizes, sweetness choices, or customizable extras). Used only in
+   * menu-only mode so items with none of these don't render an empty card.
+   */
+  get hasInfoToShow(): boolean {
+    return this.showSizeOptions
+      || this.item?.category === 'COFFEES'
+      || this.showSavoryExtras
+      || this.showSweetExtras;
   }
 
   get totalPrice(): number {
