@@ -160,7 +160,7 @@ export const menuItems: MenuItem[] = [
   { id: 22, name: 'GREEN_TEA', price: 2.5, category: 'SOFT_DRINKS', dineInPrice: 3.5 },
   { id: 23, name: 'RED_BULL', price: 4, category: 'SOFT_DRINKS', dineInPrice: 5 },
   { id: 24, name: 'SODA', price: 2.5, category: 'SOFT_DRINKS', dineInPrice: 3.5 },
-  { id: 25, name: 'WATER_SMALL', price: 0.5, category: 'SOFT_DRINKS', dineInPrice: 1 },
+  { id: 25, name: 'WATER_SMALL', price: 0.5, category: 'SOFT_DRINKS' },
   { id: 26, name: 'WATER_LARGE', price: 1, category: 'SOFT_DRINKS', dineInPrice: 1.5 },
   { id: 27, name: 'PERRIER', price: 3, category: 'SOFT_DRINKS', dineInPrice: 4 },
   { id: 28, name: 'SCHWEPPES_ORANGE', price: 2.5, category: 'SOFT_DRINKS', dineInPrice: 3.5 },
