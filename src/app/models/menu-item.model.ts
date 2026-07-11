@@ -204,7 +204,7 @@ export const menuItems: MenuItem[] = [
   { id: 75, name: 'RETSINA_VASILIKI', price: 6, category: 'DRINKS_WINES', dineInPrice: 6 },
   { id: 79, name: 'LEIVADIOTI_BOTTLE', price: 6, category: 'DRINKS_WINES', dineInPrice: 6 },
   { id: 80, name: 'GORDONS_SPACE', price: 5, category: 'DRINKS_WINES', dineInPrice: 5 },
-  { id: 81, name: 'PARANGA_BOTTLE', price: 25, category: 'DRINKS_WINES' },
+  { id: 81, name: 'PARANGA_BOTTLE', price: 30, category: 'DRINKS_WINES' },
   { id: 82, name: 'SAMAROPETRA_BOTTLE', price: 35, category: 'DRINKS_WINES' },
 
   { id: 83, name: 'Sex on the beach', price: 10, category: 'Cocktails', description: 'SEX_ON_THE_BEACH_DESC', dineInPrice: 10 },
