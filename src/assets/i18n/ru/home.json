@@ -1,0 +1,19 @@
+{
+  "TITLE": "Онлайн-заказ",
+  "TITLE_DINEIN": "Заказ в заведении",
+  "TITLE_MENU_ONLY": "Наше меню",
+  "WELCOME": "Добро пожаловать в",
+  "WELCOME_DINEIN": "Добро пожаловать в",
+  "TABLE_BADGE": "Стол",
+  "ITEM_SINGULAR": "позиция",
+  "ITEM_PLURAL": "позиций",
+  "BREAKFAST_UNTIL": "До 16:00",
+  "BREAKFAST_UNAVAILABLE": "Недоступно после 16:00",
+  "BREAKFAST_UNAVAILABLE_BODY": "Завтраки доступны только до 16:00.",
+  "CREPES_FROM": "С 17:00",
+  "CREPES_UNAVAILABLE": "Доступно с 17:00",
+  "CREPES_UNAVAILABLE_BODY": "Соленые и сладкие крепы доступны только с 17:00.",
+  "LANG_SELECTOR": {
+    "CHOOSE_LANGUAGE": "Выберите язык"
+  }
+}
