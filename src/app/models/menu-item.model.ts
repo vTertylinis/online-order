@@ -250,7 +250,6 @@ export const ingredients: Array<{ name: string; price: number; selected?: boolea
   { name: 'ING_ZAMBON', price: 0.5 },
   { name: 'ING_GALOPOULA', price: 0.5 },
   { name: 'ING_KOTOMPOUKIES', price: 1 },
-  { name: 'ING_KASEROKROKETA', price: 1 },
   { name: 'ING_MPEIKON', price: 0.5 },
   { name: 'ING_NTOMATA', price: 0.5 },
   { name: 'ING_AVGO', price: 1 },
