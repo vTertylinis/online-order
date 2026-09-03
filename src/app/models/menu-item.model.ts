@@ -236,7 +236,7 @@ export const menuItems: MenuItem[] = [
   // { id: 202, name: 'DOUBLE_SMASH_SOFT_DRINK_SWEET_CREPE', price: 15, category: 'COMBO_OFFERS', description: 'COMBO_OFFER_3_DESC', image: 'assets/images/1burger (1).webp', thumbnailImage: 'assets/thumbnails/1burger (1).webp' },
 ];
 
-export const POPULAR_ITEMS = [140, 112, 145, 128, 109, 232].map(id => menuItems.find(item => item.id === id)!).filter(item => item != null);
+export const POPULAR_ITEMS = [140, 157, 145, 128, 109, 232].map(id => menuItems.find(item => item.id === id)!).filter(item => item != null);
 
 export const SOFT_DRINKS = menuItems.filter(item => item.category === 'SOFT_DRINKS');
 

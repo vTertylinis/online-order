@@ -24,7 +24,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 })
 export class CartPage {
   items: CartItem[] = [];
-  readonly MINIMUM_ORDER = 6;
+  readonly MINIMUM_ORDER = 10;
 
   constructor(
     private cart: CartService,
