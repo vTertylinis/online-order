@@ -8,69 +8,76 @@
 </ion-header>
 
 <ion-content class="cart-content">
-  <ng-container *ngIf="items.length; else empty">
+  @if (items.length) {
     <div class="cart-summary-bar">
       <ion-icon name="bag-handle-outline"></ion-icon>
       <span>{{ items.length }} {{ items.length === 1 ? ('cart.ITEM_SINGULAR' | translate) : ('cart.ITEM_PLURAL' | translate) }}</span>
-      <span class="table-chip" *ngIf="isDineIn && tableNumber">
-        <ion-icon name="cube-outline"></ion-icon>
-        {{ 'cart.TABLE_NUMBER' | translate }} {{ tableNumber }}
-      </span>
+      @if (isDineIn && tableNumber) {
+        <span class="table-chip">
+          <ion-icon name="cube-outline"></ion-icon>
+          {{ 'cart.TABLE_NUMBER' | translate }} {{ tableNumber }}
+        </span>
+      }
     </div>
-
     <div class="cart-list">
-      <article class="cart-card" *ngFor="let it of items; let i = index">
-        <div class="cart-card-main">
-          <div class="cart-card-head">
-            <h3 class="cart-name">{{ getItemName(it.name) }}</h3>
-            <div class="cart-price">{{ itemPrice(it) | currency:'EUR' }}</div>
+      @for (it of items; track it; let i = $index) {
+        <article class="cart-card">
+          <div class="cart-card-main">
+            <div class="cart-card-head">
+              <h3 class="cart-name">{{ getItemName(it.name) }}</h3>
+              <div class="cart-price">{{ itemPrice(it) | currency:'EUR' }}</div>
+            </div>
+            <ul class="cart-meta">
+              @if (it.size && (it.id === 3 || it.id === 4 || it.id === 5 || it.id === 6 || it.id === 13)) {
+                <li>
+                  <span class="meta-label">{{ 'cart.SIZE' | translate }}</span>
+                  <span class="meta-value">{{ translateKey(it.size, 'item-detail.SIZE') }}</span>
+                </li>
+              }
+              @if (it.sweetness) {
+                <li>
+                  <span class="meta-label">{{ 'cart.SWEETNESS' | translate }}</span>
+                  <span class="meta-value">{{ translateKey(it.sweetness, 'item-detail.SWEETNESS') }}</span>
+                </li>
+              }
+              @if (it.ingredients && it.ingredients.length) {
+                <li class="meta-extras">
+                  <span class="meta-label">{{ 'cart.EXTRAS' | translate }}</span>
+                  <span class="meta-value">{{ ingredientsList(it) }}</span>
+                </li>
+              }
+              @if (it.comments) {
+                <li class="meta-comments">
+                  <span class="meta-label">{{ 'cart.COMMENTS' | translate }}</span>
+                  <span class="meta-value">{{ it.comments }}</span>
+                </li>
+              }
+            </ul>
+            <div class="cart-card-foot">
+              <span class="qty-pill">
+                <ion-icon name="cube-outline"></ion-icon>
+                {{ 'cart.QUANTITY' | translate }}: {{ it.quantity || 1 }}
+              </span>
+              <button type="button" class="remove-btn" (click)="remove(i)">
+                <ion-icon name="trash-outline"></ion-icon>
+                {{ 'cart.REMOVE' | translate }}
+              </button>
+            </div>
           </div>
-
-          <ul class="cart-meta">
-            <li *ngIf="it.size && (it.id === 3 || it.id === 4 || it.id === 5 || it.id === 6 || it.id === 13)">
-              <span class="meta-label">{{ 'cart.SIZE' | translate }}</span>
-              <span class="meta-value">{{ translateKey(it.size, 'item-detail.SIZE') }}</span>
-            </li>
-            <li *ngIf="it.sweetness">
-              <span class="meta-label">{{ 'cart.SWEETNESS' | translate }}</span>
-              <span class="meta-value">{{ translateKey(it.sweetness, 'item-detail.SWEETNESS') }}</span>
-            </li>
-            <li *ngIf="it.ingredients && it.ingredients.length" class="meta-extras">
-              <span class="meta-label">{{ 'cart.EXTRAS' | translate }}</span>
-              <span class="meta-value">{{ ingredientsList(it) }}</span>
-            </li>
-            <li *ngIf="it.comments" class="meta-comments">
-              <span class="meta-label">{{ 'cart.COMMENTS' | translate }}</span>
-              <span class="meta-value">{{ it.comments }}</span>
-            </li>
-          </ul>
-
-          <div class="cart-card-foot">
-            <span class="qty-pill">
-              <ion-icon name="cube-outline"></ion-icon>
-              {{ 'cart.QUANTITY' | translate }}: {{ it.quantity || 1 }}
-            </span>
-            <button type="button" class="remove-btn" (click)="remove(i)">
-              <ion-icon name="trash-outline"></ion-icon>
-              {{ 'cart.REMOVE' | translate }}
-            </button>
-          </div>
+        </article>
+      }
+    </div>
+    @if (!isDineIn && !isMinimumMet) {
+      <div class="minimum-warning">
+        <ion-icon name="alert-circle-outline"></ion-icon>
+        <div>
+          <p class="warning-title">{{ 'cart.MINIMUM_ORDER' | translate }}: {{ MINIMUM_ORDER | currency:'EUR' }}</p>
+          <p class="warning-sub">{{ 'cart.ADD_MORE' | translate:{ amount: (remainingForMinimum | currency:'EUR') } }}</p>
         </div>
-      </article>
-    </div>
-
-    <div *ngIf="!isDineIn && !isMinimumMet" class="minimum-warning">
-      <ion-icon name="alert-circle-outline"></ion-icon>
-      <div>
-        <p class="warning-title">{{ 'cart.MINIMUM_ORDER' | translate }}: {{ MINIMUM_ORDER | currency:'EUR' }}</p>
-        <p class="warning-sub">{{ 'cart.ADD_MORE' | translate:{ amount: (remainingForMinimum | currency:'EUR') } }}</p>
       </div>
-    </div>
-
+    }
     <div class="footer-spacer"></div>
-  </ng-container>
-
-  <ng-template #empty>
+  } @else {
     <div class="empty-state">
       <ion-icon name="cart-outline"></ion-icon>
       <h2>{{ 'cart.EMPTY' | translate }}</h2>
@@ -78,32 +85,38 @@
         {{ 'cart.TITLE' | translate }}
       </ion-button>
     </div>
-  </ng-template>
+  }
+
 </ion-content>
 
-<ion-footer *ngIf="items.length" class="action-footer ion-no-border">
-  <div class="action-bar">
-    <div class="total-block">
-      <span class="total-label">{{ 'cart.TOTAL' | translate }}</span>
-      <span class="total-value">{{ total | currency:'EUR' }}</span>
+@if (items.length) {
+  <ion-footer class="action-footer ion-no-border">
+    <div class="action-bar">
+      <div class="total-block">
+        <span class="total-label">{{ 'cart.TOTAL' | translate }}</span>
+        <span class="total-value">{{ total | currency:'EUR' }}</span>
+      </div>
+      <!-- Delivery: proceed to address page -->
+      @if (!isDineIn) {
+        <ion-button
+          class="checkout-btn"
+          shape="round"
+          routerLink="/address"
+          [disabled]="!isMinimumMet">
+          {{ 'cart.ADD_ADDRESS' | translate }}
+          <ion-icon slot="end" name="chevron-forward"></ion-icon>
+        </ion-button>
+      }
+      <!-- Dine-in: proceed to checkout (table selection + submit) -->
+      @if (isDineIn) {
+        <ion-button
+          class="checkout-btn"
+          shape="round"
+          routerLink="/dinein/table">
+          {{ 'cart.CONFIRM_TABLE' | translate }}
+          <ion-icon slot="end" name="chevron-forward"></ion-icon>
+        </ion-button>
+      }
     </div>
-    <!-- Delivery: proceed to address page -->
-    <ion-button *ngIf="!isDineIn"
-                class="checkout-btn"
-                shape="round"
-                routerLink="/address"
-                [disabled]="!isMinimumMet">
-      {{ 'cart.ADD_ADDRESS' | translate }}
-      <ion-icon slot="end" name="chevron-forward"></ion-icon>
-    </ion-button>
-
-    <!-- Dine-in: proceed to checkout (table selection + submit) -->
-    <ion-button *ngIf="isDineIn"
-                class="checkout-btn"
-                shape="round"
-                routerLink="/dinein/table">
-      {{ 'cart.CONFIRM_TABLE' | translate }}
-      <ion-icon slot="end" name="chevron-forward"></ion-icon>
-    </ion-button>
-  </div>
-</ion-footer>
+  </ion-footer>
+}

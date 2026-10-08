@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { ModeService } from './mode.service';
 
 export interface CartItem {
@@ -35,10 +35,12 @@ function uuid(): string {
   providedIn: 'root',
 })
 export class CartService {
+  private modeService = inject(ModeService);
+
   private deliveryItems: CartItem[] = [];
   private dineinItems: CartItem[]   = [];
 
-  constructor(private modeService: ModeService) {
+  constructor() {
     this.deliveryItems = this.readStorage(DELIVERY_KEY);
     this.dineinItems   = this.readStorage(DINEIN_KEY);
   }

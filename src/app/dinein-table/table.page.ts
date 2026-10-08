@@ -1,5 +1,5 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, OnDestroy, OnInit, ChangeDetectionStrategy, inject } from '@angular/core';
+
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import {
@@ -23,7 +23,6 @@ import { DineInOrderService } from '../services/dinein-order.service';
   selector: 'app-table',
   standalone: true,
   imports: [
-    CommonModule,
     FormsModule,
     IonHeader,
     IonToolbar,
@@ -32,18 +31,25 @@ import { DineInOrderService } from '../services/dinein-order.service';
     IonTitle,
     IonContent,
     IonIcon,
-    TranslateModule,
-  ],
+    TranslateModule
+],
   templateUrl: './table.page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./table.page.scss'],
 })
 export class TablePage implements OnInit, OnDestroy {
+  private router = inject(Router);
+  private tableService = inject(TableService);
+  private cartService = inject(CartService);
+  private translateService = inject(TranslateService);
+  private dineInOrder = inject(DineInOrderService);
+
   /** Currently selected table number (0 = nothing selected) */
   selectedTable = 0;
   submitted = false;
   submitting = false;
 
-  /** Array [1 … 40] used by *ngFor in the template */
+  /** Array [1 … 40] used by @for in the template */
   readonly tableOptions = Array.from({ length: 40 }, (_, i) => i + 1);
 
   languages = [
@@ -72,13 +78,7 @@ export class TablePage implements OnInit, OnDestroy {
     this.translateService.use(code);
   }
 
-  constructor(
-    private router: Router,
-    private tableService: TableService,
-    private cartService: CartService,
-    private translateService: TranslateService,
-    private dineInOrder: DineInOrderService,
-  ) {
+  constructor() {
     addIcons({ chevronDown, restaurantOutline, sendOutline });
     this.currentLang = this.translateService.currentLang || this.translateService.defaultLang || 'el';
   }

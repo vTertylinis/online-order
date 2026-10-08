@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, HostListener, OnDestroy, OnInit, ViewChild, ChangeDetectionStrategy, inject } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import {
   IonContent,
@@ -64,6 +64,7 @@ interface Category {
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     IonContent,
     IonChip,
@@ -79,6 +80,14 @@ interface Category {
   ],
 })
 export class HomePage implements OnInit, AfterViewInit, OnDestroy {
+  private router = inject(Router);
+  private cartService = inject(CartService);
+  private alertController = inject(AlertController);
+  private translateService = inject(TranslateService);
+  private modeService = inject(ModeService);
+  private tableService = inject(TableService);
+  private config = inject(ConfigService);
+
   menuItems: MenuItem[] = menuItems;
 
   categories: Category[] = [];
@@ -126,15 +135,7 @@ export class HomePage implements OnInit, AfterViewInit, OnDestroy {
 
   private langSub!: Subscription;
 
-  constructor(
-    private router: Router,
-    private cartService: CartService,
-    private alertController: AlertController,
-    private translateService: TranslateService,
-    private modeService: ModeService,
-    private tableService: TableService,
-    private config: ConfigService,
-  ) {
+  constructor() {
     addIcons({ cart, add, restaurantOutline, fastFoodOutline, pizzaOutline, cafeOutline, beerOutline, wineOutline, leafOutline, nutritionOutline, sunnyOutline, happyOutline, waterOutline, giftOutline, globeOutline, chevronDown, chevronForward, starOutline, flowerOutline, timeOutline });
     this.currentLang = this.translateService.currentLang || this.translateService.defaultLang || 'el';
   }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { Router, RouterLink } from '@angular/router';
 import { IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonButton, IonIcon, IonFooter } from '@ionic/angular/standalone';
@@ -20,19 +20,20 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   selector: 'app-cart',
   templateUrl: 'cart.page.html',
   styleUrls: ['cart.page.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [IonContent, IonHeader, IonToolbar, IonTitle, IonButtons, IonBackButton, IonButton, IonIcon, IonFooter, CommonModule, CurrencyPipe, RouterLink, TranslateModule],
 })
 export class CartPage {
+  private cart = inject(CartService);
+  private router = inject(Router);
+  private translateService = inject(TranslateService);
+  private modeService = inject(ModeService);
+  private tableService = inject(TableService);
+
   items: CartItem[] = [];
   readonly MINIMUM_ORDER = 10;
 
-  constructor(
-    private cart: CartService,
-    private router: Router,
-    private translateService: TranslateService,
-    private modeService: ModeService,
-    private tableService: TableService,
-  ) {
+  constructor() {
     addIcons({
       cartOutline,
       trashOutline,

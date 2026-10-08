@@ -1,7 +1,7 @@
 /// <reference types="google.maps" />
 
-import { Component, inject, ViewChild, ElementRef, AfterViewInit, OnInit, NgZone } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, ViewChild, ElementRef, AfterViewInit, OnInit, NgZone, ChangeDetectionStrategy } from '@angular/core';
+
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { 
@@ -36,7 +36,6 @@ declare var google: any;
   selector: 'app-address',
   standalone: true,
   imports: [
-    CommonModule, 
     FormsModule,
     ReactiveFormsModule,
     IonHeader,
@@ -47,9 +46,10 @@ declare var google: any;
     IonContent,
     IonInput,
     IonIcon,
-    TranslateModule,
-  ],
+    TranslateModule
+],
   templateUrl: './address.page.html',
+  changeDetection: ChangeDetectionStrategy.Eager,
   styleUrls: ['./address.page.scss']
 })
 export class AddressPage implements AfterViewInit {

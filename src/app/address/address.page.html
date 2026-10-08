@@ -28,17 +28,21 @@
   </div>
 
   <!-- Map section -->
-  <div *ngIf="addressMode === 'map'" class="map-section">
-    <div #mapElement class="map"></div>
-    <div class="map-hint">
-      <ion-icon name="location-outline"></ion-icon>
-      {{ 'address.MAP_HINT' | translate }}
+  @if (addressMode === 'map') {
+    <div class="map-section">
+      <div #mapElement class="map"></div>
+      <div class="map-hint">
+        <ion-icon name="location-outline"></ion-icon>
+        {{ 'address.MAP_HINT' | translate }}
+      </div>
+      @if (selectedLocation) {
+        <div class="selected-location">
+          <ion-icon name="checkmark-circle" color="success"></ion-icon>
+          <span>{{ selectedAddress || ('Lat: ' + selectedLocation.lat.toFixed(5) + ', Lng: ' + selectedLocation.lng.toFixed(5)) }}</span>
+        </div>
+      }
     </div>
-    <div *ngIf="selectedLocation" class="selected-location">
-      <ion-icon name="checkmark-circle" color="success"></ion-icon>
-      <span>{{ selectedAddress || ('Lat: ' + selectedLocation.lat.toFixed(5) + ', Lng: ' + selectedLocation.lng.toFixed(5)) }}</span>
-    </div>
-  </div>
+  }
 
   <!-- Contact & delivery details form -->
   <form [formGroup]="form" (ngSubmit)="submit()" class="details-form">
@@ -53,7 +57,9 @@
         <ion-input formControlName="name" inputmode="text" [placeholder]="'address.NAME_PLACEHOLDER' | translate"></ion-input>
       </div>
     </div>
-    <p class="field-error" *ngIf="form.controls.name.invalid && form.controls.name.touched">{{ 'address.NAME_ERROR' | translate }}</p>
+    @if (form.controls.name.invalid && form.controls.name.touched) {
+      <p class="field-error">{{ 'address.NAME_ERROR' | translate }}</p>
+    }
 
     <!-- Phone -->
     <div class="field-wrap" [class.error]="form.controls.phone.invalid && form.controls.phone.touched">
@@ -63,22 +69,27 @@
         <ion-input formControlName="phone" type="tel" inputmode="tel" [placeholder]="'address.PHONE_PLACEHOLDER' | translate"></ion-input>
       </div>
     </div>
-    <p class="field-error" *ngIf="form.controls.phone.invalid && form.controls.phone.touched">{{ 'address.PHONE_ERROR' | translate }}</p>
+    @if (form.controls.phone.invalid && form.controls.phone.touched) {
+      <p class="field-error">{{ 'address.PHONE_ERROR' | translate }}</p>
+    }
 
     <p class="section-label">{{ 'address.ADDRESS_SECTION' | translate }}</p>
 
     <!-- Address (manual mode only) -->
-    <div
-      *ngIf="addressMode === 'manual'"
-      class="field-wrap"
-      [class.error]="form.controls.address.invalid && form.controls.address.touched">
-      <ion-icon name="home-outline" class="field-icon"></ion-icon>
-      <div class="field-inner">
-        <label class="field-label">{{ 'address.ADDRESS_LABEL' | translate }}</label>
-        <ion-input formControlName="address" inputmode="text" [placeholder]="'address.ADDRESS_PLACEHOLDER' | translate"></ion-input>
+    @if (addressMode === 'manual') {
+      <div
+        class="field-wrap"
+        [class.error]="form.controls.address.invalid && form.controls.address.touched">
+        <ion-icon name="home-outline" class="field-icon"></ion-icon>
+        <div class="field-inner">
+          <label class="field-label">{{ 'address.ADDRESS_LABEL' | translate }}</label>
+          <ion-input formControlName="address" inputmode="text" [placeholder]="'address.ADDRESS_PLACEHOLDER' | translate"></ion-input>
+        </div>
       </div>
-    </div>
-    <p class="field-error" *ngIf="addressMode === 'manual' && form.controls.address.invalid && form.controls.address.touched">{{ 'address.ADDRESS_ERROR' | translate }}</p>
+    }
+    @if (addressMode === 'manual' && form.controls.address.invalid && form.controls.address.touched) {
+      <p class="field-error">{{ 'address.ADDRESS_ERROR' | translate }}</p>
+    }
 
     <!-- Floor -->
     <div class="field-wrap">

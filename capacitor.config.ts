@@ -3,7 +3,7 @@ import type { CapacitorConfig } from '@capacitor/cli';
 const config: CapacitorConfig = {
   appId: 'io.ionic.starter',
   appName: 'online-order',
-  webDir: 'www'
+  webDir: 'dist/online-order/browser'
 };
 
 export default config;

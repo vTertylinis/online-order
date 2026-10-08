@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, map, startWith } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -7,9 +7,11 @@ export type AppMode = 'delivery' | 'dinein';
 
 @Injectable({ providedIn: 'root' })
 export class ModeService {
+  private router = inject(Router);
+
   readonly mode$: Observable<AppMode>;
 
-  constructor(private router: Router) {
+  constructor() {
     this.mode$ = this.router.events.pipe(
       filter((e): e is NavigationEnd => e instanceof NavigationEnd),
       map((e) => this.extractMode(e.urlAfterRedirects)),

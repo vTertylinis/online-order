@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule, CurrencyPipe } from '@angular/common';
 import { ActivatedRoute, RouterLink } from '@angular/router';
 import {
@@ -51,6 +51,7 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   selector: 'app-item-detail',
   templateUrl: 'item-detail.page.html',
   styleUrls: ['item-detail.page.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   imports: [
     IonContent,
     IonHeader,
@@ -75,6 +76,13 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
   ],
 })
 export class ItemDetailPage {
+  private route = inject(ActivatedRoute);
+  private cart = inject(CartService);
+  private router = inject(Router);
+  private translateService = inject(TranslateService);
+  private modeService = inject(ModeService);
+  private config = inject(ConfigService);
+
   id: string | null = null;
   item: MenuItem | null = null;
   imageLoading: boolean = true;
@@ -115,14 +123,7 @@ export class ItemDetailPage {
     'SWEET',
   ];
 
-  constructor(
-    private route: ActivatedRoute,
-    private cart: CartService,
-    private router: Router,
-    private translateService: TranslateService,
-    private modeService: ModeService,
-    private config: ConfigService
-  ) {
+  constructor() {
     addIcons({
       cafeOutline,
       resizeOutline,

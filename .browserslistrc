@@ -8,8 +8,5 @@
 # You can see what browsers were selected by your queries by running:
 #   npx browserslist
 
-Chrome >=107
-Firefox >=106
-Edge >=107
-Safari >=16.1
-iOS >=16.1
+# Angular 22's supported browser baseline.
+baseline widely available on 2026-05-07

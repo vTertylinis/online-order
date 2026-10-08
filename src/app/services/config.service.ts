@@ -13,7 +13,7 @@ export class ConfigService {
     googleMapsLibraries: 'places',
   };
 
-  // Kept for APP_INITIALIZER compatibility; now a no-op
+  // Startup hook used by provideAppInitializer; configuration is bundled locally.
   async load(): Promise<void> {
     return Promise.resolve();
   }

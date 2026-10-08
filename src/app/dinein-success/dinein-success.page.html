@@ -8,10 +8,12 @@
     <h1 class="success-title">{{ 'dinein-success.TITLE' | translate }}</h1>
     <p class="success-sub">{{ 'dinein-success.MESSAGE' | translate }}</p>
 
-    <div class="table-badge" *ngIf="tableNumber">
-      <ion-icon name="restaurant-outline"></ion-icon>
-      {{ 'dinein-success.TABLE_LABEL' | translate }} {{ tableNumber }}
-    </div>
+    @if (tableNumber) {
+      <div class="table-badge">
+        <ion-icon name="restaurant-outline"></ion-icon>
+        {{ 'dinein-success.TABLE_LABEL' | translate }} {{ tableNumber }}
+      </div>
+    }
 
     <button class="menu-btn" (click)="goToMenu()">
       {{ 'dinein-success.BACK_TO_MENU' | translate }}

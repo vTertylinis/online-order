@@ -9,226 +9,263 @@
 
 <ion-content class="detail-content">
   <!-- Loading state -->
-  <div *ngIf="!item && !id" class="loading-container">
-    <ion-spinner name="crescent"></ion-spinner>
-    <p>{{ 'item-detail.LOADING' | translate }}</p>
-  </div>
+  @if (!item && !id) {
+    <div class="loading-container">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>{{ 'item-detail.LOADING' | translate }}</p>
+    </div>
+  }
 
   <!-- Not available -->
-  <div *ngIf="!item && id" class="empty-state">
-    <ion-icon name="alert-circle-outline"></ion-icon>
-    <p>{{ 'item-detail.NOT_AVAILABLE' | translate:{ id: id } }}</p>
-    <ion-button fill="outline" [routerLink]="homeRoute">{{ 'item-detail.TITLE' | translate }}</ion-button>
-  </div>
+  @if (!item && id) {
+    <div class="empty-state">
+      <ion-icon name="alert-circle-outline"></ion-icon>
+      <p>{{ 'item-detail.NOT_AVAILABLE' | translate:{ id: id } }}</p>
+      <ion-button fill="outline" [routerLink]="homeRoute">{{ 'item-detail.TITLE' | translate }}</ion-button>
+    </div>
+  }
 
-  <ng-container *ngIf="item">
+  @if (item) {
     <!-- Hero image / banner -->
     <div class="hero" [class.no-image]="!item.image">
-      <div *ngIf="item.image" class="hero-image-wrap">
-        <div *ngIf="imageLoading" class="spinner-container">
-          <ion-spinner name="crescent"></ion-spinner>
+      @if (item.image) {
+        <div class="hero-image-wrap">
+          @if (imageLoading) {
+            <div class="spinner-container">
+              <ion-spinner name="crescent"></ion-spinner>
+            </div>
+          }
+          <img class="hero-image"
+            [src]="item.image"
+            [alt]="item.name"
+            (load)="imageLoading = false"
+            (error)="imageLoading = false"
+            [style.opacity]="imageLoading ? 0 : 1" />
+          <div class="hero-overlay"></div>
         </div>
-        <img class="hero-image"
-             [src]="item.image"
-             [alt]="item.name"
-             (load)="imageLoading = false"
-             (error)="imageLoading = false"
-             [style.opacity]="imageLoading ? 0 : 1" />
-        <div class="hero-overlay"></div>
-      </div>
+      }
     </div>
-
     <!-- Floating info card -->
     <section class="info-card">
       <div class="info-row">
         <h1 class="title">{{ translate(item.name || '') || ('Item ID: ' + id) }}</h1>
         <div class="price-pill">{{ item.price | currency:'EUR' }}</div>
       </div>
-      <p *ngIf="item.description || item.desc" class="description">
-        {{ translate(item.desc || item.description || '') }}
-      </p>
+      @if (item.description || item.desc) {
+        <p class="description">
+          {{ translate(item.desc || item.description || '') }}
+        </p>
+      }
     </section>
-
     <!-- Read-only "Good to know" card (menu-only mode) -->
-    <section *ngIf="!orderingAvailable && hasInfoToShow" class="info-facts-card">
-      <header class="info-facts-header">
-        <ion-icon name="information-circle-outline"></ion-icon>
-        <h2>{{ 'item-detail.INFO.TITLE' | translate }}</h2>
-      </header>
-
-      <!-- Available sizes -->
-      <div *ngIf="showSizeOptions" class="info-fact-row">
-        <span class="info-fact-label">{{ 'item-detail.INFO.AVAILABLE_SIZES' | translate }}</span>
-        <div class="info-chips">
-          <span class="info-chip">{{ 'item-detail.SIZE.SINGLE' | translate }}</span>
-          <span class="info-chip">{{ 'item-detail.SIZE.DOUBLE' | translate }} +{{ 0.5 | currency:'EUR' }}</span>
-        </div>
-      </div>
-
-      <!-- Sweetness choices (coffees) -->
-      <div *ngIf="item.category === 'COFFEES'" class="info-fact-row">
-        <span class="info-fact-label">{{ 'item-detail.INFO.SWEETNESS_CHOICES' | translate }}</span>
-        <div class="info-chips">
-          <span class="info-chip" *ngFor="let s of sweetnessOptions">{{ 'item-detail.SWEETNESS.' + s | translate }}</span>
-        </div>
-      </div>
-
-      <!-- Customizable note -->
-      <div *ngIf="showSavoryExtras || showSweetExtras" class="info-fact-row info-fact-note">
-        <ion-icon name="restaurant-outline"></ion-icon>
-        <span>{{ 'item-detail.INFO.CUSTOMIZABLE' | translate }}</span>
-      </div>
-    </section>
-
-    <!-- Sweetness (Coffees) -->
-    <section *ngIf="orderingAvailable && item.category === 'COFFEES'" class="option-card">
-      <header class="option-header">
-        <ion-icon name="cafe-outline"></ion-icon>
-        <h2>{{ 'item-detail.SWEETNESS.LABEL' | translate }}</h2>
-      </header>
-      <div class="chip-group">
-        <button type="button"
-                class="chip"
-                *ngFor="let s of sweetnessOptions"
-                [class.active]="sweetness === s"
-                (click)="selectSweetness(s)">
-          {{ 'item-detail.SWEETNESS.' + s | translate }}
-        </button>
-      </div>
-    </section>
-
-    <!-- Size -->
-    <section *ngIf="orderingAvailable && showSizeOptions" class="option-card">
-      <header class="option-header">
-        <ion-icon name="resize-outline"></ion-icon>
-        <h2>{{ 'item-detail.SIZE.LABEL' | translate }}</h2>
-      </header>
-      <ion-segment [value]="size" (ionChange)="onSizeChange($event)" class="size-segment">
-        <ion-segment-button value="SINGLE">
-          <ion-label>{{ 'item-detail.SIZE.SINGLE' | translate }}</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="DOUBLE">
-          <ion-label>
-            {{ 'item-detail.SIZE.DOUBLE' | translate }}
-            <span class="size-extra">+{{ 0.5 | currency:'EUR' }}</span>
-          </ion-label>
-        </ion-segment-button>
-      </ion-segment>
-    </section>
-
-    <!-- Savory extras -->
-    <section *ngIf="orderingAvailable && showSavoryExtras" class="option-card">
-      <header class="option-header">
-        <ion-icon name="restaurant-outline"></ion-icon>
-        <h2>{{ 'item-detail.EXTRAS.SAVORY_LABEL' | translate }}</h2>
-        <span class="badge" *ngIf="savorySelectedCount > 0">{{ savorySelectedCount }}</span>
-      </header>
-      <ion-searchbar class="slim-search"
-                     [(ngModel)]="searchTerm"
-                     (ionInput)="filterIngredients()"
-                     [placeholder]="'item-detail.EXTRAS.SEARCH_SAVORY' | translate"></ion-searchbar>
-      <div class="extras-grid">
-        <button type="button"
-                class="extra-chip"
-                *ngFor="let ing of filteredIngredients"
-                [class.active]="ing.selected"
-                (click)="ing.selected = !ing.selected; onSelectionChange(ing)">
-          <ion-icon [name]="ing.selected ? 'checkmark-circle' : 'add-circle-outline'"></ion-icon>
-          <span class="extra-name">{{ translate(ing.name) }}</span>
-          <span *ngIf="ing.price" class="extra-price">+{{ ing.price | currency:'EUR' }}</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- Sweet extras -->
-    <section *ngIf="orderingAvailable && showSweetExtras" class="option-card">
-      <header class="option-header">
-        <ion-icon name="ice-cream-outline"></ion-icon>
-        <h2>{{ 'item-detail.EXTRAS.SWEET_LABEL' | translate }}</h2>
-        <span class="badge" *ngIf="sweetSelectedCount > 0">{{ sweetSelectedCount }}</span>
-      </header>
-      <ion-searchbar class="slim-search"
-                     [(ngModel)]="sweetSearchTerm"
-                     (ionInput)="filterSweetIngredients()"
-                     [placeholder]="'item-detail.EXTRAS.SEARCH_SWEET' | translate"></ion-searchbar>
-      <div class="extras-grid">
-        <button type="button"
-                class="extra-chip"
-                *ngFor="let ing of filteredSweetIngredients"
-                [class.active]="ing.selected"
-                (click)="ing.selected = !ing.selected; onSweetSelectionChange(ing)">
-          <ion-icon [name]="ing.selected ? 'checkmark-circle' : 'add-circle-outline'"></ion-icon>
-          <span class="extra-name">{{ translate(ing.name) }}</span>
-          <span *ngIf="ing.price" class="extra-price">+{{ ing.price | currency:'EUR' }}</span>
-        </button>
-      </div>
-    </section>
-
-    <!-- Soft drinks -->
-    <section *ngIf="orderingAvailable && showSoftDrinks" class="option-card">
-      <header class="option-header">
-        <ion-icon name="beer-outline"></ion-icon>
-        <h2>{{ 'item-detail.SOFT_DRINKS.LABEL' | translate:{ count: REQUIRED_SOFT_DRINKS_COUNT } }}</h2>
-        <span class="badge"
-              [class.complete]="selectedSoftDrinksCount === REQUIRED_SOFT_DRINKS_COUNT">
-          {{ selectedSoftDrinksCount }}/{{ REQUIRED_SOFT_DRINKS_COUNT }}
-        </span>
-      </header>
-      <div class="drinks-list">
-        <div class="drink-row" *ngFor="let drink of softDrinks" [class.selected]="(drink.quantity || 0) > 0">
-          <span class="drink-name">{{ translate(drink.name) }}</span>
-          <div class="qty-controls">
-            <button type="button"
-                    class="qty-btn"
-                    (click)="changeSoftDrink(drink, -1)"
-                    [disabled]="(drink.quantity || 0) === 0"
-                    aria-label="decrease">
-              <ion-icon name="remove-outline"></ion-icon>
-            </button>
-            <span class="qty-value">{{ drink.quantity || 0 }}</span>
-            <button type="button"
-                    class="qty-btn"
-                    (click)="changeSoftDrink(drink, 1)"
-                    [disabled]="selectedSoftDrinksCount >= REQUIRED_SOFT_DRINKS_COUNT"
-                    aria-label="increase">
-              <ion-icon name="add-outline"></ion-icon>
-            </button>
+    @if (!orderingAvailable && hasInfoToShow) {
+      <section class="info-facts-card">
+        <header class="info-facts-header">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          <h2>{{ 'item-detail.INFO.TITLE' | translate }}</h2>
+        </header>
+        <!-- Available sizes -->
+        @if (showSizeOptions) {
+          <div class="info-fact-row">
+            <span class="info-fact-label">{{ 'item-detail.INFO.AVAILABLE_SIZES' | translate }}</span>
+            <div class="info-chips">
+              <span class="info-chip">{{ 'item-detail.SIZE.SINGLE' | translate }}</span>
+              <span class="info-chip">{{ 'item-detail.SIZE.DOUBLE' | translate }} +{{ 0.5 | currency:'EUR' }}</span>
+            </div>
           </div>
+        }
+        <!-- Sweetness choices (coffees) -->
+        @if (item.category === 'COFFEES') {
+          <div class="info-fact-row">
+            <span class="info-fact-label">{{ 'item-detail.INFO.SWEETNESS_CHOICES' | translate }}</span>
+            <div class="info-chips">
+              @for (s of sweetnessOptions; track s) {
+                <span class="info-chip">{{ 'item-detail.SWEETNESS.' + s | translate }}</span>
+              }
+            </div>
+          </div>
+        }
+        <!-- Customizable note -->
+        @if (showSavoryExtras || showSweetExtras) {
+          <div class="info-fact-row info-fact-note">
+            <ion-icon name="restaurant-outline"></ion-icon>
+            <span>{{ 'item-detail.INFO.CUSTOMIZABLE' | translate }}</span>
+          </div>
+        }
+      </section>
+    }
+    <!-- Sweetness (Coffees) -->
+    @if (orderingAvailable && item.category === 'COFFEES') {
+      <section class="option-card">
+        <header class="option-header">
+          <ion-icon name="cafe-outline"></ion-icon>
+          <h2>{{ 'item-detail.SWEETNESS.LABEL' | translate }}</h2>
+        </header>
+        <div class="chip-group">
+          @for (s of sweetnessOptions; track s) {
+            <button type="button"
+              class="chip"
+              [class.active]="sweetness === s"
+              (click)="selectSweetness(s)">
+              {{ 'item-detail.SWEETNESS.' + s | translate }}
+            </button>
+          }
         </div>
-      </div>
-    </section>
-
+      </section>
+    }
+    <!-- Size -->
+    @if (orderingAvailable && showSizeOptions) {
+      <section class="option-card">
+        <header class="option-header">
+          <ion-icon name="resize-outline"></ion-icon>
+          <h2>{{ 'item-detail.SIZE.LABEL' | translate }}</h2>
+        </header>
+        <ion-segment [value]="size" (ionChange)="onSizeChange($event)" class="size-segment">
+          <ion-segment-button value="SINGLE">
+            <ion-label>{{ 'item-detail.SIZE.SINGLE' | translate }}</ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="DOUBLE">
+            <ion-label>
+              {{ 'item-detail.SIZE.DOUBLE' | translate }}
+              <span class="size-extra">+{{ 0.5 | currency:'EUR' }}</span>
+            </ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </section>
+    }
+    <!-- Savory extras -->
+    @if (orderingAvailable && showSavoryExtras) {
+      <section class="option-card">
+        <header class="option-header">
+          <ion-icon name="restaurant-outline"></ion-icon>
+          <h2>{{ 'item-detail.EXTRAS.SAVORY_LABEL' | translate }}</h2>
+          @if (savorySelectedCount > 0) {
+            <span class="badge">{{ savorySelectedCount }}</span>
+          }
+        </header>
+        <ion-searchbar class="slim-search"
+          [(ngModel)]="searchTerm"
+          (ionInput)="filterIngredients()"
+        [placeholder]="'item-detail.EXTRAS.SEARCH_SAVORY' | translate"></ion-searchbar>
+        <div class="extras-grid">
+          @for (ing of filteredIngredients; track ing) {
+            <button type="button"
+              class="extra-chip"
+              [class.active]="ing.selected"
+              (click)="ing.selected = !ing.selected; onSelectionChange(ing)">
+              <ion-icon [name]="ing.selected ? 'checkmark-circle' : 'add-circle-outline'"></ion-icon>
+              <span class="extra-name">{{ translate(ing.name) }}</span>
+              @if (ing.price) {
+                <span class="extra-price">+{{ ing.price | currency:'EUR' }}</span>
+              }
+            </button>
+          }
+        </div>
+      </section>
+    }
+    <!-- Sweet extras -->
+    @if (orderingAvailable && showSweetExtras) {
+      <section class="option-card">
+        <header class="option-header">
+          <ion-icon name="ice-cream-outline"></ion-icon>
+          <h2>{{ 'item-detail.EXTRAS.SWEET_LABEL' | translate }}</h2>
+          @if (sweetSelectedCount > 0) {
+            <span class="badge">{{ sweetSelectedCount }}</span>
+          }
+        </header>
+        <ion-searchbar class="slim-search"
+          [(ngModel)]="sweetSearchTerm"
+          (ionInput)="filterSweetIngredients()"
+        [placeholder]="'item-detail.EXTRAS.SEARCH_SWEET' | translate"></ion-searchbar>
+        <div class="extras-grid">
+          @for (ing of filteredSweetIngredients; track ing) {
+            <button type="button"
+              class="extra-chip"
+              [class.active]="ing.selected"
+              (click)="ing.selected = !ing.selected; onSweetSelectionChange(ing)">
+              <ion-icon [name]="ing.selected ? 'checkmark-circle' : 'add-circle-outline'"></ion-icon>
+              <span class="extra-name">{{ translate(ing.name) }}</span>
+              @if (ing.price) {
+                <span class="extra-price">+{{ ing.price | currency:'EUR' }}</span>
+              }
+            </button>
+          }
+        </div>
+      </section>
+    }
+    <!-- Soft drinks -->
+    @if (orderingAvailable && showSoftDrinks) {
+      <section class="option-card">
+        <header class="option-header">
+          <ion-icon name="beer-outline"></ion-icon>
+          <h2>{{ 'item-detail.SOFT_DRINKS.LABEL' | translate:{ count: REQUIRED_SOFT_DRINKS_COUNT } }}</h2>
+          <span class="badge"
+            [class.complete]="selectedSoftDrinksCount === REQUIRED_SOFT_DRINKS_COUNT">
+            {{ selectedSoftDrinksCount }}/{{ REQUIRED_SOFT_DRINKS_COUNT }}
+          </span>
+        </header>
+        <div class="drinks-list">
+          @for (drink of softDrinks; track drink) {
+            <div class="drink-row" [class.selected]="(drink.quantity || 0) > 0">
+              <span class="drink-name">{{ translate(drink.name) }}</span>
+              <div class="qty-controls">
+                <button type="button"
+                  class="qty-btn"
+                  (click)="changeSoftDrink(drink, -1)"
+                  [disabled]="(drink.quantity || 0) === 0"
+                  aria-label="decrease">
+                  <ion-icon name="remove-outline"></ion-icon>
+                </button>
+                <span class="qty-value">{{ drink.quantity || 0 }}</span>
+                <button type="button"
+                  class="qty-btn"
+                  (click)="changeSoftDrink(drink, 1)"
+                  [disabled]="selectedSoftDrinksCount >= REQUIRED_SOFT_DRINKS_COUNT"
+                  aria-label="increase">
+                  <ion-icon name="add-outline"></ion-icon>
+                </button>
+              </div>
+            </div>
+          }
+        </div>
+      </section>
+    }
     <!-- Comments -->
-    <section *ngIf="orderingAvailable" class="option-card">
-      <header class="option-header">
-        <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
-        <h2>{{ 'item-detail.COMMENTS.LABEL' | translate }}</h2>
-      </header>
-      <div class="comments-wrap">
-        <ion-textarea [(ngModel)]="comments"
-                      [placeholder]="'item-detail.COMMENTS.PLACEHOLDER' | translate"
-                      [autoGrow]="true"
-                      rows="3"></ion-textarea>
-      </div>
-    </section>
-
+    @if (orderingAvailable) {
+      <section class="option-card">
+        <header class="option-header">
+          <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+          <h2>{{ 'item-detail.COMMENTS.LABEL' | translate }}</h2>
+        </header>
+        <div class="comments-wrap">
+          <ion-textarea [(ngModel)]="comments"
+            [placeholder]="'item-detail.COMMENTS.PLACEHOLDER' | translate"
+            [autoGrow]="true"
+          rows="3"></ion-textarea>
+        </div>
+      </section>
+    }
     <!-- spacer for sticky footer -->
-    <div *ngIf="orderingAvailable" class="footer-spacer"></div>
-  </ng-container>
+    @if (orderingAvailable) {
+      <div class="footer-spacer"></div>
+    }
+  }
 </ion-content>
 
-<ion-footer *ngIf="item && orderingAvailable" class="action-footer ion-no-border">
-  <div class="action-bar">
-    <div class="total-block">
-      <span class="total-label">{{ 'item-detail.TOTAL' | translate }}</span>
-      <span class="total-value">{{ totalPrice | currency:'EUR' }}</span>
+@if (item && orderingAvailable) {
+  <ion-footer class="action-footer ion-no-border">
+    <div class="action-bar">
+      <div class="total-block">
+        <span class="total-label">{{ 'item-detail.TOTAL' | translate }}</span>
+        <span class="total-value">{{ totalPrice | currency:'EUR' }}</span>
+      </div>
+      <ion-button class="add-btn"
+        shape="round"
+        (click)="addToCart()"
+        [disabled]="!canAddToCart">
+        <ion-icon slot="start" name="cart-outline"></ion-icon>
+        {{ 'item-detail.ADD_TO_CART' | translate }}
+      </ion-button>
     </div>
-    <ion-button class="add-btn"
-                shape="round"
-                (click)="addToCart()"
-                [disabled]="!canAddToCart">
-      <ion-icon slot="start" name="cart-outline"></ion-icon>
-      {{ 'item-detail.ADD_TO_CART' | translate }}
-    </ion-button>
-  </div>
-</ion-footer>
+  </ion-footer>
+}

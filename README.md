@@ -7,12 +7,12 @@ A mobile-first food ordering app for **21 Ierissos**, built with Angular and Ion
 
 ## Tech Stack
 
-- **[Angular](https://angular.dev) 20** — standalone components with lazy-loaded routes
+- **[Angular](https://angular.dev) 22.2** — standalone components with lazy-loaded routes and block control flow
 - **[Ionic](https://ionicframework.com) 8** — mobile UI framework
 - **[Capacitor](https://capacitorjs.com) 7** — native runtime / build wrapper
 - **[ngx-translate](https://github.com/ngx-translate/core)** — i18n
 - **Google Maps JavaScript API** — address selection for delivery
-- **TypeScript 5.9**
+- **TypeScript 6.0**
 
 ## Features
 
@@ -59,13 +59,13 @@ src/app/
 
 ### Prerequisites
 
-- Node.js (LTS) and npm
+- Node.js `^22.22.3`, `^24.15.0`, or `>=26.0.0` and npm `>=10.9.0` (see `.nvmrc`)
 - Ionic CLI (optional): `npm install -g @ionic/cli`
 
 ### Install
 
 ```bash
-npm install
+npm ci
 ```
 
 ### Run locally
@@ -86,8 +86,46 @@ npm run build
 
 ```bash
 npm test
+npm run test:ci
 npm run lint
 ```
+
+`test:ci` runs the Jasmine/Karma suite once in Chrome Headless. Install Chrome or set
+`CHROME_BIN` to a compatible Chromium executable before running it.
+
+## Angular 22 migration
+
+The project was upgraded sequentially from Angular 20 through 21 to 22 using the
+official Angular CLI migrations. Framework and CLI packages use 22.2.2,
+TypeScript uses 6.0, Angular ESLint uses 22, and Ionic's Angular toolkit uses 13.
+Build, serve, i18n extraction, and Karma tests now use the `@angular/build` builders.
+Lint uses ESLint's flat configuration in `eslint.config.cjs`.
+Capacitor core/CLI remain on version 7 (7.6.9), and `webDir` points to the actual
+Angular build output, `dist/online-order/browser`. The GitHub Pages builder uses
+version 3, which supports Angular CLI 22.
+
+Templates use `@if`/`@for`, and Angular-managed classes use `inject()` for dependency
+injection. Startup uses `provideAppInitializer()` and the supported browser testing
+APIs; unused animations and dynamic browser-platform packages were removed.
+
+The application explicitly retains Zone.js change detection and
+`ChangeDetectionStrategy.Eager` for existing components. This preserves Ionic
+navigation, mutable page state, and asynchronous translation updates after Angular
+22 changed the default to `OnPush`. The shared polyfills entry loads Ionic's Zone
+flags before Zone.js in both the app and tests. Existing reactive and
+template-driven forms remain supported.
+
+Browser targets follow Angular 22's widely available baseline of 2026-05-07;
+older browsers/WebViews outside that baseline are no longer targeted. TypeScript
+uses bundler module resolution and an explicit `src/*` path mapping instead of the
+deprecated `baseUrl` option. Strict template checks remain enabled.
+
+Validation: a clean `npm ci`, production build, lint, and all six Chrome Headless
+tests (including coverage instrumentation) pass. The initial bundle is about
+985 kB, above the existing 600 kB warning budget and below the 1.2 MB error budget.
+`npm audit --omit=dev` reports no vulnerabilities. The full audit still reports
+11 high-severity findings in the Karma/GitHub Pages tooling dependency chains;
+the suggested forced fixes would downgrade tools and are not applied.
 
 ## Deployment
 

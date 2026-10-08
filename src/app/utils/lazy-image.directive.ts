@@ -1,21 +1,19 @@
-import { Directive, ElementRef, Input, OnInit, OnDestroy, Renderer2 } from '@angular/core';
+import { Directive, ElementRef, Input, OnInit, OnDestroy, Renderer2, inject } from '@angular/core';
 
 @Directive({
-  selector: 'img[lazyLoad]',
+  selector: 'img[appLazyLoad]',
   standalone: true
 })
 export class LazyImageDirective implements OnInit, OnDestroy {
-  @Input() lazyLoad: string = '';
+  private el = inject<ElementRef<HTMLImageElement>>(ElementRef);
+  private renderer = inject(Renderer2);
+
+  @Input() appLazyLoad: string = '';
   @Input() thumbnail: boolean = false;
   
   private observer?: IntersectionObserver;
   private scrollTimeout?: any;
   private hasLoaded = false;
-
-  constructor(
-    private el: ElementRef<HTMLImageElement>,
-    private renderer: Renderer2
-  ) {}
 
   ngOnInit() {
     // Set placeholder
@@ -53,7 +51,7 @@ export class LazyImageDirective implements OnInit, OnDestroy {
     if (this.hasLoaded) return;
     this.hasLoaded = true;
 
-    const imageUrl = this.lazyLoad;
+    const imageUrl = this.appLazyLoad;
 
     const img = new Image();
     img.onload = () => {

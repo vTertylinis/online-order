@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CartService, CartItem } from './cart.service';
 import { menuItems, getPrinterForCategory } from '../models/menu-item.model';
@@ -44,9 +44,10 @@ const CATEGORY_GREEK_NAME: Record<string, string> = {
 
 @Injectable({ providedIn: 'root' })
 export class DineInOrderService {
-  private readonly base = environment.backendUrl;
+  private http = inject(HttpClient);
+  private cartService = inject(CartService);
 
-  constructor(private http: HttpClient, private cartService: CartService) {}
+  private readonly base = environment.backendUrl;
 
   /**
    * Submits the current dine-in cart to the backend:
