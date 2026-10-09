@@ -90,15 +90,18 @@ npm run test:ci
 npm run lint
 ```
 
-`test:ci` runs the Jasmine/Karma suite once in Chrome Headless. Install Chrome or set
+`test:ci` runs the Vitest suite once in headless Chrome using Playwright. Install Chrome or set
 `CHROME_BIN` to a compatible Chromium executable before running it.
+No separate Playwright browser download is required. Use `npm ci` to install the
+versions recorded in `package-lock.json`, and commit the lockfile with dependency
+changes.
 
 ## Angular 22 migration
 
 The project was upgraded sequentially from Angular 20 through 21 to 22 using the
 official Angular CLI migrations. Framework and CLI packages use 22.2.2,
 TypeScript uses 6.0, Angular ESLint uses 22, and Ionic's Angular toolkit uses 13.
-Build, serve, i18n extraction, and Karma tests now use the `@angular/build` builders.
+Build, serve, i18n extraction, and Vitest tests use the `@angular/build` builders.
 Lint uses ESLint's flat configuration in `eslint.config.cjs`.
 Capacitor core/CLI remain on version 7 (7.6.9), and `webDir` points to the actual
 Angular build output, `dist/online-order/browser`. The GitHub Pages builder uses
@@ -112,7 +115,7 @@ The application explicitly retains Zone.js change detection and
 `ChangeDetectionStrategy.Eager` for existing components. This preserves Ionic
 navigation, mutable page state, and asynchronous translation updates after Angular
 22 changed the default to `OnPush`. The shared polyfills entry loads Ionic's Zone
-flags before Zone.js in both the app and tests. Existing reactive and
+flags before Zone.js in the app and through `src/test-setup.ts` in tests. Existing reactive and
 template-driven forms remain supported.
 
 Browser targets follow Angular 22's widely available baseline of 2026-05-07;
@@ -120,12 +123,14 @@ older browsers/WebViews outside that baseline are no longer targeted. TypeScript
 uses bundler module resolution and an explicit `src/*` path mapping instead of the
 deprecated `baseUrl` option. Strict template checks remain enabled.
 
-Validation: a clean `npm ci`, production build, lint, and all six Chrome Headless
-tests (including coverage instrumentation) pass. The initial bundle is about
+Validation: `npm ci` has no deprecated-package warnings. Production build, lint,
+and all six headless Chrome tests pass. The initial bundle is about
 985 kB, above the existing 600 kB warning budget and below the 1.2 MB error budget.
 `npm audit --omit=dev` reports no vulnerabilities. The full audit still reports
-11 high-severity findings in the Karma/GitHub Pages tooling dependency chains;
-the suggested forced fixes would downgrade tools and are not applied.
+six high-severity findings in the GitHub Pages tooling dependency chain through
+`braces`. There is currently no patched release for
+[GHSA-vfj7-8cjw-p6xm](https://github.com/advisories/GHSA-vfj7-8cjw-p6xm).
+The suggested forced fix would downgrade deployment tooling and is not applied.
 
 ## Deployment
 

@@ -9,7 +9,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "test:ci": "ng test --configuration ci --browsers ChromeHeadless",
+    "test:ci": "ng test --configuration ci",
     "lint": "ng lint"
   },
   "private": true,
@@ -49,7 +49,6 @@
     "@capacitor/cli": "7.6.9",
     "@ionic/angular-toolkit": "^13.0.0",
     "@types/google.maps": "^3.58.1",
-    "@types/jasmine": "~5.1.0",
     "@typescript-eslint/eslint-plugin": "^8.71.1",
     "@typescript-eslint/parser": "^8.71.1",
     "angular-cli-ghpages": "^3.1.0",
@@ -59,14 +58,9 @@
     "eslint-plugin-jsdoc": "^48.2.1",
     "eslint-plugin-prefer-arrow": "1.2.2",
     "istanbul-lib-instrument": "^6.0.3",
-    "jasmine-core": "~5.1.0",
-    "jasmine-spec-reporter": "~5.0.0",
-    "karma": "~6.4.0",
-    "karma-chrome-launcher": "~3.2.0",
-    "karma-coverage": "~2.2.0",
-    "karma-jasmine": "~5.1.0",
-    "karma-jasmine-html-reporter": "~2.1.0",
-    "typescript": "~6.0.3"
+    "typescript": "~6.0.3",
+    "vitest": "4.1.11",
+    "@vitest/browser-playwright": "4.1.11"
   },
   "description": "An Ionic project"
 }
