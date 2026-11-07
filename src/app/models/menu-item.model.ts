@@ -277,7 +277,7 @@ export const ingredients: Array<{ name: string; price: number; selected?: boolea
   { name: 'ING_MANOURI', price: 0.5 },
   { name: 'ING_LOUKANIKO', price: 1 },
   { name: 'ING_MELITZANOSALATA', price: 0.5 },
-  { name: 'ING_SALAMI_AEROS', price: 0.5 }
+  { name: 'ING_SALAMI_AEROS', price: 1 }
 ];
 
 export const sweetIngredients: Array<{ name: string; price: number; selected?: boolean }> = [
