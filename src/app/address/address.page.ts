@@ -23,6 +23,7 @@ import {
 } from 'ionicons/icons';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AnalyticsService } from '../services/analytics.service';
 import { CartService } from '../services/cart.service';
 import { isWithinDeliveryHours } from '../utils/delivery-hours.util';
 import { GoogleMapsLoaderService } from '../services/google-maps-loader.service';
@@ -55,6 +56,7 @@ declare var google: any;
 export class AddressPage implements AfterViewInit {
   @ViewChild('mapElement', { static: false }) mapElement?: ElementRef;
   
+  private analytics = inject(AnalyticsService);
   private fb = inject(FormBuilder);
   private router = inject(Router);
   private toastCtrl = inject(ToastController);
@@ -230,6 +232,7 @@ export class AddressPage implements AfterViewInit {
     if (this.submitting) return;
 
     if (this.form.invalid) {
+      this.analytics.checkoutFailure('invalid_form', 'address');
       const toast = await this.toastCtrl.create({
         message: this.translateService.instant('address.FORM_INVALID'),
         duration: 2000,
@@ -249,6 +252,7 @@ export class AddressPage implements AfterViewInit {
 
     // Check delivery hours before submitting
     if (!isWithinDeliveryHours()) {
+      this.analytics.checkoutFailure('outside_delivery_hours', 'address');
       const alert = await this.alertCtrl.create({
         header: this.translateService.instant('common.DELIVERY_HOURS.TITLE'),
         message: this.translateService.instant('common.DELIVERY_HOURS.MESSAGE'),
@@ -291,6 +295,7 @@ export class AddressPage implements AfterViewInit {
     };
 
     this.submitting = true;
+    let orderAccepted = false;
     try {
       console.log('Sending order data:', orderData);
 
@@ -299,6 +304,7 @@ export class AddressPage implements AfterViewInit {
         orderData
       ).toPromise();
 
+      orderAccepted = true;
       console.log('Order sent successfully:', response);
 
       // Order went through — clear the cart (and its idempotency key) so it
@@ -315,6 +321,7 @@ export class AddressPage implements AfterViewInit {
 
       this.router.navigateByUrl('/');
     } catch (error) {
+      if (!orderAccepted) this.analytics.checkoutFailure('request_failed', 'submit_order', error);
       console.error('Error sending order:', error);
 
       const toast = await this.toastCtrl.create({

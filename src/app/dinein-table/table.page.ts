@@ -15,6 +15,7 @@ import { addIcons } from 'ionicons';
 import { chevronDown, restaurantOutline, sendOutline } from 'ionicons/icons';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Subscription } from 'rxjs';
+import { AnalyticsService } from '../services/analytics.service';
 import { TableService } from '../services/table.service';
 import { CartService } from '../services/cart.service';
 import { DineInOrderService } from '../services/dinein-order.service';
@@ -38,6 +39,7 @@ import { DineInOrderService } from '../services/dinein-order.service';
   styleUrls: ['./table.page.scss'],
 })
 export class TablePage implements OnInit, OnDestroy {
+  private analytics = inject(AnalyticsService);
   private router = inject(Router);
   private tableService = inject(TableService);
   private cartService = inject(CartService);
@@ -99,17 +101,24 @@ export class TablePage implements OnInit, OnDestroy {
 
   async confirm(): Promise<void> {
     this.submitted = true;
-    if (!this.selectedTable || this.submitting) return;
+    if (this.submitting) return;
+    if (!this.selectedTable) {
+      this.analytics.checkoutFailure('table_required', 'table');
+      return;
+    }
 
     this.submitting = true;
     const tableId = String(this.selectedTable);
     this.tableService.setTable(tableId);
 
+    let orderAccepted = false;
     try {
       await this.dineInOrder.submitOrder(tableId);
+      orderAccepted = true;
       this.cartService.clear();
       this.router.navigate(['/dinein/success']);
     } catch (err) {
+      if (!orderAccepted) this.analytics.checkoutFailure('request_failed', 'submit_order', err);
       console.error('Dine-in order submission failed', err);
       this.submitting = false;
     }
