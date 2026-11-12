@@ -1,4 +1,6 @@
 {
+  "BASE_PRICE": "Base {{price}}",
+  "CHOOSE_INGREDIENT": "Choose at least 1 ingredient",
   "TITLE": "Product Details",
   "LOADING": "Loading...",
   "DESCRIPTION": "Description",

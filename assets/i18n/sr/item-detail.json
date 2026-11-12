@@ -1,4 +1,6 @@
 {
+  "BASE_PRICE": "Основа {{price}}",
+  "CHOOSE_INGREDIENT": "Изаберите најмање 1 састојак",
   "TITLE": "Детаљи производа",
   "LOADING": "Учитавање...",
   "DESCRIPTION": "Опис",

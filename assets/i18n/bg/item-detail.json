@@ -1,4 +1,6 @@
 {
+  "BASE_PRICE": "Основа {{price}}",
+  "CHOOSE_INGREDIENT": "Изберете поне 1 съставка",
   "TITLE": "Детайли за продукта",
   "LOADING": "Зареждане...",
   "DESCRIPTION": "Описание",
