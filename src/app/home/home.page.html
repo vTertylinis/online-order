@@ -121,7 +121,12 @@
                   <p class="item-desc">{{ item.desc }}</p>
                 }
                 @if (item.price) {
-                  <span class="item-price">{{ getDisplayPrice(item) | currency:'EUR' }}</span>
+                  <span class="item-price">
+                    {{ getDisplayPrice(item) | currency:'EUR' }}
+                    @if (item.id === 51 || item.id === 52 || item.id === 53) {
+                      <span>{{ 'home.PLUS_INGREDIENTS' | translate }}</span>
+                    }
+                  </span>
                 }
                 @if (item.id === 52 || item.id === 53) {
                   <span class="item-time-notice" [class.unavailable]="!crepesAvailable">

@@ -12,7 +12,7 @@ export class AppComponent {
   private translate = inject(TranslateService);
 
   constructor() {
-    this.translate.setDefaultLang('el');
+    this.translate.setFallbackLang('el');
     const savedLang = localStorage.getItem('app-lang') || 'el';
     this.translate.use(savedLang);
   }

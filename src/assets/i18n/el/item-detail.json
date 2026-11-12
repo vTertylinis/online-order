@@ -1,4 +1,6 @@
 {
+  "BASE_PRICE": "Βάση {{price}}",
+  "CHOOSE_INGREDIENT": "Διάλεξε τουλάχιστον 1 υλικό",
   "TITLE": "Λεπτομέρειες προϊόντος",
   "LOADING": "Φόρτωση...",
   "DESCRIPTION": "Περιγραφή",

@@ -1,4 +1,6 @@
 {
+  "BASE_PRICE": "Basis {{price}}",
+  "CHOOSE_INGREDIENT": "Wähle mindestens 1 Zutat",
   "TITLE": "Produktdetails",
   "LOADING": "Wird geladen...",
   "DESCRIPTION": "Beschreibung",

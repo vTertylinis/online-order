@@ -8,12 +8,12 @@ export class GoogleMapsLoaderService {
   private loadPromise?: Promise<void>;
 
   load(): Promise<void> {
-    if (typeof window !== 'undefined' && (window as any).google && (window as any).google.maps) {
-      return Promise.resolve();
-    }
-
     if (this.loadPromise) {
       return this.loadPromise;
+    }
+
+    if (typeof window !== 'undefined' && (window as any).google && (window as any).google.maps) {
+      return Promise.resolve();
     }
 
     this.loadPromise = new Promise<void>((resolve, reject) => {
@@ -34,9 +34,17 @@ export class GoogleMapsLoaderService {
       script.id = scriptId;
       script.async = true;
       script.defer = true;
-      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places`;
-      script.onload = () => resolve();
-      script.onerror = () => reject(new Error('Google Maps failed to load'));
+      const callbackName = '__onlineOrderGoogleMapsReady';
+      const mapsWindow = window as Window & { __onlineOrderGoogleMapsReady?: () => void };
+      mapsWindow[callbackName] = () => {
+        delete mapsWindow[callbackName];
+        resolve();
+      };
+      script.src = `https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=places&loading=async&callback=${callbackName}`;
+      script.onerror = () => {
+        delete mapsWindow[callbackName];
+        reject(new Error('Google Maps failed to load'));
+      };
       document.head.appendChild(script);
     });
 

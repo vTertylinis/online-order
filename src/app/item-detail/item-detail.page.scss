@@ -105,6 +105,14 @@
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
+
+  &.customizable {
+    flex-wrap: wrap;
+
+    .title {
+      flex-basis: 150px;
+    }
+  }
 }
 
 .title {
@@ -135,6 +143,13 @@
 }
 
 /* ---------- Option cards ---------- */
+.ingredient-guidance {
+  margin: 0 0 12px;
+  color: var(--ion-text-color);
+  font-size: 0.85rem;
+  line-height: 1.4;
+}
+
 .option-card {
   margin: var(--section-gap) 16px 0;
   padding: 16px;

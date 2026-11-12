@@ -47,9 +47,15 @@
     </div>
     <!-- Floating info card -->
     <section class="info-card">
-      <div class="info-row">
+      <div class="info-row" [class.customizable]="item.id === 51 || item.id === 52 || item.id === 53">
         <h1 class="title">{{ translate(item.name || '') || ('Item ID: ' + id) }}</h1>
-        <div class="price-pill">{{ item.price | currency:'EUR' }}</div>
+        <div class="price-pill">
+          @if (item.id === 51 || item.id === 52 || item.id === 53) {
+            {{ 'item-detail.BASE_PRICE' | translate:{ price: (item.price | currency:'EUR') } }}
+          } @else {
+            {{ item.price | currency:'EUR' }}
+          }
+        </div>
       </div>
       @if (item.description || item.desc) {
         <p class="description">
@@ -143,12 +149,15 @@
             <span class="badge">{{ savorySelectedCount }}</span>
           }
         </header>
+        @if (item.id === 51 || item.id === 52) {
+          <p class="ingredient-guidance">{{ 'item-detail.CHOOSE_INGREDIENT' | translate }}</p>
+        }
         <ion-searchbar class="slim-search"
           [(ngModel)]="searchTerm"
           (ionInput)="filterIngredients()"
         [placeholder]="'item-detail.EXTRAS.SEARCH_SAVORY' | translate"></ion-searchbar>
         <div class="extras-grid">
-          @for (ing of filteredIngredients; track ing) {
+          @for (ing of filteredIngredients; track ing.name) {
             <button type="button"
               class="extra-chip"
               [class.active]="ing.selected"
@@ -173,12 +182,15 @@
             <span class="badge">{{ sweetSelectedCount }}</span>
           }
         </header>
+        @if (item.id === 53) {
+          <p class="ingredient-guidance">{{ 'item-detail.CHOOSE_INGREDIENT' | translate }}</p>
+        }
         <ion-searchbar class="slim-search"
           [(ngModel)]="sweetSearchTerm"
           (ionInput)="filterSweetIngredients()"
         [placeholder]="'item-detail.EXTRAS.SEARCH_SWEET' | translate"></ion-searchbar>
         <div class="extras-grid">
-          @for (ing of filteredSweetIngredients; track ing) {
+          @for (ing of filteredSweetIngredients; track ing.name) {
             <button type="button"
               class="extra-chip"
               [class.active]="ing.selected"
@@ -205,7 +217,7 @@
           </span>
         </header>
         <div class="drinks-list">
-          @for (drink of softDrinks; track drink) {
+          @for (drink of softDrinks; track drink.id) {
             <div class="drink-row" [class.selected]="(drink.quantity || 0) > 0">
               <span class="drink-name">{{ translate(drink.name) }}</span>
               <div class="qty-controls">

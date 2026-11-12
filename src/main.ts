@@ -27,12 +27,14 @@ bootstrapApplication(AppComponent, {
   providers: [
     provideZoneChangeDetection(),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    provideIonicAngular(),
+    provideIonicAngular({
+      focusManagerPriority: ['heading', 'banner', 'content'],
+    }),
     provideRouter(routes, withPreloading(PreloadAllModules), withHashLocation()),
     provideHttpClient(withXhr()),
     importProvidersFrom(
       TranslateModule.forRoot({
-        defaultLanguage: 'el',
+        fallbackLang: 'el',
         loader: {
           provide: TranslateLoader,
           useFactory: HttpLoaderFactory,
